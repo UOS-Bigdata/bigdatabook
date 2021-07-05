@@ -1,5 +1,6 @@
 # Jupyter Book
 _build
+/test
 
 
 # Byte-compiled / optimized / DLL files
