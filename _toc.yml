@@ -4,3 +4,4 @@ format: jb-book
 root: chapters/intro
 chapters:
   - file: chapters/02/basic
+  - file: chapters/02/dataframe
