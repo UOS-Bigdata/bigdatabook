@@ -1,7 +1,7 @@
 # Jupyter Book
 _build
 /test
-
+.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
