@@ -1,0 +1,602 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.1. 표현식과 변수 &#8212; 빅데이터 개론 2</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="2. 파이썬 기초" href="intro-python.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">빅데이터 개론 2</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   빅데이터 개론 2
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01/intro-course.html">
+   1. 서론
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-program.html">
+     1.1. 프로그래밍 언어
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-stat.html">
+     1.2. 통계학
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro-python.html">
+   2. 파이선의 기초
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.1. 표현식과 변수
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/chapters/02/basic-expression.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Bigdata-UOS/Bigdata-UOS"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Bigdata-UOS/Bigdata-UOS/main?urlpath=tree/docs/chapters/02/basic-expression.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   2.1.1. 표현식
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   2.1.2. 수학 연산
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   2.1.3. 변수
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1><span class="section-number">2.1. </span>표현식과 변수<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2><span class="section-number">2.1.1. </span>표현식<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>파이썬 환경에서 표현식(expression)을 사용하는 것은 여러분이 휴대용 계산기를 사용하는 것과 매우 유사합니다. 파이썬 언어를 포함하는 프로그래밍 언어는 인간의 언어보다 휠씬 단순합니다.</p>
+<p>파이썬 언어도 인간의 언어와 같이 정해진 문법이 있는데 표현식은 주어진 자료들를 어떻게 처리할 것인지 컴퓨터에게 전달하는 문장입니다. 프로그래밍 언어의 문장도 인간의 언어와 같이 정해진 규칙, 즉 문법에 맞추어 써야합니다.</p>
+<p>예를 들어 <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span></code> 은 수학적인 연산을 나타내는 표현식이며 이는 1에 2을 더해서 결과를 계산해 달라는 문장입니다.</p>
+<p>만약 <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">*</span> <span class="pre">2</span></code> 라는 표현식을 사용하면 오류가 날 것입니다. 프로그래밍 언어의 표현식은 인간이 사용하는 언어와 유사한 문법을 사용하게 설계되었기 때문에 대부분의 경우 인간이 이해를 못하면 컴퓨터도 이해를 할 수 없습니다.</p>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">2.1.2. </span>수학 연산<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>먼저 숫자를 이용하는 다양한 연산을 수행하는 표현식을 사용해 보자.</p>
+<p>숫자 1을 입력하면 1을 출력해 준다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<p>사칙 연산은 표현식을 입력하면 수행해서 곧바로 결과를 보여 준다.</p>
+<p>앞에서 언급했듯이 파이썬은 수식, 즉 표현식을 입력하면 결과를 보여주는 인터프리터 언어이며 대화형 방식으로 사용할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">-</span><span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">*</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.5
+</pre></div>
+</div>
+</div>
+</div>
+<p>파이썬은 사칙연산 뿐 아니라 제곱, 나눗셈을 할 때 몫(나머지) 등을 구할 수 있는 여러 가지 다양한 표현식이 가능하다. 아래는 숫자를 이용하는 표현식에 사용할 수 있는 연산자(operator)들이다.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>연산자</p></th>
+<th class="head"><p>의미</p></th>
+<th class="head"><p>예시</p></th>
+<th class="head"><p>값</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(+\)</span></p></td>
+<td><p>덧셈</p></td>
+<td><p>2+3</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(-\)</span></p></td>
+<td><p>뺄셈</p></td>
+<td><p>2-1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(*\)</span></p></td>
+<td><p>곱셈</p></td>
+<td><p>2*3</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(/\)</span></p></td>
+<td><p>나눗셈</p></td>
+<td><p>7/3</p></td>
+<td><p>2.66667</p></td>
+</tr>
+<tr class="row-even"><td><p>%</p></td>
+<td><p>나머지</p></td>
+<td><p>7%3</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(//\)</span></p></td>
+<td><p>몫</p></td>
+<td><p>10//3</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(**\)</span></p></td>
+<td><p>제곱</p></td>
+<td><p>3**4</p></td>
+<td><p>81</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span><span class="o">//</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
+</div>
+</div>
+<p>여러 개의 연산자가 나오는 경우 연산 순서는 수학에서의 연산 순서와 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+</div>
+</div>
+<p>물론 괄호를 사용하여 연산의 순서를 조정할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+<p>문법에 따르지 않은 잘못된 표현식을 사용하면 파이썬은 오류 메세지(error message)를 출력한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">+*</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-10-11310822abdb&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+<span class="g g-Whitespace">    </span><span class="mi">1</span><span class="o">+*</span><span class="mi">2</span>
+      <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">2.1.3. </span>변수<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>여러분이 요리를 할 때 그릇을 준비하고 요리한 음식을 담는다. 그릇에 담는 음식은 여러분의 취향에 따라서 바뀔 수 있다. 프로그래밍 언어에 변수는 자료를 담는 그릇이다.</p>
+<p>프로그램을 만들 때 변수는 표현식의 결과를 담는 그릇이라고 생각하자. 변수는 연산자 <code class="docutils literal notranslate"><span class="pre">=</span></code>을 사용하여 선언할 수 있다. 연산자 <code class="docutils literal notranslate"><span class="pre">=</span></code>의 오른쪽에는 변수에 저장할 자료를 계산하는 표현식이 나타난다. 표현식에는 앞에서 정의된 변수가 사용될 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mi">200</span> <span class="o">+</span> <span class="mi">300</span>
+<span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>600
+</pre></div>
+</div>
+</div>
+</div>
+<p>다른 요리를 하면 그릇에 담는 음식이 바뀌듯이 변수에 저장된 자료를 바꿀 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mi">200</span>
+<span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-200
+</pre></div>
+</div>
+</div>
+</div>
+<p>변수를 사용하는 이유는 일반적인 작업을 수행할 때 특정한 자료에 대한 처리를 편리하고 이해하기 쉽게 하기 위해서이다.</p>
+<p>예를 들어 아르바이트 직원의 월급을 계산하는 일반적인 작업을 고려헤 보자. 먼저 시간당 임금(<code class="docutils literal notranslate"><span class="pre">hour_rate</span></code>)이 정해지고 다음에 근로 일수 (<code class="docutils literal notranslate"><span class="pre">month_working_days</span></code>) 그리고 일간 근로 시간(<code class="docutils literal notranslate"><span class="pre">day_working_hours</span></code>)이 나오면 세 값을 곱하여 월급이 정해진다.</p>
+<p>다음은 1월에 일한 철수의 월급을 계산하는 프로그램이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hour_rate</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">month_working_days</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">day_working_hours</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">month_pay</span> <span class="o">=</span> <span class="n">hour_rate</span> <span class="o">*</span> <span class="n">month_working_days</span> <span class="o">*</span> <span class="n">day_working_hours</span>
+<span class="n">month_pay</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>800000
+</pre></div>
+</div>
+</div>
+</div>
+<p>아르바이트 직원마다 시간당 임금, 월간 근로 일수와 시간, 즉 자료가 달라지기 떄문에 월급이 수시로 변하지만 월급을 계산하는 작업의 절차는 동일하다.
+변수를 이용하면 일반적인 작업의 절차를 쉽게 이해할 수 있는 프로그램으로 작성하여 반복적으로 이용할 수 있다.</p>
+<p>다음은 2월에 일한 영이의 월급을 계산하는 프로그램이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hour_rate</span> <span class="o">=</span> <span class="mi">11000</span>
+<span class="n">month_working_days</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">day_working_hours</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">month_pay</span> <span class="o">=</span> <span class="n">hour_rate</span> <span class="o">*</span> <span class="n">month_working_days</span> <span class="o">*</span> <span class="n">day_working_hours</span>
+<span class="n">month_pay</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>825000
+</pre></div>
+</div>
+</div>
+</div>
+<p>변수의 이름을 정할 때는 다음과 같은 규칙을 따른다.</p>
+<ul class="simple">
+<li><p>대, 소문자를 구분한다(<code class="docutils literal notranslate"><span class="pre">myvar</span></code> 과 <code class="docutils literal notranslate"><span class="pre">myVar</span></code> 은 다른 변수)</p></li>
+<li><p>문자, 숫자, 언더바(<code class="docutils literal notranslate"><span class="pre">_</span></code>)를 포함할 수 있다. 하지만 숫자로 시작하면 안 된다.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="intro-python.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">2. </span>파이썬 기초</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By 서울시립대학교<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
