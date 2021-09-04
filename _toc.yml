@@ -18,3 +18,9 @@ sections:
   sections:
   - file: chapters/02/basic-expression
     title: 표현식과 변수
+  - file: chapters/02/data-processing-intro
+    title: 데이터의 처리
+  - file: chapters/02/data-processing-train-passenger
+    title: 고속열차 여객 수송자료
+  - file: chapters/02/data-processing-text
+    title: 어린 왕자
