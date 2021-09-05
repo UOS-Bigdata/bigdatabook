@@ -53,6 +53,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.2. 데이터 처리" href="data-processing-intro.html" />
     <link rel="prev" title="2. 파이썬 기초" href="intro-python.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -126,6 +127,21 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      2.1. 표현식과 변수
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-processing-intro.html">
+     2.2. 데이터의 처리
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-processing-train-passenger.html">
+     2.3. 고속열차 여객 수송자료
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-processing-text.html">
+     2.4. 어린 왕자
     </a>
    </li>
   </ul>
@@ -243,7 +259,22 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   2.1.3. 변수
+   2.1.3. 비교연산자와 논리연산자
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   2.1.4. 변수
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   2.1.5. 라이브러리와 함수
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   2.1.6. 리스트
   </a>
  </li>
 </ul>
@@ -447,9 +478,115 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">2.1.3. </span>변수<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.1.3. </span>비교연산자와 논리연산자<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>숫자들의 크기를 비교하는 표현식을 실행하면 참(<code class="docutils literal notranslate"><span class="pre">True</span></code>)과 거짓(<code class="docutils literal notranslate"><span class="pre">False</span></code>)이 생성된다. 여기서 유의할 점은 <code class="docutils literal notranslate"><span class="pre">True</span></code> 와 <code class="docutils literal notranslate"><span class="pre">False</span></code> 는 참과 거짓을 나타내는 예약어로서 변수의 이름으로 사용할 수 없다</p>
+<p>비교연산자는  <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">==</span></code> 가 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">==</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">!=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="o">=</span> <span class="mi">123</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-15-cc0f27f3a6b4&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="kc">True</span> <span class="o">=</span> <span class="mi">123</span>
+    <span class="o">^</span>
+<span class="ne">SyntaxError</span>: cannot assign to True
+</pre></div>
+</div>
+</div>
+</div>
+<p>논리연산자는 <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">not</span></code> 으로 구성되어 있으며 논리식을 표현한다. 논리연산자도 예약어로서 변수의 이름으로 사용할 수 없다</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="mi">3</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="mi">3</span> <span class="o">&lt;=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ow">not</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">2.1.4. </span>변수<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>여러분이 요리를 할 때 그릇을 준비하고 요리한 음식을 담는다. 그릇에 담는 음식은 여러분의 취향에 따라서 바뀔 수 있다. 프로그래밍 언어에 변수는 자료를 담는 그릇이다.</p>
 <p>프로그램을 만들 때 변수는 표현식의 결과를 담는 그릇이라고 생각하자. 변수는 연산자 <code class="docutils literal notranslate"><span class="pre">=</span></code>을 사용하여 선언할 수 있다. 연산자 <code class="docutils literal notranslate"><span class="pre">=</span></code>의 오른쪽에는 변수에 저장할 자료를 계산하는 표현식이 나타난다. 표현식에는 앞에서 정의된 변수가 사용될 수 있다.</p>
+<p>참고로 파이썬에서는 **변수(variable)**를 **이름(name)**이라고 부른다. 이 과목에서는 변수로 통일하여 사용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
@@ -533,6 +670,333 @@
 <li><p>대, 소문자를 구분한다(<code class="docutils literal notranslate"><span class="pre">myvar</span></code> 과 <code class="docutils literal notranslate"><span class="pre">myVar</span></code> 은 다른 변수)</p></li>
 <li><p>문자, 숫자, 언더바(<code class="docutils literal notranslate"><span class="pre">_</span></code>)를 포함할 수 있다. 하지만 숫자로 시작하면 안 된다.</p></li>
 </ul>
+<p>파이썬의 변수에 저장할 수 있는 것은 숫자뿐만 아니라 문자도 저장할 수 있다.
+파이썬의 문자열(string,<code class="docutils literal notranslate"><span class="pre">str</span></code>)은 문자들(characters)의 조합이다.</p>
+<p>문자열의 정의는 아래와 같이 <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code> 와 <code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">&quot;</span></code> 로 모두 정의할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_1</span> <span class="o">=</span> <span class="s1">&#39;John Doe&#39;</span>
+<span class="n">name_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;John Doe&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name_2</span> <span class="o">=</span> <span class="s2">&quot;이철수&quot;</span>
+<span class="n">name_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;이철수&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text_1</span> <span class="o">=</span> <span class="s2">&quot;I can&#39;t go&quot;</span>
+<span class="n">text_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;I can&#39;t go&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>문자열 안에 작은 따옴표 <code class="docutils literal notranslate"><span class="pre">'</span></code> 가 있는 경우 큰 따옴표 <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> 로 위와 같이 정의하면 문제가 없지만 작은 따옴표로 정의하는 경우 <strong>문자열의 시작과 끝이 구별이 되지 않기 때문에</strong> 역슬래쉬 <code class="docutils literal notranslate"><span class="pre">\</span></code> 로 아래와 같이 보호해준다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text_2</span> <span class="o">=</span><span class="s1">&#39;you can</span><span class="se">\&#39;</span><span class="s1">t come&#39;</span>
+<span class="n">text_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;you can&#39;t come&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>물론 큰 따옴표가 문자열에 있는 경우도 역슬래쉬 <code class="docutils literal notranslate"><span class="pre">\</span></code> 로  보호해주어야 한다..</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text_3</span> <span class="o">=</span> <span class="s2">&quot;He said </span><span class="se">\&quot;</span><span class="s2">yes</span><span class="se">\&quot;</span><span class="s2">&quot;</span>
+<span class="n">text_3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;He said &quot;yes&quot;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>주의할 점은 역슬래쉬로 시작하는 문자열은 특수한 기능을 가진다. 이러한 특수한 기능을 가진 특수 문자열(escape sequence)라고 부른다.</p>
+<p>예를 들어 문자열 안에 <code class="docutils literal notranslate"><span class="pre">\n</span></code> 이 나타나면 줄을 바꾸는 기능(newline)한다. 따라서 다음과 같이 컴퓨터의 디렉토리를 지정하는 문자열은
+<code class="docutils literal notranslate"><span class="pre">\n</span></code> 때문에 출력하면 다음 줄로 넘어가게 된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text_4</span> <span class="o">=</span> <span class="s1">&#39;C:\some</span><span class="se">\n</span><span class="s1">ame&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text_4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\some
+ame
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;첫 번째 줄 </span><span class="se">\n</span><span class="s2">두 번째 줄&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>첫 번째 줄 
+두 번째 줄
+</pre></div>
+</div>
+</div>
+</div>
+<p>특수 문자열이 주어진 기능을 하지 못하게 하는 방법은 문자열을 정의할 때 <code class="docutils literal notranslate"><span class="pre">r</span></code>로 시작하면 된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text_5</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\some\name&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text_5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\some\name
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><span class="section-number">2.1.5. </span>라이브러리와 함수<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>앞의 표현식에서 나타난 <code class="docutils literal notranslate"><span class="pre">print()</span></code> 는 함수(function)라고 부르며 괄호 안에 주어진 문자열이나 변수의 내용을 출력하는 기능을 가진다.</p>
+<p>여러분이 수학시간에 배운 기본적인 수학적 도 파이썬에서 사용할 수 있다. 다른 프로그램이나 계산기에서 흔히 사용되는  사인함수 <code class="docutils literal notranslate"><span class="pre">sin()</span></code> 을 실행해 보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">34</span><span class="o">-</span><span class="n">ce9fefd90f64</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;sin&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>불행하게도 계산기에서도 쉽게 사용 가능한  사인함수 <code class="docutils literal notranslate"><span class="pre">sin()</span></code>가 정의가 되어 있지 않은 것을 알 수 있다.</p>
+<p>수학 함수를 사용하려면 추가 작업이 필요하다. 필요한 작업은 수학에 관련된 함수들을 모아 놓은 **라이브러리(library)**를 불러오는 것이다.</p>
+<p>라이브러리는 특정한 주제에 관련된 함수들과 연관된 프로그램을 모아놓은 것이다. 예를 들어 삼각함수나 로그함수와 같은 수학 함수를 사용하기 위해서는
+수학 라이브러리(<code class="docutils literal notranslate"><span class="pre">math</span></code> library)를 불러와야 한다.</p>
+<p><strong>특정한 라이브러리를 불러오는 명령어는 <code class="docutils literal notranslate"><span class="pre">import</span></code>를 사용한다.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>위와 같이 <code class="docutils literal notranslate"><span class="pre">math</span></code> 라이브러리를 불러오면 이제 사인함수 <code class="docutils literal notranslate"><span class="pre">sin()</span></code> 을 사용할 수 있을까?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">37</span><span class="o">-</span><span class="n">ce9fefd90f64</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;sin&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>아쉽게도 사인함수 <code class="docutils literal notranslate"><span class="pre">sin()</span></code> 가 아직도 작동하지 않는다.</p>
+<p>특정 라이브러리를 불러오면 사용하고자 하는 함수가 그 라이브러리에 포함된 함수임을 알려주어야 한다. 아래와 같이 라이브러리 이름 뒤에 마침표 <code class="docutils literal notranslate"><span class="pre">.</span></code>를 쓰고 그 다음에 함수 이름을 붙여야 사용할 수 있다. <code class="docutils literal notranslate"><span class="pre">math.sin()</span></code> 이라는 문장은 컴퓨터에게 <code class="docutils literal notranslate"><span class="pre">math</span></code> 라이브러리 안에 있는 <code class="docutils literal notranslate"><span class="pre">sin()</span></code> 함수를 이용하겠다고 알려주는 것이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9092974268256817
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.091042453358316
+</pre></div>
+</div>
+</div>
+</div>
+<p>참고로 라이브러리는 모듈(module)이라고도 불리며 기본적으로 같은 의미이다.  <code class="docutils literal notranslate"><span class="pre">math</span></code> 라이브러리에서 정의된 다양한 수학함수들의 사용법은 <a class="reference external" href="https://docs.python.org/3/library/math.html">파이썬 모듈 매뉴얼</a>에 있다.</p>
+</div>
+<div class="section" id="id7">
+<h2><span class="section-number">2.1.6. </span>리스트<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>파이썬에서 리스트(<code class="docutils literal notranslate"><span class="pre">list</span></code>)는 데이터를 모아놓은 <strong>순서가 있는</strong> 복합체 또는 집합이다.</p>
+<p>리스트를 정의하는 방법은 중괄호 <code class="docutils literal notranslate"><span class="pre">[]</span></code> 안에 데이터 또는 변수를 쉼표 <code class="docutils literal notranslate"><span class="pre">,</span></code> 로 분리하여 놓는다. 리스트 안에 있는 원소(element)들은 아래에서 정의한 것처럼 정수, 실수, 문자열 등 그 성질이 같을 필요는 없다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;chair&#39;</span><span class="p">]</span>
+<span class="n">list_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 0.5, &#39;chair&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>심지어 리스트는 여러 개의 서로 다른 리스트를 원소로 가질 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_2</span> <span class="o">=</span> <span class="p">[</span> <span class="n">list_1</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="p">]</span>
+<span class="n">list_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1, 2, 0.5, &#39;chair&#39;], &#39;A&#39;, [1, 2, 3]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>리스트 안의 각 원소는 순서에 따라서 지정된 값이 있으며 이를 **인덱스(index)**라고 한다.</p>
+<p>인덱스를 이용하여 리스트의 원소를 꺼내 볼 수 있다. 이를 슬라이싱(slicing)이라고 한다. 인덱스를 이용한 슬라이싱은 리스트의 이름 뒤에 중괄호 <code class="docutils literal notranslate"><span class="pre">[]</span></code> 안에 인덱스를 넣어서 수행한다.</p>
+<p><strong>!!!! 파이썬의 인덱스는 1이 아닌 0 부터 시작하므로 이를 언제나 유념해야 한다 !!!</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25
+</pre></div>
+</div>
+</div>
+</div>
+<p>위의 결과에서 보았듯이 5개의 원소를 가진 리스트의 인덱스는 0 으로 시작해서 4 로 끝난다. 민약 리스트의 인텍스 범위를 벗어나서 슬라이싱을 하면 오류가 발생한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_3</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">47</span><span class="o">-</span><span class="n">f03c86e5c67e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">list_3</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="ne">NameError</span>: name &#39;list_3&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>마지막으로 변수나 숫자가 리스트에 포함되는지 알려주는 포함연산자 <code class="docutils literal notranslate"><span class="pre">in</span></code> 이 유용하다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">a</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -574,6 +1038,15 @@
             </div>
         </a>
     </div>
+     <div id="next">
+        <a class="right-next" href="data-processing-intro.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">2.2. </span>데이터 처리</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         

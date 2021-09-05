@@ -1,0 +1,2049 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.3. 고속열차 여객 수송자료 &#8212; 빅데이터 개론 2</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.4. 어린 왕자" href="data-processing-text.html" />
+    <link rel="prev" title="2.2. 데이터 처리" href="data-processing-intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">빅데이터 개론 2</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   빅데이터 개론 2
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01/intro-course.html">
+   1. 서론
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-program.html">
+     1.1. 프로그래밍 언어
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-stat.html">
+     1.2. 통계학
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro-python.html">
+   2. 파이선의 기초
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="basic-expression.html">
+     2.1. 표현식과 변수
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-processing-intro.html">
+     2.2. 데이터의 처리
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.3. 고속열차 여객 수송자료
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-processing-text.html">
+     2.4. 어린 왕자
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/chapters/02/data-processing-train-passenger.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Bigdata-UOS/Bigdata-UOS"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Bigdata-UOS/Bigdata-UOS/main?urlpath=tree/docs/chapters/02/data-processing-train-passenger.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   2.3.1. 필요한 라이브러리
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   2.3.2. 고속열차 수송 자료
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   2.3.3. 시계열 그림
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   2.3.4. 그룹별 분석
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1><span class="section-number">2.3. </span>고속열차 여객 수송자료<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>교통 분야는 빅데이터의 수집과 분석이 가장 활발하게 진행되는 분야이다. 자동차, 항공기, 기차 등 교통 수단들이 운행할 때 다양한 형태의 빅데이터들이 생성되고 저장되고 있다. 최근에는 자율 주행차의 개발을 위하여 자동차 운행에 관련된 빅데이터 분석이 중요한 이슈이다. 또한 열차와 항공기 같은 여객 산업에서는 예약과 결제 등 서비스와 매출에 대한 빅데이터가 효율적인 자원 배분과 수익관리에 유용하게 사용된다.</p>
+<p>열차는 자동차,항공기와 다르게 출발역과 도착역 사이에 다수의 중간 정차역이 존재한다. 따라서 열차를 운행하는 경우 여행 경로에 따른 승객의 수요 예측과 죄석의 합리적인  배분이 매우 중요하다.</p>
+<p>예를 들어 KTX 고속 열차 노선 중에 서울에서 출발하여 부산에 도착하는 경부 하행선 열차가 하루에 60회 정도 운행한다. 중간 정차역이 적게는 5개, 많게는 8개인 것을 고려하면 여행 경로의 수는 상당히 많다. 그리고 운행하는 요일, 계절, 명절에 따라 수요가 다르므로 여객의 수요를 예측하고 좌석을 배정하는 작업은 매우 까다로운 작업이다. 더 나아가 경부선만 아닌 전라선, 영동선과 같은 다른 노선이 매일 운행하고 있고 상행/하행 두 노선을 모두 고려하면 상당한 빅데이터가 처리되고 분석되어야 한다.</p>
+<p><img alt="ktx" src="../../_images/ktx.jpeg" /></p>
+<p>이 예제에서는 한 달 동안 운행한 고속 열차에 탑승한 승객의 수송자료를 처리하고 기초적인 분석을 하는 예를 살펴 보기로 한다.</p>
+<p>분석의 목표는 여행 구간마다 요일별 탑긍객 수가 어떤 패턴을 가지는 지 알아보는 것이다.</p>
+<div class="section" id="id2">
+<h2><span class="section-number">2.3.1. </span>필요한 라이브러리<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>분석 결과를 이용하여 그림을 그리려면 다음과 같은 여러 개의 라이브러리를 불러와야 한다. 아래 라이브러리의 의미와 그림을 잘 그리기 위한 다양한 기능들은 뒤에서 자세하게 다룰 것이므로 이 예제에서는 일단 실행해보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rc</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;AppleGothic&#39;</span><span class="p">)</span>  <span class="c1"># mac os 에서만 필요, colab 에서는 불필요 </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.unicode_minus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">2.3.2. </span>고속열차 수송 자료<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>고속 열차에 탑승한 승객에 대한 자료는 csv(comma-separated values) 형식으로 <code class="docutils literal notranslate"><span class="pre">train-data-01.csv</span></code> 화일에 저장되어 있다. csv 자료 화일의 각 열에 대한 이름과 설명은 다음과 같다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRAIN_NO</span></code>: 열차 번호</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATE</span></code> : 운행 일자</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">STATION_START</span></code>: 출발역</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">STATION_ARRV</span></code> : 도착역</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NUM_PASSENGER</span></code> : 탑승객 수</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> 라이브러리의 <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> 함수를 사용하면 csv 화일의 자료를 읽어서 데이터프레임으로 만들 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_raw_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/ylee19067/Dropbox/project/teaching/bigdata/textbook/book/data/train-data-01.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 자료가 어떻게 구성되어 있는지 살펴보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_raw_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TRAIN_NO</th>
+      <th>DATE</th>
+      <th>STATION_DEPART</th>
+      <th>STATION_ARRV</th>
+      <th>NUM_PASSENGER</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>20190701</td>
+      <td>서울</td>
+      <td>대전</td>
+      <td>106.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>20190702</td>
+      <td>서울</td>
+      <td>대전</td>
+      <td>113.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>20190703</td>
+      <td>서울</td>
+      <td>대전</td>
+      <td>146.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>20190704</td>
+      <td>서울</td>
+      <td>대전</td>
+      <td>84.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>20190705</td>
+      <td>서울</td>
+      <td>대전</td>
+      <td>105.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1764</th>
+      <td>6</td>
+      <td>20190726</td>
+      <td>울산</td>
+      <td>부산</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>1765</th>
+      <td>6</td>
+      <td>20190727</td>
+      <td>울산</td>
+      <td>부산</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>1766</th>
+      <td>6</td>
+      <td>20190728</td>
+      <td>울산</td>
+      <td>부산</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>1767</th>
+      <td>6</td>
+      <td>20190729</td>
+      <td>울산</td>
+      <td>부산</td>
+      <td>12.0</td>
+    </tr>
+    <tr>
+      <th>1768</th>
+      <td>6</td>
+      <td>20190730</td>
+      <td>울산</td>
+      <td>부산</td>
+      <td>11.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1769 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>일단 열차 수송 자료에 포함된 운행 열차의 수를 알아 보자. 아래에서 사용되는 <code class="docutils literal notranslate"><span class="pre">unique()</span></code> 함수는 시리즈 안에 있는 원소들을 중복이 없이 유일한 값만으로 출력해 주는 함수이다.</p>
+<p>자료에 포함된 운행열차의 번호는 2, 5, 6 번 열차임을 알 수 있다. 각 열차는 출발시간과 정차역이 다를 것이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_raw_data</span><span class="p">[</span><span class="s1">&#39;TRAIN_NO&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       2
+1       2
+2       2
+3       2
+4       2
+       ..
+1764    6
+1765    6
+1766    6
+1767    6
+1768    6
+Name: TRAIN_NO, Length: 1769, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_train</span> <span class="o">=</span> <span class="n">train_raw_data</span><span class="p">[</span><span class="s1">&#39;TRAIN_NO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">num_train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 5, 6])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">2.3.3. </span>시계열 그림<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>이제 2번 열차의 자료만 선택하여 서울-부산 구간에 탑승한 승객의 수가 날짜별로 어떻게 다른지 살펴보자.</p>
+<p>먼저 원자료에서 다음 3개의 조건을 모두 만족하는 행들을 추출해야 한다.</p>
+<ol class="simple">
+<li><p>열차번호가 2번이다.</p></li>
+<li><p>출발역은 서울역이다.</p></li>
+<li><p>도착역은 부산역이다.</p></li>
+</ol>
+<p>위의 조건을 구하는 참과 거짓으로 구성된 3개의 시리즈를 만들어 보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">select_condtion_1</span> <span class="o">=</span> <span class="n">train_raw_data</span><span class="o">.</span><span class="n">TRAIN_NO</span> <span class="o">==</span> <span class="mi">2</span>            <span class="c1"># 열차번호가 2번인가?</span>
+<span class="n">select_condtion_3</span> <span class="o">=</span> <span class="n">train_raw_data</span><span class="o">.</span><span class="n">STATION_DEPART</span> <span class="o">==</span> <span class="s1">&#39;서울&#39;</span>  <span class="c1"># 출발역은 서울역인가?</span>
+<span class="n">select_condtion_2</span> <span class="o">=</span> <span class="n">train_raw_data</span><span class="o">.</span><span class="n">STATION_ARRV</span> <span class="o">==</span> <span class="s1">&#39;부산&#39;</span>    <span class="c1"># 도착역은 부산역인가?</span>
+<span class="n">select_condtion_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        True
+1        True
+2        True
+3        True
+4        True
+        ...  
+1764    False
+1765    False
+1766    False
+1767    False
+1768    False
+Name: TRAIN_NO, Length: 1769, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 위에서 만든 3개의 조건을 보두 만족하는 조건을 나타내는 시리즈를 만든다. 3개의 조건이 모두 참인 것을 구하기 위해서는 아래 문장에서
+비트단위연산자(bitwise operator)인 <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> 를 사용하였다. 비교하는 두 개체가 시리즈인 경우 논리연산자인 <code class="docutils literal notranslate"><span class="pre">and</span></code> 를 사용하지 않고  비트단위연산자  <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> 를 사용한다.</p>
+<p>2번 열차의 서울-부산 구간에 탑승한 승객의 수는 데이터프레임 <code class="docutils literal notranslate"><span class="pre">train_2</span></code> 에 저장된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">select_condtion</span> <span class="o">=</span> <span class="n">select_condtion_1</span> <span class="o">&amp;</span> <span class="n">select_condtion_2</span> <span class="o">&amp;</span> <span class="n">select_condtion_3</span>
+<span class="n">select_condtion</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       False
+1       False
+2       False
+3       False
+4       False
+        ...  
+1764    False
+1765    False
+1766    False
+1767    False
+1768    False
+Length: 1769, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_2</span> <span class="o">=</span> <span class="n">train_raw_data</span><span class="p">[</span> <span class="n">select_condtion</span> <span class="p">]</span>
+<span class="n">train_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TRAIN_NO</th>
+      <th>DATE</th>
+      <th>STATION_DEPART</th>
+      <th>STATION_ARRV</th>
+      <th>NUM_PASSENGER</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>60</th>
+      <td>2</td>
+      <td>20190701</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>613.0</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>2</td>
+      <td>20190702</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>546.0</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>2</td>
+      <td>20190703</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>492.0</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>2</td>
+      <td>20190704</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>615.0</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>2</td>
+      <td>20190705</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>572.0</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>2</td>
+      <td>20190706</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>598.0</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>2</td>
+      <td>20190707</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>326.0</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>2</td>
+      <td>20190708</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>552.0</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>2</td>
+      <td>20190709</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>540.0</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>2</td>
+      <td>20190710</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>499.0</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>2</td>
+      <td>20190711</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>562.0</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>2</td>
+      <td>20190712</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>601.0</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>2</td>
+      <td>20190713</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>655.0</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>2</td>
+      <td>20190714</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>371.0</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>2</td>
+      <td>20190715</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>557.0</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>2</td>
+      <td>20190716</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>525.0</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>2</td>
+      <td>20190717</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>557.0</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>2</td>
+      <td>20190718</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>585.0</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>2</td>
+      <td>20190719</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>593.0</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>2</td>
+      <td>20190720</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>620.0</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>2</td>
+      <td>20190721</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>355.0</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>2</td>
+      <td>20190722</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>548.0</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>2</td>
+      <td>20190723</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>557.0</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>2</td>
+      <td>20190724</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>550.0</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>2</td>
+      <td>20190725</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>593.0</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>2</td>
+      <td>20190726</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>551.0</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>2</td>
+      <td>20190727</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>615.0</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>2</td>
+      <td>20190728</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>530.0</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>2</td>
+      <td>20190729</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>589.0</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>2</td>
+      <td>20190730</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>503.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_2</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TRAIN_NO            int64
+DATE                int64
+STATION_DEPART     object
+STATION_ARRV       object
+NUM_PASSENGER     float64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 날짜별로 2번 열차의 서울-부산간 탑승자수를 나타내는 시계열 그림(time series plot)을 그려보자.</p>
+<p>그림은 데이터프레임의 <code class="docutils literal notranslate"><span class="pre">plot()</span></code> 함수를 사용할 수 있으며 가로축(x)와 세로축(y)에 사용되는 열의 이름을 지정할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;DATE&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;NUM_PASSENGER&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;DATE&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/data-processing-train-passenger_22_1.png" src="../../_images/data-processing-train-passenger_22_1.png" />
+</div>
+</div>
+<p>위의 시계열 그림에서 주기적인 반복 패턴이 나타나고 있는 것을 알 수 있다. 즉, 요일에 따라서 탑승객 수의 차이가 난다는 의미이다.</p>
+<p>위의 그림에서 나타나는 문제는 시간축, 즉 가로축(x)의 숫자가 날짜로 표시되지 않는다는 것이다. 이는 데이터프레임의 열 <code class="docutils literal notranslate"><span class="pre">DATE</span></code> 가 날짜를 나타내는 변수가 아닌 정수값을 가지는 시리즈이기 때문이다.</p>
+<p>이제 데이터프레임에 날짜 형식을 가진 새로운 변수 <code class="docutils literal notranslate"><span class="pre">DATE2</span></code> 를 추가로 만들어 보자. 날짜 변수를 만드는 함수 <code class="docutils literal notranslate"><span class="pre">to_datetime()</span></code> 를 사용하여 <code class="docutils literal notranslate"><span class="pre">DATE</span></code> 열을 변환하여
+새로운 변수 <code class="docutils literal notranslate"><span class="pre">DATE2</span></code> 를 만든다.  여기서 함수 <code class="docutils literal notranslate"><span class="pre">to_datetime()</span></code> 의 옵션 <code class="docutils literal notranslate"><span class="pre">format='%Y%m%d'</span></code> 은 변환에 사용할 정수 자료의 형식이 <code class="docutils literal notranslate"><span class="pre">YYYYMMDD</span></code> 로 년,월,일을 연결하여 만든 숫자라고 알려주는 것이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_2</span><span class="p">[</span><span class="s1">&#39;DATE2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">train_2</span><span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">train_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-153-9276ff3ebbfa&gt;:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  train_2[&#39;DATE2&#39;] = pd.to_datetime(train_2[&#39;DATE&#39;], format=&#39;%Y%m%d&#39;)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TRAIN_NO</th>
+      <th>DATE</th>
+      <th>STATION_DEPART</th>
+      <th>STATION_ARRV</th>
+      <th>NUM_PASSENGER</th>
+      <th>DATE2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>60</th>
+      <td>2</td>
+      <td>20190701</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>613.0</td>
+      <td>2019-07-01</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>2</td>
+      <td>20190702</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>546.0</td>
+      <td>2019-07-02</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>2</td>
+      <td>20190703</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>492.0</td>
+      <td>2019-07-03</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>2</td>
+      <td>20190704</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>615.0</td>
+      <td>2019-07-04</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>2</td>
+      <td>20190705</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>572.0</td>
+      <td>2019-07-05</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>2</td>
+      <td>20190706</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>598.0</td>
+      <td>2019-07-06</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>2</td>
+      <td>20190707</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>326.0</td>
+      <td>2019-07-07</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>2</td>
+      <td>20190708</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>552.0</td>
+      <td>2019-07-08</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>2</td>
+      <td>20190709</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>540.0</td>
+      <td>2019-07-09</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>2</td>
+      <td>20190710</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>499.0</td>
+      <td>2019-07-10</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>2</td>
+      <td>20190711</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>562.0</td>
+      <td>2019-07-11</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>2</td>
+      <td>20190712</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>601.0</td>
+      <td>2019-07-12</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>2</td>
+      <td>20190713</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>655.0</td>
+      <td>2019-07-13</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>2</td>
+      <td>20190714</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>371.0</td>
+      <td>2019-07-14</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>2</td>
+      <td>20190715</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>557.0</td>
+      <td>2019-07-15</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>2</td>
+      <td>20190716</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>525.0</td>
+      <td>2019-07-16</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>2</td>
+      <td>20190717</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>557.0</td>
+      <td>2019-07-17</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>2</td>
+      <td>20190718</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>585.0</td>
+      <td>2019-07-18</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>2</td>
+      <td>20190719</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>593.0</td>
+      <td>2019-07-19</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>2</td>
+      <td>20190720</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>620.0</td>
+      <td>2019-07-20</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>2</td>
+      <td>20190721</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>355.0</td>
+      <td>2019-07-21</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>2</td>
+      <td>20190722</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>548.0</td>
+      <td>2019-07-22</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>2</td>
+      <td>20190723</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>557.0</td>
+      <td>2019-07-23</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>2</td>
+      <td>20190724</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>550.0</td>
+      <td>2019-07-24</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>2</td>
+      <td>20190725</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>593.0</td>
+      <td>2019-07-25</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>2</td>
+      <td>20190726</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>551.0</td>
+      <td>2019-07-26</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>2</td>
+      <td>20190727</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>615.0</td>
+      <td>2019-07-27</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>2</td>
+      <td>20190728</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>530.0</td>
+      <td>2019-07-28</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>2</td>
+      <td>20190729</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>589.0</td>
+      <td>2019-07-29</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>2</td>
+      <td>20190730</td>
+      <td>서울</td>
+      <td>부산</td>
+      <td>503.0</td>
+      <td>2019-07-30</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;DATE2&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;NUM_PASSENGER&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;DATE2&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/data-processing-train-passenger_25_1.png" src="../../_images/data-processing-train-passenger_25_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">2.3.4. </span>그룹별 분석<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>위의 분석에서 나타난 것처럼 요일마다 탑승객의 수가 다르므로 <strong>요일별, 구간별</strong> 로 평균 탑승객 수를 구하여 비교해보려고 한다.</p>
+<p>먼저 앞에서 한 것과 같이 날짜의 형식을 가진 새로운 변수 <code class="docutils literal notranslate"><span class="pre">DATE2</span></code>를 데이터프레임에 추가하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_raw_data</span><span class="p">[</span><span class="s1">&#39;DATE2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">train_raw_data</span><span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_raw_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TRAIN_NO</th>
+      <th>DATE</th>
+      <th>STATION_DEPART</th>
+      <th>STATION_ARRV</th>
+      <th>NUM_PASSENGER</th>
+      <th>DATE2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>20190701</td>
+      <td>서울</td>
+      <td>대전</td>
+      <td>106.0</td>
+      <td>2019-07-01</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>20190702</td>
+      <td>서울</td>
+      <td>대전</td>
+      <td>113.0</td>
+      <td>2019-07-02</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>20190703</td>
+      <td>서울</td>
+      <td>대전</td>
+      <td>146.0</td>
+      <td>2019-07-03</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>20190704</td>
+      <td>서울</td>
+      <td>대전</td>
+      <td>84.0</td>
+      <td>2019-07-04</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>20190705</td>
+      <td>서울</td>
+      <td>대전</td>
+      <td>105.0</td>
+      <td>2019-07-05</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1764</th>
+      <td>6</td>
+      <td>20190726</td>
+      <td>울산</td>
+      <td>부산</td>
+      <td>10.0</td>
+      <td>2019-07-26</td>
+    </tr>
+    <tr>
+      <th>1765</th>
+      <td>6</td>
+      <td>20190727</td>
+      <td>울산</td>
+      <td>부산</td>
+      <td>6.0</td>
+      <td>2019-07-27</td>
+    </tr>
+    <tr>
+      <th>1766</th>
+      <td>6</td>
+      <td>20190728</td>
+      <td>울산</td>
+      <td>부산</td>
+      <td>21.0</td>
+      <td>2019-07-28</td>
+    </tr>
+    <tr>
+      <th>1767</th>
+      <td>6</td>
+      <td>20190729</td>
+      <td>울산</td>
+      <td>부산</td>
+      <td>12.0</td>
+      <td>2019-07-29</td>
+    </tr>
+    <tr>
+      <th>1768</th>
+      <td>6</td>
+      <td>20190730</td>
+      <td>울산</td>
+      <td>부산</td>
+      <td>11.0</td>
+      <td>2019-07-30</td>
+    </tr>
+  </tbody>
+</table>
+<p>1769 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_raw_data</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TRAIN_NO                   int64
+DATE                       int64
+STATION_DEPART            object
+STATION_ARRV              object
+NUM_PASSENGER            float64
+DATE2             datetime64[ns]
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 날짜의 형식을 가진 변수 <code class="docutils literal notranslate"><span class="pre">DATE2</span></code> 를 아용하여 요일을 나타내는 새로운 변수 <code class="docutils literal notranslate"><span class="pre">DAYOFWEEK</span></code> 를 만들어 보자.</p>
+<p>시리즈 <code class="docutils literal notranslate"><span class="pre">train_raw_data['DATE2']</span></code> 에 메소드 <code class="docutils literal notranslate"><span class="pre">dt.dayofweek</span></code> 를 적용하면 각 날짜에 대응하는 요일을 구해준다.  요일의 코딩 형식은 월요일이 0, 화요일이 1, 그리고 일요일이 6 으로 코딩된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_raw_data</span><span class="p">[</span><span class="s1">&#39;DAYOFWEEK&#39;</span><span class="p">]</span> <span class="o">=</span>  <span class="n">train_raw_data</span><span class="p">[</span><span class="s1">&#39;DATE2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">dayofweek</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_raw_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TRAIN_NO</th>
+      <th>DATE</th>
+      <th>STATION_DEPART</th>
+      <th>STATION_ARRV</th>
+      <th>NUM_PASSENGER</th>
+      <th>DATE2</th>
+      <th>DAYOFWEEK</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>20190701</td>
+      <td>서울</td>
+      <td>대전</td>
+      <td>106.0</td>
+      <td>2019-07-01</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>20190702</td>
+      <td>서울</td>
+      <td>대전</td>
+      <td>113.0</td>
+      <td>2019-07-02</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>20190703</td>
+      <td>서울</td>
+      <td>대전</td>
+      <td>146.0</td>
+      <td>2019-07-03</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>20190704</td>
+      <td>서울</td>
+      <td>대전</td>
+      <td>84.0</td>
+      <td>2019-07-04</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>20190705</td>
+      <td>서울</td>
+      <td>대전</td>
+      <td>105.0</td>
+      <td>2019-07-05</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1764</th>
+      <td>6</td>
+      <td>20190726</td>
+      <td>울산</td>
+      <td>부산</td>
+      <td>10.0</td>
+      <td>2019-07-26</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1765</th>
+      <td>6</td>
+      <td>20190727</td>
+      <td>울산</td>
+      <td>부산</td>
+      <td>6.0</td>
+      <td>2019-07-27</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1766</th>
+      <td>6</td>
+      <td>20190728</td>
+      <td>울산</td>
+      <td>부산</td>
+      <td>21.0</td>
+      <td>2019-07-28</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1767</th>
+      <td>6</td>
+      <td>20190729</td>
+      <td>울산</td>
+      <td>부산</td>
+      <td>12.0</td>
+      <td>2019-07-29</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1768</th>
+      <td>6</td>
+      <td>20190730</td>
+      <td>울산</td>
+      <td>부산</td>
+      <td>11.0</td>
+      <td>2019-07-30</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>1769 rows × 7 columns</p>
+</div></div></div>
+</div>
+<p>이제 요일별, 구간별로 탑승객 수의 평균을 구하기 위하여 필요한 변수를 가진 데이터프레임을 먼저 만든다.</p>
+<p>요일별, 구간별 분석을 하려면 다음과 같은 3개의 변수(요일, 출발역, 도착역)로 자료를 그룹화(grouping)해야한다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DAYOFWEEK</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">STATION_DEPART</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">STATION_ARRV</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_group_data</span> <span class="o">=</span> <span class="n">train_raw_data</span><span class="p">[</span> <span class="p">[</span> <span class="s1">&#39;STATION_DEPART&#39;</span><span class="p">,</span> <span class="s1">&#39;STATION_ARRV&#39;</span><span class="p">,</span><span class="s1">&#39;DAYOFWEEK&#39;</span><span class="p">,</span><span class="s1">&#39;NUM_PASSENGER&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_group_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>STATION_DEPART</th>
+      <th>STATION_ARRV</th>
+      <th>DAYOFWEEK</th>
+      <th>NUM_PASSENGER</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>서울</td>
+      <td>대전</td>
+      <td>0</td>
+      <td>106.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>서울</td>
+      <td>대전</td>
+      <td>1</td>
+      <td>113.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>서울</td>
+      <td>대전</td>
+      <td>2</td>
+      <td>146.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>서울</td>
+      <td>대전</td>
+      <td>3</td>
+      <td>84.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>서울</td>
+      <td>대전</td>
+      <td>4</td>
+      <td>105.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1764</th>
+      <td>울산</td>
+      <td>부산</td>
+      <td>4</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>1765</th>
+      <td>울산</td>
+      <td>부산</td>
+      <td>5</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>1766</th>
+      <td>울산</td>
+      <td>부산</td>
+      <td>6</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>1767</th>
+      <td>울산</td>
+      <td>부산</td>
+      <td>0</td>
+      <td>12.0</td>
+    </tr>
+    <tr>
+      <th>1768</th>
+      <td>울산</td>
+      <td>부산</td>
+      <td>1</td>
+      <td>11.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1769 rows × 4 columns</p>
+</div></div></div>
+</div>
+<p>이제 3개의 변수, 즉  <code class="docutils literal notranslate"><span class="pre">DAYOFWEEK</span></code>, <code class="docutils literal notranslate"><span class="pre">STATION_DEPART</span></code>, <code class="docutils literal notranslate"><span class="pre">STATION_ARRV</span></code> 의 값들로 전체 자료를 그룹화 하고 각 그룹에 속하는 탑승객수들의 평균을 구해보자.</p>
+<p>이러힌 작업은 다음과 같은 2개의 함수를 제이터프레임에 <strong>단계적으로</strong> 적용하여 이루어진다.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 함수는 주어진 열들의 값의 조합에 따라서 전체 자료를 그룹화한다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mean()</span></code> 함수는 각 그룹에 대한 열들의 평균값을 구한다.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_data</span> <span class="o">=</span> <span class="n">train_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;STATION_DEPART&#39;</span><span class="p">,</span><span class="s1">&#39;STATION_ARRV&#39;</span><span class="p">,</span><span class="s1">&#39;DAYOFWEEK&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">summary_data</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>NUM_PASSENGER</th>
+    </tr>
+    <tr>
+      <th>STATION_DEPART</th>
+      <th>STATION_ARRV</th>
+      <th>DAYOFWEEK</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">광명</th>
+      <th rowspan="5" valign="top">대전</th>
+      <th>0</th>
+      <td>16.300</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>15.200</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>20.750</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>21.125</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>18.125</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">행신</th>
+      <th rowspan="5" valign="top">서울</th>
+      <th>2</th>
+      <td>12.750</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>10.000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8.250</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>7.500</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>5.000</td>
+    </tr>
+  </tbody>
+</table>
+<p>224 rows × 1 columns</p>
+</div></div></div>
+</div>
+<p>위의 그룹화 결과자료는 그룹화에 사용되는 열들이 모두 행에 대한 인덱스로 표시되어 있다. 이러한 자료는 다루기가 까다로와서 각 그룹에 대한 값을 열로 다시 만들어 주는 것이 좋다.</p>
+<p>이러한 작업을 하는 함수가 <code class="docutils literal notranslate"><span class="pre">reset_index()</span></code> 이며 옵셩 <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code> 실제로 데이터프레임에 적용하라는 의미이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">summary_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>STATION_DEPART</th>
+      <th>STATION_ARRV</th>
+      <th>DAYOFWEEK</th>
+      <th>NUM_PASSENGER</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>광명</td>
+      <td>대전</td>
+      <td>0</td>
+      <td>16.300</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>광명</td>
+      <td>대전</td>
+      <td>1</td>
+      <td>15.200</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>광명</td>
+      <td>대전</td>
+      <td>2</td>
+      <td>20.750</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>광명</td>
+      <td>대전</td>
+      <td>3</td>
+      <td>21.125</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>광명</td>
+      <td>대전</td>
+      <td>4</td>
+      <td>18.125</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>219</th>
+      <td>행신</td>
+      <td>서울</td>
+      <td>2</td>
+      <td>12.750</td>
+    </tr>
+    <tr>
+      <th>220</th>
+      <td>행신</td>
+      <td>서울</td>
+      <td>3</td>
+      <td>10.000</td>
+    </tr>
+    <tr>
+      <th>221</th>
+      <td>행신</td>
+      <td>서울</td>
+      <td>4</td>
+      <td>8.250</td>
+    </tr>
+    <tr>
+      <th>222</th>
+      <td>행신</td>
+      <td>서울</td>
+      <td>5</td>
+      <td>7.500</td>
+    </tr>
+    <tr>
+      <th>223</th>
+      <td>행신</td>
+      <td>서울</td>
+      <td>6</td>
+      <td>5.000</td>
+    </tr>
+  </tbody>
+</table>
+<p>224 rows × 4 columns</p>
+</div></div></div>
+</div>
+<p>이제 원하는 출발역과 도착역을 선택하여 요일별 평균 탑승객 수를 살펴보자.</p>
+<p>아래는 서울에서 출발하여 부산에 도착하는 탑승객 수의 요일별 평균값을 구하고 그름으로 나타난 결과이다. 금요일이 다른 요일보다 현저하게 탑승객의 수가 많고 일요일이 다소 적다는 것을 알 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">od_average</span> <span class="o">=</span> <span class="n">summary_data</span><span class="p">[</span> <span class="p">(</span> <span class="n">summary_data</span><span class="p">[</span><span class="s1">&#39;STATION_DEPART&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;서울&#39;</span> <span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span> <span class="n">summary_data</span><span class="p">[</span><span class="s1">&#39;STATION_ARRV&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;부산&#39;</span> <span class="p">)]</span>
+<span class="n">od_average</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>STATION_DEPART</th>
+      <th>STATION_ARRV</th>
+      <th>DAYOFWEEK</th>
+      <th>NUM_PASSENGER</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>98</th>
+      <td>서울</td>
+      <td>부산</td>
+      <td>0</td>
+      <td>284.800000</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>서울</td>
+      <td>부산</td>
+      <td>1</td>
+      <td>284.266667</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>서울</td>
+      <td>부산</td>
+      <td>2</td>
+      <td>287.833333</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>서울</td>
+      <td>부산</td>
+      <td>3</td>
+      <td>319.500000</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>서울</td>
+      <td>부산</td>
+      <td>4</td>
+      <td>353.833333</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>서울</td>
+      <td>부산</td>
+      <td>5</td>
+      <td>311.166667</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>서울</td>
+      <td>부산</td>
+      <td>6</td>
+      <td>265.083333</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">od_average</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;DAYOFWEEK&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;NUM_PASSENGER&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;DAYOFWEEK&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/data-processing-train-passenger_43_1.png" src="../../_images/data-processing-train-passenger_43_1.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="data-processing-intro.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">2.2. </span>데이터 처리</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="data-processing-text.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">2.4. </span>어린 왕자</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By 서울시립대학교<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

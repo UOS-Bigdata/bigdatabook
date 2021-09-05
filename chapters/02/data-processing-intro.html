@@ -1,0 +1,797 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.2. 데이터 처리 &#8212; 빅데이터 개론 2</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.3. 고속열차 여객 수송자료" href="data-processing-train-passenger.html" />
+    <link rel="prev" title="2.1. 표현식과 변수" href="basic-expression.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">빅데이터 개론 2</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   빅데이터 개론 2
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01/intro-course.html">
+   1. 서론
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-program.html">
+     1.1. 프로그래밍 언어
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-stat.html">
+     1.2. 통계학
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro-python.html">
+   2. 파이선의 기초
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="basic-expression.html">
+     2.1. 표현식과 변수
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.2. 데이터의 처리
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-processing-train-passenger.html">
+     2.3. 고속열차 여객 수송자료
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-processing-text.html">
+     2.4. 어린 왕자
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/chapters/02/data-processing-intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Bigdata-UOS/Bigdata-UOS"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Bigdata-UOS/Bigdata-UOS/main?urlpath=tree/docs/chapters/02/data-processing-intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas">
+   2.2.1.
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pandas
+    </span>
+   </code>
+   라이브러리
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   2.2.2. 데이터프레임
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     2.2.2.1. 데이터프레임  정의
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     2.2.2.2. 데이터프레임 슬라이싱
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     2.2.2.3. 데이터프레임 메소드
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1><span class="section-number">2.2. </span>데이터 처리<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>파이썬 프로그래밍 언어에 대하여 자세히 알아보기 전에 두 가지 예제를 통해서 파이썬 프로그램으로 데이터를 처리하는 연습을 해보려고 한다.</p>
+<p>데이터를 다루고 정리하여 요약할 때 우리가 가장 쉽게 사용할 수 있는 컴퓨터 앱은 마이크로소프트 엑셀(MicroSoft Excel)이다.</p>
+<p><img alt="excel" src="../../_images/excel-file.png" /></p>
+<p>많은 일상적인 작업이나 업무에서 엑셀에 데이터를 입력하고 제공하는 다양한 기능으로 데이터를 처리하여  원하는 결과를 얻는다.
+이러한 엑셀을 이용한 작업은 기본적으로 사용자가 메뉴를 클릭하거나 손으로 복사하고 붙이는 일로 구성된다. 물론 엑셀도 자체 프로그래밍 언어을 이용할 수 있지만 대부분의 일상적인 작업들은 손으로 이루어지며 이는 다른 사람이 반복해서 재현하기 쉽지 않다.</p>
+<p>파이썬 등 컴퓨터 언어를 이용하여 데이터를 처리하면 유사한 작업을 반복하기 쉽우며 작업 내용이 변경되어도 신속하게 적용하여 효율적으로 일을 할 수 있다. 즉, 자동화(automation)가 가능한 것이다. 기본적으로 컴퓨터 프로그램은 복잡한 작업을 자동화하는 기능을 하며 최근에는 기계학습과 인공지능으로 모든 분야에서의 자동화가 더욱 가속화되고 있다.</p>
+<p>첫 번째 예제로 엑셀로 할 수 있는 자료를 처리하는 간단한 작업을  <code class="docutils literal notranslate"><span class="pre">pandas</span></code> 라이브러리에서 제공하는 데이터프레임(DataFrame)과 함수들을 이용하여 프로그램으로 구현해 볼 것이다.</p>
+<p>두 번째 예제는 소설 <em>어린 왕자</em>의 텍스트 화일을 이용하여 소설에 특정한 문자열이 나타나는 빈도를 구하는 간단한 프로그램을 만들어 본다.</p>
+<div class="section" id="pandas">
+<h2><span class="section-number">2.2.1. </span><code class="docutils literal notranslate"><span class="pre">pandas</span></code> 라이브러리<a class="headerlink" href="#pandas" title="Permalink to this headline">¶</a></h2>
+<p>먼저 <code class="docutils literal notranslate"><span class="pre">pandas</span></code> 라이브러리를 불러오자. 앞 절에서 설명한 것처럼 명령어 <code class="docutils literal notranslate"><span class="pre">import</span></code> 를 사용하여 <code class="docutils literal notranslate"><span class="pre">pandas</span></code> 라이브러리를 불러오는데 다음과 같은 명령어를 실행한다.</p>
+<p>아래 명령어에서  <code class="docutils literal notranslate"><span class="pre">as</span></code> 는 <code class="docutils literal notranslate"><span class="pre">pandas</span></code> 라이브러리를 불러올 때 그 이름을 줄여서 <code class="docutils literal notranslate"><span class="pre">pd</span></code> 로 하겠다는 의미이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">2.2.2. </span>데이터프레임<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3><span class="section-number">2.2.2.1. </span>데이터프레임  정의<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> 라이브러리의 데이터프레임은 표와 같은 스프레드시트 형식의 자료 구조를 제공한다. 즉, 2차원 행렬 데이터로 행(<code class="docutils literal notranslate"><span class="pre">row</span></code>)과 열(<code class="docutils literal notranslate"><span class="pre">column</span></code>)으로 이루어 졌으며 일반적으로 행은 자료의 레코드를 나타내며 열은 변수로 구성된다.</p>
+<p><img alt="dataframe" src="../../_images/dataframe01.png" /></p>
+<p>이제 4명의 학생의 이름(<code class="docutils literal notranslate"><span class="pre">name</span></code>), 성별(<code class="docutils literal notranslate"><span class="pre">sex</span></code>), 나이(<code class="docutils literal notranslate"><span class="pre">age</span></code>)로 구성된 4개의 행과 3개 열을 가진 데이터프레임 <code class="docutils literal notranslate"><span class="pre">df</span></code> 를 만들어 보자.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pd.DataFrame()</span></code> 는 <code class="docutils literal notranslate"><span class="pre">pd</span></code> 로 지정된 <code class="docutils literal notranslate"><span class="pre">pandas</span></code> 라이브러리의 함수 <code class="docutils literal notranslate"><span class="pre">DataFrame()</span></code> 을 사용하겠다는 의미이다.
+라이브러리의 함수 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>의 괄호 안에 인자는 괄호 <code class="docutils literal notranslate"><span class="pre">{</span></code> 로 시작하여 괄호 <code class="docutils literal notranslate"><span class="pre">}</span></code> 로 끝나는 표현식이 들어 간다.</p>
+<ul class="simple">
+<li><p>괄호 <code class="docutils literal notranslate"><span class="pre">{}</span></code> 안에 있는 표현식은 나중에 배울 사전(<code class="docutils literal notranslate"><span class="pre">dictionary</span></code>) 형식의 데이터를 만들어 준다.</p></li>
+</ul>
+<p>괄호 <code class="docutils literal notranslate"><span class="pre">{}</span></code> 안에 있는 첫 번째 요소는 이름을 나타내는 열을 만드는 표현식이며 열의 이름은 <code class="docutils literal notranslate"><span class="pre">name</span></code> 이고 원소들은 성명으로 구성된 리스트이다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;name&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;이철수&#39;</span><span class="p">,</span> <span class="s1">&#39;김영희&#39;</span><span class="p">,</span> <span class="s1">&#39;홍길동&#39;</span><span class="p">,</span> <span class="s1">&#39;John Smith&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>괄호 <code class="docutils literal notranslate"><span class="pre">{}</span></code> 안에 있는 두 번째 요소는 성별을 나타내는 열을 만드는 표현식이며 열의 이름은 <code class="docutils literal notranslate"><span class="pre">sex</span></code> 이고 원소들은 문자열 <code class="docutils literal notranslate"><span class="pre">m</span></code> 과 <code class="docutils literal notranslate"><span class="pre">'f</span></code> 로 구성된 리스트이다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;sex&#39;</span>  <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>괄호 <code class="docutils literal notranslate"><span class="pre">{}</span></code> 안에 있는 세 번째 요소는 나이을 나타내는 열을 만드는 표현식이며 열의 이름은 <code class="docutils literal notranslate"><span class="pre">age</span></code> 이고 원소들은 정수로 구성된 리스트이다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;age&#39;</span>  <span class="p">:</span> <span class="p">[</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">33</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>각 열을 나타내는 3개의 요소는 쉼표로 분리한다.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span> <span class="s1">&#39;name&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;이철수&#39;</span><span class="p">,</span> <span class="s1">&#39;김영희&#39;</span><span class="p">,</span> <span class="s1">&#39;홍길동&#39;</span><span class="p">,</span> <span class="s1">&#39;John Smith&#39;</span><span class="p">],</span>
+      <span class="s1">&#39;sex&#39;</span>  <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">],</span>
+      <span class="s1">&#39;age&#39;</span>  <span class="p">:</span> <span class="p">[</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">33</span><span class="p">]</span>
+    <span class="p">}</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>sex</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>이철수</td>
+      <td>M</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>김영희</td>
+      <td>F</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>홍길동</td>
+      <td>M</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>John Smith</td>
+      <td>M</td>
+      <td>33</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3><span class="section-number">2.2.2.2. </span>데이터프레임 슬라이싱<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>이제  데이터프레임이 정의되었다. 데이터프레임울 출력할 때 가장 왼쪽 열이 나타난 숫자 0,1,2,3 은 각 행의 인덱스를 나타낸다.</p>
+<p>이제 데이터프레임의 하나의 열을 따로 지정하여 슬리이싱해보자. 데이터프레임의 열을 슬라이싱할 때는 열의 인데스로 열의 이름(문자열)을 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0           이철수
+1           김영희
+2           홍길동
+3    John Smith
+Name: name, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    23
+1    25
+2    21
+3    33
+Name: age, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>두 개 이상의 열들을 슬라이싱하려면 리스트를 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>23</td>
+      <td>이철수</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>25</td>
+      <td>김영희</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21</td>
+      <td>홍길동</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>33</td>
+      <td>John Smith</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>데이터프레임의 열을 슬라이스할 때 유의할 점은 데이터프레임의 열의 인덱스는 숫자가 아닌 문자열 <code class="docutils literal notranslate"><span class="pre">name</span></code> 이다. 따라서 데이터프레임의 열에 대한 인덱스로서 문자가 가능하다.</p>
+<p><strong>데이터프레임의 하나의 열은 시리즈(<code class="docutils literal notranslate"><span class="pre">Series</span></code>)라고 부른다.</strong></p>
+<p><img alt="series" src="../../_images/series.png" /></p>
+<p>참고로 데이터프레임의 열을 슬라이스하는 경우 괄호 <code class="docutils literal notranslate"><span class="pre">[]</span></code> 를 사용하지 않고 다음과 같이 마침표 <code class="docutils literal notranslate"><span class="pre">.</span></code> 를 사용할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">age</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    23
+1    25
+2    21
+3    33
+Name: age, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 데이터프레임 <code class="docutils literal notranslate"><span class="pre">df</span></code> 에서 나이가 25세 이상인 행들만 선택해 보자. 일단 나이로 구성된 시리즈에 다음과 같이 비교연산자를 사용할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">25</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    False
+1     True
+2    False
+3     True
+Name: age, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>논리 표현식 <code class="docutils literal notranslate"><span class="pre">df['age']</span> <span class="pre">&gt;=</span> <span class="pre">25</span></code> 의 결과는 참과 거짓으로 구성된 시리즈이다.</p>
+<p>이제 참과 거짓으로 구성된 시리즈를 인덱스로 이용하여 데이터프레임 <code class="docutils literal notranslate"><span class="pre">df</span></code> 의 행을 슬라이싱하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">25</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>sex</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>김영희</td>
+      <td>F</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>John Smith</td>
+      <td>M</td>
+      <td>33</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3><span class="section-number">2.2.2.3. </span>데이터프레임 메소드<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>데이터프레임에서 숫자로 구성된 열들의 기초 통계량은 다음과 같이 구할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>25.500000</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>5.259911</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>21.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>22.500000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>24.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>27.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>33.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>앞에서 여러 번 보았듯이 파이선에서는 마침표가 자주 사용된다. <code class="docutils literal notranslate"><span class="pre">df.describe()</span></code>는 데이터프레임 <code class="docutils literal notranslate"><span class="pre">df</span></code> 의 열들 중에 숫자로 구성된 열의 가초 통계량을 함수 <code class="docutils literal notranslate"><span class="pre">describe()</span></code> 로 구하는 표현식이다.</p>
+<p>데이터프레임 <code class="docutils literal notranslate"><span class="pre">df</span></code> 마침표 뒤에 나오는 함수 또는 표현식을 <strong>데이터프레임의 메소드(method)</strong> 라고 부른다.</p>
+<ul class="simple">
+<li><p>마침표 뒤에 나오는 함수는 데이터프레임에 지정한 작업을 수행한다.</p></li>
+<li><p>마침표 뒤에 나오는 표현식은 데이터프레임의 특정 성질을 나타내 준다.</p></li>
+</ul>
+<p>유사한 형식으로 데이터프레임 <code class="docutils literal notranslate"><span class="pre">df</span></code> 의 각 열에 대한 최대값도 구할 수 있다. 아래 명령어들이 무슨 작업을 하는 것인가 생각해 보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 함수 max() 는 각 열의 최대값을 구하는 작업을 수행</span>
+<span class="n">df</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name    홍길동
+sex       M
+age      33
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 표현식 shape 는 행과 열의 개수를 출력 (행의 개수 =4, 열의 개수 =3)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>데이터프레임 <code class="docutils literal notranslate"><span class="pre">df</span></code> 의 원소는 행과 열의 숫자로 구성된 인덱스로 슬라이싱할 수 있다. 이 때 사용되는 메소드가 <code class="docutils literal notranslate"><span class="pre">iloc</span></code>이며 특별하게 괄호 <code class="docutils literal notranslate"><span class="pre">[]</span></code> 를 사용하고
+행과 열의 인덱스를 쉼표로 구분한다.</p>
+<p>아래 명령어는 데이터프레임 <code class="docutils literal notranslate"><span class="pre">df</span></code>의 두 번째 행(index=1)과 첫 번째 열(indec=0)에 해당하는 원소를 슬라이싱한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;김영희&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="basic-expression.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">2.1. </span>표현식과 변수</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="data-processing-train-passenger.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">2.3. </span>고속열차 여객 수송자료</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By 서울시립대학교<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
