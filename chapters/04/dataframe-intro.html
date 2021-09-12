@@ -1,0 +1,1098 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4.1. 데이터프레임의 정의와 구성요소 &#8212; 빅데이터 개론 2</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="4. 데이터프레임" href="dataframe.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">빅데이터 개론 2</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   빅데이터 개론 2
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01/intro-course.html">
+   1. 서론
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-program.html">
+     1.1. 프로그래밍 언어
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-stat.html">
+     1.2. 통계학
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02/intro-python.html">
+   2. 파이선의 기초
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/basic-expression.html">
+     2.1. 표현식과 변수
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-intro.html">
+     2.2. 데이터의 처리
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-train-passenger.html">
+     2.3. 고속열차 여객 수송자료
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-text.html">
+     2.4. 어린 왕자
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03/types.html">
+   3. 자료의 형식
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/numbers.html">
+     3.1. 숫자
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/string.html">
+     3.2. 문자열
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/array.html">
+     3.3. 행렬
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="dataframe.html">
+   4. 데이터프레임
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.1. 데이터프레임의 정의와 구성요소
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/chapters/04/dataframe-intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Bigdata-UOS/Bigdata-UOS"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Bigdata-UOS/Bigdata-UOS/main?urlpath=tree/docs/chapters/04/dataframe-intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   4.1.1. 정의
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   4.1.2. 열 선택
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   4.1.3. 행 선택
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   4.1.4. 행과 열 선택
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   4.1.5. 참고
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1><span class="section-number">4.1. </span>데이터프레임의 정의와 구성요소<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">4.1.1. </span>정의<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>이제 데이터프레임을 정의해 보자. 다음은 5명의 이름, 성별, 나이, 키가 저장된 데이터프레임을 직접 만드는 코드이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span> <span class="s1">&#39;name&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;이철수&#39;</span><span class="p">,</span> <span class="s1">&#39;김영희&#39;</span><span class="p">,</span> <span class="s1">&#39;홍길동&#39;</span><span class="p">,</span> <span class="s1">&#39;John Smith&#39;</span><span class="p">,</span> <span class="s1">&#39;Mary Doe&#39;</span><span class="p">],</span>
+      <span class="s1">&#39;sex&#39;</span>  <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">],</span>
+      <span class="s1">&#39;age&#39;</span>  <span class="p">:</span> <span class="p">[</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">45</span><span class="p">],</span>
+      <span class="s1">&#39;height&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">153.5</span><span class="p">,</span> <span class="mf">175.3</span><span class="p">,</span> <span class="mf">163.4</span><span class="p">,</span> <span class="mf">180.0</span><span class="p">,</span> <span class="mf">165.7</span><span class="p">]</span>
+    <span class="p">}</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>이철수</td>
+      <td>M</td>
+      <td>23</td>
+      <td>153.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>김영희</td>
+      <td>F</td>
+      <td>25</td>
+      <td>175.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>홍길동</td>
+      <td>M</td>
+      <td>21</td>
+      <td>163.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>John Smith</td>
+      <td>M</td>
+      <td>33</td>
+      <td>180.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Mary Doe</td>
+      <td>F</td>
+      <td>45</td>
+      <td>165.7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>각 행을 나타내는 인덱스는 0으로 시작하는 정수 0,1,2,3,4 로 나타나고 각 열을 나타내는 인덱스(열이름)는
+문자열로 나타나며 <code class="docutils literal notranslate"><span class="pre">name</span></code>,	<code class="docutils literal notranslate"><span class="pre">sex</span></code>,	<code class="docutils literal notranslate"><span class="pre">age</span></code>,	<code class="docutils literal notranslate"><span class="pre">height</span></code> 로 나타난다.</p>
+</div></blockquote>
+<p>위의 코드는 5명의 학생의 이름(name), 성별(sex), 나이(age), 키(<code class="docutils literal notranslate"><span class="pre">height</span></code>)로 구성된 5개의 행과 4개 열을 가진 데이터프레임 <code class="docutils literal notranslate"><span class="pre">df</span></code> 이다. <code class="docutils literal notranslate"><span class="pre">pd.DataFrame()</span></code> 는 <code class="docutils literal notranslate"><span class="pre">pd</span></code> 로 지정된 <code class="docutils literal notranslate"><span class="pre">pandas</span></code> 라이브러리의 함수 <code class="docutils literal notranslate"><span class="pre">DataFrame()</span></code> 을 사용하겠다는 의미이다. 라이브러리의 함수 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>의 괄호 안에 인자는 괄호 <code class="docutils literal notranslate"><span class="pre">{</span></code> 로 시작하여 괄호 <code class="docutils literal notranslate"><span class="pre">}</span></code> 로 끝나는 표현식이 들어 간다.</p>
+<p>괄호 <code class="docutils literal notranslate"><span class="pre">{}</span></code> 안에 있는 표현식은 나중에 배울 사전(dictionary) 형식의 데이터를 만들어 준다.</p>
+<ul class="simple">
+<li><p>괄호 <code class="docutils literal notranslate"><span class="pre">{}</span></code> 안에 있는 첫 번째 요소는 이름을 나타내는 열을 만드는 표현식이며 열이름은 <code class="docutils literal notranslate"><span class="pre">name</span></code> 이고 원소들은 문자열(<code class="docutils literal notranslate"><span class="pre">str</span></code>)로 구성된 리스트이다.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;name&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;이철수&#39;</span><span class="p">,</span> <span class="s1">&#39;김영희&#39;</span><span class="p">,</span> <span class="s1">&#39;홍길동&#39;</span><span class="p">,</span> <span class="s1">&#39;John Smith&#39;</span><span class="p">,</span> <span class="s1">&#39;Mary Doe&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>괄호 <code class="docutils literal notranslate"><span class="pre">{}</span></code> 안에 있는 두 번째 요소는 성별을 나타내는 열을 만드는 표현식이며 열이름은 <code class="docutils literal notranslate"><span class="pre">sex</span></code> 이고 원소들은 문자열 <code class="docutils literal notranslate"><span class="pre">M</span></code> 과 <code class="docutils literal notranslate"><span class="pre">F</span></code> 로 구성된 리스트이다.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;sex&#39;</span>  <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>괄호 <code class="docutils literal notranslate"><span class="pre">{}</span></code> 안에 있는 세 번째 요소는 나이을 나타내는 열을 만드는 표현식이며 열이름은 <code class="docutils literal notranslate"><span class="pre">age</span></code> 이고 원소들은 정수(<code class="docutils literal notranslate"><span class="pre">int</span></code>)로 구성된 리스트이다.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;age&#39;</span>  <span class="p">:</span> <span class="p">[</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>괄호 <code class="docutils literal notranslate"><span class="pre">{}</span></code> 안에 있는 네 번째 요소는 키를 나타내는 열을 만드는 표현식이며 열이름은 <code class="docutils literal notranslate"><span class="pre">height</span></code> 이고 원소들은 부동소수점(<code class="docutils literal notranslate"><span class="pre">float</span></code>)로 구성된 리스트이다.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;height&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">153.5</span><span class="p">,</span> <span class="mf">175.3</span><span class="p">,</span> <span class="mf">163.4</span><span class="p">,</span> <span class="mf">180.0</span><span class="p">,</span> <span class="mf">165.7</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>각 열을 나타내는 4개의 요소는 쉼표 <code class="docutils literal notranslate"><span class="pre">,</span></code> 로 분리한다.</p>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">4.1.2. </span>열 선택<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>데이터프레임에서 다음과 같이 괄호 <code class="docutils literal notranslate"><span class="pre">[]</span></code> 안에 열이름 또는 열이름으로 구성된 리스트를 넣어서 일부의 열을 선택할 수 있다. 이 경우 열이름은 문자열이어야 한다.</p>
+<p>데이터프레임에서 열 또는 행의 일부를 선택하여 추출하는 작업을 <strong>슬라이싱(slicing)</strong> 이라고 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0           이철수
+1           김영희
+2           홍길동
+3    John Smith
+4      Mary Doe
+Name: name, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>23</td>
+      <td>153.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>25</td>
+      <td>175.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21</td>
+      <td>163.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>33</td>
+      <td>180.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>45</td>
+      <td>165.7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>하나의 열만 슬라이싱하는 경우는 데이터프레임 이름 뒤에 마침표를 붙이고 열이름을 붙이면 된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sex</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    M
+1    F
+2    M
+3    M
+4    F
+Name: sex, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">4.1.3. </span>행 선택<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>이제 특정한 성질을 가진 행, 즉 자료의 구성 단위의 일부만을 선택해 보자. 데이터프레임 뒤 괄호 <code class="docutils literal notranslate"><span class="pre">[]</span></code> 안에 비교연산자를 이용한 조건 표현식을 넣어주면 조건이 만족하는 행만 추출된다.</p>
+<p>예를 들어 남자 구성원을 다음과 같이 슬라이싱할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;M&#39;</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>이철수</td>
+      <td>M</td>
+      <td>23</td>
+      <td>153.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>홍길동</td>
+      <td>M</td>
+      <td>21</td>
+      <td>163.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>John Smith</td>
+      <td>M</td>
+      <td>33</td>
+      <td>180.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>위에서 사용한 조건식은 <code class="docutils literal notranslate"><span class="pre">df['sex']</span> <span class="pre">==</span> <span class="pre">'M'</span></code> 로서 <code class="docutils literal notranslate"><span class="pre">df['sex']</span></code> 의 자료를 각각 문자열 <code class="docutils literal notranslate"><span class="pre">M</span></code> 과 비교하여 참이면 <code class="docutils literal notranslate"><span class="pre">True</span></code>, 거짓이면 <code class="docutils literal notranslate"><span class="pre">False</span></code> 로 결과를 생성하고 <code class="docutils literal notranslate"><span class="pre">True</span></code> 인 행만 슬라이싱 해준다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;M&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     True
+1    False
+2     True
+3     True
+4    False
+Name: sex, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>자료에서 선택해야할 경우의 수가 많은 경우 다음과 같은 <code class="docutils literal notranslate"><span class="pre">.isin()</span></code> 메소드를 사용할 수 있다. <code class="docutils literal notranslate"><span class="pre">.isin</span></code> 함수의 괄호 안에 선택할 문자 또는 숫자를 리스트 형태로 넣어준다.</p>
+<p>예를 들어 나이가 25세와 33세인 사람만 슬라이싱 해보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span><span class="mi">33</span><span class="p">])</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>김영희</td>
+      <td>F</td>
+      <td>25</td>
+      <td>175.3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>John Smith</td>
+      <td>M</td>
+      <td>33</td>
+      <td>180.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>만약 키가 160 이상인 남자 구성원만 슬라이싱 하려면 다음과 같은 명령어를 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;M&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">160.0</span><span class="p">)</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>홍길동</td>
+      <td>M</td>
+      <td>21</td>
+      <td>163.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>John Smith</td>
+      <td>M</td>
+      <td>33</td>
+      <td>180.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>만약 나이가 30세 이하 또는 키가 160 미만인 행만 슬라이싱 하려면 다음과 같은 명령어를 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">30</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">160.0</span><span class="p">)</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>이철수</td>
+      <td>M</td>
+      <td>23</td>
+      <td>153.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>김영희</td>
+      <td>F</td>
+      <td>25</td>
+      <td>175.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>홍길동</td>
+      <td>M</td>
+      <td>21</td>
+      <td>163.4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>데이터프레임에서 행을 조건에 따라서 슬라이싱 할 때 다음과 같은 규칙을 따른다.</p>
+<ul class="simple">
+<li><p>비교연산자 <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">==</span></code> 을 사용한다.</p></li>
+<li><p>두 개 이상의 비교 표현식을 연결할 경우 <strong>또는(OR)</strong> 은 <code class="docutils literal notranslate"><span class="pre">|</span></code> 을 사용하고 <strong>그리고(AND)</strong> 는 <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> 를 사용한다.</p></li>
+<li><p>비교 표현식을 연결할 경우 표현식은 언제나 괄호 <code class="docutils literal notranslate"><span class="pre">()</span></code> 로 묶어준다.</p></li>
+</ul>
+<p>참고로 두 개 이상의 비교 표현식을 연결할 경우 사용하는 연산자 <code class="docutils literal notranslate"><span class="pre">|</span></code> 와 <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> 는 비트단위연산자(bit-wise operator) 라고 부른다. 데이터프레임에 조건식을 사용하여 슬라이싱 할 경우 논리연산자 <code class="docutils literal notranslate"><span class="pre">or</span></code> 와 <code class="docutils literal notranslate"><span class="pre">and</span></code> 는 사용할 수 없다.</p>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">4.1.4. </span>행과 열 선택<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>이제 특정한 열과 행을 동시에 슬라이싱 해보자.</p>
+<p>만약 키가 170 이상인 사람들의 이름이 필요하면 다음과 같이 슬라이싱할 수 있다. 괄호에서 첫 부분은 행에 대한 조건을 쓰고 컴마 <code class="docutils literal notranslate"><span class="pre">,</span></code> 로 분리한 후 열이름를 써준다.</p>
+<p>여기서 유의해할 점은 행과 열을 동시에 슬라이싱할 경우 테이터프레임 이름 뒤에 <code class="docutils literal notranslate"><span class="pre">.loc</span></code>를 붙여주어야 한다. 만약 붙여주지 않으면 오류가 발생한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">170.0</span><span class="p">)</span> <span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="n">df_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1           김영희
+3    John Smith
+Name: name, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;M&#39;</span><span class="p">)</span> <span class="p">,</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>이철수</td>
+      <td>153.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>홍길동</td>
+      <td>163.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>John Smith</td>
+      <td>180.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>데이터프레임의 행과 열에 대한 인덱스를 숫자로 사용하여 슬라이싱하려면 데이터프레임 이름 뒤에 <code class="docutils literal notranslate"><span class="pre">iloc</span></code> 을 붙여주고 괄호 <code class="docutils literal notranslate"><span class="pre">[]</span></code> 안에 행과 열 순서의 위치를 써주면 된다. 이 경우 파이썬은 모든 위치는 0으로 시작하는데 유의하자.</p>
+<p>하나의 위치가 아닌 여러개의 연속적인 위치는 <code class="docutils literal notranslate"><span class="pre">x:y</span></code> 형태이 범위 형식을 사용하여 지칭한다. 모든 열과 행을 지칭하는 경우 공란으로 넣거나 <code class="docutils literal notranslate"><span class="pre">:</span></code>을 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;이철수&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>165.7
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sex     M
+age    33
+Name: 3, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    23
+1    25
+2    21
+3    33
+4    45
+Name: age, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name        이철수
+sex           M
+age          23
+height    153.5
+Name: 0, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><span class="section-number">4.1.5. </span>참고<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>데이터프레임을 구성하는 <strong>하나의 행 또는 열은 시리즈(<code class="docutils literal notranslate"><span class="pre">Series</span></code>)</strong> 란 형식으로 저장된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    M
+1    F
+2    M
+3    M
+4    F
+Name: sex, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name        이철수
+sex           M
+age          23
+height    153.5
+Name: 0, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>데이터프레임의 인덱스는 행과 열을 지칭할 때 사용한다. 데이터프레임을 슬라이싱할 때 인덱스는 다음과 같은 두 종류의 형식을 사용할 수 있다.</strong></p>
+<ul class="simple">
+<li><p>라벨(label, 이름)에 기반한 인덱스</p>
+<ul>
+<li><p>데이타프레임의 열이름(column name)으로 지칭하거나 또는 행을 조건식을 이용한 <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code> 로 선택할 때 사용한다.</p></li>
+<li><p>행과 열을 모두 슬라이싱 하는 경우 <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code>을 사용한다.</p></li>
+</ul>
+</li>
+<li><p>위치(integer position)에 기반한 인덱스</p>
+<ul>
+<li><p>행과 열 순서의 위치를 나타내는 정수를 사용하여 슬라이싱한다.</p></li>
+<li><p>모든 위치는 0으로 시작한다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code> 을 사용한다.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="dataframe.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">4. </span>데이터프레임</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By 서울시립대학교<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
