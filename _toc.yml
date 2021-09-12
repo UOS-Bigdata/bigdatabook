@@ -24,3 +24,14 @@ sections:
     title: 고속열차 여객 수송자료
   - file: chapters/02/data-processing-text
     title: 어린 왕자
+- file: chapters/03/types
+  title: 자료의 형식
+  sections:
+  - file: chapters/03/numbers
+  - file: chapters/03/string
+  - file: chapters/03/array
+- file: chapters/04/dataframe
+  sections:
+  - file: chapters/04/dataframe-intro
+
+
