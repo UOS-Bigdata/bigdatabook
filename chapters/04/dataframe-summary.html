@@ -53,6 +53,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.4. 데이터프레임의 결합" href="dataframe-merge.html" />
     <link rel="prev" title="4.2. 데이터프레임의 정리" href="dataframe-change.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -201,6 +202,11 @@
      4.3. 데이터프레임의 요약
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dataframe-merge.html">
+     4.4. 데이터프레임의 결합
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -346,7 +352,17 @@
      4.3.2.4. 새로운 정보
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     4.3.2.5. 여러 개의 그룹
+    </a>
+   </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id11">
+   4.3.3. 요약
+  </a>
  </li>
 </ul>
 
@@ -1338,6 +1354,7 @@ dtype: float64
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>연도별로 1인 가구의 비율은 어떻게 변했는가?
 </pre></div>
 </div>
+<p>아래와 같이 연도별, 시도별로 구분된 자료에서 <strong>시도별로 나누어진 가구수를 합쳐서 연도별 전국 가구수를 계산해야 한다.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">house</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/ylee19067/Dropbox/project/teaching/bigdata/textbook/test/house_final.csv&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
@@ -1374,7 +1391,7 @@ dtype: float64
       <th>region</th>
       <th>p1</th>
       <th>p2</th>
-      <th>p2.1</th>
+      <th>p3</th>
       <th>p4</th>
       <th>p5</th>
       <th>p6</th>
@@ -1510,11 +1527,16 @@ dtype: float64
 <div class="section" id="id7">
 <h3><span class="section-number">4.3.2.2. </span>그룹의 생성<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>먼저 연도별 전국 가구수를 계산해 보자.</p>
-<p>연도별 전국 가구수를 계산하려면 전체 자료를 연도별로 나누어서 계산을 해야한다. 즉, 데이터프레임을 지정된 열(year)의 값(2015, 2016,..)에 따라서 그룹으로 나누어 계산해야 한다.</p>
-<p>메소드 <code class="docutils literal notranslate"><span class="pre">groupby(</span> <span class="pre">by=...)</span></code>는  지정된 열의 값으로 데이터프레임을 그룹(group)으로 나누어 준다. <strong>데이터프레임을 물리적으로 나누어 주는 것은 아니고 메소드를 지정된 그룹별로 적용하는 기능을 한다.</strong></p>
+<p>연도별 전국 가구수를 계산하려면</p>
+<ol class="simple">
+<li><p>전체 자료를 연도별로 나누고</p></li>
+<li><p>각 연도에서 모든 시도의 기구수를 더해야한다.</p></li>
+</ol>
+<p>즉, 데이터프레임을 지정된 열(year)의 값(2015, 2016,..)에 따라서 그룹으로 나누어 전국 가구수를 계산해야 한다.</p>
+<p>메소드 <code class="docutils literal notranslate"><span class="pre">groupby(</span> <span class="pre">by=...)</span></code>는  지정된 열의 값으로 데이터프레임을 그룹(group)으로 나누어 준다. 메소드 <code class="docutils literal notranslate"><span class="pre">groupby(</span> <span class="pre">by=...)</span></code>는  <strong>데이터프레임을  물리적으로 그룹을 나누어 주는 것은 아니고 메소드에서 지정된 그룹을 데이터프레임에 적용하는 기능을 한다.</strong></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">by=</span></code> 는 그룹을 나눌 때 사용되는 열을 리스트 형식으로 지정한다.</p></li>
-<li><p>메소드 <code class="docutils literal notranslate"><span class="pre">groupby(</span> <span class="pre">by=...)</span></code> 로 만들어진 데이터프레임의 자료 형식은 <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code>이다. 따라서 그냥 데이터프레임이 적용되는 메소드들이 작동 안할 수 있다.</p></li>
+<li><p>메소드 <code class="docutils literal notranslate"><span class="pre">groupby(</span> <span class="pre">by=...)</span></code> 로 만들어진 데이터프레임의 자료 형식은 <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code>이다. 따라서 보통 데이터프레임에 적용되는 메소드들을 사용할 수 없는 경우가 있다.</p></li>
 </ul>
 <p>이제 데이터프레임 <code class="docutils literal notranslate"><span class="pre">house</span></code> 를 연도 <code class="docutils literal notranslate"><span class="pre">year</span></code>를 이용하여 그룹화된 데이터프레임 <code class="docutils literal notranslate"><span class="pre">house_grp</span></code>을 만들어 보자.</p>
 <div class="cell docutils container">
@@ -1524,6 +1546,7 @@ dtype: float64
 </div>
 </div>
 </div>
+<p>그룹화된 데이터프레임 <code class="docutils literal notranslate"><span class="pre">house_grp</span></code> 은 보통 데이터프레임과 다르게 출력해주는 내용이 없다. 그 이유는 그룹화된 데이터프레임은 그룹에 대한 정보만 가진 특별한 자료의 형식을 가진다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">house_grp</span> 
@@ -1531,7 +1554,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7ff5e05ffdf0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f9c69a8f7f0&gt;
 </pre></div>
 </div>
 </div>
@@ -1552,9 +1575,9 @@ dtype: float64
 <div class="section" id="id8">
 <h3><span class="section-number">4.3.2.3. </span>그룹별 요약<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>이제 아래의 코드가 어떤 결과를 내는지 보자.</p>
-<p>결과는 시도별 가구수를 연도별로 더해서 각 열에 대한 총 가구수이다.</p>
+<p>결과는 그룹으로 지정된 연도별로 모든 시도 가구수를 더해서 연도별 총가구를 계산해준다.</p>
 <ul class="simple">
-<li><p>주의할 점은 메소드 <code class="docutils literal notranslate"><span class="pre">sum()</span></code> 에 <code class="docutils literal notranslate"><span class="pre">axis=</span></code> 선택문이 없다. 그 이유는 그룹회된 데이터프레임의 <code class="docutils literal notranslate"><span class="pre">sum()</span></code> 메소드는 언제나 열의 합으로 구해주도록 되어있다.</p></li>
+<li><p>주의할 점은 메소드 <code class="docutils literal notranslate"><span class="pre">sum()</span></code> 에 <code class="docutils literal notranslate"><span class="pre">axis=</span></code> 선택문이 없다. 그 이유는 그룹화된 데이터프레임의 <code class="docutils literal notranslate"><span class="pre">sum()</span></code> 메소드는 언제나 그룹에 속한 모든 자료를 더해준다.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1583,7 +1606,7 @@ dtype: float64
       <th></th>
       <th>p1</th>
       <th>p2</th>
-      <th>p2.1</th>
+      <th>p3</th>
       <th>p4</th>
       <th>p5</th>
       <th>p6</th>
@@ -1699,7 +1722,7 @@ dtype: float64
       <th>year</th>
       <th>p1</th>
       <th>p2</th>
-      <th>p2.1</th>
+      <th>p3</th>
       <th>p4</th>
       <th>p5</th>
       <th>p6</th>
@@ -1807,7 +1830,7 @@ dtype: float64
       <th>year</th>
       <th>p1</th>
       <th>p2</th>
-      <th>p2.1</th>
+      <th>p3</th>
       <th>p4</th>
       <th>p5</th>
       <th>p6</th>
@@ -1918,7 +1941,7 @@ dtype: float64
       <th>year</th>
       <th>p1</th>
       <th>p2</th>
-      <th>p2.1</th>
+      <th>p3</th>
       <th>p4</th>
       <th>p5</th>
       <th>p6</th>
@@ -2033,7 +2056,7 @@ dtype: float64
       <th>year</th>
       <th>p1</th>
       <th>p2</th>
-      <th>p2.1</th>
+      <th>p3</th>
       <th>p4</th>
       <th>p5</th>
       <th>p6</th>
@@ -2136,10 +2159,308 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;year&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/dataframe-summary_53_1.png" src="../../_images/dataframe-summary_53_1.png" />
+<img alt="../../_images/dataframe-summary_54_1.png" src="../../_images/dataframe-summary_54_1.png" />
 </div>
 </div>
 </div>
+<div class="section" id="id10">
+<h3><span class="section-number">4.3.2.5. </span>여러 개의 그룹<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>데이터프레임을 그룹으로 나눌 때 여러 개의 기준을 조합해서 나눌 수 있다.</p>
+<p>다음과 같은 간단한 데이터프레임 <code class="docutils literal notranslate"><span class="pre">df</span></code> 을 고려해 보자. 열 <code class="docutils literal notranslate"><span class="pre">school</span></code> 은 학교, <code class="docutils literal notranslate"><span class="pre">sex</span></code>는 성, <code class="docutils literal notranslate"><span class="pre">score</span></code> 는  점수를 나타낸다고 하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span> <span class="p">{</span> 
+    <span class="s2">&quot;school&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">],</span> 
+    <span class="s2">&quot;sex&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;score&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">65</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>school</th>
+      <th>sex</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>M</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A</td>
+      <td>M</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A</td>
+      <td>F</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A</td>
+      <td>F</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>B</td>
+      <td>M</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>B</td>
+      <td>F</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>B</td>
+      <td>F</td>
+      <td>65</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>이제 데이터프레임 <code class="docutils literal notranslate"><span class="pre">df</span></code> 에서 학교별, 성별로 성적의 평균을 구해보자.</p>
+<p>먼저 데이터프레임 <code class="docutils literal notranslate"><span class="pre">df</span></code> 을 학교별, 성별로 나누어 그룹회된 데이터프레임을 만들고 각 그룹에 대한 선적의 편균을 구해보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span> <span class="n">by</span> <span class="o">=</span><span class="p">[</span><span class="s2">&quot;school&quot;</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>score</th>
+    </tr>
+    <tr>
+      <th>school</th>
+      <th>sex</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">A</th>
+      <th>F</th>
+      <td>58.5</td>
+    </tr>
+    <tr>
+      <th>M</th>
+      <td>99.0</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">B</th>
+      <th>F</th>
+      <td>77.5</td>
+    </tr>
+    <tr>
+      <th>M</th>
+      <td>56.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>이렇게 데이터프레임은 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 메소드를 이용하여 여러 개의 그룹으로 나누어 요약할 수 있다.</p>
+<p>만약 그룹으로 나누는데 사용하는 열의 자료형식이 숫자면 어떤 일이 벌어질까. 자료의 범주가 숫자로 나타나는 경우가 많은데 이 경우 그룹화에 대하여 알아보자.</p>
+<p>먼저 위에서 데이터프레임 <code class="docutils literal notranslate"><span class="pre">df</span></code> 과 동일한 자료를 가지지만 <code class="docutils literal notranslate"><span class="pre">df2</span></code> 는 여자는 1, 남자는 0 으로 자료가 저장되어 있다고 하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span> <span class="p">{</span> 
+    <span class="s2">&quot;school&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">],</span> 
+    <span class="s2">&quot;sex&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="s2">&quot;score&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">65</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>school</th>
+      <th>sex</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>0</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A</td>
+      <td>0</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A</td>
+      <td>1</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A</td>
+      <td>1</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>B</td>
+      <td>0</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>B</td>
+      <td>0</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>B</td>
+      <td>1</td>
+      <td>65</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>메소드 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 는 숫자로 구성된 열도 나타난 숫자에 따라서 그룹화를 해준다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span> <span class="n">by</span> <span class="o">=</span><span class="p">[</span><span class="s2">&quot;school&quot;</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>score</th>
+    </tr>
+    <tr>
+      <th>school</th>
+      <th>sex</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">A</th>
+      <th>0</th>
+      <td>99.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>58.5</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">B</th>
+      <th>0</th>
+      <td>73.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>65.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2><span class="section-number">4.3.3. </span>요약<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>여러 개의 열을 이용하여 새로운 열을 만드는 방법은 열을 선택하고 산술적인 연산을 적용해 준다.</p></li>
+<li><p>열에 대한 요약 통계는 다양한 메소드(예를 들어 <code class="docutils literal notranslate"><span class="pre">sum()</span></code>, <code class="docutils literal notranslate"><span class="pre">mean()</span></code> 등)을 적용하며 선택문 <code class="docutils literal notranslate"><span class="pre">axis=0</span></code> 을 이용한다.</p></li>
+<li><p>자료의 그룹화는 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 를 사용하며 이를 통해 그룹별로 요약할 수 있다.</p></li>
+</ul>
+<p><a class="reference internal" href="../02/data-processing-train-passenger.html#section-train-group"><span class="std std-ref">교과서 2.3절 고속열차 여객 수송자료</span></a> 에서 그룹별로 요약통계량을 구하는 더 자세한 예제가 있으니 참고하자.</p>
 </div>
 </div>
 
@@ -2181,6 +2502,15 @@ dtype: float64
             </div>
         </a>
     </div>
+     <div id="next">
+        <a class="right-next" href="dataframe-merge.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">4.4. </span>데이터프레임의 결합</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         

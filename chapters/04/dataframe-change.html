@@ -200,6 +200,11 @@
      4.3. 데이터프레임의 요약
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dataframe-merge.html">
+     4.4. 데이터프레임의 결합
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -2579,7 +2584,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">house</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span> <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
 	<span class="s2">&quot;시점&quot;</span> <span class="p">:</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;행정구역별(읍면동)&quot;</span> <span class="p">:</span> <span class="s2">&quot;region&quot;</span><span class="p">,</span>
-	<span class="s2">&quot;1인&quot;</span> <span class="p">:</span> <span class="s2">&quot;p1&quot;</span><span class="p">,</span> <span class="s2">&quot;2인&quot;</span> <span class="p">:</span> <span class="s2">&quot;p2&quot;</span><span class="p">,</span> <span class="s2">&quot;3인&quot;</span> <span class="p">:</span> <span class="s2">&quot;p2&quot;</span><span class="p">,</span> <span class="s2">&quot;4인&quot;</span> <span class="p">:</span> <span class="s2">&quot;p4&quot;</span><span class="p">,</span> 
+	<span class="s2">&quot;1인&quot;</span> <span class="p">:</span> <span class="s2">&quot;p1&quot;</span><span class="p">,</span> <span class="s2">&quot;2인&quot;</span> <span class="p">:</span> <span class="s2">&quot;p2&quot;</span><span class="p">,</span> <span class="s2">&quot;3인&quot;</span> <span class="p">:</span> <span class="s2">&quot;p3&quot;</span><span class="p">,</span> <span class="s2">&quot;4인&quot;</span> <span class="p">:</span> <span class="s2">&quot;p4&quot;</span><span class="p">,</span> 
 	<span class="s2">&quot;5인&quot;</span> <span class="p">:</span> <span class="s2">&quot;p5&quot;</span><span class="p">,</span> <span class="s2">&quot;6인&quot;</span> <span class="p">:</span> <span class="s2">&quot;p6&quot;</span><span class="p">,</span> <span class="s2">&quot;7인 이상&quot;</span> <span class="p">:</span> <span class="s2">&quot;p7plus&quot;</span><span class="p">},</span> 
 	<span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">house</span>
@@ -2609,7 +2614,7 @@
       <th>region</th>
       <th>p1</th>
       <th>p2</th>
-      <th>p2</th>
+      <th>p3</th>
       <th>p4</th>
       <th>p5</th>
       <th>p6</th>
@@ -2754,6 +2759,13 @@
 <p>102 rows × 9 columns</p>
 </div></div></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">house_grp</span> <span class="o">=</span> <span class="n">house</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span> <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>위에서 열이름을 모두 바꾸는 코드와 동일한 작업을 새로운 이름을 가진 리스트로 다음과 같이 할 수 있다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">house</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;region&quot;</span><span class="p">,</span> <span class="s2">&quot;p1&quot;</span><span class="p">,</span> <span class="s2">&quot;p2&quot;</span><span class="p">,</span> <span class="s2">&quot;p2&quot;</span><span class="p">,</span> <span class="s2">&quot;p4&quot;</span><span class="p">,</span> <span class="s2">&quot;p5&quot;</span><span class="p">,</span> <span class="s2">&quot;p6&quot;</span><span class="p">,</span> <span class="s2">&quot;p7plus&quot;</span><span class="p">]</span>
 </pre></div>
@@ -2766,7 +2778,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;year&#39;, &#39;region&#39;, &#39;p1&#39;, &#39;p2&#39;, &#39;p2&#39;, &#39;p4&#39;, &#39;p5&#39;, &#39;p6&#39;, &#39;p7plus&#39;], dtype=&#39;object&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;year&#39;, &#39;region&#39;, &#39;p1&#39;, &#39;p2&#39;, &#39;p3&#39;, &#39;p4&#39;, &#39;p5&#39;, &#39;p6&#39;, &#39;p7plus&#39;], dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
