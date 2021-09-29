@@ -1,7 +1,7 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
 format: jb-article
-root: chapters/intro
+root: intro
 title: 과목 소개 
 options:
   numbered: true
