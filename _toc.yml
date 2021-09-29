@@ -35,5 +35,7 @@ sections:
   - file: chapters/04/dataframe-intro
   - file: chapters/04/dataframe-change
   - file: chapters/04/dataframe-summary
+  - file: chapters/04/dataframe-merge
+  
 
 
