@@ -33,3 +33,6 @@ html:
   use_repository_button     : true
   use_edit_page_button      : false
   use_issues_button         : false
+
+launch_buttons:
+  colab_url: "https://colab.research.google.com"  
