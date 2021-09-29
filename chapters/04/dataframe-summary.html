@@ -364,6 +364,11 @@
    4.3.3. 요약
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id12">
+   4.3.4. 유용한 팁
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -1554,7 +1559,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f9c69a8f7f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7fb4a9b66a30&gt;
 </pre></div>
 </div>
 </div>
@@ -2026,6 +2031,125 @@ dtype: float64
 </table>
 </div></div></div>
 </div>
+<p><strong>잠깐!</strong></p>
+<p>위에서 사용한 메소드 <code class="docutils literal notranslate"><span class="pre">sum(axis=1)</span></code> 는 모든 열 들을 더해주는 작업을 수행하는데 년도를 나타내는 열 <code class="docutils literal notranslate"><span class="pre">year</span></code> 도 같이 결과에 더해졌다.</p>
+<p>앞에서 본 것 처럼 <code class="docutils literal notranslate"><span class="pre">sum(axis=1)</span></code> 는 자동적으로 문자열을 포함한 열을 제외해주는데 이러한 자동 기능을 자주 이용하면 위와 같은 실수를 범할 수 있다.
+왜냐하면 오류가 나오지 않기 떄문이다.</p>
+<p><strong>안전한 프로그래밍</strong>을 위하여 합을 구할 모든 열의 이름을 가진 리스트로 슬라이싱을 먼저 하고 메소드 <code class="docutils literal notranslate"><span class="pre">sum(axis=1)</span></code> 를 적용하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">house_year</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">house_year</span><span class="p">[</span> <span class="p">[</span><span class="s2">&quot;p1&quot;</span><span class="p">,</span><span class="s2">&quot;p2&quot;</span><span class="p">,</span><span class="s2">&quot;p3&quot;</span><span class="p">,</span><span class="s2">&quot;p4&quot;</span><span class="p">,</span><span class="s2">&quot;p5&quot;</span><span class="p">,</span><span class="s2">&quot;p6&quot;</span><span class="p">,</span><span class="s2">&quot;p7plus&quot;</span><span class="p">]</span> <span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">house_year</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>p1</th>
+      <th>p2</th>
+      <th>p3</th>
+      <th>p4</th>
+      <th>p5</th>
+      <th>p6</th>
+      <th>p7plus</th>
+      <th>total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015</td>
+      <td>5203440</td>
+      <td>4993818</td>
+      <td>4100979</td>
+      <td>3588931</td>
+      <td>940413</td>
+      <td>217474</td>
+      <td>65975</td>
+      <td>19111030</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2016</td>
+      <td>5397615</td>
+      <td>5067166</td>
+      <td>4151701</td>
+      <td>3551410</td>
+      <td>924373</td>
+      <td>211475</td>
+      <td>63956</td>
+      <td>19367696</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017</td>
+      <td>5618677</td>
+      <td>5260332</td>
+      <td>4178641</td>
+      <td>3473897</td>
+      <td>886479</td>
+      <td>197517</td>
+      <td>58332</td>
+      <td>19673875</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2018</td>
+      <td>5848594</td>
+      <td>5445691</td>
+      <td>4203792</td>
+      <td>3396320</td>
+      <td>849167</td>
+      <td>182886</td>
+      <td>52738</td>
+      <td>19979188</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019</td>
+      <td>6147516</td>
+      <td>5663330</td>
+      <td>4217736</td>
+      <td>3300114</td>
+      <td>801048</td>
+      <td>166866</td>
+      <td>46578</td>
+      <td>20343188</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2020</td>
+      <td>6643354</td>
+      <td>5864525</td>
+      <td>4200629</td>
+      <td>3271315</td>
+      <td>761417</td>
+      <td>147172</td>
+      <td>38298</td>
+      <td>20926710</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 <p>이제 1인 가구수에 대한 백분율(percentage)를 새롭게 만들어 보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2076,8 +2200,8 @@ dtype: float64
       <td>940413</td>
       <td>217474</td>
       <td>65975</td>
-      <td>19113045</td>
-      <td>27.224547</td>
+      <td>19111030</td>
+      <td>27.227418</td>
     </tr>
     <tr>
       <th>1</th>
@@ -2089,8 +2213,8 @@ dtype: float64
       <td>924373</td>
       <td>211475</td>
       <td>63956</td>
-      <td>19369712</td>
-      <td>27.866264</td>
+      <td>19367696</td>
+      <td>27.869164</td>
     </tr>
     <tr>
       <th>2</th>
@@ -2102,8 +2226,8 @@ dtype: float64
       <td>886479</td>
       <td>197517</td>
       <td>58332</td>
-      <td>19675892</td>
-      <td>28.556149</td>
+      <td>19673875</td>
+      <td>28.559076</td>
     </tr>
     <tr>
       <th>3</th>
@@ -2115,8 +2239,8 @@ dtype: float64
       <td>849167</td>
       <td>182886</td>
       <td>52738</td>
-      <td>19981206</td>
-      <td>29.270475</td>
+      <td>19979188</td>
+      <td>29.273432</td>
     </tr>
     <tr>
       <th>4</th>
@@ -2128,8 +2252,8 @@ dtype: float64
       <td>801048</td>
       <td>166866</td>
       <td>46578</td>
-      <td>20345207</td>
-      <td>30.216041</td>
+      <td>20343188</td>
+      <td>30.219039</td>
     </tr>
     <tr>
       <th>5</th>
@@ -2141,8 +2265,8 @@ dtype: float64
       <td>761417</td>
       <td>147172</td>
       <td>38298</td>
-      <td>20928730</td>
-      <td>31.742748</td>
+      <td>20926710</td>
+      <td>31.745812</td>
     </tr>
   </tbody>
 </table>
@@ -2159,7 +2283,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;year&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/dataframe-summary_54_1.png" src="../../_images/dataframe-summary_54_1.png" />
+<img alt="../../_images/dataframe-summary_56_1.png" src="../../_images/dataframe-summary_56_1.png" />
 </div>
 </div>
 </div>
@@ -2451,6 +2575,66 @@ dtype: float64
 </table>
 </div></div></div>
 </div>
+<p>그룹화에 사용된 열들을 인덱스에서 다시 열로 바꾸고 싶으면 <code class="docutils literal notranslate"><span class="pre">reset_index()</span></code>를 적용하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span> <span class="n">by</span> <span class="o">=</span><span class="p">[</span><span class="s2">&quot;school&quot;</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>school</th>
+      <th>sex</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>0</td>
+      <td>99.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A</td>
+      <td>1</td>
+      <td>58.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>B</td>
+      <td>0</td>
+      <td>73.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B</td>
+      <td>1</td>
+      <td>65.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </div>
 </div>
 <div class="section" id="id11">
@@ -2461,6 +2645,50 @@ dtype: float64
 <li><p>자료의 그룹화는 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 를 사용하며 이를 통해 그룹별로 요약할 수 있다.</p></li>
 </ul>
 <p><a class="reference internal" href="../02/data-processing-train-passenger.html#section-train-group"><span class="std std-ref">교과서 2.3절 고속열차 여객 수송자료</span></a> 에서 그룹별로 요약통계량을 구하는 더 자세한 예제가 있으니 참고하자.</p>
+</div>
+<div class="section" id="id12">
+<h2><span class="section-number">4.3.4. </span>유용한 팁<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<p>앞에서 열들을 더하는 작업을 할 때,  모든 열이름을 문자로 만들고, 리스트로 묶어서 슬라이싱하는 작업은 번거롭다.</p>
+<p>데이터프레임의 열이름이 특정한 문자로 시작하는 것만 선택하는 방법이 있었으면 좋을것 같다. 프로그래밍은 성가신 수작업도 자주 해야하지만 더 빠르고 쉬운 방법을 찾는 노력도 필요하다.</p>
+<p>다음 코드들의 결과를 보자. <code class="docutils literal notranslate"><span class="pre">.startswith()</span></code> 메소드는 말 그대로 문자열이 주어진 문자로 시작하는지 알아내는 기능을 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;p1&quot;</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;year&quot;</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>일단 <code class="docutils literal notranslate"><span class="pre">house_year.columns</span></code> 는 데이터프레임의 모든 열이름으로 이루진 리스트라는 것을 배웠다.</p>
+<p>아래 코드는 리스트의 문자열 중에서 <code class="docutils literal notranslate"><span class="pre">p</span></code> 로 시작하는 문자열으로 선택하려 다시 리스트를 만들어 주는 작업을 수행한다. 아직 배우지 않았지만 유용한 팁이니 알아 두자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">house_year</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;p1&#39;, &#39;p2&#39;, &#39;p3&#39;, &#39;p4&#39;, &#39;p5&#39;, &#39;p6&#39;, &#39;p7plus&#39;, &#39;p1_percent&#39;]
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
