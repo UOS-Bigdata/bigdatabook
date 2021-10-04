@@ -36,6 +36,11 @@ sections:
   - file: chapters/04/dataframe-change
   - file: chapters/04/dataframe-summary
   - file: chapters/04/dataframe-merge
+- file: chapters/05/data_probability
+  title: 분포와 확률
+  sections:
+  - file: chapters/05/data_distribution
+
   
 
 
