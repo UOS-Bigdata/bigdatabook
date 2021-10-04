@@ -941,7 +941,7 @@ Name: TEST_SEX, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb64c2cce10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f2d3dcd5ed0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/data_distribution_24_1.png" src="../../_images/data_distribution_24_1.png" />
@@ -970,7 +970,7 @@ Name: TEST_SEX, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb644ce5110&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f2d35b9ce10&gt;
 </pre></div>
 </div>
 <img alt="../../_images/data_distribution_28_1.png" src="../../_images/data_distribution_28_1.png" />
@@ -984,7 +984,7 @@ Name: TEST_SEX, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb644cba1d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f2d356afed0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/data_distribution_30_1.png" src="../../_images/data_distribution_30_1.png" />
@@ -1019,7 +1019,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb644c33610&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f2d35643610&gt;
 </pre></div>
 </div>
 <img alt="../../_images/data_distribution_33_1.png" src="../../_images/data_distribution_33_1.png" />
@@ -1040,7 +1040,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb644bcecd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f2d35558dd0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/data_distribution_37_1.png" src="../../_images/data_distribution_37_1.png" />
@@ -1054,7 +1054,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb644b05090&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f2d354ff9d0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/data_distribution_39_1.png" src="../../_images/data_distribution_39_1.png" />
@@ -1068,7 +1068,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb644a2f890&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f2d3547df50&gt;
 </pre></div>
 </div>
 <img alt="../../_images/data_distribution_41_1.png" src="../../_images/data_distribution_41_1.png" />
@@ -1102,13 +1102,13 @@ dtype: int64
 </ul>
 <p>IQR 은 중심 부근에 위치하는 전체 자료의 50%의 범위를 나타내는 측도로서 자료의 퍼진 정도를 나타내는 대표적인 측도이다.</p>
 <p>상자그림은 자료를 순서대로 정렬했을 때 25% 와 75% 의 위치에 있는 자료를 각각 상자의 아래면과 윗면으로 그려주고 중앙값(mdedian, 50%)을 상자 안에 표시해준다.</p>
-<p>또한 자료가 작은 쪽과 큰 쪽으로 퍼진 정도를 상자에서 나온 선으로 표시해준다. 자료의 퍼진 정도를 나타내는 선의 위치는 중심에서 (1.5)IQR에 있는 곳을 나타낸다.</p>
+<p>또한 자료가 작은 쪽과 큰 쪽으로 퍼진 정도를 상자에서 나온 선으로 표시해준다. 자료의 퍼진 정도를 나타내는 선의 위치는 상자의 끝에서 (1.5)IQR에 있는 곳을 나타낸다.</p>
 <ul class="simple">
-<li><p>위 선 끝점: median + (1.5)IQR</p></li>
+<li><p>위 선 끝점: Q3 + (1.5)IQR</p></li>
 <li><p>상자 위  : 75% 백분위수 (3사분위수, Q3)</p></li>
 <li><p>상자 중앙: 중앙값(median)</p></li>
 <li><p>상자 아래: 25% 백분위수 (1사분위수, Q1)</p></li>
-<li><p>아래 선 끝점: median - (1.5)IQR</p></li>
+<li><p>아래 선 끝점: Q1 - (1.5)IQR</p></li>
 </ul>
 <p>또한 자료의 중심에서 매우 먼 자료들, 즉 (1.5)IQR 을 벗어난 자료는 점으로 표시해 준다.</p>
 <p>체려측정자료에서 몸무게를 상자 그림으로 그려보면 몸무게의 값이 큰 방향으로 치우친 경향을 더 확실하게 볼 수 있다.</p>
@@ -1119,7 +1119,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb64496ead0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f2d353671d0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/data_distribution_46_1.png" src="../../_images/data_distribution_46_1.png" />
@@ -1155,7 +1155,7 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb644821b50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f2d352c78d0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/data_distribution_51_1.png" src="../../_images/data_distribution_51_1.png" />
@@ -1190,7 +1190,7 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb6344e0490&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f2d266ede50&gt;
 </pre></div>
 </div>
 <img alt="../../_images/data_distribution_55_1.png" src="../../_images/data_distribution_55_1.png" />
