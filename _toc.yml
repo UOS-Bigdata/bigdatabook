@@ -40,6 +40,8 @@ sections:
   title: 분포와 확률
   sections:
   - file: chapters/05/data_distribution
+  - file: chapters/05/data_randomness
+
 
   
 
