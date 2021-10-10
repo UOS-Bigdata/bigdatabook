@@ -41,6 +41,7 @@ sections:
   sections:
   - file: chapters/05/data_distribution
   - file: chapters/05/data_randomness
+  - file: chapters/05/data_random_experiment
 
 
   
