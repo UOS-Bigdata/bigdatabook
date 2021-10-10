@@ -1,0 +1,1307 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5.3. 확률과 컴퓨터 실험 &#8212; 빅데이터 개론 2</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyle.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="5.2. 분포와 우연성" href="data_randomness.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">빅데이터 개론 2</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   빅데이터 개론 2
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01/intro-course.html">
+   1. 서론
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-program.html">
+     1.1. 프로그래밍 언어
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-stat.html">
+     1.2. 통계학
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02/intro-python.html">
+   2. 파이선의 기초
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/basic-expression.html">
+     2.1. 표현식과 변수
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-intro.html">
+     2.2. 데이터의 처리
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-train-passenger.html">
+     2.3. 고속열차 여객 수송자료
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-text.html">
+     2.4. 어린 왕자
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03/types.html">
+   3. 자료의 형식
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/numbers.html">
+     3.1. 숫자
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/string.html">
+     3.2. 문자열
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/array.html">
+     3.3. 행렬
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04/dataframe.html">
+   4. 데이터프레임
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-intro.html">
+     4.1. 데이터프레임의 정의와 구성요소
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-change.html">
+     4.2. 데이터프레임의 정리
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-summary.html">
+     4.3. 데이터프레임의 요약
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-merge.html">
+     4.4. 데이터프레임의 결합
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="data_probability.html">
+   5. 분포와 확률
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_distribution.html">
+     5.1. 자료의 분포
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_randomness.html">
+     5.2. 분포와 우연성
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     5.3. 확률과 컴퓨터 실험
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/chapters/05/data_random_experiment.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/UOS-Bigdata/bigdatabook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/UOS-Bigdata/bigdatabook/master?urlpath=tree/chapters/05/data_random_experiment.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/05/data_random_experiment.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   5.3.1. 우연성과 가능성
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   5.3.2. 확률과 컴퓨터 실험
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   5.3.3. 난수
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   5.3.4. 조건문
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     5.3.4.1. 조건문의 구조
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     5.3.4.2. 공정한 동전 던지기
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     5.3.4.3. 공정하지 않은 동전
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   5.3.5. 반복
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     5.3.5.1. 반복분의 구조
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     5.3.5.2. 동전 던지기의 반복
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id12">
+   5.3.6. 확률 실험
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     5.3.6.1. 동전 던지기
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     5.3.6.2. 투자 실험
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1><span class="section-number">5.3. </span>확률과 컴퓨터 실험<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2><span class="section-number">5.3.1. </span>우연성과 가능성<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>이 절에서는 우연성(randomness)에 대하여 조금 더 알아보자.</p>
+<p>우리가  “오늘 친구와 우연히 만나서 즐겁게 놀았다” 라고 말하면 이 문구에서 “우연히”라는 단어는  의도하지 않은 사건이 발생했다는 의미이다. “우연” 은 사전적으로 “아무런 인과 관계가 없이 뜻하지 아니하게 일어난” 이라는 의미로 사용된다.</p>
+<p>이 강의에서 말하는 <strong>우연성(randomness)</strong> 이란  인과 관계가 없다는 의미보다 <strong>특정한 사건의 결과를 미리 정확하게 예측할 수 없는 경우</strong>를 말한다. 우연성을 다른 말로는 임의성, 랜덤, 무작위, 확률적 이라고 표현한다.</p>
+<p>다음은 사건의 결과가 우연성을 가진 예들이다.</p>
+<ul class="simple">
+<li><p>동전을 던질 때 결과</p></li>
+<li><p>주사위를 던질 때 결과.</p></li>
+<li><p>가위, 바위, 보 게임에서 내가 이긴다.</p></li>
+<li><p>이번 주 토요일 내가 산 복권이 당첨된다.</p></li>
+</ul>
+<p>또한 아래 질문에서도 그 결과를 정확하게 예측하기 힘들다.</p>
+<ul class="simple">
+<li><p>이번 주말에 캠핑 가기로 했는데 비가 올까?</p></li>
+<li><p>내일 내가 투자한 주식이 상종가를 칠까? :)</p></li>
+</ul>
+<p>물론 예측하는 능력에 따라서 비가 올지, 투자한 주식이 오를지에 대한 “가능성”을 잘 예측하여 결과를 맞출 수도 있겠지만 틀릴 경우도 많다는 사실을 여러분들은 더 잘 알고 있을 것이다. 따라서 비가 올지, 주식의 가격이 올라갈 지 정확하게 예측할 수 없다.</p>
+<p>참고로 동전 던지기의 우연성에 대한 <a class="reference external" href="https://www.youtube.com/watch?v=AYnJv68T3MM">재미난 비디오</a>를 보고 결과의 예측에 대하여 생각해 보자.</p>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">5.3.2. </span>확률과 컴퓨터 실험<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>어떤 사건의 결과가 우연성을 가지고 있어서 미리 그 결과를 정확하게 예측할 수 없지만 가능한 결과들의 <strong>가능성</strong> 에 대해서는 믿을 만한 합리적 지식을 가지고 잇는 경우가 있다.</p>
+<p>예를 들어서 여러분이 친구와 동전을 던져서 내기를 하는 경우 앞면과 뒷면이 나올 가능성이 같을 것이라고 믿는다. 마찬가지로 주사위를 던져서 게임을 하는 경우도 6개의 숫자가 나올 가능성은 모두  같을 것(equally likely)이라고 믿는다. 가능성이 같지 않다고 믿는다면 여러분은 내기에 응하지 않을 것이다.</p>
+<p>통계학에서 이러한 가능성을 나타내는 측도를 <strong>확률(probability)</strong> 라고 한다.</p>
+<p>동전을 던져서 내기를 하는 경우 앞면과 뒷면이 나올 확률은 각각 1/2 이며 주사위를 던져서 게임을 하는 경우도 6개의 숫자가 나올 확률은 각각 1/6 이다.</p>
+<ul class="simple">
+<li><p>만약 나올 수 있는 가능한 결과들을 미리 알고 있으며(보통 우리는 동전이 눕지 않고 서 있을 거라고 예상하지 않는다)</p></li>
+<li><p>결과에 대한 가능성을 미리 알고 있다면 (동전의 앞면이 나올 확률을 알고 있다면)</p></li>
+</ul>
+<p>우리는 컴퓨터 프로그램을 이용하여 사건의 결과에 대한  유용한 정보를 얻을 수 있다.</p>
+<p>컴퓨터를 이용하여 같은 사건을 반복해서 실행하면 가능한 결과들의 분포에 대한 정보를 얻을 수 있는 것이다. 이러한 것을 <strong>컴퓨터 실험(computer experiment, simulation)</strong> 이라고 한다.</p>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">5.3.3. </span>난수<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>컴퓨터가 할 수 있는 다양한 기능들 중에 숫자를 임의로 선택해 주는 기능은 매우 유용하고 중요한 기능이다.</p>
+<p>“임의로 선택해 준다”는 의미는 주어진 수들의 집합에 있는 모든 수가 선택될 가능성이 같다는 의미(equally likely)이다. 주어진 수들의 집합에서 컴퓨터가 눈을 감고 뽑아준(^^) 수를 <strong>난수(random number)</strong> 라고 말한다.</p>
+<p>물론 컴퓨터가 스스로 알아서 난수를 뽑아주는 것은 아니고 사람이 <a class="reference external" href="https://en.wikipedia.org/wiki/Random_number_generation">난수를 발생시키는 알고리즘</a>을 프로그램으로 구현해 놓았기 떄문에 이런 기능을 이용할 수 있다.</p>
+<p>컴퓨터가 난수를 선택해 주는 일을 수행할 때 가장 기본적인 작업은 0과 1 사이에서 하나의 실수(floating point)를 눈 감고 뽑아주는 기능이다.</p>
+<p>아래 함수 <code class="docutils literal notranslate"><span class="pre">np.random.rand(n)</span></code>은 <code class="docutils literal notranslate"><span class="pre">n</span></code> 개의 실수를  0과 1사이 에서 임의로 선택해 준다. 여러분들이 아래 코드를 여러 번 반복해서 실행시켜 보면 코드가 실행될 때마다 컴퓨터가 임의로 선택해준 값이 다르게 나오는 것을 볼 수 있다.</p>
+<p>함수 <code class="docutils literal notranslate"><span class="pre">np.random.rand(n)</span></code>의 결과는 길이가 <code class="docutils literal notranslate"><span class="pre">n</span></code> 인 실수 벡터이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.16955076])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.24652516, 0.33276944, 0.7919059 , 0.61695644, 0.59237238])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">5.3.4. </span>조건문<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>위에서 동전을 던지는 경우 결과는 우연성을 가진다고 배웠다. 이제 우리는 컴퓨터가 우리를 위하여 공정한 동전(fair coin)을 던져서 그 결과를 주는 코드를 작성해 볼 것이다.</p>
+<p>동전을 던지는 경우 가능한 결과가 <code class="docutils literal notranslate"><span class="pre">앞면</span></code> 과 <code class="docutils literal notranslate"><span class="pre">뒷면</span></code> 이고 두 결과의 가능성이 같다는 것을 어떻게  컴퓨터에게 알려줘야 할까? 앞에서 배운대로 컴퓨터가 0 보다 크고 1 보다 작은 모든 실수 집합에서 하나의 난수를 임의로 뽑아줄 수 있다면 뽑힌 수가 0.5보다 작을 가능성은 0.5보다 클 가능성과 같다.</p>
+<p>따라서 함수 <code class="docutils literal notranslate"><span class="pre">np.random.rand(1)</span></code> 로 뽑힌 난수가 0.5 보다 작으면 <code class="docutils literal notranslate"><span class="pre">앞면</span></code>, 0.5 보다 크면 <code class="docutils literal notranslate"><span class="pre">뒷면</span></code> 으로 결과를 주면 공정한 동전을 던지는 실험을 구현할 수 있다.</p>
+<div class="section" id="id6">
+<h3><span class="section-number">5.3.4.1. </span>조건문의 구조<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>프로그램 언어에서 <strong>주어진 조건에 따라서 다른 결과를 주는 명령어</strong> 를 <strong>조건문(conditional statement)</strong> 이라고 한다. 파이썬 조건문은 다음과 같은 문법을 따른다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">조건</span> <span class="mi">1</span> <span class="p">:</span>
+  <span class="n">결과</span> <span class="mi">1</span>
+  <span class="o">...</span>
+<span class="k">elif</span> <span class="n">조건</span> <span class="mi">2</span> <span class="p">:</span>
+  <span class="n">결과</span> <span class="mi">2</span>
+  <span class="o">...</span>
+<span class="k">elif</span> <span class="n">조건</span> <span class="mi">3</span> <span class="p">:</span>
+  <span class="n">결과</span> <span class="mi">3</span>
+  <span class="o">...</span>
+
+<span class="o">...</span>
+
+<span class="k">elif</span> <span class="n">조건</span> <span class="n">k</span> <span class="p">:</span>
+  <span class="n">결과</span> <span class="n">k</span>
+  <span class="o">...</span>
+<span class="k">else</span>  <span class="p">:</span>
+  <span class="n">결과</span>
+  <span class="o">...</span> 
+</pre></div>
+</div>
+<p>위의 코드는 k 개의 조건(조건 1, 2, …, k)을 순서대로 검사하여 참인 경우 해당하는 결과만을 실행하는 조건문의 일반적인 형태이다</p>
+<ol class="simple">
+<li><p>먼저 처음 <code class="docutils literal notranslate"><span class="pre">if</span></code> 뒤 <code class="docutils literal notranslate"><span class="pre">조건</span> <span class="pre">1</span></code> 의 결과가 참(<code class="docutils literal notranslate"><span class="pre">True</span></code>)이면 <code class="docutils literal notranslate"><span class="pre">결과</span> <span class="pre">1</span> <span class="pre">...</span></code>을 수행하고 다른 조건에 대한 판단없이 끝이 난다.  <code class="docutils literal notranslate"><span class="pre">조건</span> <span class="pre">1</span></code> 의 결과가 거짓(<code class="docutils literal notranslate"><span class="pre">False</span></code>)이면 아래 코드 <code class="docutils literal notranslate"><span class="pre">elif</span></code> 로 넘어간다.</p></li>
+<li><p>코드 <code class="docutils literal notranslate"><span class="pre">elif</span></code> 뒤 <code class="docutils literal notranslate"><span class="pre">조건</span> <span class="pre">2</span></code> 의 결과가 참(<code class="docutils literal notranslate"><span class="pre">True</span></code>)이면 <code class="docutils literal notranslate"><span class="pre">결과</span> <span class="pre">2</span> <span class="pre">...</span></code>을 수행하고 다른 조건에 대한 판단없이 끝이 난다. <code class="docutils literal notranslate"><span class="pre">조건</span> <span class="pre">2</span></code> 의 결과가 거짓(<code class="docutils literal notranslate"><span class="pre">False</span></code>)이면 아래 코드 <code class="docutils literal notranslate"><span class="pre">elif</span></code> 로 넘어간다.</p></li>
+<li><p>이렇게 순서대로 조건을 검사하여 주어진 조건이 참인 경우 해당하는 결과만 실행하며 모든 조건이 거짓인 경우 코드 <code class="docutils literal notranslate"><span class="pre">else</span></code> 문 뒤에 나온 <code class="docutils literal notranslate"><span class="pre">결과</span> <span class="pre">...</span> </code> 를 실행한다.</p></li>
+</ol>
+<p><strong>주의할 점</strong></p>
+<ol class="simple">
+<li><p>각 결과를 실행하는 명령문들은 <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code> 문보다 최소한 공백 하나만큼 들여쓰기 해야 한다. 들여쓰기한 명령문들을 블럭(block)이라고 한다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code> 문에서 조건이 끝나는 것을 반드시 <code class="docutils literal notranslate"><span class="pre">:</span></code> 으로 표시해 준다.</p></li>
+</ol>
+<p>참고로 <code class="docutils literal notranslate"><span class="pre">elif</span></code>는 else if 의 줄임말이다.</p>
+</div>
+<div class="section" id="id7">
+<h3><span class="section-number">5.3.4.2. </span>공정한 동전 던지기<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>공정한 동전(fiar coin)을 던지는 실험을 수행하는 간단한 코드를 작성해 보자. 난수의 값이 0.5 보다 작으면 <code class="docutils literal notranslate"><span class="pre">앞면</span></code> 을 출력하고, 아니면(0.5 보다 크면) <code class="docutils literal notranslate"><span class="pre">뒷면</span></code>을 출력하는 조건문의 예이다.</p>
+<p>아래 코드를 여러 번 반복해서 실행시키면서 난수 <code class="docutils literal notranslate"><span class="pre">x</span></code> 의 값과 동전 던지기의 결과를 보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="p">:</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;앞면&quot;</span><span class="p">)</span>
+<span class="k">else</span> <span class="p">:</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;뒷면&quot;</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.55630756]
+뒷면
+</pre></div>
+</div>
+</div>
+</div>
+<p>주의할 사항은 조건에 따라서 실행되는 결과 코드, 즉 <code class="docutils literal notranslate"><span class="pre">print()</span></code> 문은 <code class="docutils literal notranslate"><span class="pre">if</span></code> 문에서 최소한 한 줄씩 들여쓰기 해야한다.</p>
+<p>다음과 같이 들여쓰기를 하지 않으면 오류가 발생한다</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="p">:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;앞면&quot;</span><span class="p">)</span>
+<span class="k">else</span> <span class="p">:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;뒷면&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-5-9b2187854a0a&gt;&quot;</span><span class="gt">, line </span><span class="mi">5</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;앞면&quot;</span><span class="p">)</span>
+        <span class="o">^</span>
+<span class="ne">IndentationError</span>: expected an indented block
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3><span class="section-number">5.3.4.3. </span>공정하지 않은 동전<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>이제 앞면이 나올 가능성이 뒷면보다 2배가 큰 공정하지 않은 동전을 던지는 실험을 구현해 보자.</p>
+<p>(0,1)을 균등하게 새 구간 (0,1/3), (1/3,2/3), (2/3,1) 으로 나누고 난수의 결과가 첫 번째와 두 번째 구간에 속하면, 즉 난수가 2/3 보다 작으면 <code class="docutils literal notranslate"><span class="pre">앞면</span></code>, 2/3 보다 크면 <code class="docutils literal notranslate"><span class="pre">뒷면</span></code>이 나오도록 하면 된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span> <span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;앞면&quot;</span><span class="p">)</span>
+<span class="k">else</span> <span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;뒷면&quot;</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.29124044]
+앞면
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2><span class="section-number">5.3.5. </span>반복<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>위에서 구현한 동전 던지기 실험을 여러 번 반복해서 수행할 수는 없을까?</p>
+<p>프로그램 언어에서 <strong>같은 작업을 여러 번 반복하여 실행하는 기능</strong> 을 <strong><code class="docutils literal notranslate"><span class="pre">loop</span></code></strong> 라고 한다.</p>
+<div class="section" id="id10">
+<h3><span class="section-number">5.3.5.1. </span>반복분의 구조<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>만약 주어진 코드들을  <code class="docutils literal notranslate"><span class="pre">n</span></code> 번 반복하여 실행하고 싶다면 다음과 같이 <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">...</span> <span class="pre">in</span> <span class="pre">...</span></code> 명령문을 사용한다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">iterable_object</span> <span class="p">:</span>
+  <span class="n">코드</span> <span class="mi">1</span>
+  <span class="n">코드</span> <span class="mi">2</span>
+  <span class="o">...</span>
+</pre></div>
+</div>
+<p>명령문 <code class="docutils literal notranslate"><span class="pre">for</span></code> 뒤에는  반복하면서 순서대로 뽑히는 것을 저장할 <code class="docutils literal notranslate"><span class="pre">target</span></code> 변수를 지정하고 <code class="docutils literal notranslate"><span class="pre">in</span></code> 뒤에는 반복할 것들이 나열되어 있는 대상(<code class="docutils literal notranslate"><span class="pre">iterable_object</span></code>)을  지정해 준다. 조건문과 마찬가지로 명령문 <code class="docutils literal notranslate"><span class="pre">for</span></code> 다음에 나오는 반복할 명령문들(블럭)은 최소한 공백 하나로 들여쓰기 해야 한다.</p>
+<p>예를 들어서 0부터 9까지의 정수로 구성된 벡터의 원소를 차례대로 프린트하는 반복문은 다음과 같이 쓸 수 있다.  <code class="docutils literal notranslate"><span class="pre">for</span></code> 문 뒤에 나오는 <code class="docutils literal notranslate"><span class="pre">i</span></code> 변수는 반복에 따라서 <code class="docutils literal notranslate"><span class="pre">my_iter1</span></code>의 원소로 차례대로 지정된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_iter1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">my_iter1</span> <span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></div>
+</div>
+</div>
+</div>
+<p>위의 코드는 아래와 같이 더 간단하게 쓸 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></div>
+</div>
+</div>
+</div>
+<p>다음과 같이 반복문을 사용하여 1부터 10 까지 숫자의 합을 구할 수 있다.</p>
+<ol class="simple">
+<li><p>먼저 1부터 10 까지 저장된 반복할 벡터 <code class="docutils literal notranslate"><span class="pre">mynumbers</span></code> 를 만들고</p></li>
+<li><p>반복문을 사용하기 전에 먼저 숫자의 합을 저장할 변수 <code class="docutils literal notranslate"><span class="pre">mysum</span></code>의 값을 0 으로 지정하고</p></li>
+<li><p>반복문 <code class="docutils literal notranslate"><span class="pre">for</span></code> 를 사용하여 매 반복마다 꺼낸 숫자 <code class="docutils literal notranslate"><span class="pre">i</span></code> 를  <code class="docutils literal notranslate"><span class="pre">mysum</span></code> 에 더해준다.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mynumbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span> <span class="c1">## 1부터 10까지 저장된 벡터 - 끝나는 숫자기 11인것에 유의하다.</span>
+
+<span class="n">mysum</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mynumbers</span> <span class="p">:</span>
+  <span class="n">mysum</span> <span class="o">=</span> <span class="n">mysum</span> <span class="o">+</span> <span class="n">i</span>
+
+<span class="n">mysum</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>55
+</pre></div>
+</div>
+</div>
+</div>
+<p>반복할 것들이 나열되어 있는 대상은 다음과 같이 문자로 된 벡터도 가능하다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_iter2</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">my_iter2</span> <span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A
+B
+C
+D
+</pre></div>
+</div>
+</div>
+</div>
+<p>반복분은 다음과 같이 중첩해서 사용할 수 있다. 바깥 쪽에 있는 반복문에서 <code class="docutils literal notranslate"><span class="pre">i</span></code>가 먼저 정해진 후에 안쪽에 있는 <code class="docutils literal notranslate"><span class="pre">j</span></code>가 반복된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">:</span>
+  <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 0
+0 1
+0 2
+1 0
+1 1
+1 2
+2 0
+2 1
+2 2
+3 0
+3 1
+3 2
+4 0
+4 1
+4 2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id11">
+<h3><span class="section-number">5.3.5.2. </span>동전 던지기의 반복<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>이제 위에서 동전을 던지는 코드를 10회 반복해 보자.</p>
+<p>여러분이 아래 명령문 <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">np.arange(10)</span></code> 에서 10을 다른 숫자로 바꾸면, 예를 들어 100으로 바꾸면 100번 동전을 던진 결과가 출력될 것이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">:</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;앞면&quot;</span><span class="p">)</span>
+  <span class="k">else</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;뒷면&quot;</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.39814955]
+앞면
+[0.1849489]
+앞면
+[0.07670611]
+앞면
+[0.11136791]
+앞면
+[0.36775051]
+앞면
+[0.97752369]
+뒷면
+[0.1695659]
+앞면
+[0.00365524]
+앞면
+[0.28785766]
+앞면
+[0.74082434]
+뒷면
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2><span class="section-number">5.3.6. </span>확률 실험<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<p>실험(experiment)은 주어진 여러 가지 조건과 우연성에 대한 정보를 이용하여
+원하는 사건를 반복해서 실행하는 것이다.</p>
+<p>실험은 다른 말로 모의실험(simulation)이라고 부르며 특별히 우연성, 즉 확률을 이용한 실험을 <strong>확률 실험(stochastic experiment, stochastic simulation)</strong> 이라고 한다.</p>
+<div class="section" id="id13">
+<h3><span class="section-number">5.3.6.1. </span>동전 던지기<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p>이제 위에서 배운 조건문과 반복분을 이용하여 다음과 같은 질문에 대한 답을 구해보자.</p>
+<ul class="simple">
+<li><p>공정한 동전을 1000번 던졌을 때 앞면이 나올 횟수는?</p></li>
+</ul>
+<p>위의 질문에 대답하기 위해서</p>
+<ul class="simple">
+<li><p>실험의 시작 전에 앞면이 나오는 횟수을 세는 변수 <code class="docutils literal notranslate"><span class="pre">count_head</span></code> 를 0 으로 지정한다.</p></li>
+<li><p>각 반복마다 앞면이 나오는 경우  <code class="docutils literal notranslate"><span class="pre">count_head</span></code> 의 값을 1씩 증가시킨다.</p></li>
+</ul>
+<p>다음은 공정한 동전을 1000번 던졌을 (<code class="docutils literal notranslate"><span class="pre">N=1000</span></code>) 때 앞면이 나올 횟수를  <code class="docutils literal notranslate"><span class="pre">count_head</span></code> 에 저장하는 코드이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">count_head</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="p">:</span>
+
+  <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="p">:</span>
+    <span class="n">count_head</span> <span class="o">=</span> <span class="n">count_head</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">count_head</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>510
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>주의할 점</strong></p>
+<ol class="simple">
+<li><p>위의 코드에서 앞면이 나오는 조건(<code class="docutils literal notranslate"><span class="pre">x&lt;</span> <span class="pre">0.5</span></code>)에서만 횟수를 늘리는 작업을 수행하므로 <code class="docutils literal notranslate"><span class="pre">else</span></code>는 필요가 없다.</p></li>
+<li><p>반복문 <code class="docutils literal notranslate"><span class="pre">for</span></code> 문 뒤에 반복적으로 수행할 문장들(블럭)은 모두 들여쓰기를 해주어야 한다.</p></li>
+<li><p>또한 <code class="docutils literal notranslate"><span class="pre">if</span></code> 문 뒤에 조건에 따라서 수행할 문장들(블럭)도 들여쓰기를 해주어야 한다.</p></li>
+</ol>
+</div>
+<div class="section" id="id14">
+<h3><span class="section-number">5.3.6.2. </span>투자 실험<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>이제 조금 다른 실험을 해보자.</p>
+<ul class="simple">
+<li><p>나는 1,000,000원 을 가지고 있다.</p></li>
+<li><p>내가 구입한 금융상품은 KOSPI 주식 중에 하루마다 주식 종목을 임의로 선택해서 주식 가격이 전날에 비해 오르면 10,000원을 벌고, 내려가면 10,000원을 잃는다.</p></li>
+<li><p>임의로 선택한 주식 종목이 전날에 비해 올라갈 확률은 0.55 로 볼 수 있다.</p></li>
+<li><p>난 1년 내로 얼마나 벌 수 있을까?</p></li>
+</ul>
+<p>이제 위에서 배운 난수, 조건문, 반복문을 이용하여 일년 후 나의 잔고에 대한 확률실험을 해보자.</p>
+<p>다음 코드를 반복해서 실행하면서 여러분이 번 돈이 얼마나 될 지 상상해보자. <strong>유의할 점은 날마다 임의로 선택한 주식 종목이 전날에 비해 올라갈 사건은 우연성이 있기 때문에 코드를 실행할 때 마다 결과가 다르게 나온다.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">My_money</span> <span class="o">=</span> <span class="mi">1000000</span>
+<span class="n">Number_of_days</span> <span class="o">=</span> <span class="mi">365</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">Number_of_days</span><span class="p">)</span> <span class="p">:</span>
+
+  <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.55</span> <span class="p">:</span>
+    <span class="n">My_money</span> <span class="o">=</span> <span class="n">My_money</span> <span class="o">+</span> <span class="mi">10000</span>
+  <span class="k">else</span> <span class="p">:</span> 
+    <span class="n">My_money</span> <span class="o">=</span> <span class="n">My_money</span> <span class="o">-</span> <span class="mi">10000</span>
+
+<span class="n">My_money</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1370000
+</pre></div>
+</div>
+</div>
+</div>
+<p>더 나아가서 여러분과 같이 백만원을 가지고 이 투자상품을 산 사람이 1000 명이라고 하자. 투자한 사람들의 1년 후 잔고는 어떤 분포를 가질까?</p>
+<p>먼저 다음과 같이 초기 변수를 정의하자.</p>
+<ul class="simple">
+<li><p>초기 투자 금액: <code class="docutils literal notranslate"><span class="pre">My_money</span></code></p></li>
+<li><p>투자자의 수: <code class="docutils literal notranslate"><span class="pre">Number_of_people</span></code></p></li>
+<li><p>투자 일수: <code class="docutils literal notranslate"><span class="pre">Number_of_days</span></code></p></li>
+<li><p>임의로 선택한 주식 종목이 전날보다 오를 확률 : <code class="docutils literal notranslate"><span class="pre">P</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">My_money</span> <span class="o">=</span> <span class="mi">1000000</span>      <span class="c1"># 초기 투자 금액</span>
+<span class="n">Number_of_people</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># 투자자의 수</span>
+<span class="n">Number_of_days</span> <span class="o">=</span> <span class="mi">365</span>    <span class="c1"># 투자 일수</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="mf">0.55</span> <span class="c1"># 주식 종목이 전날보다 오를 확률</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>투자자들의 초기 금액의 저장된  벡터를  <code class="docutils literal notranslate"><span class="pre">People_money</span></code> 로 만들자.</p>
+<p>명령어 <code class="docutils literal notranslate"><span class="pre">np.repeat(a,n)</span></code>은 동일한 값 <code class="docutils literal notranslate"><span class="pre">a</span></code>를 가진 길이 <code class="docutils literal notranslate"><span class="pre">n</span></code> 의 벡터를 만드는 명령문이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 투자자들의 초기 금액의 저장된  벡터</span>
+<span class="n">People_money</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">My_money</span><span class="p">,</span> <span class="n">Number_of_people</span> <span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">People_money</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1000000, 1000000, 1000000, 1000000, 1000000, 1000000, 1000000,
+       1000000, 1000000, 1000000])
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 1000명의 투자자들이 각각 365일동안 투자를 한 후에 잔고를 구하는 코드를 아래와 같이 작성해 보자.</p>
+<p>아레 코드의 특징은 두 개의 반복문을 중첩해서 사용한 것이다.</p>
+<p>먼저 투자일 <code class="docutils literal notranslate"><span class="pre">i</span></code> 를 선택하고, 다음 투자자 <code class="docutils literal notranslate"><span class="pre">j</span></code> 마다 임의로 선택한 주식의 가격에 대한 결과를 투자 금액 <code class="docutils literal notranslate"><span class="pre">People_money[j]</span></code>에 반영하였다.</p>
+<ul class="simple">
+<li><p>1차 반복에서 투자일 선택:  <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">np.arange(Number_of_days)</span> </code></p>
+<ul>
+<li><p>2차 반복에서 투자자 선택:  <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">j</span> <span class="pre">in</span> <span class="pre">np.arange(Number_of_people)</span></code></p>
+<ul>
+<li><p>임의로 선택한 주식의 결과 <code class="docutils literal notranslate"><span class="pre">x</span></code> 에 따라서 <code class="docutils literal notranslate"><span class="pre">j</span></code> 번째 투자자의 금액 업데이트</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">Number_of_days</span><span class="p">)</span> <span class="p">:</span>
+
+  <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">Number_of_people</span><span class="p">)</span> <span class="p">:</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">P</span> <span class="p">:</span>
+      <span class="n">People_money</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">People_money</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="mi">10000</span>
+    <span class="k">else</span> <span class="p">:</span> 
+      <span class="n">People_money</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">People_money</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="mi">10000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 1000명 투자자들의 1년 후 잔고 <code class="docutils literal notranslate"><span class="pre">People_money</span></code> 를 요약해 보자.</p>
+<p>1000명의 잔고 금액를 우리가 배운 데이터프레임으로 변환한 뒤에 요약통계량과 분포를 살펴보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span> <span class="s1">&#39;money&#39;</span><span class="p">:</span> <span class="n">People_money</span><span class="p">})</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>money</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1630000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>970000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1250000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1190000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1450000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1410000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1430000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1530000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1110000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1550000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>money</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1.000000e+03</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1.359400e+06</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.899045e+05</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>6.300000e+05</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>1.230000e+06</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1.370000e+06</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1.490000e+06</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1.910000e+06</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;money&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fd630a9cf10&gt;
+</pre></div>
+</div>
+<img alt="../../_images/data_random_experiment_48_1.png" src="../../_images/data_random_experiment_48_1.png" />
+</div>
+</div>
+<p>1년간 투자 후에 원금 100만원보다 적은 잔고를 가진 사람, 즉 투자에서 손실을 본 사람은 몇 명인가?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;money&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">My_money</span> <span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>money    33
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>다행히 손실을 본 사람의 수는 많지 않다. 그 이유는 임의로 선택한 종목의 주가가 오를 확률을 낙관적으로(<code class="docutils literal notranslate"><span class="pre">P=0.55</span></code>)로 설정했기 때문이다. 여러분이 위의 코드를 실행한 결과는 이 노트에 있는 숫자와 다를 수 있다. 왜냐하면 코드를 실해했을 때 난수의 결과가 다르기 때문이다.</p>
+<p>이제 초기투자 금액, 투자 기간, 코스피가 오르는 확률 등을 초기값들을 바꾸어 가면서 투자 실험을 해보자.</p>
+<p>투자 기간(일, <code class="docutils literal notranslate"><span class="pre">Number_of_days</span> </code>)과 투자자의 수(명,<code class="docutils literal notranslate"><span class="pre">Number_of_people</span></code>)을 곱한 횟수가 실험의 총 반복수이다. 총 반복수가 클수록 실행시간도 오래 걸린다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">My_money</span> <span class="o">=</span> <span class="mi">500000</span>      <span class="c1"># 초기 투자 금액</span>
+<span class="n">Number_of_people</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># 투자자의 수</span>
+<span class="n">Number_of_days</span> <span class="o">=</span> <span class="mi">365</span><span class="o">*</span><span class="mi">2</span>  <span class="c1"># 투자 일수</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="mf">0.45</span> <span class="c1"># 임의로 선택한 주식의 가격이 전날보다 오를 확률</span>
+
+<span class="c1"># 투자자들의 초기 금액의 저장된  벡터</span>
+<span class="n">People_money</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">My_money</span><span class="p">,</span> <span class="n">Number_of_people</span> <span class="p">)</span>  
+
+<span class="c1"># 투자 실험</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">Number_of_days</span><span class="p">)</span> <span class="p">:</span>   
+  <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">Number_of_people</span><span class="p">)</span> <span class="p">:</span>   
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">P</span> <span class="p">:</span>
+      <span class="n">People_money</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">People_money</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="mi">10000</span>
+    <span class="k">else</span> <span class="p">:</span> 
+      <span class="n">People_money</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">People_money</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="mi">10000</span>
+
+<span class="c1"># 최종 잔고를 데이터프레임으로 </span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span> <span class="s1">&#39;money&#39;</span><span class="p">:</span> <span class="n">People_money</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>money</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1.000000e+03</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>-2.210600e+05</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>2.710586e+05</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-1.080000e+06</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>-4.000000e+05</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>-2.200000e+05</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>-4.000000e+04</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>6.000000e+05</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;money&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">My_money</span> <span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>money    997
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;money&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fd630287310&gt;
+</pre></div>
+</div>
+<img alt="../../_images/data_random_experiment_56_1.png" src="../../_images/data_random_experiment_56_1.png" />
+</div>
+</div>
+<p>위에서 우리가 구현해 본 확률 실험은 현실성이 떨어지는 투자 방법을 가정하였다. 사람들은 투자할 주식의 종목을 임의로 랜덤하게 선택하지는 않을 것이다. 하지만 앞에서 구현한 확률 실험는 금융에서 사용되는 다양한 상품들에 대하여 위험성을 알아 보는 복잡한 실제 실험의 기본적 구조를 제공한다.</p>
+<p>초기 조건을 다양하게 바꾸어 보아도 사람들의 최종 투자 금액의 분포를 보면 평균에서 대칭인 정규분포와 매우 유사한 것을 알 수 있다. 앞 절에서 배운 정규분포는 신장이나 몸무게 등의 분포 모양을 설명하기 위하여 수학적으로 만든 분포가 아니다.</p>
+<p>여러분이 위에서 본 것처럼 간단한 실험에서 투자 잔고의 분포는 정규분포와 매우 유사하게 나타난다. 실제로 투자하는 날의 수를 증가시키면 최종 잔고의 분포는 정규분포와 더욱 가까워 진다.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/05"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="data_randomness.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">5.2. </span>분포와 우연성</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By 서울시립대학교<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
