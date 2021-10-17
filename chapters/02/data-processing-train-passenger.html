@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -34,17 +34,17 @@
     
   <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -178,7 +178,7 @@
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../04/dataframe.html">
-   4. 데이터프레임
+   4. 분포와 확률
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -187,50 +187,28 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-intro.html">
-     4.1. 데이터프레임의 정의와 구성요소
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-change.html">
-     4.2. 데이터프레임의 정리
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-summary.html">
-     4.3. 데이터프레임의 요약
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-merge.html">
-     4.4. 데이터프레임의 결합
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../05/data_probability.html">
-   5. 분포와 확률
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
     <a class="reference internal" href="../05/data_distribution.html">
-     5.1. 자료의 분포
+     4.1. 자료의 분포
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05/data_randomness.html">
-     5.2. 분포와 우연성
+     4.2. 분포와 우연성
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../05/data_random_experiment.html">
-     5.3. 확률과 컴퓨터 실험
+     4.3. 확률과 컴퓨터 실험
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_probability.html">
+     4.4. 확률의 기초
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_function.html">
+     4.5. 함수
     </a>
    </li>
   </ul>
@@ -372,7 +350,7 @@
         
               <div>
                 
-  <div class="section" id="id1">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1><span class="section-number">2.3. </span>고속열차 여객 수송자료<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>교통 분야는 빅데이터의 수집과 분석이 가장 활발하게 진행되는 분야이다. 자동차, 항공기, 기차 등 교통 수단들이 운행할 때 다양한 형태의 빅데이터들이 생성되고 저장되고 있다. 최근에는 자율 주행차의 개발을 위하여 자동차 운행에 관련된 빅데이터 분석이 중요한 이슈이다. 또한 열차와 항공기 같은 여객 산업에서는 예약과 결제 등 서비스와 매출에 대한 빅데이터가 효율적인 자원 배분과 수익관리에 유용하게 사용된다.</p>
 <p>열차는 자동차,항공기와 다르게 출발역과 도착역 사이에 다수의 중간 정차역이 존재한다. 따라서 열차를 운행하는 경우 여행 경로에 따른 승객의 수요 예측과 죄석의 합리적인  배분이 매우 중요하다.</p>

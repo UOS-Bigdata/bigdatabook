@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5. 분포와 확률 &#8212; 빅데이터 개론 2</title>
+    <title>4.4. 확률의 기초 &#8212; 빅데이터 개론 2</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -34,17 +34,19 @@
     
   <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -52,8 +54,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.1. 자료의 분포" href="data_distribution.html" />
-    <link rel="prev" title="4.4. 데이터프레임의 결합" href="../04/dataframe-merge.html" />
+    <link rel="next" title="4.5. 함수" href="data_function.html" />
+    <link rel="prev" title="4.3. 확률과 컴퓨터 실험" href="data_random_experiment.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -176,61 +178,39 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../04/dataframe.html">
-   4. 데이터프레임
+   4. 분포와 확률
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-intro.html">
-     4.1. 데이터프레임의 정의와 구성요소
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-change.html">
-     4.2. 데이터프레임의 정리
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-summary.html">
-     4.3. 데이터프레임의 요약
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-merge.html">
-     4.4. 데이터프레임의 결합
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
-   5. 분포와 확률
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="data_distribution.html">
-     5.1. 자료의 분포
+     4.1. 자료의 분포
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="data_randomness.html">
-     5.2. 분포와 우연성
+     4.2. 분포와 우연성
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="data_random_experiment.html">
-     5.3. 확률과 컴퓨터 실험
+     4.3. 확률과 컴퓨터 실험
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.4. 확률의 기초
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data_function.html">
+     4.5. 함수
     </a>
    </li>
   </ul>
@@ -336,6 +316,88 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   4.4.1. 확률이란?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   4.4.2. 확률의 주관성
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   4.4.3. 확률 분포
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     4.4.3.1. 주사위
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     4.4.3.2. 확률의 기초 규칙
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     4.4.3.3. 자료의 분포: 성인 남자의 키
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     4.4.3.4. 정규분포: 확률 실험
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     4.4.3.5. 정규분포: 확률밀도함수
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     4.4.3.6. 확률의 덧셈
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id11">
+   4.4.4. 독립 시행
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     4.4.4.1. 두 개의 동전
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     4.4.4.2. 독립 시행과 표본공간
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     4.4.4.3. 확률의 곱셈
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id15">
+   4.4.5. 요약
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -344,12 +406,847 @@
         
               <div>
                 
-  <div class="section" id="id1">
-<h1><span class="section-number">5. </span>분포와 확률<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>우리는 지난 강의에서 데이터를 분석하기 위해서 자료를 받아 정리한 후 분석을 위한 최종적인 <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>을 만들고 요약하는 방법들을 살펴보있다.</p>
-<p>이 장에서는 데이터가 가지고 있는 다양한 특성들을 확률과 통계에서 사용되는 <strong>분포(distribution)</strong> 의 개념을 이용하여 파악하는 방법을 배울 것이다. 자료의 분포를 알기 위한 여러 가지 시각화 방법과 요약 통계량에 대하여 배운다.</p>
-<p>또한 자료의 분포를 결정하는 확률에 대한 기초적인 개념을 배우고 프로그램을 통하여 임의성(randomness)이 어떻게 실제에 구현되는지 프로그램을 이용한 예제를 통해서 배운다.</p>
-<div class="toctree-wrapper compound">
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1><span class="section-number">4.4. </span>확률의 기초<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>확률(probability)는 어떤 일이 일어날 가능성(chance)의 정도를 나타내는 말이다.</p>
+<p>대부분의 사람들은 어떤 일이 일어날 가능성에 대하여 생각하고 그에 따라 예측하고 행동한다. 예를 하늘에 구름이 많고 흐리면 비가 올 가능성이 높다는 것은 선사 시대에 살았던 사람들도 생각할 수 있었을 것이다. 비가 올 것 같은 날에 편의점 주인이 우산을 평소보다 많이 준비하는 행동은 너무 자연스럽다.
+또한 투자에 관심이 많은 사람들은 어떤 주식 종목이 “언제 얼마나 오를 것이냐 “에 대한 예측을 위하여 많은 노력을 기울일 것이다.</p>
+<p>사람들은 날마다 많은 일에 대한 <strong>가능성을 생각하며 그에 따라 예측하고</strong> 의사 결정을 한다. 그렇지만 예측한 가능성대로 세상이 움직여 주지 않는 경우가 많다.
+왜냐하면 사건의 결과가 우연성(randomness)를 지니고 있기 때문이다. 기상 예보가 틀렸다고 너무 화내지 말자. 기후변화가 진행되는 최근의 기상은 예측하기 쉽지 않다.</p>
+<p>이렇게 확률은 어떤 일이 일어날 가능성의 정도를 나타내는 말이지만, 동일한 사건에 대한 가능성을 여러 사람에게 묻는다면 사람마다 그 가능성의 정도가 다를 수 있다. 이는 사람마다 경험과 지식의 차이 때문일 수 있고 생각의 방식에 따라서 가능성은 달라질 수 있다.</p>
+<p>이 장에서는 확률에 대한 정의와 확률 계산을 위한 기초적인 규칙을 알아보도록 하겠다.</p>
+<p>먼저 필요한 파이썬 라이브러리를 불러오자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 필요한 라이브러리 불러오기</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 그림 그리기를 위한 코드 </span>
+<span class="c1"># 강의의 범위를 벋어나므로 문법을 익히지 않아도 된다.</span>
+
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Rectangle</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rc</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>   <span class="c1"># 그림 크기 조정</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">4.4.1. </span>확률이란?<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>어떤 일이 일어날 가능성의 정도를 나타내는 <strong>확률은 0과 1사이의 값으로 표시되며 확률이 0 이면 사건이 일어나지 않는 경우이고 1 이면 무조건 일어나는 것을 말한다.</strong></p>
+<p>어떤 사건의 확률을 말할 때 다음과 두 가지 방법으로 확률을 계산한다.</p>
+<ul>
+<li><p>논리적 확률</p>
+<p>논리적 확률는 먼저 일어날 수 있는 모든 가능한 결과을 생각하고 모든 결과의 가능성을 논리적인 방법으로 유추하는 것이다. 예를 들어 가능한 모든 결과들이 동일하다는 가정 하에서(Outcomes are equally likely) 확률을 계산하는 방법이 논리적 확률의 예이다.</p>
+<p>예를 들어 주사위를 던지는 경우, 여섯 개의 눈이 나올 가능성이 모두 같다는 논리적인 판단으로 각각의 눈이 나올 확률을 1/6으로 정하는 방법이다. 가능성이 같다는 근거는 정육면체가 가지는 수학적, 물리적 특성을 고려한 것이다.</p>
+<p>여기서 두 가지 용어, 표본공간과 사건을 소개한다.</p>
+</li>
+</ul>
+<ul class="simple">
+<li><p>표본 공간 (sample space) : 모든 가능한 결과를 모아 놓은 집합으로 <span class="math notranslate nohighlight">\(S\)</span> 로 표기한다.</p></li>
+<li><p>사건 (event): 표본 공간 <span class="math notranslate nohighlight">\(S\)</span> 의 부분 집합</p></li>
+</ul>
+<p>예를 들면 주사위를 던질 때 가능한 결과는 1부터 6까지의 6개의 면이다. 따라서 표본 공간은 다음과 같다.
+$<span class="math notranslate nohighlight">\( S = \{ 1,~2,~3,~4,~5,~6 \} \)</span><span class="math notranslate nohighlight">\(
+ 짝수가 나올 사건을 생각하면 이는 \)</span>event = { 2,~4,~6 }$으로  표시할 수 있다.</p>
+<p>표본 공간에 속한 <strong>모든 결과들의 가능성이 같다고 할 때</strong> 어떤 사건(<span class="math notranslate nohighlight">\(event\)</span>)이 일어날 확률은 다음과 같이 계산할 수 있다.</p>
+<div class="math notranslate nohighlight">
+\[ P(\text{event}) = \frac {\text{사건} (event) \text{ 안의 원소의 수}} {\text{표본 공간 }S \text{ 안의 원소의 수}}  \]</div>
+<p><strong>질문:</strong> 우리는 주사위를 던질 때 모든 결과의 가능성은 “논리적으로” 같다고 생각한다. 그렇다면 윷놀이를 할 때 윷을 하나 던진다고 하면 두 개의 결과의 가능성은 같은가? 윷을 던졌을 때 “배”가 나올 확률은 “등”이 나올 확률과 같은가? 논리적인 확률은?</p>
+<center><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Korea_yut_pan.jpg/440px-Korea_yut_pan.jpg" width="300"></center>
+<center> 그림출처-위키백과 </center>
+<ul>
+<li><p>경험적 확률</p>
+<p>경험적 확률은 어떤 사건이 일어난 상대적인 횟수, 즉 상대 도수(relative frequency)를 사건이 일어난 또는 일어날 확률로 사용하는 경험적 개념이다.</p>
+<div class="math notranslate nohighlight">
+\[ P(\text{event}) = \frac {\text{사건} (event) \text{ 이 일어난 횟 수 }} {\text{전체 실험 또는 시행 횟수}}  \]</div>
+</li>
+</ul>
+<p><strong>질문</strong> 윷놀이를 할 때 윷 하나를 던진다고 하면 “등”이 나올 확률은 어떻게 구할 수 있을까? 하나의 윷의 생김새로 보면 “배”와”등”이 나올 가능성이 같아 보이지 않는다. 논리적인 확률을 고려할 수 있을까? 계속 던져서 “등”이 나온 횟수를 전체 던진 횟수로 나눈 것이 경험적 확률이다. 그런데 얼마나 많이 던져야 할까?</p>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">4.4.2. </span>확률의 주관성<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>어떤 일이 일어날 가능성에 대한 생각은 다를 수 있다.  어떤 사건이 일어날 확률은 개인의 믿음과 경험의 정도에 따라서 다를 수 있다.</p>
+<ul class="simple">
+<li><p>경제가 내년에 회복될 가능성은? 좀 더 명확하게 내년 경제성장률이 3%이상일 가능성은? <a class="reference external" href="https://www.yna.co.kr/view/AKR20201228127500002">내년 경기 전망에 대한 뉴스</a></p></li>
+<li><p>친구에게 잘 섞인 52장의 카드에서 1장을 뽑으라고 했는데, 친구가 스페이드 에이스(♠️A)를 뽑았다. 이제 친구에게 나머지 51장의 카드에서 두 번째 카드를 뽑으라고 했을 때  “스페이드 에이스(♠️A)가 다시 뽑힐 가능성은?” 이라고 물어보면 무슨 대답을 할까? 똑같은 상황이 벌어지면 외계인은 어떤 대답을 할까?</p></li>
+</ul>
+<p>그런데 카드 게임을 해본 <a class="reference external" href="https://www.scientificamerican.com/article/how-many-aliens-are-in-the-milky-way-astronomers-turn-to-statistics-for-answers/">외계인이 있을 가능성</a>은 얼마나 될까?</p>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">4.4.3. </span>확률 분포<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>우리는 앞 절에서 남자의 키에 대한 분포, 정규분포에 대하여 알아보았다. 다시 강조하면 확률 분포는 어떤 값이 임의로(randomly) 주어지는 경우 나타날 수 있는 <strong>값들의 상대적인 가능성</strong> 을 알려주는 역활을 한다. 정확하게 말하면 가능한 모든 결과, 즉 표본 공간의 모든 결과에 대한 가능성을 확률로 나타낸 것이다.</p>
+<p>이제 확률분포에 대한 몇 개의 예제를 보면서 확률 계산의 기초를 배워보자.</p>
+<div class="section" id="id5">
+<h3><span class="section-number">4.4.3.1. </span>주사위<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>주사위를 던질 때 표본 공간은 1 부터 6까지의 6개의 숫자이고 확률 분포는 다음과 같다.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>가능한 결과</p></th>
+<th class="text-align:center head"><p>1</p></th>
+<th class="text-align:center head"><p>2</p></th>
+<th class="text-align:center head"><p>3</p></th>
+<th class="text-align:center head"><p>4</p></th>
+<th class="text-align:center head"><p>5</p></th>
+<th class="text-align:center head"><p>6</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>확률</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{1}{6}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{1}{6}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{1}{6}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{1}{6}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{1}{6}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{1}{6}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>우리는 위와 같은 확률 분포로부터 주어진 사건의 확률을 계산할 수 있다. 예를 들어 하나의 주사위를 던질 경우 눈의 값이 5 이상 나올 확률은 어떻게 구할까?</p>
+<p>일단 눈의 값이 5 이상인 사건은 5 또는 6이 나올 사건이다. 주사위의 모든 눈이 나올 가능성이 같다면, 위에서 본 논리적 확률의 정의에 따라서 2/6 으로 다음과 같이 구할 수 있다.
+$<span class="math notranslate nohighlight">\(
+\begin{align*}
+P(\text{ 5 이상}) &amp; = P(\text{ 5 또는 6}) \\
+&amp; = \frac {\text{사건} (event) \text{ 안의 원소의 수}} {\text{표본 공간 }S \text{ 안의 원소의 수}} \\
+&amp; = \frac{2}{6} 
+\end{align*}
+\)</span>$</p>
+<p>위에서 눈의 값이 5 이상인 사건의 확률은 5가 나올 사건의 확률과 6이 나올 사건의 확률을 더해서 구할 수도 있다. 주사위 하나를 던질 때 5와 6이 동시에 나올 수 없다는 사실에 유의하자.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P(\text{ 5 또는 6}) &amp; = P(\text{ 5}) + P(\text{ 6}) \\
+ &amp; = \frac{1}{6} + \frac{1}{6} \\
+ &amp; =  \frac{2}{6}
+\end{align*}
+\end{split}\]</div>
+<p>주사위를 던질 경우에 대한 확률분포를 다음과 같이 그림으로 그려보자. 가능한 값은 6개이고 각각의 확률이 1/6인 것을 높이가 <span class="math notranslate nohighlight">\(1/6= 0.1667\)</span> 이고 너비가 1인 막대 그래프로 표시할 수 있다. 즉, 확률 분포를 그래프로 나타낸 것이다.</p>
+<p>눈이 5 와 6인 경우 빨간 막대로 표시했으며 두 막대의 크기를 합하면 <span class="math notranslate nohighlight">\(1/6 + 1/6 =2/6\)</span>이다. 6개 막대의 면적을 모두 합하면 1이 된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dice</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">)})</span>
+
+<span class="c1"># 4이상인 막대를 빨간색으로 변환 (아래 코드는 강의범위를 벗어나므로 문법은 익히지 않아도 된다)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">dice</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;probability&#39;</span><span class="p">,</span> <span class="n">discrete</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">rectangle</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">rectangle</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="n">rectangle</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/data_probability_10_0.png" src="../../_images/data_probability_10_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><span class="section-number">4.4.3.2. </span>확률의 기초 규칙<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>먼저 확률을 계산하는 가장 기초적인 두 가지  규칙을 알아보자.</p>
+<ul>
+<li><p>표본공간의 확률은 1이다. 즉, 가능한 모든 사건이 일어날 확률은 1이다</p>
+<div class="math notranslate nohighlight">
+\[ P(S) = 1 \]</div>
+</li>
+<li><p>여사건(complement of event)의 확률은 1에서 주어진 사건의 확률을 빼면 된다.</p>
+<div class="math notranslate nohighlight">
+\[ P(\text{not event}) = 1 -P(\text{event}) \]</div>
+</li>
+</ul>
+<p>예를 들어 주사위의 눈이 1과 같거나 큰 사건은 표본공간 <span class="math notranslate nohighlight">\(S\)</span>와 같은 사건이다. 따라서 확률은 1이다. 또한 주사위의 눈이 4 이하일 사건은 5 이상일 사건의 여사건이므로 다음과 같이 계산한다.</p>
+<div class="math notranslate nohighlight">
+\[ P(\text{ 4 이하})= 1- P(\text{ 5 이상}) = 1-2/6 = 4/6 \]</div>
+</div>
+<div class="section" id="id7">
+<h3><span class="section-number">4.4.3.3. </span>자료의 분포: 성인 남자의 키<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>앞 절에서 논의한 체력측정 데이터에서 <strong>한 명의 남자를 임의로 선택하면</strong> 키가 180cm 이상일 가능성은 얼마나 될까?</p>
+<p>체력측정 데이터에 있는 모든 남자들이 선택될 가능성이 모두 같으므로 (주사위를 던지는 경우와 동일하게) 임의로 선택한 남자의 키가 180cm 이상일 가능성은 다음과 같이 구할 수 있다.</p>
+<div class="math notranslate nohighlight">
+\[ P(\text{ 키 } \ge { 180}) = \frac{\text{키가 180 이상인 성인 남자의 수}}{\text{모든 성인 남자의 수}} \]</div>
+<p>위의 확률을 체력측정 데이터에서 계산해 보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/physical_test_2018_data.csv&quot;</span>
+<span class="n">physical_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">height_adult_man</span> <span class="o">=</span> <span class="n">physical_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="p">(</span><span class="n">physical_data</span><span class="p">[</span><span class="s2">&quot;TEST_SEX&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;M&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">physical_data</span><span class="p">[</span><span class="s2">&quot;TEST_AGE&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">19</span><span class="p">),</span> <span class="p">[</span><span class="s2">&quot;ITEM_F001&quot;</span><span class="p">]]</span>
+<span class="n">height_adult_man</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;height&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">height_adult_man</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>159.2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>175.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>178.7</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>174.9</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>175.3</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>179.8</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>180.9</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>163.6</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>176.6</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>167.7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>데이터프레임의 메소드 <code class="docutils literal notranslate"><span class="pre">count()</span></code> 는 행의 수를 세어준다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">height_adult_man</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>height    920
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>위의 자료로 부터 모든 성인 남성의 수는 920명인 것을 알았다. 이제 키가 180 cm 이상인 남자의 수를 알아보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">height_adult_man</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">height_adult_man</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">180</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>height    106
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>키가 180 cm 이상인 남자의 수가 106명이므로 임의로 선택한 남자의 키가 180 이상일 확률은 다음과 같다.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P(\text{ 키 &gt; 180}) &amp; = \frac{\text{키가 180 이상인 성인 남자의 수}}{\text{모든 성인 남자의 수}} \\
+ &amp; = \frac{106}{920} \\ 
+ &amp; = \underbrace{\frac{1}{920}+ \frac{1}{920}+  \cdots + \frac{1}{920}}_{106} \\
+ &amp; =  0.1152
+\end{align*}
+\end{split}\]</div>
+<p>체력측정 데이터에서 성인 남자의 히스토그램을 그려보았다. 히스도그램의 막대 높이는 도수(<code class="docutils literal notranslate"><span class="pre">frequency</span></code>) 가 아닌 상대도수(relative frequency)로 지정하였다.</p>
+<div class="math notranslate nohighlight">
+\[
+\text{상대도수 } = \frac{\text{도수}}{\text{전체 자료의 수}}
+\]</div>
+<p>키기 180 이상인 사람들에 대한 막대를 빨간색으로 표시하였다. 아래 빨간색 부분이 히스토그램의 전체 면적에서 차지하는 비율이 0.1152이다.</p>
+<p>히스도그램에서 상대 도수를 나타내는 선택명령문은 <code class="docutils literal notranslate"><span class="pre">density=True</span></code> 이다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">height_adult_man</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 히스토그램</span>
+<span class="n">p</span><span class="o">=</span> <span class="n">height_adult_man</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 키가 180이상인 막대를 빨간색으로 변환 (아래 코드는 강의범위를 벗어나므로 문법은 익히지 않아도 된다)</span>
+<span class="k">for</span> <span class="n">rectangle</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">rectangle</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">180</span><span class="p">:</span>
+        <span class="n">rectangle</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/data_probability_22_0.png" src="../../_images/data_probability_22_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3><span class="section-number">4.4.3.4. </span>정규분포: 확률 실험<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>이제 앞 절에서 논의한 정규분포를 생각해 보자.</p>
+<p>앞에서 본 체력측정 데이터에서 성인 남자의 키의 평균과 표준편차가 아래와 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">height_adult_man</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>920.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>172.695435</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>6.246716</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>153.800000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>168.700000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>172.750000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>176.800000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>195.200000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>앞 절에서 배운 것처럼 정규분포와 성인 남자의 키의 분포는 매우 유사하다.  성인 남자의 키가 정규분포 <span class="math notranslate nohighlight">\(𝑁(172.7,6.22^2)\)</span>를 따른다고 가정하자. 정규분포에서 임의로 추출한 남성의 키가 180 cm 이상인 확률을 어떻게 구할 수 있을까?</p>
+<p>동전을 던지는 확률 실험을 수행하는 방법과 유사하게  정규분포 <span class="math notranslate nohighlight">\(𝑁(172.7,6.22^2)\)</span>에서 10,000 명의 남자들의 키를 임의로 추출해 보자. 즉 정규분포 <span class="math notranslate nohighlight">\(𝑁(172.7,6.22^2)\)</span>에서 10,000 개의 난수(random number)를 추출해 보자.</p>
+<p>파이썬은 <span class="math notranslate nohighlight">\((0,1)\)</span> 사이에서 난수를 임의로 선택해주는 기본적인 함수 <code class="docutils literal notranslate"><span class="pre">np.random.rand()</span></code> 을 제공하며, 더 나아가 다양한 확률 분포에서 임의로 난수를 추출해주는 함수들이 있다.</p>
+<p>평균이 <span class="math notranslate nohighlight">\(m\)</span> 이고 표준편차가 <span class="math notranslate nohighlight">\(s\)</span> 인 정규분포에서 <span class="math notranslate nohighlight">\(n\)</span>개의 난수를 추출하는 함수는  <code class="docutils literal notranslate"><span class="pre">np.random.normal(m,s,n)</span></code>이다.</p>
+<p>이제 정규분포 <span class="math notranslate nohighlight">\(𝑁(172.7,6.22^2)\)</span> 에서 10,000 명을 임의로 추출하고 180 이상의 키를 가진 남자의 비율을 구해보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">normal_sample</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;height&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">172.7</span><span class="p">,</span> <span class="mf">6.22</span><span class="p">,</span> <span class="n">N</span><span class="p">)})</span>
+<span class="n">normal_sample</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>178.011849</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>168.361315</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>170.717727</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>181.909230</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>177.736148</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>171.634013</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>166.957456</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>168.770374</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>167.942937</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>171.296306</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 추출한 남자들의 수: N</span>
+<span class="n">N</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 키가 180cm 이상인 남자의 수: count180</span>
+<span class="n">count180</span> <span class="o">=</span>  <span class="n">normal_sample</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">normal_sample</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">180</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">count180</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>height    1205
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 키가 180cm 이상인 남자의 비율</span>
+<span class="n">count180</span><span class="o">/</span><span class="n">N</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>height    0.1205
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>정규분포에서 임의로 추출한 10,000 명의 키에 대한 히스토그램에서 180cm 이상인 남자들이 나타난 부분을 표시해 보자. 위에서 구한 키가 180cm 이상인 남자의 비율는 아래 히스토그램의 빨간 부분의 면적이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">=</span> <span class="n">normal_sample</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">rectangle</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">rectangle</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">180</span><span class="p">:</span>
+        <span class="n">rectangle</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/data_probability_31_0.png" src="../../_images/data_probability_31_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3><span class="section-number">4.4.3.5. </span>정규분포: 확률밀도함수<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>이제 정규분포 <span class="math notranslate nohighlight">\(𝑁(172.7,6.22^2)\)</span>의 확률밀도함수 <span class="math notranslate nohighlight">\(f(x; \mu,\sigma)\)</span>를 그리고 <span class="math notranslate nohighlight">\(x\)</span>의 값이 180 이상인 구간의 면적을 구해보자.</p>
+<p>먼저 정규분포 <span class="math notranslate nohighlight">\(𝑁(172.7,6.22^2)\)</span> 를 <code class="docutils literal notranslate"><span class="pre">normal_distribution</span></code> 이라는 이름으로 만들어 보자.</p>
+<p>아레 코드에서 라이브러리 <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> 를 <code class="docutils literal notranslate"><span class="pre">stats</span></code> 로 부른 후에</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+</pre></div>
+</div>
+<p>평균이 <code class="docutils literal notranslate"><span class="pre">mean</span></code> 이고 표준편차가 <code class="docutils literal notranslate"><span class="pre">std</span></code>인 정규분포를 함수 <code class="docutils literal notranslate"><span class="pre">stats.norm(mean,std)</span></code>로 만들 수 있다..</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">normal_distribution</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="n">std</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#평균이 172.7 이고 표준편차가 6.22 인 정규분포를 지정</span>
+<span class="n">mean</span><span class="o">=</span><span class="mf">172.7</span>
+<span class="n">std</span><span class="o">=</span><span class="mf">6.22</span>
+<span class="n">normal_distribution</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="n">std</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래 그림은 정규분포 <span class="math notranslate nohighlight">\(𝑁(172.7,6.22^2)\)</span>의 확률밀도함수 <span class="math notranslate nohighlight">\(f(x; \mu,\sigma)\)</span>를 그래프로 그린 후에 <span class="math notranslate nohighlight">\(x\)</span> 가 180 이상인 부분만 빨간 색으로 표시한 그림이다.</p>
+<p>아래에서 제시된 정규분포 그래프를 그리는 코드는 우리 강의의 범위를 벗어나므로 문법을 익히지 않아도 된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1">#아래 코드는 우리 강의의 범위를 벗어나므로 문법을 익히지 않아도 된다.</span>
+<span class="n">heights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mean</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">std</span><span class="p">,</span> <span class="n">mean</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="n">std</span><span class="p">,</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">heights</span><span class="p">,</span><span class="n">normal_distribution</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">heights</span><span class="p">),</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="n">tall</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span><span class="n">mean</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="n">std</span> <span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">tall</span><span class="p">,</span><span class="n">normal_distribution</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">tall</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PolyCollection at 0x7f96e6fdb890&gt;
+</pre></div>
+</div>
+<img alt="../../_images/data_probability_35_1.png" src="../../_images/data_probability_35_1.png" />
+</div>
+</div>
+<p>정규분포 <span class="math notranslate nohighlight">\(𝑁(172.7,6.22^2)\)</span>의 확률밀도함수 <span class="math notranslate nohighlight">\(f(x; \mu,\sigma)\)</span>를 그린 후에 <span class="math notranslate nohighlight">\(x\)</span>의 값이 180 이상인 구간의 면적은 다음과 같은 적분식으로 나타낼 수 있다. 전체 그래프의 면적은 1이고  빨간 색 부분의 면적인 0.12027 이다.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+ P(x \ge 180) &amp; = 1 - P(x \le 180)  \\
+ &amp; =  1 - \int_{-\infty}^{180} f(z; \mu,\sigma) ~dz  \\
+ &amp; = 0.12027
+\end{align*} 
+\end{split}\]</div>
+<p>위의 식에서 <span class="math notranslate nohighlight">\(\mu = 172.7\)</span>, <span class="math notranslate nohighlight">\(\sigma=6.22\)</span> 이다.</p>
+<p>여러분은 적분(integration)의 정의와 방법에 대해서 몰라도 된다.  적분은 그래프에서 주어진 부분의 면적을 구하라는 함수라고 생각하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 평균이 172.7이고 표준편차가 6.22 인 정규분포에서 180이상인 값이 임의로 추출될 확률</span>
+<span class="mf">1.0</span> <span class="o">-</span> <span class="n">normal_distribution</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.12027094038001529
+</pre></div>
+</div>
+</div>
+</div>
+<p>정규분포 <span class="math notranslate nohighlight">\(𝑁(172.7,6.22^2)\)</span> 에서 10,000 명의 키를 임의로 추출하여 만든 자료, 즉 확률 실험을 이용하여 만든 자료에서 구한 180 cm 이상인 성인의 비율과 정규분포 그래프에서 면적으로 구한 확률은 아주 가깝게 나타난다.</p>
+<p>아래 코드에서 메소드 <code class="docutils literal notranslate"><span class="pre">cdf(x)</span></code> 다음과 같이 정규분포의 주어진 값까지의 면적, 즉 확률을 구해준다.</p>
+<div class="math notranslate nohighlight">
+\[
+P(x \le x_0)  = \int_{-\infty}^{x_0} f(z; \mu,\sigma) ~dz ={\texttt{normal_distribution.cdf}(x_0)}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">normal_distribution</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8797290596199847
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">normal_distribution</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mf">172.7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">normal_distribution</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mf">160.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.02058565522616494
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">normal_distribution</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">Inf</span><span class="p">)</span> <span class="c1"># np.Inf 는 무한대를 뜻한다.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3><span class="section-number">4.4.3.6. </span>확률의 덧셈<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>위에서 주사위를 던지는 경우 5의 눈이 나올 사건과 6의 눈이 나올 사건은 동시에 일어날 수 없다. 주사위를 던지면 5가 나오던지 6이 나오던지 둘 중에 하나의 사건만 일어나야 한다.</p>
+<p><strong>이렇게 가능한 결과들이 동시에 일어나지 못하는 경우 사건의 확률은 각 가능한 결과의 확률을 더해 주면 된다.</strong></p>
+<p>체력측정 자료에서도 920명의 남자들 중에 1명을 임의로 뽑는다면, 예를 들어 철수(185cm)와 용희(190cm)가 동시에 뽑힐 수 없다. 따라서 키가 180 이상인  남성들이 106명이므로 1명이 뽑힐 확률(1/920)을 106번 더해주면 된다.</p>
+<p>조금 더 이론적으로 말하자면 두 개의 사건이 동시에 일어날 수 없는 경우, 즉 서로 배반(mutually exclusive)인 경우 두 사건 중 하나의 사건이 일어날 확률은 각각의 사건의 확률을 더해주면 된다.</p>
+<p>두 개의 사건 <span class="math notranslate nohighlight">\(A\)</span>와 <span class="math notranslate nohighlight">\(B\)</span> 가 서로 배반이면,  두 사건 중 하나가 일어날 사건(<span class="math notranslate nohighlight">\(A \cup B\)</span>)의 확률은 각각의 확률을 더해주면 된다.</p>
+<div class="math notranslate nohighlight">
+\[ \text{if } A \cap B = \emptyset, \text{ then } P(A \cup B) = P(A) + P(B) \]</div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2><span class="section-number">4.4.4. </span>독립 시행<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h3><span class="section-number">4.4.4.1. </span>두 개의 동전<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p><strong>하나의 동전을 두 번 연속으로 던졌을 때</strong> 한 번이라도 앞면이 나올 확률은 얼마인가?</p>
+<p>동전을 두 번 연속으로 던지면 첫 번째 결과와 두 번째 결과의 조합으로 가능한 모든 사건(표본 공간)은 다음과 같이 4 가지이다.
+또한 4개의 가능한 결과는 모두 가능성이 같다.</p>
+<div class="math notranslate nohighlight">
+\[\{ \text{(앞면, 앞면)},~ \text{(앞면, 뒷면)}, \text{(뒷면, 앞면)}, \text{(뒷면, 뒷면)} \} \]</div>
+<p>한 번이라도 앞면이 나올 사건은 <span class="math notranslate nohighlight">\(\text{(앞면, 뒷면)}\)</span>, <span class="math notranslate nohighlight">\(\text{(뒷면, 앞면)}\)</span>  두 개이고 두 사건은 동시에 일어날 수 없으므로 확률은 다음과 같다.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P(\text{ 한 번이라도 앞면}) &amp; = \frac {\text{사건} (event) \text{ 안의 원소의 수}} {\text{표본 공간 }S \text{ 안의 원소의 수}} \\
+&amp; = \frac{2}{4} \\
+ &amp; = \frac{1}{4} + \frac{1}{4} \\
+ &amp; = P(\text{(앞면, 뒷면)})  + P(\text{(뒷면, 앞면)}) 
+\end{align*}
+\end{split}\]</div>
+<p><strong>만약 두 개의 동전을 동시에 던졌을 때도</strong> 위와 같이 모든 가능한 결과가 4개인가? 누군가가 “두 개의 동전이 똑같이 생겨서 구분할 수 없으니 가능한 결과는 <span class="math notranslate nohighlight">\(\text{(앞면, 앞면)}\)</span>,<span class="math notranslate nohighlight">\(\text{(앞면, 뒷면)}\)</span>, <span class="math notranslate nohighlight">\(\text{(뒷면, 뒷면)}\)</span>, 즉  3가지이고 각각의 확률은 1/3 이다” 라고 주장하면 여러분은 어떻게 대답할 것인가?</p>
+</div>
+<div class="section" id="id13">
+<h3><span class="section-number">4.4.4.2. </span>독립 시행과 표본공간<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p>위의 예제에서 하나의 동전을 두 번 연속 던지거나, 두 개의 동전을 동시에 던지거나 두 개의 결과가 나온다. 어떻게 던지든 하나의 결과가 다른 결과에 영향을 미치는지 생각해 보자.</p>
+<p>우리는 하나의 동전을 두 번 던지든, 두 개의 동전을 동시에 던지든지 <strong>가능한 두 개의 결과가 서로 영향을 준다고 생각하지 않는다</strong>. 이 말을 확률에서 사용하는 용어로 두 결과는 <strong>서로 독립적(independent)</strong> 으로 일어난다는 의미이다.</p>
+<p>이렇게 두 개 이상의 사건이 독립적인 일어나는 것을 독립 시행(indendent trial) 이라고 부른다. 두 사건이 일어나는 경우, 서로 독립이면 무엇이 먼저 일어나든 상관이 없고 중요한 것은 가능한 모든 결과를 포함하는 표본공간이 만들어 지는 구조이다.</p>
+<p>두 개의 사건이 서로 독립이면, 두 사건의 가능한 결과를 가진 표본 공간은 각각의 사건에 대한 <strong>표본공간으로부터 얻어지는 모든 가능한 조합</strong> 으로 구성된다.</p>
+<p>하나의 동전을 던질 때 표본 공간은 <span class="math notranslate nohighlight">\(\{\text{(앞면), (뒷면 )} \}\)</span>으로 두 개이다. 하나의 동전을 두 번 던지든, 두 개의 동전을 동시에 던지든지  두 개의 결과는 독립이므로 두 개의 표본 공간, 즉 <span class="math notranslate nohighlight">\(\{\text{(앞면), (뒷면 )} \}\)</span> 과 <span class="math notranslate nohighlight">\(\{\text{(앞면), (뒷면 )} \}\)</span>의 모든 조합을 생각하면 <span class="math notranslate nohighlight">\(2 \times 2 = 4\)</span> 개의 가능한 결과를 가지는 표본공간을 얻는다.</p>
+<div class="math notranslate nohighlight">
+\[ \{\text{(앞면), (뒷면 )} \} \times \{\text{(앞면), (뒷면 )} \} =\{ \text{(앞면, 앞면)},~ \text{(앞면, 뒷면)}, \text{(뒷면, 앞면)}, \text{(뒷면, 뒷면)} \} \]</div>
+</div>
+<div class="section" id="id14">
+<h3><span class="section-number">4.4.4.3. </span>확률의 곱셈<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>일단 한 번이라도 앞면이 나올 사건은 (앞면, 뒷면)과 (뒷면, 앞면)으로 2개이며 동시에 일어날 수 없다. 따라서 두 사건의 확률은 더해준다.</p>
+<p>또한 독립 시행으로 나온 결과에 대한 확률은 각각의 사건의 확률을 곱하여 구할 수 있다.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P[\text{한 번이라도 앞면}] &amp; =𝑃[(\text{앞면, 뒷면 }) \cup (\text{ 뒷면, 앞면})] \\
+&amp; =𝑃[(\text{앞면, 뒷면})] +𝑃[(\text{뒷면, 앞면})] \\
+  &amp; = 𝑃[(\text{앞면})] P[(\text{뒷면}))] + P[(\text{뒷면})]𝑃[(\text{앞면})]  \\
+  &amp; = \frac{1}{2} \times \frac{1}{2} + \frac{1}{2} \times \frac{1}{2} \\
+  &amp; = \frac{2}{4} \\
+ \end{align*}
+\end{split}\]</div>
+<p>이론적으로 말하자면 두 개의 사건의 결과가 서로 영향을 받지 않는 경우, 즉  <strong>두 사건이 서로 독립(independnet)인 경우 두 개의 사건의 결과에 대한 확률은 각각의 사건의 확률을 곱해주면 된다.</strong></p>
+<p>두 개의 사건 <span class="math notranslate nohighlight">\(A\)</span>와 <span class="math notranslate nohighlight">\(B\)</span> 가 서로 독립이면, 두 사건의 결과(<span class="math notranslate nohighlight">\(A \cap B)\)</span>에 대한 확률은 각각의 확률을 곱해주면 된다.</p>
+<div class="math notranslate nohighlight">
+\[ \text{if } A , B \text{ are independnet}, \text{ then } P(A \cap B) = P(A)  P(B) \]</div>
+<p>다른 예로서 동전 한 개와 주사위 한 개를 던질 때 표본공간은 무었일까?</p>
+<p>우리는 모든 가능한 경우가 <span class="math notranslate nohighlight">\(2 \times 6 = 12\)</span> 개인 것을 알 수 있다. 그런데 저자가 모든 가능한 경우를 써보려고 하니 손가락이 아플 것 같다.</p>
+<p>파이썬 프로그램의 도움을 받아서 표본공간을 만들어보자</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">coin</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;앞&quot;</span><span class="p">,</span> <span class="s2">&quot;뒤&quot;</span><span class="p">]</span><span class="o">.</span> <span class="c1"># 동전의 표본 공간</span>
+<span class="n">coin</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;앞&#39;, &#39;뒤&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dice</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span> <span class="c1"># 주사위의 표본 공간</span>
+<span class="n">dice</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5, 6]
+</pre></div>
+</div>
+</div>
+</div>
+<p>라이브러리 <code class="docutils literal notranslate"><span class="pre">itertools</span></code> 에서 함수 <code class="docutils literal notranslate"><span class="pre">product</span></code>를 불러온다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+</pre></div>
+</div>
+<p>함수 <code class="docutils literal notranslate"><span class="pre">product(coin,</span> <span class="pre">dice)</span></code>는 앞에서 정의한 <code class="docutils literal notranslate"><span class="pre">coin</span></code> 과 <code class="docutils literal notranslate"><span class="pre">dice</span></code>의 모든 원소들의 조합을 구해주는 것이다. 유의할 점은 <code class="docutils literal notranslate"><span class="pre">product(coin,</span> <span class="pre">dice)</span></code> 의 결과를 다시 리스트 <code class="docutils literal notranslate"><span class="pre">list()</span></code>로 만들어 주어야 결과가 나타난다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">(</span><span class="n">coin</span><span class="p">,</span> <span class="n">dice</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;앞&#39;, 1),
+ (&#39;앞&#39;, 2),
+ (&#39;앞&#39;, 3),
+ (&#39;앞&#39;, 4),
+ (&#39;앞&#39;, 5),
+ (&#39;앞&#39;, 6),
+ (&#39;뒤&#39;, 1),
+ (&#39;뒤&#39;, 2),
+ (&#39;뒤&#39;, 3),
+ (&#39;뒤&#39;, 4),
+ (&#39;뒤&#39;, 5),
+ (&#39;뒤&#39;, 6)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>동전 한개와 주사위 한 개를 던질 때, 동전은 앞면이 나오고 주사위은 5 이상이 나올 확률은 얼마인가?</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P(\text{앞면} \cap \text{눈이 5 이상}) &amp; = \frac {\text{사건} (event) \text{ 안의 원소의 수}} {\text{표본 공간 }S \text{ 안의 원소의 수}} \\
+&amp; = \frac{2}{12} \\
+&amp; = P(\text{앞면}) \times P(\text{눈이 5 이상}) \\
+ &amp; = \frac{1}{2} \times \frac{2}{6} 
+\end{align*}
+\end{split}\]</div>
+<p>주사위를 먼저 던지거나, 동전을 먼저 던지거나 또는 동전과 주사위를 동시에 던지거나 두 사건이 독립이면 확률의 계산 방법은 동일하다.</p>
+<p>윷놀이를 하는 경우 표본공간을 구해보자. 함수 <code class="docutils literal notranslate"><span class="pre">product</span></code>의 선택명령문 <code class="docutils literal notranslate"><span class="pre">repeat=4</span></code> 는 <code class="docutils literal notranslate"><span class="pre">yut</span></code>에 있는 2개의 가능한 결과를 4번 반복하여 조합하라는 의미이다.</p>
+<div class="math notranslate nohighlight">
+\[ \text{(등, 배)} \times \text{(등, 배)} \times \text{(등, 배)} \times \text{(등, 배)} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">yut</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;등&quot;</span><span class="p">,</span> <span class="s2">&quot;배&quot;</span><span class="p">]</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">(</span><span class="n">yut</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;등&#39;, &#39;등&#39;, &#39;등&#39;, &#39;등&#39;),
+ (&#39;등&#39;, &#39;등&#39;, &#39;등&#39;, &#39;배&#39;),
+ (&#39;등&#39;, &#39;등&#39;, &#39;배&#39;, &#39;등&#39;),
+ (&#39;등&#39;, &#39;등&#39;, &#39;배&#39;, &#39;배&#39;),
+ (&#39;등&#39;, &#39;배&#39;, &#39;등&#39;, &#39;등&#39;),
+ (&#39;등&#39;, &#39;배&#39;, &#39;등&#39;, &#39;배&#39;),
+ (&#39;등&#39;, &#39;배&#39;, &#39;배&#39;, &#39;등&#39;),
+ (&#39;등&#39;, &#39;배&#39;, &#39;배&#39;, &#39;배&#39;),
+ (&#39;배&#39;, &#39;등&#39;, &#39;등&#39;, &#39;등&#39;),
+ (&#39;배&#39;, &#39;등&#39;, &#39;등&#39;, &#39;배&#39;),
+ (&#39;배&#39;, &#39;등&#39;, &#39;배&#39;, &#39;등&#39;),
+ (&#39;배&#39;, &#39;등&#39;, &#39;배&#39;, &#39;배&#39;),
+ (&#39;배&#39;, &#39;배&#39;, &#39;등&#39;, &#39;등&#39;),
+ (&#39;배&#39;, &#39;배&#39;, &#39;등&#39;, &#39;배&#39;),
+ (&#39;배&#39;, &#39;배&#39;, &#39;배&#39;, &#39;등&#39;),
+ (&#39;배&#39;, &#39;배&#39;, &#39;배&#39;, &#39;배&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id15">
+<h2><span class="section-number">4.4.5. </span>요약<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<p>앞에서 배운 논리적 확률의 기초적인 개념과 계산 규칙을 정리하면 다음과 같다.</p>
+<ul class="simple">
+<li><p>표본 공간 (sample space) : 모든 가능한 결과를 모아 놓은 집합으로 <span class="math notranslate nohighlight">\(S\)</span> 로 표기한다.</p></li>
+<li><p>사건 (event): 표본 공간 <span class="math notranslate nohighlight">\(S\)</span> 의 부분 집합</p></li>
+<li><p>표본 공간에 속한 모든 결과들의 가능성이 같다고 할 때 어떤 사건(<span class="math notranslate nohighlight">\(A\)</span>)이 일어날 확률은 다음과 같이 계산할 수 있다.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ P(A) = \frac {\text{사건} A \text{ 안의 원소의 수}} {\text{표본 공간 }S \text{ 안의 원소의 수}}  \]</div>
+<ul>
+<li><p>표본공간의 확률은 1이다. 즉, 가능한 모든 사건이 일어날 확률은 1이다</p>
+<div class="math notranslate nohighlight">
+\[ P(S) = 1 \]</div>
+</li>
+<li><p>여사건(<span class="math notranslate nohighlight">\(A^c\)</span>)의 확률은 1에서 주어진 사건(<span class="math notranslate nohighlight">\(A\)</span>)의 확률을 빼면 된다.</p>
+<div class="math notranslate nohighlight">
+\[ P(A^c) = 1 -P(A) \]</div>
+</li>
+<li><p>두 개의 사건 <span class="math notranslate nohighlight">\(A\)</span>와 <span class="math notranslate nohighlight">\(B\)</span> 가 서로 배반이면,  두 사건 중 하나가 일어날 사건(<span class="math notranslate nohighlight">\(A \cup B\)</span>)의 확률은 각각의 확률을 더해주면 된다.</p>
+<div class="math notranslate nohighlight">
+\[ \text{if } A \cap B = \emptyset, \text{ then } P(A \cup B) = P(A) + P(B) \]</div>
+</li>
+<li><p>두 개의 사건 <span class="math notranslate nohighlight">\(A\)</span>와 <span class="math notranslate nohighlight">\(B\)</span> 가 서로 독립이면, 두 사건의 결과(<span class="math notranslate nohighlight">\(A \cap B)\)</span>에 대한 확률은 각각의 확률을 곱해주면 된다.</p>
+<div class="math notranslate nohighlight">
+\[ \text{if } A , B \text{ are independnet}, \text{ then } P(A \cap B) = P(A)  P(B) \]</div>
+</li>
+</ul>
 </div>
 </div>
 
@@ -383,19 +1280,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../04/dataframe-merge.html" title="previous page">
+        <a class="left-prev" href="data_random_experiment.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">4.4. </span>데이터프레임의 결합</p>
+                <p class="prevnext-title"><span class="section-number">4.3. </span>확률과 컴퓨터 실험</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="data_distribution.html" title="next page">
+        <a class="right-next" href="data_function.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">5.1. </span>자료의 분포</p>
+                <p class="prevnext-title"><span class="section-number">4.5. </span>함수</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
