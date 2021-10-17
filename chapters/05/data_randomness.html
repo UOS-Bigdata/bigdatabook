@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4.2. 분포와 우연성 &#8212; 빅데이터 개론 2</title>
+    <title>5.2. 분포와 우연성 &#8212; 빅데이터 개론 2</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -54,8 +54,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4.3. 확률과 컴퓨터 실험" href="data_random_experiment.html" />
-    <link rel="prev" title="4.1. 자료의 분포" href="data_distribution.html" />
+    <link rel="next" title="5.3. 확률과 컴퓨터 실험" href="data_random_experiment.html" />
+    <link rel="prev" title="5.1. 자료의 분포" href="data_distribution.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -178,39 +178,71 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../04/dataframe.html">
-   4. 분포와 확률
+   4. 데이터프레임
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-intro.html">
+     4.1. 데이터프레임의 정의와 구성요소
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-change.html">
+     4.2. 데이터프레임의 정리
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-summary.html">
+     4.3. 데이터프레임의 요약
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-merge.html">
+     4.4. 데이터프레임의 결합
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="data-intro.html">
+   5. 분포와 확률
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="data_distribution.html">
-     4.1. 자료의 분포
+     5.1. 자료의 분포
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     4.2. 분포와 우연성
+     5.2. 분포와 우연성
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="data_random_experiment.html">
-     4.3. 확률과 컴퓨터 실험
+     5.3. 확률과 컴퓨터 실험
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="data_probability.html">
-     4.4. 확률의 기초
+     5.4. 확률의 기초
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="data_function.html">
-     4.5. 함수
+     5.5. 함수
     </a>
    </li>
   </ul>
@@ -323,22 +355,22 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   4.2.1. 성인 남자의 신장
+   5.2.1. 성인 남자의 신장
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   4.2.2. 정규분포
+   5.2.2. 정규분포
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   4.2.3. 우연성과 분포
+   5.2.3. 우연성과 분포
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   4.2.4. 이상점
+   5.2.4. 이상점
   </a>
  </li>
 </ul>
@@ -353,7 +385,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">4.2. </span>분포와 우연성<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">5.2. </span>분포와 우연성<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>앞 절에서 우리는 범주형 자료와 연속형 자료의 분포(distribution)을 파악하는 다양한 시각적 방법에 대하여 알아 보았다.</p>
 <p>분포는 데이터를 구성하는 관측값들이 어디에 집중되어 있고 어떻게 퍼져 있는지를 알려준다. 즉, 데이터의 분포를 이용하면 자료의 특성을 쉽게 파악할 수 있다. 평균, 중간값은 자료의 중심에 대한 정보를 알려주며 표준편차, IQR은 자료의 퍼진 정보를 알려주는 측도로서 모두 하나의 숫자로 자료의 특성을 알려준다.</p>
 <p>이렇게 데이터의 특성을 하나의 숫자로 요약해 주는 값을 <strong>통계량(statistic)</strong> 이라고 부른다.</p>
@@ -380,7 +412,7 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">4.2.1. </span>성인 남자의 신장<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2.1. </span>성인 남자의 신장<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>앞 절에서 키와 몸무게의 분포를 알아볼 때 언급한 정규분포(Normal distribution)에 대해서 알아보자. 정규분포는 키나 몸무게와 같이 연속형 변수에 대한 분포이다. 보통 어떤 자료가 정규분포의 형태를 따른다고 하면 자료의 중심으로 대칭이며 좌우의 꼬리가 빠르게 줄어드는 형태를 말한다.</p>
 <p>먼저 국민체력자료에서 남자들의 키에 대한 분포를 히스토그램으로 그려보자.</p>
 <div class="cell docutils container">
@@ -590,7 +622,7 @@
 </div>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">4.2.2. </span>정규분포<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2.2. </span>정규분포<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>앞에서 언급한 정규분포에 대해서 자세하게 알아보자. 정규분포(normal distrbution)은 평균과 분산이 주어지면 분포의 모양을 다음과 같은 식으로 나타낼 수 있다.</p>
 <p>평균 <span class="math notranslate nohighlight">\(\mu\)</span>이고 분산이 <span class="math notranslate nohighlight">\(\sigma^2\)</span>인 정규분포를 <span class="math notranslate nohighlight">\(N(\mu,~\sigma^2)\)</span>로 표시하며 분포의 모양은 다음과 같은 식으로 나타난다.</p>
 <div class="math notranslate nohighlight">
@@ -653,7 +685,7 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">4.2.3. </span>우연성과 분포<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2.3. </span>우연성과 분포<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>정규분포는 <strong>확률 분포(probability distribution)</strong> 라도 부른다.</p>
 <p>확률분포는 그 분포를 따르는 어떤 변수 값이 <strong>임의로(randomly)</strong> 주어지는 경우 나타날 수 있는 값들의 <strong>가능성</strong> 을 알려주는 역활을 한다. 앞에서 본 정규분포의 식 <span class="math notranslate nohighlight">\(f(x; \mu, \sigma)\)</span>을 <strong>확률밀도함수(probability density function; pdf)</strong> 라고 하며 나타날 수 있는 값들의 상대적인 가능성을 그래프의 높이로 나타내 준다.</p>
 <p>정규분포를 따르는 변수의 값은 나타니기 전에 먼저 알 수 없다. 마치 우리가 주사위를 던질 경우 나타날 값을 에측 못하는 것과 같다. 하지만 분포(distribution)은 이렇게 <strong>우연성(randomness)</strong> 이 있는 값에 대하여 나타날 수 있는 값들의 가능성을 우리에게 알려준다.</p>
@@ -661,7 +693,7 @@
 <p>어떻게 키의 분포와 정규분포는 그 형태가 매우 비슷할 수 있을까? 키의 분포가 정규분포와 유사한 이유는 무었일까?</p>
 </div>
 <div class="section" id="id5">
-<h2><span class="section-number">4.2.4. </span>이상점<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2.4. </span>이상점<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>체력측정자료에서 성인 남자의 몸무게, 체질량지수(BMI) 는 정규분포와 비슷한 분포를 가질까?</p>
 <p>위와 같이 성인 남자의 몸무게 히스토그램과 정규분포 확률밀도함수를 같이 그려보자.</p>
 <div class="cell docutils container">
@@ -764,7 +796,7 @@
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">4.1. </span>자료의 분포</p>
+                <p class="prevnext-title"><span class="section-number">5.1. </span>자료의 분포</p>
             </div>
         </a>
     </div>
@@ -772,7 +804,7 @@
         <a class="right-next" href="data_random_experiment.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">4.3. </span>확률과 컴퓨터 실험</p>
+                <p class="prevnext-title"><span class="section-number">5.3. </span>확률과 컴퓨터 실험</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

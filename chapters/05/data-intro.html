@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. 파이썬 기초 &#8212; 빅데이터 개론 2</title>
+    <title>5. 분포와 확률 &#8212; 빅데이터 개론 2</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -52,8 +52,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.1. 표현식과 변수" href="basic-expression.html" />
-    <link rel="prev" title="1.2. 통계학" href="../01/intro-stat.html" />
+    <link rel="next" title="5.1. 자료의 분포" href="data_distribution.html" />
+    <link rel="prev" title="4.4. 데이터프레임의 결합" href="../04/dataframe-merge.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -117,33 +117,33 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02/intro-python.html">
    2. 파이선의 기초
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="basic-expression.html">
+    <a class="reference internal" href="../02/basic-expression.html">
      2.1. 표현식과 변수
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="data-processing-intro.html">
+    <a class="reference internal" href="../02/data-processing-intro.html">
      2.2. 데이터의 처리
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="data-processing-train-passenger.html">
+    <a class="reference internal" href="../02/data-processing-train-passenger.html">
      2.3. 고속열차 여객 수송자료
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="data-processing-text.html">
+    <a class="reference internal" href="../02/data-processing-text.html">
      2.4. 어린 왕자
     </a>
    </li>
@@ -208,38 +208,38 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../05/data-intro.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    5. 분포와 확률
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_distribution.html">
+    <a class="reference internal" href="data_distribution.html">
      5.1. 자료의 분포
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_randomness.html">
+    <a class="reference internal" href="data_randomness.html">
      5.2. 분포와 우연성
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_random_experiment.html">
+    <a class="reference internal" href="data_random_experiment.html">
      5.3. 확률과 컴퓨터 실험
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_probability.html">
+    <a class="reference internal" href="data_probability.html">
      5.4. 확률의 기초
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_function.html">
+    <a class="reference internal" href="data_function.html">
      5.5. 함수
     </a>
    </li>
@@ -286,7 +286,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/chapters/02/intro-python.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/chapters/05/data-intro.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -333,16 +333,13 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">2. </span>파이썬 기초<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>이 과목에서 배울 파이썬은 범용 프로그래밍 언어로서 다음과 같은 중요한 특징이 있습니다.</p>
-<p><strong>파이썬은 인터프리터(interpreter) 언어입니다.</strong></p>
-<p>인터프리터는 말 그대로 해석하면 통역사, 연주자란 의미입니다. 이 의미에 따라서 설명하면 인터프리터는 인간의 언어를 컴퓨터에 번약하여 전달해서 곧바로 반응을 얻을 수 있다는 뜻입니다. 내가 편한 언어로 말하면 통역사가 알아서 번역하고 전달해서 상재방의 반응을 나의 언어로 곧바로 전달해 줍니다. 따라서 인터프리터는 사용하기 편한 언어란 의미입니다.</p>
-<p>인터프리터가 아닌 언어(에를 들어 FORTRAN 이나 C 언어)들은 결과를 얻기 위해서 사용자가 몇 가지 절차(컴파일과 링크 단계)를 따로 수행해주어야 하는 방식이라서 사용하기 쉽지 않습니다.</p>
-<p><strong>파이썬 언어는 대화형으로 사용할 수 잇습니다.</strong></p>
-<p>파이썬 언어는 대화형 방식으로 사용할 수 있습니다. 즉, 하나의 명령어를 입력하고 그 결과를 얻는 작업을 반복해서 사용할 수 있습니다. 다른 범용 언어들 중에는 대화형 방식을 사용할 수 없고 일련의 명령어들을 묶음으로 모아서 컴퓨터에 전달하는 방식으로만 사용할 수 있습니다. 대화형 방식은 여러분이 휴대용 계산기를 이용하는 방식과 유사하다고 할 수 있습니다. 하지만 대화형 방식이 여러분이 사용하는 문서편집기나 웹브라우저와 같이 메뉴와 버튼 방식은 아닙니다.</p>
-<p><strong>파이썬 언어를 가장 쉽게 사용할 수 있는 방법은 쥬피터 노트북(jupyter notebook)을 사용하는 방법입니다.</strong></p>
-<p>앞에서 말한 것과 같이 파이썬 언어는 메뉴와 버튼 방식을 이용하는 GUI(Graphical User Interface) 방식이 아니기 때문에 터미널(terminal) 환경에서 사용할 수 있습니다. 하지만 터미널 환경에서 사용하는 방법보다 훨씬 쉽고 간편하게 파이썬을 사용할 수 있는 방법이 쥬피터 노트북을 이용하는 것입니다.</p>
-<p>쥬피터 노트북을 이용하는 방법은 다양하지만  이 과목에서는 <code class="docutils literal notranslate"><span class="pre">Google</span></code> 에서 제공하는 <a class="reference external" href="https://colab.research.google.com/notebooks/intro.ipynb?utm_source=scs-index"><code class="docutils literal notranslate"><span class="pre">colab</span></code></a> 을 이용할 것입니다. <code class="docutils literal notranslate"><span class="pre">colab</span></code>에 대한 소개는 <a class="reference external" href="https://www.youtube.com/watch?v=inN8seMm7UI&amp;t=62s">여기</a>에서 볼 수 있습니다.</p>
+<h1><span class="section-number">5. </span>분포와 확률<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>데이터는 분석하는 경우 자료가 어떤 형태로 집중이 되어 있는지, 얼마나 넓게 퍼져있는지를 파악하는 것이 중요하다.
+자료의 분포에 대한 시각적인 분석과 기초 통계량을 이용한 요약은 데이터 과학의 첫 걸음이다.</p>
+<p>자료의 분포가 지닌 다양한 특성을 파악하는 기초적인 방법을 알아보면서 우리는 일상에서 접할 수 있는 분포들이 정규분포와 매우 유사하게 나타난다는 사실도 확인할 것이다.
+우리는 정규분포가  만들어지는 과정을 우연성과 확률 실험을 통해서 확인할 것이며 이는 현실에 나타나는 데이터의 분포의 특성을 이해하는 중요한
+열쇠를 제공한다.</p>
+<p>더 나아가 우연성과 가능성을 과학적으로 다룰 수 있는 도구인 확률의 기본개념과 기초적인 계산법에 대하여 공부하고자 한다.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -360,7 +357,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./chapters/02"
+            path: "./chapters/05"
         },
         predefinedOutput: true
     }
@@ -377,19 +374,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../01/intro-stat.html" title="previous page">
+        <a class="left-prev" href="../04/dataframe-merge.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">1.2. </span>통계학</p>
+                <p class="prevnext-title"><span class="section-number">4.4. </span>데이터프레임의 결합</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="basic-expression.html" title="next page">
+        <a class="right-next" href="data_distribution.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">2.1. </span>표현식과 변수</p>
+                <p class="prevnext-title"><span class="section-number">5.1. </span>자료의 분포</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

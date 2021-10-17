@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4.4. 확률의 기초 &#8212; 빅데이터 개론 2</title>
+    <title>5.4. 확률의 기초 &#8212; 빅데이터 개론 2</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -54,8 +54,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4.5. 함수" href="data_function.html" />
-    <link rel="prev" title="4.3. 확률과 컴퓨터 실험" href="data_random_experiment.html" />
+    <link rel="next" title="5.5. 함수" href="data_function.html" />
+    <link rel="prev" title="5.3. 확률과 컴퓨터 실험" href="data_random_experiment.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -178,39 +178,71 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../04/dataframe.html">
-   4. 분포와 확률
+   4. 데이터프레임
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-intro.html">
+     4.1. 데이터프레임의 정의와 구성요소
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-change.html">
+     4.2. 데이터프레임의 정리
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-summary.html">
+     4.3. 데이터프레임의 요약
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-merge.html">
+     4.4. 데이터프레임의 결합
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="data-intro.html">
+   5. 분포와 확률
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="data_distribution.html">
-     4.1. 자료의 분포
+     5.1. 자료의 분포
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="data_randomness.html">
-     4.2. 분포와 우연성
+     5.2. 분포와 우연성
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="data_random_experiment.html">
-     4.3. 확률과 컴퓨터 실험
+     5.3. 확률과 컴퓨터 실험
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     4.4. 확률의 기초
+     5.4. 확률의 기초
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="data_function.html">
-     4.5. 함수
+     5.5. 함수
     </a>
    </li>
   </ul>
@@ -323,76 +355,76 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   4.4.1. 확률이란?
+   5.4.1. 확률이란?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   4.4.2. 확률의 주관성
+   5.4.2. 확률의 주관성
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   4.4.3. 확률 분포
+   5.4.3. 확률 분포
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     4.4.3.1. 주사위
+     5.4.3.1. 주사위
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     4.4.3.2. 확률의 기초 규칙
+     5.4.3.2. 확률의 기초 규칙
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     4.4.3.3. 자료의 분포: 성인 남자의 키
+     5.4.3.3. 자료의 분포: 성인 남자의 키
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     4.4.3.4. 정규분포: 확률 실험
+     5.4.3.4. 정규분포: 확률 실험
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id9">
-     4.4.3.5. 정규분포: 확률밀도함수
+     5.4.3.5. 정규분포: 확률밀도함수
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     4.4.3.6. 확률의 덧셈
+     5.4.3.6. 확률의 덧셈
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id11">
-   4.4.4. 독립 시행
+   5.4.4. 독립 시행
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id12">
-     4.4.4.1. 두 개의 동전
+     5.4.4.1. 두 개의 동전
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id13">
-     4.4.4.2. 독립 시행과 표본공간
+     5.4.4.2. 독립 시행과 표본공간
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id14">
-     4.4.4.3. 확률의 곱셈
+     5.4.4.3. 확률의 곱셈
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id15">
-   4.4.5. 요약
+   5.4.5. 요약
   </a>
  </li>
 </ul>
@@ -407,7 +439,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">4.4. </span>확률의 기초<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">5.4. </span>확률의 기초<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>확률(probability)는 어떤 일이 일어날 가능성(chance)의 정도를 나타내는 말이다.</p>
 <p>대부분의 사람들은 어떤 일이 일어날 가능성에 대하여 생각하고 그에 따라 예측하고 행동한다. 예를 하늘에 구름이 많고 흐리면 비가 올 가능성이 높다는 것은 선사 시대에 살았던 사람들도 생각할 수 있었을 것이다. 비가 올 것 같은 날에 편의점 주인이 우산을 평소보다 많이 준비하는 행동은 너무 자연스럽다.
 또한 투자에 관심이 많은 사람들은 어떤 주식 종목이 “언제 얼마나 오를 것이냐 “에 대한 예측을 위하여 많은 노력을 기울일 것이다.</p>
@@ -444,7 +476,7 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">4.4.1. </span>확률이란?<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.4.1. </span>확률이란?<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>어떤 일이 일어날 가능성의 정도를 나타내는 <strong>확률은 0과 1사이의 값으로 표시되며 확률이 0 이면 사건이 일어나지 않는 경우이고 1 이면 무조건 일어나는 것을 말한다.</strong></p>
 <p>어떤 사건의 확률을 말할 때 다음과 두 가지 방법으로 확률을 계산한다.</p>
 <ul>
@@ -478,7 +510,7 @@
 <p><strong>질문</strong> 윷놀이를 할 때 윷 하나를 던진다고 하면 “등”이 나올 확률은 어떻게 구할 수 있을까? 하나의 윷의 생김새로 보면 “배”와”등”이 나올 가능성이 같아 보이지 않는다. 논리적인 확률을 고려할 수 있을까? 계속 던져서 “등”이 나온 횟수를 전체 던진 횟수로 나눈 것이 경험적 확률이다. 그런데 얼마나 많이 던져야 할까?</p>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">4.4.2. </span>확률의 주관성<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.4.2. </span>확률의 주관성<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>어떤 일이 일어날 가능성에 대한 생각은 다를 수 있다.  어떤 사건이 일어날 확률은 개인의 믿음과 경험의 정도에 따라서 다를 수 있다.</p>
 <ul class="simple">
 <li><p>경제가 내년에 회복될 가능성은? 좀 더 명확하게 내년 경제성장률이 3%이상일 가능성은? <a class="reference external" href="https://www.yna.co.kr/view/AKR20201228127500002">내년 경기 전망에 대한 뉴스</a></p></li>
@@ -487,11 +519,11 @@
 <p>그런데 카드 게임을 해본 <a class="reference external" href="https://www.scientificamerican.com/article/how-many-aliens-are-in-the-milky-way-astronomers-turn-to-statistics-for-answers/">외계인이 있을 가능성</a>은 얼마나 될까?</p>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">4.4.3. </span>확률 분포<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.4.3. </span>확률 분포<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>우리는 앞 절에서 남자의 키에 대한 분포, 정규분포에 대하여 알아보았다. 다시 강조하면 확률 분포는 어떤 값이 임의로(randomly) 주어지는 경우 나타날 수 있는 <strong>값들의 상대적인 가능성</strong> 을 알려주는 역활을 한다. 정확하게 말하면 가능한 모든 결과, 즉 표본 공간의 모든 결과에 대한 가능성을 확률로 나타낸 것이다.</p>
 <p>이제 확률분포에 대한 몇 개의 예제를 보면서 확률 계산의 기초를 배워보자.</p>
 <div class="section" id="id5">
-<h3><span class="section-number">4.4.3.1. </span>주사위<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.3.1. </span>주사위<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>주사위를 던질 때 표본 공간은 1 부터 6까지의 6개의 숫자이고 확률 분포는 다음과 같다.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -553,7 +585,7 @@ P(\text{ 5 또는 6}) &amp; = P(\text{ 5}) + P(\text{ 6}) \\
 </div>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">4.4.3.2. </span>확률의 기초 규칙<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.3.2. </span>확률의 기초 규칙<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>먼저 확률을 계산하는 가장 기초적인 두 가지  규칙을 알아보자.</p>
 <ul>
 <li><p>표본공간의 확률은 1이다. 즉, 가능한 모든 사건이 일어날 확률은 1이다</p>
@@ -570,7 +602,7 @@ P(\text{ 5 또는 6}) &amp; = P(\text{ 5}) + P(\text{ 6}) \\
 \[ P(\text{ 4 이하})= 1- P(\text{ 5 이상}) = 1-2/6 = 4/6 \]</div>
 </div>
 <div class="section" id="id7">
-<h3><span class="section-number">4.4.3.3. </span>자료의 분포: 성인 남자의 키<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.3.3. </span>자료의 분포: 성인 남자의 키<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>앞 절에서 논의한 체력측정 데이터에서 <strong>한 명의 남자를 임의로 선택하면</strong> 키가 180cm 이상일 가능성은 얼마나 될까?</p>
 <p>체력측정 데이터에 있는 모든 남자들이 선택될 가능성이 모두 같으므로 (주사위를 던지는 경우와 동일하게) 임의로 선택한 남자의 키가 180cm 이상일 가능성은 다음과 같이 구할 수 있다.</p>
 <div class="math notranslate nohighlight">
@@ -731,7 +763,7 @@ P(\text{ 키 &gt; 180}) &amp; = \frac{\text{키가 180 이상인 성인 남자�
 </div>
 </div>
 <div class="section" id="id8">
-<h3><span class="section-number">4.4.3.4. </span>정규분포: 확률 실험<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.3.4. </span>정규분포: 확률 실험<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>이제 앞 절에서 논의한 정규분포를 생각해 보자.</p>
 <p>앞에서 본 체력측정 데이터에서 성인 남자의 키의 평균과 표준편차가 아래와 같다.</p>
 <div class="cell docutils container">
@@ -938,7 +970,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="id9">
-<h3><span class="section-number">4.4.3.5. </span>정규분포: 확률밀도함수<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.3.5. </span>정규분포: 확률밀도함수<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>이제 정규분포 <span class="math notranslate nohighlight">\(𝑁(172.7,6.22^2)\)</span>의 확률밀도함수 <span class="math notranslate nohighlight">\(f(x; \mu,\sigma)\)</span>를 그리고 <span class="math notranslate nohighlight">\(x\)</span>의 값이 180 이상인 구간의 면적을 구해보자.</p>
 <p>먼저 정규분포 <span class="math notranslate nohighlight">\(𝑁(172.7,6.22^2)\)</span> 를 <code class="docutils literal notranslate"><span class="pre">normal_distribution</span></code> 이라는 이름으로 만들어 보자.</p>
 <p>아레 코드에서 라이브러리 <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> 를 <code class="docutils literal notranslate"><span class="pre">stats</span></code> 로 부른 후에</p>
@@ -1060,7 +1092,7 @@ P(x \le x_0)  = \int_{-\infty}^{x_0} f(z; \mu,\sigma) ~dz ={\texttt{normal_distr
 </div>
 </div>
 <div class="section" id="id10">
-<h3><span class="section-number">4.4.3.6. </span>확률의 덧셈<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.3.6. </span>확률의 덧셈<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>위에서 주사위를 던지는 경우 5의 눈이 나올 사건과 6의 눈이 나올 사건은 동시에 일어날 수 없다. 주사위를 던지면 5가 나오던지 6이 나오던지 둘 중에 하나의 사건만 일어나야 한다.</p>
 <p><strong>이렇게 가능한 결과들이 동시에 일어나지 못하는 경우 사건의 확률은 각 가능한 결과의 확률을 더해 주면 된다.</strong></p>
 <p>체력측정 자료에서도 920명의 남자들 중에 1명을 임의로 뽑는다면, 예를 들어 철수(185cm)와 용희(190cm)가 동시에 뽑힐 수 없다. 따라서 키가 180 이상인  남성들이 106명이므로 1명이 뽑힐 확률(1/920)을 106번 더해주면 된다.</p>
@@ -1071,9 +1103,9 @@ P(x \le x_0)  = \int_{-\infty}^{x_0} f(z; \mu,\sigma) ~dz ={\texttt{normal_distr
 </div>
 </div>
 <div class="section" id="id11">
-<h2><span class="section-number">4.4.4. </span>독립 시행<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.4.4. </span>독립 시행<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id12">
-<h3><span class="section-number">4.4.4.1. </span>두 개의 동전<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.4.1. </span>두 개의 동전<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p><strong>하나의 동전을 두 번 연속으로 던졌을 때</strong> 한 번이라도 앞면이 나올 확률은 얼마인가?</p>
 <p>동전을 두 번 연속으로 던지면 첫 번째 결과와 두 번째 결과의 조합으로 가능한 모든 사건(표본 공간)은 다음과 같이 4 가지이다.
 또한 4개의 가능한 결과는 모두 가능성이 같다.</p>
@@ -1092,7 +1124,7 @@ P(\text{ 한 번이라도 앞면}) &amp; = \frac {\text{사건} (event) \text{ �
 <p><strong>만약 두 개의 동전을 동시에 던졌을 때도</strong> 위와 같이 모든 가능한 결과가 4개인가? 누군가가 “두 개의 동전이 똑같이 생겨서 구분할 수 없으니 가능한 결과는 <span class="math notranslate nohighlight">\(\text{(앞면, 앞면)}\)</span>,<span class="math notranslate nohighlight">\(\text{(앞면, 뒷면)}\)</span>, <span class="math notranslate nohighlight">\(\text{(뒷면, 뒷면)}\)</span>, 즉  3가지이고 각각의 확률은 1/3 이다” 라고 주장하면 여러분은 어떻게 대답할 것인가?</p>
 </div>
 <div class="section" id="id13">
-<h3><span class="section-number">4.4.4.2. </span>독립 시행과 표본공간<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.4.2. </span>독립 시행과 표본공간<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>위의 예제에서 하나의 동전을 두 번 연속 던지거나, 두 개의 동전을 동시에 던지거나 두 개의 결과가 나온다. 어떻게 던지든 하나의 결과가 다른 결과에 영향을 미치는지 생각해 보자.</p>
 <p>우리는 하나의 동전을 두 번 던지든, 두 개의 동전을 동시에 던지든지 <strong>가능한 두 개의 결과가 서로 영향을 준다고 생각하지 않는다</strong>. 이 말을 확률에서 사용하는 용어로 두 결과는 <strong>서로 독립적(independent)</strong> 으로 일어난다는 의미이다.</p>
 <p>이렇게 두 개 이상의 사건이 독립적인 일어나는 것을 독립 시행(indendent trial) 이라고 부른다. 두 사건이 일어나는 경우, 서로 독립이면 무엇이 먼저 일어나든 상관이 없고 중요한 것은 가능한 모든 결과를 포함하는 표본공간이 만들어 지는 구조이다.</p>
@@ -1102,7 +1134,7 @@ P(\text{ 한 번이라도 앞면}) &amp; = \frac {\text{사건} (event) \text{ �
 \[ \{\text{(앞면), (뒷면 )} \} \times \{\text{(앞면), (뒷면 )} \} =\{ \text{(앞면, 앞면)},~ \text{(앞면, 뒷면)}, \text{(뒷면, 앞면)}, \text{(뒷면, 뒷면)} \} \]</div>
 </div>
 <div class="section" id="id14">
-<h3><span class="section-number">4.4.4.3. </span>확률의 곱셈<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.4.3. </span>확률의 곱셈<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <p>일단 한 번이라도 앞면이 나올 사건은 (앞면, 뒷면)과 (뒷면, 앞면)으로 2개이며 동시에 일어날 수 없다. 따라서 두 사건의 확률은 더해준다.</p>
 <p>또한 독립 시행으로 나온 결과에 대한 확률은 각각의 사건의 확률을 곱하여 구할 수 있다.</p>
 <div class="math notranslate nohighlight">
@@ -1221,7 +1253,7 @@ P(\text{앞면} \cap \text{눈이 5 이상}) &amp; = \frac {\text{사건} (event
 </div>
 </div>
 <div class="section" id="id15">
-<h2><span class="section-number">4.4.5. </span>요약<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.4.5. </span>요약<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <p>앞에서 배운 논리적 확률의 기초적인 개념과 계산 규칙을 정리하면 다음과 같다.</p>
 <ul class="simple">
 <li><p>표본 공간 (sample space) : 모든 가능한 결과를 모아 놓은 집합으로 <span class="math notranslate nohighlight">\(S\)</span> 로 표기한다.</p></li>
@@ -1285,7 +1317,7 @@ P(\text{앞면} \cap \text{눈이 5 이상}) &amp; = \frac {\text{사건} (event
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">4.3. </span>확률과 컴퓨터 실험</p>
+                <p class="prevnext-title"><span class="section-number">5.3. </span>확률과 컴퓨터 실험</p>
             </div>
         </a>
     </div>
@@ -1293,7 +1325,7 @@ P(\text{앞면} \cap \text{눈이 5 이상}) &amp; = \frac {\text{사건} (event
         <a class="right-next" href="data_function.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">4.5. </span>함수</p>
+                <p class="prevnext-title"><span class="section-number">5.5. </span>함수</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
