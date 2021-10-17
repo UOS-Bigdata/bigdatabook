@@ -31,11 +31,13 @@ sections:
   - file: chapters/03/string
   - file: chapters/03/array
 - file: chapters/04/dataframe
+  title: 데이터프레임
   sections:
   - file: chapters/04/dataframe-intro
   - file: chapters/04/dataframe-change
   - file: chapters/04/dataframe-summary
   - file: chapters/04/dataframe-merge
+- file: chapters/05/data-intro
   title: 분포와 확률
   sections:
   - file: chapters/05/data_distribution
