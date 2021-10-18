@@ -1106,16 +1106,16 @@ P(x \le x_0)  = \int_{-\infty}^{x_0} f(z; \mu,\sigma) ~dz ={\texttt{normal_distr
 <h2><span class="section-number">5.4.4. </span>독립 시행<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id12">
 <h3><span class="section-number">5.4.4.1. </span>두 개의 동전<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
-<p><strong>하나의 동전을 두 번 연속으로 던졌을 때</strong> 한 번이라도 앞면이 나올 확률은 얼마인가?</p>
+<p><strong>하나의 동전을 두 번 연속으로 던졌을 때</strong> 앞면이 한 번 나올 확률은 얼마인가?</p>
 <p>동전을 두 번 연속으로 던지면 첫 번째 결과와 두 번째 결과의 조합으로 가능한 모든 사건(표본 공간)은 다음과 같이 4 가지이다.
 또한 4개의 가능한 결과는 모두 가능성이 같다.</p>
 <div class="math notranslate nohighlight">
 \[\{ \text{(앞면, 앞면)},~ \text{(앞면, 뒷면)}, \text{(뒷면, 앞면)}, \text{(뒷면, 뒷면)} \} \]</div>
-<p>한 번이라도 앞면이 나올 사건은 <span class="math notranslate nohighlight">\(\text{(앞면, 뒷면)}\)</span>, <span class="math notranslate nohighlight">\(\text{(뒷면, 앞면)}\)</span>  두 개이고 두 사건은 동시에 일어날 수 없으므로 확률은 다음과 같다.</p>
+<p>앞면이 한 번 나올 사건은 <span class="math notranslate nohighlight">\(\text{(앞면, 뒷면)}\)</span>, <span class="math notranslate nohighlight">\(\text{(뒷면, 앞면)}\)</span>  두 개이고 두 사건은 동시에 일어날 수 없으므로 확률은 다음과 같다.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-P(\text{ 한 번이라도 앞면}) &amp; = \frac {\text{사건} (event) \text{ 안의 원소의 수}} {\text{표본 공간 }S \text{ 안의 원소의 수}} \\
+P(\text{앞면이 한 번}) &amp; = \frac {\text{사건} (event) \text{ 안의 원소의 수}} {\text{표본 공간 }S \text{ 안의 원소의 수}} \\
 &amp; = \frac{2}{4} \\
  &amp; = \frac{1}{4} + \frac{1}{4} \\
  &amp; = P(\text{(앞면, 뒷면)})  + P(\text{(뒷면, 앞면)}) 
@@ -1135,12 +1135,12 @@ P(\text{ 한 번이라도 앞면}) &amp; = \frac {\text{사건} (event) \text{ �
 </div>
 <div class="section" id="id14">
 <h3><span class="section-number">5.4.4.3. </span>확률의 곱셈<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
-<p>일단 한 번이라도 앞면이 나올 사건은 (앞면, 뒷면)과 (뒷면, 앞면)으로 2개이며 동시에 일어날 수 없다. 따라서 두 사건의 확률은 더해준다.</p>
+<p>일단 앞면이 한번 나올 사건은 (앞면, 뒷면)과 (뒷면, 앞면)으로 2개이며 동시에 일어날 수 없다. 따라서 두 사건의 확률은 더해준다.</p>
 <p>또한 독립 시행으로 나온 결과에 대한 확률은 각각의 사건의 확률을 곱하여 구할 수 있다.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-P[\text{한 번이라도 앞면}] &amp; =𝑃[(\text{앞면, 뒷면 }) \cup (\text{ 뒷면, 앞면})] \\
+P[\text{앞면이 한 번}] &amp; =𝑃[(\text{앞면, 뒷면 }) \cup (\text{ 뒷면, 앞면})] \\
 &amp; =𝑃[(\text{앞면, 뒷면})] +𝑃[(\text{뒷면, 앞면})] \\
   &amp; = 𝑃[(\text{앞면})] P[(\text{뒷면}))] + P[(\text{뒷면})]𝑃[(\text{앞면})]  \\
   &amp; = \frac{1}{2} \times \frac{1}{2} + \frac{1}{2} \times \frac{1}{2} \\
@@ -1156,7 +1156,7 @@ P[\text{한 번이라도 앞면}] &amp; =𝑃[(\text{앞면, 뒷면 }) \cup (\te
 <p>파이썬 프로그램의 도움을 받아서 표본공간을 만들어보자</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">coin</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;앞&quot;</span><span class="p">,</span> <span class="s2">&quot;뒤&quot;</span><span class="p">]</span><span class="o">.</span> <span class="c1"># 동전의 표본 공간</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">coin</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;앞&quot;</span><span class="p">,</span> <span class="s2">&quot;뒤&quot;</span><span class="p">]</span>  <span class="c1"># 동전의 표본 공간</span>
 <span class="n">coin</span>
 </pre></div>
 </div>
