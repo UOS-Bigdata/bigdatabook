@@ -1,0 +1,1567 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6.1. 표본과 정보 &#8212; 빅데이터 개론 2</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyle.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="6. 표본과 경험적 분포" href="sampling-intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">빅데이터 개론 2</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   빅데이터 개론 2
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01/intro-course.html">
+   1. 서론
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-program.html">
+     1.1. 프로그래밍 언어
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-stat.html">
+     1.2. 통계학
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02/intro-python.html">
+   2. 파이선의 기초
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/basic-expression.html">
+     2.1. 표현식과 변수
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-intro.html">
+     2.2. 데이터의 처리
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-train-passenger.html">
+     2.3. 고속열차 여객 수송자료
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-text.html">
+     2.4. 어린 왕자
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03/types.html">
+   3. 자료의 형식
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/numbers.html">
+     3.1. 숫자
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/string.html">
+     3.2. 문자열
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/array.html">
+     3.3. 행렬
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04/dataframe.html">
+   4. 데이터프레임
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-intro.html">
+     4.1. 데이터프레임의 정의와 구성요소
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-change.html">
+     4.2. 데이터프레임의 정리
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-summary.html">
+     4.3. 데이터프레임의 요약
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-merge.html">
+     4.4. 데이터프레임의 결합
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05/data-intro.html">
+   5. 분포와 확률
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_distribution.html">
+     5.1. 자료의 분포
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_randomness.html">
+     5.2. 분포와 우연성
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_random_experiment.html">
+     5.3. 확률과 컴퓨터 실험
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_probability.html">
+     5.4. 확률의 기초
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_function.html">
+     5.5. 함수
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="sampling-intro.html">
+   6. 표본과 경험적 분포
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.1. 표본과 정보
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/chapters/06/sample.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/UOS-Bigdata/bigdatabook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/UOS-Bigdata/bigdatabook/master?urlpath=tree/chapters/06/sample.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/06/sample.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   6.1.1. 빅데이터 시대의 정보
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   6.1.2. 데이터의 품질
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   6.1.3. 모집단과 표본
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   6.1.4. 확률표본
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   6.1.5. 공공자전거 자료
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   6.1.6. 확률표본의 추출
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   6.1.7. 확률표본의 분포
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   6.1.8. 편의표본
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id10">
+   6.1.9. 참고
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1><span class="section-number">6.1. </span>표본과 정보<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># 한글 폰트가 깨질 때 사용 - 런타임 메뉴에서 다시 시작 및 모두 실행 선택. (출처: https://teddylee777.github.io/colab/colab-korean)
+!sudo apt-get install -y fonts-nanum
+!sudo fc-cache -fv
+!rm ~/.cache/matplotlib -rf
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+fonts-nanum is already the newest version (20170925-1).
+0 upgraded, 0 newly installed, 0 to remove and 37 not upgraded.
+/usr/share/fonts: caching, new cache contents: 0 fonts, 1 dirs
+/usr/share/fonts/truetype: caching, new cache contents: 0 fonts, 3 dirs
+/usr/share/fonts/truetype/humor-sans: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/liberation: caching, new cache contents: 16 fonts, 0 dirs
+/usr/share/fonts/truetype/nanum: caching, new cache contents: 10 fonts, 0 dirs
+/usr/local/share/fonts: caching, new cache contents: 0 fonts, 0 dirs
+/root/.local/share/fonts: skipping, no such directory
+/root/.fonts: skipping, no such directory
+/var/cache/fontconfig: cleaning cache directory
+/root/.cache/fontconfig: not cleaning non-existent cache directory
+/root/.fontconfig: not cleaning non-existent cache directory
+fc-cache: succeeded
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 그림 그리기를 위한 코드와 한글 실행</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rc</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;NanumBarunGothic&#39;</span><span class="p">)</span> <span class="c1"># clolab 에서 한글 사용 </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.unicode_minus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>   <span class="c1"># 그림 크기 조정</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">6.1.1. </span>빅데이터 시대의 정보<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>IT의 발달과 빅데이터의 등장으로 우리는 과거보다 데이터에 더 쉽게 접근할 수 있으며 더 많은 데이터를 얻어서 분석할 수 있게 되었다. 예를 들면 우리나라에 위치한 기상 관측소뿐만 아니라 전 세계에 퍼져 있는 관측소들에서 얻어진 <a class="reference external" href="https://data.kma.go.kr/cmmn/main.do">기상 관측자료</a>는 아주 쉽게 얻을 수 있다. 과거에는 특별한 자격을 가진 사람들이 자료의 일부분만 이용할 수 있었지만 점점 대중이 사용할 수 있는 데이터의 개방성과 크기가 증가하면서 더 많은 정보를 신속하게 얻을 수 있다.</p>
+<p>하지만 아직도 모든 정보를 그렇게 쉽게 얻을 수 있는 것은 아니다. 먼저 자료가 존재해도 개인정보 누출의 위험 때문에 사용에 제약이 있다. 만약 사람들의 의료 기록을 자유롭게 이용할 수 있다면 민감한 개인정보가  노출되는 불행한 일이 벌어질 것이다. 또 사람들이 이용하는 포털이나 통신사의 자료를 제한없이 자유롭게 이용하는 경우도 보안에 큰 문제를 일으킬 수 있다.</p>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">6.1.2. </span>데이터의 품질<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>빅데이터가 유용한 형태로 존재하여 쉽게 접근할 수 있는 경우는 증가하고 있지만 매우 흔한 일은 아니다.
+여러분이 간과해서는 안되는 점은 아직도 사람들이 원하는 정확한 정보를 가진 품질이 좋은 자료를 얻기 위해서는 많은 시간과 비용이 든다는 것이다.</p>
+<p>여러분이 원하는 분석에 사용할 수 있는 빅데이터가 있다고 해도 분석을 위한 유용한 자료를 얻기 위해서는 별도의 비용과 노력이 필요한 경우가 많다.</p>
+<p>원하는 정보를 가진 품질이 좋은 자료가 필요한 예들을 들어보자. 이러한 자료를 비용과 노력없이 얻을 수 있을까? 여러분은 아래 예로 든 상황을 상상하면서 어떤 방법으로 어떻게 원하는 자료를 얻을 수 있는지 생각해 보자.</p>
+<ul class="simple">
+<li><p>선거에 출마한 후보자가 유권자들의 성향을 분석하고 그에 따라서 적절한 선거 전략을 세우기 위해서는 유권자의 생각과 의견을 알고 싶다.</p></li>
+<li><p>정부가 국민의 건강 증진을 위하여 정책을 세우는 경우 국민들의 질병, 건강, 영양 등에 대한 다양한 정보가 필요하다.</p></li>
+<li><p>기업이 판매하고 있는 제품에 대하여 고객의 평가와 의견을 알고 싶다.</p></li>
+</ul>
+<p>철수가 위에서 예로 든 상황에 필요한 데이터를 얻기 위한 방법으로 다음과 같은 제안을 했다. 여러분은 철수의 생각에 동의하는가?</p>
+<ul class="simple">
+<li><p>선거구의 가장 번화한 거리에 나가서 지나가는 사람에게 후보자와 정책에 대한 의견을 물어보자. 그냥 물어보면 많은 사람들이 응대를 안할 것이므로 응답한 사람들에게는 선물을 주자.</p></li>
+<li><p>우리나라는 모든 국민이 전국의료보험에 가입되어 있으니 건강보험공단에 있는 전 국민에 대한 의료보험 자료를 이용하자.</p></li>
+<li><p>우리 회사 홈페이지나 SNS에 올려진 고객들의 의견을 찾아서 사용하자.</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">6.1.3. </span>모집단과 표본<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>위에서 제시한 예에서 분석에 필요한 전체자료는 다음과 같다. 우리는 이러한 전체 자료를 <strong>모집단(population)</strong> 이라고 한다.</p>
+<ul class="simple">
+<li><p>선거구에 등록된 모든 유권자의 생각과 의견</p></li>
+<li><p>전국민의 질병, 건강, 영양 상태</p></li>
+<li><p>제품을 사용해본 모든 사람들</p></li>
+</ul>
+<p>데이터과학 분야에서 분석에 사용되는 자료는 많은 경우 전체 자료의 일부분인 표본(sample)자료 이다.</p>
+<p><strong>표본(sample)은 분석의 대상이 되는 전체집단, 즉 모집단(population)의 일부분이다.</strong></p>
+<p>철수가 제안한 방법으로 얻은 데이터는 모집단의 일부분이므로 표본이다. 표본은 전체자료의 일부분이므로 전체 자료가 지닌 특성과 표본이 가진 특성이 차이가 날 수 있다. 철수가 제안한 방법으로 얻은 표본으로 부터 얻은 정보는 모집단의 실제 특성과 얼마나 차이가 날까? 대부분의 경우 모집단의 특성을 알 수 없으므로 실제로 추출한 표본으로 얻은 정보가 모집단과 얼마나 차이가 나는지는 알 수 없다.</p>
+<p>만약 우리가 표본으로 부터 얻은 정보가 모집단과 얼마나 다른지 전혀 알 수 없다면 표본을 추출하고 조사를 하는 것이 의미가 있는 일일까?</p>
+<p>만약 철수가 선거구의 가장 번화한 거리에 나가서 지나가는 사람들 1000명을 면담하고 후보의 지지율이 55% 라는 정보를 얻었다고 하자. 조사한 55%의 지지율이 실제 전체 유권자의 지지율과 얼마나 차이가 나는지 알 수 없다면 이러한 정보 수집은 의미가 있는가?</p>
+<p>가장 번화한 거리를 지나가는 사람들은 매우 다양하기 때문에 전체 유권자를 잘 대표할 수 있고 또한 1000명은 상당한 큰 수이므로 자신의 표본은 쓸만하다고 철수가 주장한다면 여러분은 여기에 동의하는가?</p>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">6.1.4. </span>확률표본<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>이제 영이가 철수의 방법보다 더 나은 방법이 있다고 주장한다. 영이가 제안한 1000명의 표본을 추출하는 방법은 다음과 같다.</p>
+<ul class="simple">
+<li><p>지역구의 유권자가 전체 3만명이 있는데 전화국에 유권자들의 전화번호가 수록된 명부가 있다. 이 명부에서 1000명을 <strong>임의로 추출하여</strong> 전화를 걸고 지지 여부와 의견을 물어보자.</p></li>
+</ul>
+<p>임의로 추출되었다(randomly selected)는 의미를 쉽게 표현하면  전화번호가 수록된 명부에서 유권자 1000명을 눈감고 뽑았다는 의미이다. 물론 같은 사람을 두 번 이상 뽑지는 않는다.</p>
+<p>눈감고 뽑았다는 의미는 <strong>모든 유권자가 표본에 포함될 가능성이 같다</strong> 는 것이다. 이렇게 “눈 감고 표본을 추출” 하는 방법을 <strong>단순임의추출(simple random sampling)</strong> 이라고 하며 추출된 표본을 <strong>확률표본(random sample, probability sample)</strong> 이라고 부른다.</p>
+<p>여기서 후보자가 질문을 던진다. 철수가 제안한 방법도 전체 유권자를 어느 정도 적절하게 대표할 수 있는것 같은데 굳이 전화번호 명부에서 1000명을 눈 감고 추출해서 전화를 거는 노력을 할 필요가 있는가? 여러분의 생각은 어떤가?</p>
+<p>철수의 방법으로 얻은 표본을 비확률표본 또는 편의표본((convenience sample)이라고 부른다. 데이터과학에서 다루는 표본은 거의 대부분 확률표본이다.</p>
+<ul class="simple">
+<li><p>확률표본: 모집단의 속한 모든 개체가 표본에 속할 가능성이 같은 경우</p></li>
+<li><p>편의표본: 개체가 표본에 포함되는 가능성을 알 수 없는 표본</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2><span class="section-number">6.1.5. </span>공공자전거 자료<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>이제 확률표본의 성질을 알아보가 위하여 실제 자료를 이용해 보자.</p>
+<p>사용될 자료는 2019년 9월 동안 서울특별시 공공자전거 대여 이력 자료이다. 대여이력 자료를 <a class="reference external" href="https://data.seoul.go.kr/dataList/OA-15182/F/1/datasetView.do">자료 사이트</a> 에서 다운로드 받아 데이터프레임 <code class="docutils literal notranslate"><span class="pre">bike</span></code> 로 지정한다.</p>
+<p>데이터프레임 <code class="docutils literal notranslate"><span class="pre">bike</span></code> 는 총 407,589 건의 대여 정보가 수록되어 있다. 대여한 자전거 번호, 언제 어디서 대여를 하고 어디에 반납했는지, 사용한 시간과 거리에 모든 정보가 있다. 이제 우리는 2019년 9월 동안 대여된 공공 자전거를 사용할 때 <strong>이용거리</strong> 에 대한 정보에 관심이 있다고 하자. 운행거리에 대한 정보는 자전거를 관리하는데 있어서 매우 유용하게 사용될 것이다.</p>
+<p>일단 <strong>데이터프레임 <code class="docutils literal notranslate"><span class="pre">bike</span></code> 는 모집단이다. 즉,  2019년 9월에 발생한 모든 대여 정보를 수록한 자료이므로 모집단이라고 할 수 있다.</strong></p>
+<p>이렇게 분석을 위한 필요한 전체 자료를 쉽게 구할 수 있는 사실로서 빅데이터 시대임을 실감하게 된다. 여러분들이 10년 전으로 돌아가서, 자전거 대여소를 일일이 방문하여 손으로 쓰인 운행 기록을 조사한다고 상상해 보자. IT의 발달과 빅데이터의 등장이 우리를 얼마나 편하게 해주는지 실감이 난다. 단, 여러분이 <a class="reference external" href="https://data.seoul.go.kr/dataList/OA-15182/F/1/datasetView.do">자료 사이트</a>에 가서 이용자들의 의견을 보면 정확하고 완전한 데이터를 만드는 것이 얼마나 어려운지 알 수 있다.</p>
+<p>공공자전거 자료에 대한 분석에서는 모집단이 존재하지만 이번 절에서는 모집단의 일부인 표본의 특성을 배우는 것이 목적이므로  데이터프레임 <code class="docutils literal notranslate"><span class="pre">bike</span></code> 를 모집단이라고 가정하고 표본을 추출해 볼 것이다.</p>
+<p>먼저 데이터프레임 <code class="docutils literal notranslate"><span class="pre">bike</span></code>에서  이용거리의 분포의 특성을 살펴보자</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url1</span> <span class="o">=</span> <span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/seoul_bike_201909_3.csv&quot;</span>
+<span class="n">bike</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url1</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;CP949&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bike</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>자전거번호</th>
+      <th>대여일시</th>
+      <th>대여 대여소번호</th>
+      <th>대여 대여소명</th>
+      <th>대여거치대</th>
+      <th>반납일시</th>
+      <th>반납대여소번호</th>
+      <th>반납대여소명</th>
+      <th>반납거치대</th>
+      <th>이용시간</th>
+      <th>이용거리</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>SPB-17003</td>
+      <td>2019-09-28 16:10:55</td>
+      <td>368</td>
+      <td>SK 서린빌딩 앞</td>
+      <td>4</td>
+      <td>2019-09-28 17:03:32</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>14</td>
+      <td>52</td>
+      <td>8940.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>SPB-14405</td>
+      <td>2019-09-28 16:48:16</td>
+      <td>2024</td>
+      <td>상도역 1번출구</td>
+      <td>3</td>
+      <td>2019-09-28 17:03:44</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>18</td>
+      <td>15</td>
+      <td>1910.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>SPB-18431</td>
+      <td>2019-09-28 16:59:54</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>10</td>
+      <td>2019-09-28 17:03:57</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>10</td>
+      <td>2</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>SPB-04853</td>
+      <td>2019-09-28 15:31:49</td>
+      <td>207</td>
+      <td>여의나루역 1번출구 앞</td>
+      <td>32</td>
+      <td>2019-09-28 17:10:12</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>19</td>
+      <td>98</td>
+      <td>9610.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SPB-11122</td>
+      <td>2019-09-28 15:35:41</td>
+      <td>207</td>
+      <td>여의나루역 1번출구 앞</td>
+      <td>14</td>
+      <td>2019-09-28 17:10:37</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>18</td>
+      <td>90</td>
+      <td>9450.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>SPB-23089</td>
+      <td>2019-09-28 17:02:37</td>
+      <td>2003</td>
+      <td>사육신공원앞</td>
+      <td>5</td>
+      <td>2019-09-28 17:13:44</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>10</td>
+      <td>10</td>
+      <td>1410.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>SPB-15669</td>
+      <td>2019-09-28 16:17:54</td>
+      <td>2213</td>
+      <td>고속터미널역 5번출구 앞</td>
+      <td>7</td>
+      <td>2019-09-28 17:14:22</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>8</td>
+      <td>56</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>SPB-09727</td>
+      <td>2019-09-28 17:04:56</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>5</td>
+      <td>2019-09-28 17:17:10</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>17</td>
+      <td>11</td>
+      <td>380.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>SPB-10053</td>
+      <td>2019-09-28 16:59:45</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>3</td>
+      <td>2019-09-28 17:17:53</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>5</td>
+      <td>17</td>
+      <td>1080.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>SPB-14487</td>
+      <td>2019-09-28 16:01:41</td>
+      <td>2024</td>
+      <td>상도역 1번출구</td>
+      <td>5</td>
+      <td>2019-09-28 17:20:44</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>14</td>
+      <td>78</td>
+      <td>13870.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bike</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(407589, 11)
+</pre></div>
+</div>
+</div>
+</div>
+<p>이용거리의 분포를 히스토그램과 상자그림으로 그려보자. 오른쪽으로 매우 치우친 분포인것을 알 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bike</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;이용거리&quot;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1ae68453d0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/sample_13_1.png" src="../../_images/sample_13_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bike</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;이용거리&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1ae670b610&gt;
+</pre></div>
+</div>
+<img alt="../../_images/sample_14_1.png" src="../../_images/sample_14_1.png" />
+</div>
+</div>
+<p>이제 이용거리에 대한 요약통계량을 구해보자. 아래 요약통계량은 모집단에 대한 정보이다.</p>
+<p>이용거리의 평균은 4253.3 m 이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bike</span><span class="p">[[</span><span class="s2">&quot;이용거리&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>이용거리</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>407589.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>4253.336228</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>5782.673901</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>1200.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>2380.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>5130.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>153490.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><span class="section-number">6.1.6. </span>확률표본의 추출<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>데이터프레임에서 행, 즉 레코드를 단순임의추출 방법으로 추출하는 메소드는 <code class="docutils literal notranslate"><span class="pre">sample()</span></code>이다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DataFrame</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">frac</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>: 표본의 크기</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">frac</span></code>: 표본의 비율</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">replace</span></code> : 복원추출에 대한 여부</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">random_state</span></code> : 표본추출시 사용되는 난수를 지정. 지정한 난수가 같으면 동일한 표본이 추출된다.</p></li>
+</ul>
+<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">n=100</span></code> 개의 표본을 비복원추출(without replacement)로 임의추출하여 데이터프레임 <code class="docutils literal notranslate"><span class="pre">bike_sample</span></code>에 저장한다.</p>
+<p>비복원추출(without replacement)은 한 번 추출된 자료를 다시 뽑을 수 없다는 의미이며 반대로
+복원추출(with replacement)은 추출된 자료를 다시 뽑을 수 있다는 의미이다.  상자에 총 407,589 개의 공이 들어 있고 100개를 눈감고 뽑는 경우에 뽑힌 공을 다시 상자에 넣고 추출하는 방법(복원추출)과 뽑힌 공은 다시 상자에 넣지 않는 방법(비복원추출)을 생각하면 된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bike_sample_100</span> <span class="o">=</span> <span class="n">bike</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bike_sample_100</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>자전거번호</th>
+      <th>대여일시</th>
+      <th>대여 대여소번호</th>
+      <th>대여 대여소명</th>
+      <th>대여거치대</th>
+      <th>반납일시</th>
+      <th>반납대여소번호</th>
+      <th>반납대여소명</th>
+      <th>반납거치대</th>
+      <th>이용시간</th>
+      <th>이용거리</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>375631</th>
+      <td>SPB-11285</td>
+      <td>2019-09-21 10:06:07</td>
+      <td>1452</td>
+      <td>겸재교 진입부</td>
+      <td>9</td>
+      <td>2019-09-21 10:38:10</td>
+      <td>3520</td>
+      <td>광진경찰서</td>
+      <td>4</td>
+      <td>30</td>
+      <td>5920.0</td>
+    </tr>
+    <tr>
+      <th>219156</th>
+      <td>SPB-10989</td>
+      <td>2019-09-24 22:36:38</td>
+      <td>2321</td>
+      <td>학여울역 사거리</td>
+      <td>9</td>
+      <td>2019-09-24 22:41:46</td>
+      <td>2320</td>
+      <td>도곡역 대치지구대 방향</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2646</th>
+      <td>SPB-20213</td>
+      <td>2019-09-11 15:51:03</td>
+      <td>1986</td>
+      <td>태평양물산빌딩</td>
+      <td>8</td>
+      <td>2019-09-11 16:28:15</td>
+      <td>2007</td>
+      <td>유한양행앞</td>
+      <td>6</td>
+      <td>37</td>
+      <td>5450.0</td>
+    </tr>
+    <tr>
+      <th>329716</th>
+      <td>SPB-05859</td>
+      <td>2019-09-11 09:09:47</td>
+      <td>1912</td>
+      <td>한신휴아파트 앞</td>
+      <td>9</td>
+      <td>2019-09-11 09:15:23</td>
+      <td>2801</td>
+      <td>대륭포스트타워1차</td>
+      <td>14</td>
+      <td>5</td>
+      <td>830.0</td>
+    </tr>
+    <tr>
+      <th>35470</th>
+      <td>SPB-03699</td>
+      <td>2019-09-01 14:19:17</td>
+      <td>2265</td>
+      <td>이수고가차도 남단</td>
+      <td>2</td>
+      <td>2019-09-01 14:34:28</td>
+      <td>2060</td>
+      <td>남성역3번출구 뒤</td>
+      <td>6</td>
+      <td>14</td>
+      <td>2160.0</td>
+    </tr>
+    <tr>
+      <th>132032</th>
+      <td>SPB-03922</td>
+      <td>2019-09-20 22:09:34</td>
+      <td>274</td>
+      <td>영등포역지하쇼핑센타 5번출구</td>
+      <td>1</td>
+      <td>2019-09-20 23:14:57</td>
+      <td>2219</td>
+      <td>고속터미널역 8-1번, 8-2번 출구 사이</td>
+      <td>9</td>
+      <td>65</td>
+      <td>11820.0</td>
+    </tr>
+    <tr>
+      <th>15067</th>
+      <td>SPB-17943</td>
+      <td>2019-09-17 18:24:58</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>18</td>
+      <td>2019-09-17 19:57:08</td>
+      <td>2025</td>
+      <td>흑석역 1번출구</td>
+      <td>3</td>
+      <td>91</td>
+      <td>8560.0</td>
+    </tr>
+    <tr>
+      <th>226253</th>
+      <td>SPB-07462</td>
+      <td>2019-09-03 18:27:38</td>
+      <td>2358</td>
+      <td>구룡초사거리 (현대아파트10동 앞 )</td>
+      <td>4</td>
+      <td>2019-09-03 18:41:48</td>
+      <td>2329</td>
+      <td>르네상스호텔사거리 역삼지하보도 2번출구</td>
+      <td>6</td>
+      <td>13</td>
+      <td>2520.0</td>
+    </tr>
+    <tr>
+      <th>318420</th>
+      <td>SPB-13058</td>
+      <td>2019-09-10 15:52:12</td>
+      <td>2620</td>
+      <td>송파나루역 4번 출구옆</td>
+      <td>7</td>
+      <td>2019-09-10 16:05:27</td>
+      <td>2622</td>
+      <td>올림픽공원역 3번출구</td>
+      <td>8</td>
+      <td>13</td>
+      <td>2220.0</td>
+    </tr>
+    <tr>
+      <th>405911</th>
+      <td>SPB-18550</td>
+      <td>2019-09-09 19:10:55</td>
+      <td>549</td>
+      <td>아차산역 3번출구</td>
+      <td>5</td>
+      <td>2019-09-09 19:19:11</td>
+      <td>3542</td>
+      <td>래미안 구의파크 스위트</td>
+      <td>17</td>
+      <td>7</td>
+      <td>1090.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bike_sample_100</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(100, 11)
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 추출한 100개의 표본의 분포를 히스토그램과 상자그림으로 그려보고 표본으로 부터 계산한 이용거리의 요약통게량도 구해보자.</p>
+<p>표본으로 계산한 이용거리의 평균은 3824.1  m 로서 모집단의 평균 4253.3 m 보다 약 430 m 적게 나타난다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bike_sample_100</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;이용거리&quot;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1ae623e3d0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/sample_23_1.png" src="../../_images/sample_23_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bike_sample_100</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;이용거리&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1ae6136cd0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/sample_24_1.png" src="../../_images/sample_24_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bike_sample_100</span><span class="p">[[</span><span class="s2">&quot;이용거리&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>이용거리</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>100.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>3824.100000</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>5524.629901</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>1157.500000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>2170.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>4285.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>45700.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><span class="section-number">6.1.7. </span>확률표본의 분포<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>앞 절에서 배운 분포(distribution)의 정의와 그 특성을 파악하는 방법들을 다시 생각해보자. 분포는 자료가 어떻게 집중되어있고 퍼져있는지 나타내는 것이다. 우리는 자료의 분포를 바차트, 히스토그램, 상자그림으로 표현할 수 있다는 것을 배웠고 또한 평균, 중앙값, 표준편차 등 다양한 통계량을 이용하여 분포의 특성, 즉 분포에 대한 정보를 얻는 방법을 배웠다.</p>
+<p>여러분이 조심해야할 점은 우리가 통상적으로 말하는 “분포”는 주어진 자료가 어떻게 집중되고 퍼져있는지를 나타내는것이고 “확률분포”는 임의로 추출하는 경우 어떤 값이 나타날 수 있는 가능성, 즉 확률을 나타내는 것이다.</p>
+<p><strong>추출된 표본에 속한 데이터의 분포는 경험적 분포(empirical distribution)라고 부른다.</strong> 경험적이라는 의미는  추출된 <strong>관측값들의 분포</strong> 라는 것이다. 대부분 경우 모집단 전체를 관측할 수 없기 때문에 모집단에 대해서는 경험적 분포라고 부르지 않고 모집단 분포(population distribution)라고 따로 부른다.</p>
+<p>확률표본의 경험적 분포는 표본의 수가 증가하면 모집단의 분포와 점점 유사하게 나타날 것이라고 예상할 수 있다. 즉, <strong>표본의 개수(sample size)가 증가하면 확률표본에서 얻은 정보는 모집단에 대한 정보와 점점 가까워 진다.</strong></p>
+<p>위에서 영이의 표본은 확률표본이므로 추출된 유권자의 수가 증가하면 표본으로 부터 얻은 지지율이 모집단의 지지율에 가까워진다. 표본의 크기가 커지면 확률표본의 경험적 분포가 모집단의 분포에 점점 가까워 지는 법칙을 <strong>대수의 법칙</strong> (law of large number)라고 한다.</p>
+<p>반면 철수의 방법으로 추출된 표본은 확률표본이 아니기 때문에 유권자의 수가 증가해도 실제 지지율에 가까워지는 것을 보장할 수 없다.</p>
+<p>이제 자전거 전체 모집단에서 10,000 개의 확률표본을 추출해 보고 이를 모집단의 분포와 비교해 보자. 10,000 개의 표본에서 얻은 정보, 즉 상자그림과 요약통계량은 모집단과 매우 유사하다. 표본의 수가 100개인 경우 보다 훨씬 더 모집단의 분포와 가까운 것을 알 수 있다.</p>
+<p>10,000 개의 표본으로 부터 얻은 이용거리의 평균은 4263.4 m 로서 모집단의 평균 4253.3 m 와는 단 10 m 차이이다.</p>
+<p>아래 코드에서 선택문 <code class="docutils literal notranslate"> <span class="pre">random_state=</span></code> 의 숫자를 바꾸면 다른 10,000 개의 표본이 추출된다. 여러분이 선택문 <code class="docutils literal notranslate"> <span class="pre">random_state=</span></code> 의 숫자를  다른 숫자로 바꾸면서 표본에서 얻어진 이용거리의 평균이 어떻게 변하는지 알아 보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bike_sample_10000</span> <span class="o">=</span> <span class="n">bike</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bike_sample_10000</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;이용거리&quot;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1ae60a7690&gt;
+</pre></div>
+</div>
+<img alt="../../_images/sample_28_1.png" src="../../_images/sample_28_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bike_sample_10000</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;이용거리&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1ae61634d0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/sample_29_1.png" src="../../_images/sample_29_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bike_sample_10000</span><span class="p">[[</span><span class="s2">&quot;이용거리&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>이용거리</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>10000.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>4263.389000</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>5808.952384</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>1200.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>2350.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>5142.500000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>87720.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bike_sample_10000</span><span class="o">.</span><span class="n">이용거리</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4263.389
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 100개 표본의 분포, 10000개 표본의 분포, 모집단의 분포를 상자그림으로 그려서 비교해 보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">bike_sample_100</span><span class="o">.</span><span class="n">이용거리</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">153500</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;n=100&#39;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">bike_sample_10000</span><span class="o">.</span><span class="n">이용거리</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">153500</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;n=10000&#39;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">bike</span><span class="o">.</span><span class="n">이용거리</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">153500</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Population&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/sample_33_0.png" src="../../_images/sample_33_0.png" />
+</div>
+</div>
+<p>이제 우리는 표본의 수를 크게 하면서 이용거리의 표본 평균이 모집단의 평균에 가까워지는 현상을 그림으로 나타내보자.</p>
+<p>앞에서 배운 반복문을 사용하여 표본의 수 <code class="docutils literal notranslate"><span class="pre">n</span></code> 를 10 개부터 2,000개 까지 20 개씩 증가시키면서 표본을 추출하고 이용거리에 대한 표본 평균(sample mean)이 어떻게 변하는지 알아 보자.</p>
+<div class="math notranslate nohighlight">
+\[ \bar x_n = \frac{\sum_{i=1}^n x_i}{n}\]</div>
+<div class="math notranslate nohighlight">
+\[ \bar x_{10}, \bar x_{30}, \bar x_{60}, \dots, \bar x_{2000} \]</div>
+<p>표본의 크기가 작을 때는 표본 평균이 모집단의 평균에서 멀어진 경우가 많이 나타나지만 표본의 크기가 증가하면서 모집단의 평균에 점점 가까워지는 경향을 보인다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2021</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">n</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  10,   30,   50,   70,   90,  110,  130,  150,  170,  190,  210,
+        230,  250,  270,  290,  310,  330,  350,  370,  390,  410,  430,
+        450,  470,  490,  510,  530,  550,  570,  590,  610,  630,  650,
+        670,  690,  710,  730,  750,  770,  790,  810,  830,  850,  870,
+        890,  910,  930,  950,  970,  990, 1010, 1030, 1050, 1070, 1090,
+       1110, 1130, 1150, 1170, 1190, 1210, 1230, 1250, 1270, 1290, 1310,
+       1330, 1350, 1370, 1390, 1410, 1430, 1450, 1470, 1490, 1510, 1530,
+       1550, 1570, 1590, 1610, 1630, 1650, 1670, 1690, 1710, 1730, 1750,
+       1770, 1790, 1810, 1830, 1850, 1870, 1890, 1910, 1930, 1950, 1970,
+       1990, 2010])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>101
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sample_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">samplesize</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+  <span class="n">sample_mean</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">bike</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">samplesize</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">이용거리</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_sample</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;n&#39;</span><span class="p">:</span><span class="n">n</span><span class="p">,</span> <span class="s1">&#39;sample_mean&#39;</span><span class="p">:</span><span class="n">sample_mean</span> <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_sample</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>n</th>
+      <th>sample_mean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10</td>
+      <td>3182.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>30</td>
+      <td>3319.333333</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>50</td>
+      <td>6101.200000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>70</td>
+      <td>2975.857143</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>90</td>
+      <td>3352.000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>110</td>
+      <td>3695.272727</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>130</td>
+      <td>4614.076923</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>150</td>
+      <td>4292.200000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>170</td>
+      <td>5050.411765</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>190</td>
+      <td>4563.368421</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">df_sample</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sample_mean&#39;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">4253.336228</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/sample_40_0.png" src="../../_images/sample_40_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2><span class="section-number">6.1.8. </span>편의표본<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>이제 공공자전거 자료에서 편의표본을 추출하는 경우를 생각해 보자. 주어진 상황에 따라서 편의표본을 추출하는 방법은 다양할 것이다.</p>
+<p>철수가 제안한 가장 번화한 거리에 나타난 사람들을 인터뷰하는 편리한 방법처럼, 공공자전거 자료에서도
+데이터프레임의 첫 행부터 순서대로 주어진 개수만큼 표본을 추출하는 방법을 적용해 보자. 공공자전거의 대여정보가 종이로 된 서류화일로에 작성되어 있다면 앞부분만 표본으로 사용하는 방식이라고 생각하자. 만약 100개의 표본이 필요한 경우 엄청난 길이를 가진 서류철에서 처음 100장만 선택하면 정말 편할 것이다.</p>
+<p>앞에서 수행한 실험과 유사하게 표본의 수를 늘려가면서 표본 평균이 어떻게 변하는지 살펴보자.</p>
+<p>아래 그림에서 보듯이 편의표본으로 얻은 이용거리의 평균은 표본의 수가 증가해도 실제 모집단의 평균에 전혀 가까이 접근하지 않는다.</p>
+<p>왜 우리가 확률표본을 사용해야 하는지 확실하게 알 수 있다. 편의표본을 사용하는 경우는 대수의 법칙이 유효하다는 보장을 할 수 없다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sample_mean_conv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">samplesize</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+  <span class="n">sample_mean_conv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">bike</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">samplesize</span><span class="p">]</span><span class="o">.</span><span class="n">이용거리</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_sample_conv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;n&#39;</span><span class="p">:</span><span class="n">n</span><span class="p">,</span> <span class="s1">&#39;sample_mean_conv&#39;</span><span class="p">:</span><span class="n">sample_mean_conv</span> <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">df_sample_conv</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sample_mean_conv&#39;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">4253.336228</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/sample_44_0.png" src="../../_images/sample_44_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2><span class="section-number">6.1.9. </span>참고<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p>참고로 이 과목에서는 확률표본을 정의할 때, 모집단의 속한 모든 개체가 표본에 속할 가능성이 같은 경우라고 정의하였다. 하지만 실제로 확률표본을 추출하는 경우 개체마다 표본에 포함될 수 있는 가능성이 다른 경우도 있다.</p>
+<p>우리나라 모든 기업들의 전체 수출액을 얼마인지 추정해야 하는 경우를 생각해 보자. 만약 삼성전자나
+현대 자동차가 표본에 포함되지 않았다면 어떤 일이 벌어질까?</p>
+<p>확률표본의 정확한 정의는 모집단에 속한 개체들이 표본에 포함되는 확률이 미리 정해져 있으며 이러한 확률분포로부터 임의로 추출된 표본을 의미한다. 모집단의 모든 개체가 표본에 속할 가능성이 같은 경우도 표본에 포함될 가능성을 미리 아는 경우에 속한다.</p>
+<p>실제로 우리나라 기업들의 전체 수출액을 얼마인지 추정해야 하는 경우, 모든 대기업들은 반드시 표본에 포함시킨다. 즉 대기업들은 표본에 포함될 확률이 1인 것이다. 또한 기업의 크기, 예를 들어 고용 인원의 수에 따라서 표본에 속할 확률이 달라진다.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/06"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="sampling-intro.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">6. </span>표본과 경험적 분포</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By 서울시립대학교<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3. 자료의 형식 &#8212; 빅데이터 개론 2</title>
+    <title>6. 표본과 경험적 분포 &#8212; 빅데이터 개론 2</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -52,8 +52,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3.1. 숫자" href="numbers.html" />
-    <link rel="prev" title="2.4. 어린 왕자" href="../02/data-processing-text.html" />
+    <link rel="next" title="6.1. 표본과 정보" href="sample.html" />
+    <link rel="prev" title="5.5. 함수" href="../05/data_function.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -149,28 +149,28 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03/types.html">
    3. 자료의 형식
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="numbers.html">
+    <a class="reference internal" href="../03/numbers.html">
      3.1. 숫자
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="string.html">
+    <a class="reference internal" href="../03/string.html">
      3.2. 문자열
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="array.html">
+    <a class="reference internal" href="../03/array.html">
      3.3. 행렬
     </a>
    </li>
@@ -245,18 +245,18 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../06/sampling-intro.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    6. 표본과 경험적 분포
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../06/sample.html">
+    <a class="reference internal" href="sample.html">
      6.1. 표본과 정보
     </a>
    </li>
@@ -303,7 +303,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/chapters/03/types.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/chapters/06/sampling-intro.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -350,12 +350,11 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">3. </span>자료의 형식<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>우리가 컴퓨터에서 다루는 자료는 주로 숫자와 문자입니다.</p>
-<p>숫자는 정수(integer)와 실수(real number)로 구분할 수 있습니다. 물론 정수도 실수의 범위에 포함되지만 컴퓨터에서는 정수와 실수를 저장하는 방법이 다릅니다. 프로그램 언어에서는 소숫점을 이용하여 표현하는 실수를 특별하게 부동소숫점(floating point number)라고 부릅니다.</p>
-<p>문자열은 말 그대로 문자형식으로 표현되는 자료입니다. 숫자를 포함한 모든 글자, 특수 문자를 포함하고 있으며 특별한 가능을 가진 특수 문자열도 문자 형식의 자료입니다.</p>
-<p>이제 파이썬 언어에서 숫자와 문자를 데이터로 사용할 때 저장하는 형식(type)과 그 특징을 알아보도록 하겠습니다.</p>
-<p>또한 계산에 사용하는 행렬(Array)형식에 대하여 간단하게 알아볼 것입니다.</p>
+<h1><span class="section-number">6. </span>표본과 경험적 분포<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>표본은 분석의 관심의 대상이 되는 전체 자료의 일부분이다. 빅데이터 시데에 들어오면서 분석의 대상이 되는 전체 자료를 얻을 수 잇는
+가능성이 점점 높아지고 잇다.</p>
+<p>하지만 아직도 데이터과학에서 사용되는 대부분의 자료는 전체 자료의 일부분, 즉 표본으로 부터 얻는 자료인 경우가 대부분이다.  이번 장에서는
+표본의 과학적인 추출 방법과 경험적 분포의 의미를 학습한다. 또한  표본이 지닌 불확실성을 계량할 수 있는 여러 가지 통계적 개념들을 알아볼 것이다.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -373,7 +372,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./chapters/03"
+            path: "./chapters/06"
         },
         predefinedOutput: true
     }
@@ -390,19 +389,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../02/data-processing-text.html" title="previous page">
+        <a class="left-prev" href="../05/data_function.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">2.4. </span>어린 왕자</p>
+                <p class="prevnext-title"><span class="section-number">5.5. </span>함수</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="numbers.html" title="next page">
+        <a class="right-next" href="sample.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">3.1. </span>숫자</p>
+                <p class="prevnext-title"><span class="section-number">6.1. </span>표본과 정보</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
