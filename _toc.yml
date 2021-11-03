@@ -45,7 +45,10 @@ sections:
   - file: chapters/05/data_random_experiment
   - file: chapters/05/data_probability
   - file: chapters/05/data_function
-
+- file: chapters/06/sampling-intro
+  title: 표본과 경험적 분포
+  sections:
+  - file: chapters/06/sample
 
   
 
