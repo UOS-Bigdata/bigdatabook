@@ -49,7 +49,7 @@ sections:
   title: 표본과 경험적 분포
   sections:
   - file: chapters/06/sample
-
+  - file: chapters/06/samplemeans
   
 
 
