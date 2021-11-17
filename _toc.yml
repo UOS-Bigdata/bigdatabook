@@ -51,6 +51,7 @@ sections:
   - file: chapters/06/sample
   - file: chapters/06/samplemeans
   - file: chapters/06/estimator
+  - file: chapters/06/bootstrap
   
 
 
