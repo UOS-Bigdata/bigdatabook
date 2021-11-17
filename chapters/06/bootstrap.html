@@ -1,0 +1,1552 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6.4. 붓스트랩 &#8212; 빅데이터 개론 2</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyle.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="6.3. 추정량의 성질" href="estimator.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">빅데이터 개론 2</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   빅데이터 개론 2
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01/intro-course.html">
+   1. 서론
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-program.html">
+     1.1. 프로그래밍 언어
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-stat.html">
+     1.2. 통계학
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02/intro-python.html">
+   2. 파이선의 기초
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/basic-expression.html">
+     2.1. 표현식과 변수
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-intro.html">
+     2.2. 데이터의 처리
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-train-passenger.html">
+     2.3. 고속열차 여객 수송자료
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-text.html">
+     2.4. 어린 왕자
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03/types.html">
+   3. 자료의 형식
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/numbers.html">
+     3.1. 숫자
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/string.html">
+     3.2. 문자열
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/array.html">
+     3.3. 행렬
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04/dataframe.html">
+   4. 데이터프레임
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-intro.html">
+     4.1. 데이터프레임의 정의와 구성요소
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-change.html">
+     4.2. 데이터프레임의 정리
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-summary.html">
+     4.3. 데이터프레임의 요약
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-merge.html">
+     4.4. 데이터프레임의 결합
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05/data-intro.html">
+   5. 분포와 확률
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_distribution.html">
+     5.1. 자료의 분포
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_randomness.html">
+     5.2. 분포와 우연성
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_random_experiment.html">
+     5.3. 확률과 컴퓨터 실험
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_probability.html">
+     5.4. 확률의 기초
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_function.html">
+     5.5. 함수
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="sampling-intro.html">
+   6. 표본과 경험적 분포
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="sample.html">
+     6.1. 표본과 정보
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="samplemeans.html">
+     6.2. 통계량의 분포
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="estimator.html">
+     6.3. 추정량의 성질
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.4. 붓스트랩
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/chapters/06/bootstrap.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/UOS-Bigdata/bigdatabook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/UOS-Bigdata/bigdatabook/master?urlpath=tree/chapters/06/bootstrap.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/06/bootstrap.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   6.4.1. 추정량의 표준편차
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   6.4.2. 붓스트랩
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   6.4.3. 신뢰구간
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     6.4.3.1. 추정량의 경험적 분포
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     6.4.3.2. 백분위수에 의한 신뢰구간
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     6.4.3.3. 표준 편차에 의한 신뢰구간
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     6.4.3.4. 신뢰구간의 해석
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   6.4.4. 예제: 공공 자전거
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id10">
+   6.4.5. 특별한 추정량: 표본 평균
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1><span class="section-number">6.4. </span>붓스트랩<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>앞 절에서 우리는 추정량의 정확도를 확률적 언어로 제시하는 방법과 이론적 근거에 대하여 학습하였다.</p>
+<p>예를 들어 모집단의 지지율에 대한 여론조사에서 확률표본으로 얻은 표본 지지율, 즉  추정량의 정확성은 다음과 같이 확률적인 언어로 정보의 크기와 그 정확성을 제시하였다.</p>
+<ol class="simple">
+<li><p><em>모집단에 대한 정보</em> : 1000명의 표본에서 45.5%의 지지율을 보였다.</p></li>
+<li><p><em>추정량의 정확성</em> : 표본 오차는 95% 신뢰수준에 ±3.1%포인트다.</p></li>
+</ol>
+<p>앞 절에서 표본 오차를 설명하기 위하여 가상의 모집단에서 모의실험을 통하여 많은 수의 표본을 추출하고 각 표본에 대한 추정치들을 이용하여 표본 오차를 구한 것에 유의하자. 실제로 표본을 추출하는 경우 모집단은 알 수 없으며 표본은 단 한번만 추출한다. 이러한 경우 모집단에서 모의실험을 통해 표본을 여러 번 추출하는 것은 불가능하다.</p>
+<p>이 절에서는 한 개의 표본을 추출하는 경우 표본 오차를 구하는 방법을 설명하고자 한다. 한 개의 표본만 추출해도 표본 오차를 구하는 간단하고 유용한 방법이 있으며 이 방법을 붓스트랩(bootstrap)이라고 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="n">한글</span> <span class="n">폰트가</span> <span class="n">깨질</span> <span class="n">때</span> <span class="n">사용</span> <span class="o">-</span> <span class="n">런타임</span> <span class="n">메뉴에서</span> <span class="n">다시</span> <span class="n">시작</span> <span class="n">및</span> <span class="n">모두</span> <span class="n">실행</span> <span class="n">선택</span><span class="o">.</span> <span class="p">(</span><span class="n">출처</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">teddylee777</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">colab</span><span class="o">/</span><span class="n">colab</span><span class="o">-</span><span class="n">korean</span><span class="p">)</span>
+<span class="o">!</span>sudo apt-get install -y fonts-nanum
+<span class="o">!</span>sudo fc-cache -fv
+<span class="o">!</span>rm ~/.cache/matplotlib -rf
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+fonts-nanum is already the newest version (20170925-1).
+0 upgraded, 0 newly installed, 0 to remove and 37 not upgraded.
+/usr/share/fonts: caching, new cache contents: 0 fonts, 1 dirs
+/usr/share/fonts/truetype: caching, new cache contents: 0 fonts, 3 dirs
+/usr/share/fonts/truetype/humor-sans: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/liberation: caching, new cache contents: 16 fonts, 0 dirs
+/usr/share/fonts/truetype/nanum: caching, new cache contents: 10 fonts, 0 dirs
+/usr/local/share/fonts: caching, new cache contents: 0 fonts, 0 dirs
+/root/.local/share/fonts: skipping, no such directory
+/root/.fonts: skipping, no such directory
+/var/cache/fontconfig: cleaning cache directory
+/root/.cache/fontconfig: not cleaning non-existent cache directory
+/root/.fontconfig: not cleaning non-existent cache directory
+fc-cache: succeeded
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 그림 그리기를 위한 코드와 한글 실행</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rc</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;NanumBarunGothic&#39;</span><span class="p">)</span> <span class="c1"># clolab 에서 한글 사용 </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.unicode_minus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>   <span class="c1"># 그림 크기 조정</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">6.4.1. </span>추정량의 표준편차<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>모집단의 관심 있는 특성, 즉 모수를 <span class="math notranslate nohighlight">\(\theta\)</span> 라고 하면 추정량은 표본으로 부터 얻은 통계량이다. 확률표본의 임의성(randomness)때문에 추정량은 확률분포를 가진다. 추정량이 확률분포를 가진다는 것은 가능한 값이 여러 개 있다는 것이며 각 값에 대한 확률이 있다는 것이다.</p>
+<p>앞 절에서는 모집단을 알고 있는 경우 추정량의 분포를 근사하기 위하여 모집단에서 표본을 반복하여 추출하였다. 더 나아가 각 표본으로 부터 추정량의 값을 구할 수 있다. 만약 모의실험의 횟수가 B 라고 하면 우리는 B개의 추정량들을 구할 수 있다.</p>
+<div class="math notranslate nohighlight">
+\[ \hat \theta_1, \hat \theta_2, \dots, \hat \theta_B \]</div>
+<p>위에서 표본의 크기가 커지면 모의실험으로 구한 B개의 추정량들의 분포가  정규분포와 가까워진다. 이 사실은 중심극한 정리에 의한 결과이다. 또한 B개의 추정량들의 평균은 모수와 매우 가깝게 나타난다.</p>
+<div class="math notranslate nohighlight">
+\[ \bar \theta = \frac{\sum_{i=1}^B \hat \theta_i}{B} \approx \theta \]</div>
+<p>또한 B개의 <strong>추정량들의 표준편차를 SD 라고 하면</strong></p>
+<div class="math notranslate nohighlight">
+\[ SD = SD(\hat \theta) = \sqrt{\frac{\sum_{i=1}^B (\hat \theta_i - \bar \theta)^2}{B-1}} \]</div>
+<p>다음과 같은 확률적 표현이 가능하다.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>95%의 확률로 추정량과 모수의 차이는 ± 2SD 이내이다.
+</pre></div>
+</div>
+<p>즉,</p>
+<div class="math notranslate nohighlight">
+\[ P( \theta -2SD \le \hat \theta \le \theta+ 2SD ) \approx 0.95 \]</div>
+<p>또는 위의 식을 다르게 표현하면 다음과 같다.</p>
+<div class="math notranslate nohighlight">
+\[ P( | \hat \theta -\theta| \le 2SD ) \approx 0.95 \]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>그런데 문제는 실제 표본을 추출하는 경우 우리는 한 개의 표본만 추출하며 따라서 우리가 얻을수 있는 추정량의 값은 1개 밖에 없다. 
+</pre></div>
+</div>
+<p>이런 실제 상황에서 추정량의 표준편차 SD를 어떻게 구할까??? 만약 여론조사에서 1000명으로 구성된 하나의 표본을 추출하고 표본 지지율 35%를 얻었다면 SD 를 구할 방법이 없을 것 같다. 왜냐하면 1개의 값으로는 표준편차를 구할 수 없기 때문이다.</p>
+<div class="math notranslate nohighlight">
+\[ \hat \theta = 0.35 \rightarrow SD? \]</div>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">6.4.2. </span>붓스트랩<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p><strong>붓스트랩(bootstrap)</strong> 은 하나의 표본으로 부터 추정량의 경험적 분포를 근사적으로 구할 수 있는 방법이다. 붓스트랩은 통계학에서 발견한 획기적인 방법 중의 하나로서 컴퓨터를 이용한 모의실험(simulation)을 이용한다.</p>
+<p>붓스트랩 방법의 아이디어는 다음과 같이 매우 간단하다.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>표본을 모집단처럼 이용하자!! 
+</pre></div>
+</div>
+<p>위에서 우리가 모집단을 알고 있을 때 어떻게 추정량의 분포를 모의실험을 통하여 근사적으로 구하는지 다시 생각해 보자. 다음과 그림과 같이 우리는 모집단에서 많은 수의 표본들을 반복적으로 추출하여 여러 개의 추정치를 구하는 모의실험을 수행해 보았다.</p>
+<p><img alt="모집단을 이용한 모의실험" src="../../_images/bootstrap1.png" /></p>
+<p>이제 한 개의 표본이 있다고 하자. <strong>한 개의 표본을 모집단이라고 생각하고</strong> 표본에서 많은 수의 표본들을 다시 <strong>재추출(resampling)</strong> 하여 여러 개의 추정치를 구하는 방법이 붓스트랩이다.</p>
+<p><img alt="붓스트랩" src="../../_images/bootstrap2.png" /></p>
+<p>여기서 유의해야 할 점은 표본에서 <strong>표본을 재추출하는 경우 복원추출</strong> 을 사용해야 한다는 것이다. 즉, 재추출은 <span class="math notranslate nohighlight">\(n\)</span>개의 표본에서 <span class="math notranslate nohighlight">\(n\)</span>개를 복원추출하는 방법이다.</p>
+<p>붓스트랩 방법을 한마다로 요약하면 표본에서 표본을 재추출하는 방법이다.</p>
+<p>이제 앞 장에서 고려한 지지율을 추정하는 여론 조사에 대하여 붓스트랩 방법을 이용하여 표본 지지율의 경험적 분포를 근사적으로 구하고 추정량의 표준편차 SD를 구해보자.</p>
+<p>먼저 모집단 <code class="docutils literal notranslate"><span class="pre">P</span></code> 을 만들자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 모집단의 수</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">100000</span>
+
+<span class="c1"># 모집단의 지지율</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="c1"># 지지하는 유권자의 수 </span>
+<span class="n">favor</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">theta</span><span class="p">)</span>
+
+<span class="c1"># 반대하는 유권자의 수 </span>
+<span class="n">opposite</span> <span class="o">=</span> <span class="n">N</span><span class="o">-</span><span class="n">favor</span>
+
+<span class="c1"># 모집단 (1=지지, 0=반대)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">favor</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">opposite</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 1000명으로 구성돤 하나의 확률표본을 추출해 보자</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 표본의 수</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span> 
+
+<span class="c1"># 하나의 표본을 추츨</span>
+<span class="n">one_sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>위에서 추출한 표본으로 부터 얻은 표본 지지율 <span class="math notranslate nohighlight">\(\hat \theta\)</span> 은 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hat_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">one_sample</span><span class="p">)</span>
+<span class="n">hat_theta</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.499
+</pre></div>
+</div>
+</div>
+</div>
+<p>다음으로 붓스트랩을 이용하여 재표본을 반복적으로 추출하고 지지율를 구해보자. 붓스트램도 모의실험이므로 모의실험의 회수를 크게 해야 한다. 아래 코드에서 붓스트랩의 모의실험 횟수는 1000번이다 (B=1000).</p>
+<p>붓스트랩은 모집단에서 표본을 반복적으로 추출하는 것이 아니라 <strong>주어진 하나의 표본에서
+표본을 반복적으로 재추출(resampling from sample)</strong> 한다는 것이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 붓스트랩 모의실험의 횟수</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mi">1000</span> 
+
+<span class="c1"># 붓스트랩 - 표본의 재추출을 B번 반복하여 B개의 지지율(추정량)을 구한다.</span>
+
+<span class="c1">## B 개의 추정치를 저장할 데이터프레임</span>
+<span class="n">boostrap_estimate</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;resample_estimate&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">B</span><span class="p">)})</span>
+
+<span class="c1">## 붓스트랩을 위한 모의실험 : 복원추출(replace=True)에 유의</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
+  <span class="n">resample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">one_sample</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="n">boostrap_estimate</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;resample_estimate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">resample</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>붓스트랩을 이용하여 표본 지지율의 분포, 즉 추정량의 경험적 분포를 히스토그램으로 나타내어 보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 히스토그램</span>
+<span class="n">p</span><span class="o">=</span> <span class="n">boostrap_estimate</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/bootstrap_14_0.png" src="../../_images/bootstrap_14_0.png" />
+</div>
+</div>
+<p>이제  붓스트랩으로 구한 1000개 지지율의 표준편차 SD를 구해보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 붓스트랩으로 구한 B개의 지지율의 표준편차</span>
+<span class="n">SD</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">boostrap_estimate</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+<span class="n">SD</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.01615287300471055
+</pre></div>
+</div>
+</div>
+</div>
+<p>앞 절에서 우리는 표본의 크기가 <span class="math notranslate nohighlight">\(n=1000\)</span> 일 경우 지지율에 대한 이론적으로 정확한 표본 오차가 <span class="math notranslate nohighlight">\(2SD=0.0316\)</span> 으로 주어지는 것을 배웠다.</p>
+<p>위에서 구한 붓스트랩을 이용한 표본 오차 <span class="math notranslate nohighlight">\(2SD\)</span>의 값이 정확한 표본오차와 매우 유사하다는 것을 알 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">*</span><span class="n">SD</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0323057460094211
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">6.4.3. </span>신뢰구간<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3><span class="section-number">6.4.3.1. </span>추정량의 경험적 분포<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>붓스트랩으로 구한 1000개의 추정치, 즉 1000개의 표본 지지율의 분포를 히스토그램으로 그려보자.
+아래 주어진 히스토그램은 <strong>붓스트랩으로 구한 추정량의 경험적 분포</strong> (empirical distribution of estimator)이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 히스토그램</span>
+<span class="n">p</span><span class="o">=</span> <span class="n">boostrap_estimate</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/bootstrap_21_0.png" src="../../_images/bootstrap_21_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><span class="section-number">6.4.3.2. </span>백분위수에 의한 신뢰구간<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>이제 붓스트랩으로 구한 1000개의 추정치(지지율)들을 순서대로 늘어 놓았을때 2.5%백분위수와 97.5% 백분위수를 구해보자. 우리가 1사분위수(Q1, 25%백분위수) 또는 3사분위수(Q3 75%백분위수)를 구하는 방법과 유사하게 구할 수 있다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> 라이브러리의 <code class="docutils literal notranslate"><span class="pre">percentile</span></code> 메소드를 사용하면 2.5%와 97.5% 백분위수를 구할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lower_bound</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">boostrap_estimate</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.025</span><span class="p">))</span>
+<span class="n">upper_bound</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">boostrap_estimate</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.975</span><span class="p">))</span>
+
+<span class="p">(</span><span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.467, 0.5320250000000001)
+</pre></div>
+</div>
+</div>
+</div>
+<p>위와 같이 2.5%백분위수 <span class="math notranslate nohighlight">\(\hat \theta_{(0.025)}\)</span> 와 97.5% 백분위수 <span class="math notranslate nohighlight">\(\hat \theta_{(0.975)}\)</span>로 만든 구간을 <strong>모수 <span class="math notranslate nohighlight">\(\theta\)</span> 에 대한 95% 신뢰구간(confidence interval)</strong> 이라고 한다.
+이때 <strong>95%를 신뢰수준(confidence level)</strong> 이라고 부른다.</p>
+<p>95%의 의미는 붓스트랩을 이용하여 만든 1000개의 추정값들 중 95%, 즉 950개의 추정값이 주어진 구간 안에 있다는 것이다. 붓스트랩을 이용한 추정량의 경험적 분포를 이용하여 만든 구간이다.</p>
+<div class="math notranslate nohighlight">
+\[ \text{Confidence Interval} = (\hat \theta_{(0.025)}, \hat \theta_{(0.975)}) \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 히스토그램</span>
+<span class="n">p</span><span class="o">=</span> <span class="n">boostrap_estimate</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 2.5%백분위수와 97.5% 백분위수 사이 구간은 빨간색으로 </span>
+<span class="k">for</span> <span class="n">rectangle</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">rectangle</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">&gt;=</span>  <span class="n">lower_bound</span> <span class="ow">and</span> <span class="n">rectangle</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">&lt;=</span>  <span class="n">upper_bound</span> <span class="p">:</span>
+        <span class="n">rectangle</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/bootstrap_25_0.png" src="../../_images/bootstrap_25_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3><span class="section-number">6.4.3.3. </span>표준 편차에 의한 신뢰구간<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>우리는 95% 신뢰구간(confidence interval)을 위에서 구한 추정량의 표준 편차 SD를 이용하여 다음과 같이 구할 수 있다.</p>
+<div class="math notranslate nohighlight">
+\[ \text{Confidence Interval} = (\hat \theta -2SD, \hat \theta+ 2SD) \]</div>
+<p>위의 주어진 구간의 죄우 값을 계산하면 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lower_bound_2</span> <span class="o">=</span> <span class="n">hat_theta</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">SD</span>
+<span class="n">upper_bound_2</span> <span class="o">=</span> <span class="n">hat_theta</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">SD</span>
+
+<span class="p">(</span><span class="n">lower_bound_2</span><span class="p">,</span> <span class="n">upper_bound_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.4666942539905789, 0.531305746009421)
+</pre></div>
+</div>
+</div>
+</div>
+<p>붓스트랩의 백분위수로 구한 신뢰구간 <span class="math notranslate nohighlight">\((\hat \theta_{(0.025)}, \hat \theta_{(0.975)}) \)</span>이 추정량의 표준 편차 SD로 구한   신뢰구간 <span class="math notranslate nohighlight">\((\hat \theta -2SD, \hat \theta+ 2SD\)</span>)과  매우 유사함을 알 수 있다.</p>
+</div>
+<div class="section" id="id8">
+<h3><span class="section-number">6.4.3.4. </span>신뢰구간의 해석<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>신뢰구간은 표본으로부터 얻어지는 것이기 때문에 임의성을 가진다. 표본이 임의성을 가지므로 신뢰구간의 하한(lower bound)과 상한(upper bound)도 임의성을 가진다. 실제 상황에서 추정량의 값과 모수의 정확한 차이를 알 수 없듯이 표본으로 구한 특정한 신뢰구간에 대하여 구간 안에 모수가 포함되었는지 정확하게 알 수 없다.</p>
+<p><strong>95% 신뢰구간의 의미는 “임의의 구간” <span class="math notranslate nohighlight">\((\hat \theta -2SD, \hat \theta+ 2SD)\)</span> 이 관심있는 모수 <span class="math notranslate nohighlight">\(\theta\)</span>를 포함할 확률이 0.95라는 의미이다.</strong>  이는 위에서 배운 중심극한 정리의 결과를 응용한 것이다. 즉</p>
+<div class="math notranslate nohighlight">
+\[ P[ \theta \in (\hat \theta -2SD, \hat \theta+ 2SD) ] \approx 0.95, \quad 
+\hat \theta \text{ is random} \]</div>
+<p>신뢰구간의 신뢰수준(confidence level)이 95% 라는 의미는 여러분이 만약 모집단을 이용한 모의실험으로 100개의 신뢰구간을 구하면 그 중에 약 95개의 구간이 모수를 포함한다는 것으로 해석하면 된다.</p>
+<p>참고할 점은 통계학의 한 분야인 베이지안 통계(bayesian statsitics)에서는 모수도 임의성이 있다고 보기 때문에 <strong>“여러분이 구한 특정한 신뢰구간”</strong> 에 모수가 포함될 확률이 95% 이라고 말할 수 있다.</p>
+<div class="math notranslate nohighlight">
+\[ P[ \theta \in (0.4667, 0.5313) ] \approx 0.95 \]</div>
+<p>이러한 신뢰구간에 대한 서로 다른 해석의 차이를 여러분들이 이해하는 것은 어려운 일이다.</p>
+<ul class="simple">
+<li><p>결론적으로 여러분이 구한 95% 신뢰구간에 모수가 포함되었을 가능성이 95%라고 생각해도 큰 문제는 없다.</p></li>
+</ul>
+<p>일반적으로 백분위수를 이용한 신뢰구간과 표준편차  SD 를 이용한 신뢰구간은 정확하게 일치하지 않는다.
+하지만 표본의 크기가 커지면 중심극한 정리에 의하여 추정량의 분포가 정규분포에 가까워지므로 백분위수를 이용한 신뢰구간과 SD를 이용한 신뢰구간은 점점 일치한다.</p>
+<div class="math notranslate nohighlight">
+\[ \hat \theta_{(0.025)} \approx \hat \theta -2SD, \quad \hat \theta_{(0.975)} \approx \hat \theta +2SD \]</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2><span class="section-number">6.4.4. </span>예제: 공공 자전거<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>앞 절에서 다룬 공공 자전거 자료에서 이용시간과 이용거리에 대한 <strong>중앙값(median)에 대한 신뢰구간</strong>을
+붓스트랩 방법으로 구하는 법을 살펴보자.</p>
+<p>먼저 자료를 데이터프레임 <code class="docutils literal notranslate"><span class="pre">bike</span></code> 에 저장한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url1</span> <span class="o">=</span> <span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/seoul_bike_201909_3.csv&quot;</span>
+<span class="n">bike</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url1</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;CP949&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bike</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>자전거번호</th>
+      <th>대여일시</th>
+      <th>대여 대여소번호</th>
+      <th>대여 대여소명</th>
+      <th>대여거치대</th>
+      <th>반납일시</th>
+      <th>반납대여소번호</th>
+      <th>반납대여소명</th>
+      <th>반납거치대</th>
+      <th>이용시간</th>
+      <th>이용거리</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>SPB-17003</td>
+      <td>2019-09-28 16:10:55</td>
+      <td>368</td>
+      <td>SK 서린빌딩 앞</td>
+      <td>4</td>
+      <td>2019-09-28 17:03:32</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>14</td>
+      <td>52</td>
+      <td>8940.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>SPB-14405</td>
+      <td>2019-09-28 16:48:16</td>
+      <td>2024</td>
+      <td>상도역 1번출구</td>
+      <td>3</td>
+      <td>2019-09-28 17:03:44</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>18</td>
+      <td>15</td>
+      <td>1910.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>SPB-18431</td>
+      <td>2019-09-28 16:59:54</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>10</td>
+      <td>2019-09-28 17:03:57</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>10</td>
+      <td>2</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>SPB-04853</td>
+      <td>2019-09-28 15:31:49</td>
+      <td>207</td>
+      <td>여의나루역 1번출구 앞</td>
+      <td>32</td>
+      <td>2019-09-28 17:10:12</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>19</td>
+      <td>98</td>
+      <td>9610.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SPB-11122</td>
+      <td>2019-09-28 15:35:41</td>
+      <td>207</td>
+      <td>여의나루역 1번출구 앞</td>
+      <td>14</td>
+      <td>2019-09-28 17:10:37</td>
+      <td>2002</td>
+      <td>노들역 1번출구</td>
+      <td>18</td>
+      <td>90</td>
+      <td>9450.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>407584</th>
+      <td>SPB-24072</td>
+      <td>2019-09-12 08:56:34</td>
+      <td>240</td>
+      <td>문래역 4번출구 앞</td>
+      <td>9</td>
+      <td>2019-09-12 09:03:37</td>
+      <td>99999</td>
+      <td>영남단말기정비</td>
+      <td>2</td>
+      <td>6</td>
+      <td>720.0</td>
+    </tr>
+    <tr>
+      <th>407585</th>
+      <td>SPB-16130</td>
+      <td>2019-09-18 10:13:09</td>
+      <td>99999</td>
+      <td>영남단말기정비</td>
+      <td>1</td>
+      <td>2019-09-18 11:38:30</td>
+      <td>99999</td>
+      <td>영남단말기정비</td>
+      <td>1</td>
+      <td>85</td>
+      <td>40.0</td>
+    </tr>
+    <tr>
+      <th>407586</th>
+      <td>SPB-03728</td>
+      <td>2019-09-25 08:00:28</td>
+      <td>2183</td>
+      <td>동방1교</td>
+      <td>7</td>
+      <td>2019-09-25 08:54:02</td>
+      <td>99999</td>
+      <td>영남단말기정비</td>
+      <td>5</td>
+      <td>53</td>
+      <td>12910.0</td>
+    </tr>
+    <tr>
+      <th>407587</th>
+      <td>SPB-08928</td>
+      <td>2019-09-30 07:49:27</td>
+      <td>2183</td>
+      <td>동방1교</td>
+      <td>10</td>
+      <td>2019-09-30 09:42:27</td>
+      <td>99999</td>
+      <td>영남단말기정비</td>
+      <td>7</td>
+      <td>2</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>407588</th>
+      <td>SPB-06988</td>
+      <td>2019-09-30 09:58:43</td>
+      <td>99999</td>
+      <td>영남단말기정비</td>
+      <td>5</td>
+      <td>2019-09-30 13:01:26</td>
+      <td>99999</td>
+      <td>영남단말기정비</td>
+      <td>5</td>
+      <td>182</td>
+      <td>10.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>407589 rows × 11 columns</p>
+</div></div></div>
+</div>
+<p>이용시간과 이용거리의 열이름을 각각  <code class="docutils literal notranslate"><span class="pre">time</span></code> 과 <code class="docutils literal notranslate"><span class="pre">distance</span></code> 로 바꾸고 두 열만 포함하는 데이터프레임 <code class="docutils literal notranslate"><span class="pre">bike2</span></code>를 만들자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bike2</span> <span class="o">=</span> <span class="n">bike</span><span class="p">[</span> <span class="p">[</span><span class="s2">&quot;이용시간&quot;</span><span class="p">,</span><span class="s2">&quot;이용거리&quot;</span><span class="p">]</span> <span class="p">]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;이용시간&quot;</span><span class="p">:</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;이용거리&quot;</span><span class="p">:</span><span class="s2">&quot;distance&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bike2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>distance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>52</td>
+      <td>8940.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>15</td>
+      <td>1910.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>98</td>
+      <td>9610.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>90</td>
+      <td>9450.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>407584</th>
+      <td>6</td>
+      <td>720.0</td>
+    </tr>
+    <tr>
+      <th>407585</th>
+      <td>85</td>
+      <td>40.0</td>
+    </tr>
+    <tr>
+      <th>407586</th>
+      <td>53</td>
+      <td>12910.0</td>
+    </tr>
+    <tr>
+      <th>407587</th>
+      <td>2</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>407588</th>
+      <td>182</td>
+      <td>10.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>407589 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bike2</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>distance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>407589.000000</td>
+      <td>407589.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>30.156827</td>
+      <td>4253.336228</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>32.065934</td>
+      <td>5782.673901</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>8.000000</td>
+      <td>1200.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>18.000000</td>
+      <td>2380.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>43.000000</td>
+      <td>5130.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2479.000000</td>
+      <td>153490.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>이제 1000개의 표본을 추출해 보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 표본의 수</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span> 
+
+<span class="n">one_sample</span> <span class="o">=</span> <span class="n">bike2</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">13312</span><span class="p">)</span>
+<span class="n">one_sample</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>distance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>50771</th>
+      <td>25</td>
+      <td>1830.0</td>
+    </tr>
+    <tr>
+      <th>179510</th>
+      <td>20</td>
+      <td>3670.0</td>
+    </tr>
+    <tr>
+      <th>167844</th>
+      <td>8</td>
+      <td>1180.0</td>
+    </tr>
+    <tr>
+      <th>244482</th>
+      <td>3</td>
+      <td>210.0</td>
+    </tr>
+    <tr>
+      <th>102805</th>
+      <td>9</td>
+      <td>1330.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>333457</th>
+      <td>10</td>
+      <td>1140.0</td>
+    </tr>
+    <tr>
+      <th>355981</th>
+      <td>25</td>
+      <td>7760.0</td>
+    </tr>
+    <tr>
+      <th>252088</th>
+      <td>50</td>
+      <td>3970.0</td>
+    </tr>
+    <tr>
+      <th>282282</th>
+      <td>12</td>
+      <td>1610.0</td>
+    </tr>
+    <tr>
+      <th>273850</th>
+      <td>8</td>
+      <td>1630.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1000 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">one_sample</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>distance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1000.000000</td>
+      <td>1000.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>28.150000</td>
+      <td>3923.110000</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>28.664598</td>
+      <td>4723.684348</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>8.000000</td>
+      <td>1247.500000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>18.000000</td>
+      <td>2345.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>41.000000</td>
+      <td>5040.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>321.000000</td>
+      <td>70890.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>이제 추출한 표본에서 100개의 붓스트랩 재표본 1000개를 이용하여 이용시간과 이용거리의 중간값를 만들어 보자. <code class="docutils literal notranslate"><span class="pre">numpy</span></code> 라이브러리의 <code class="docutils literal notranslate"><span class="pre">median</span></code> 함수를 사용할 것이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 붓스트랩 모의실험의 횟수</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mi">1000</span> 
+
+<span class="c1"># 붓스트랩 - 표본에서 B번 반복하여  재추출 표본을 만들고  B개의 추정값을 구한다.</span>
+<span class="n">bootstrap_estimates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;time_boot&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">B</span><span class="p">),</span> <span class="s1">&#39;distance_boot&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">B</span><span class="p">)})</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
+  <span class="n">boot_sample</span> <span class="o">=</span> <span class="n">one_sample</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+  <span class="n">bootstrap_estimates</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;time_boot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">boot_sample</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+  <span class="n">bootstrap_estimates</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;distance_boot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">boot_sample</span><span class="o">.</span><span class="n">distance</span><span class="p">)</span>
+
+<span class="n">bootstrap_estimates</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time_boot</th>
+      <th>distance_boot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>18.0</td>
+      <td>4184.59</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>17.0</td>
+      <td>3849.55</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>18.0</td>
+      <td>4031.78</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>18.0</td>
+      <td>4157.10</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>19.0</td>
+      <td>3966.78</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>995</th>
+      <td>17.5</td>
+      <td>3884.88</td>
+    </tr>
+    <tr>
+      <th>996</th>
+      <td>19.0</td>
+      <td>3935.96</td>
+    </tr>
+    <tr>
+      <th>997</th>
+      <td>19.0</td>
+      <td>3819.56</td>
+    </tr>
+    <tr>
+      <th>998</th>
+      <td>17.0</td>
+      <td>3639.65</td>
+    </tr>
+    <tr>
+      <th>999</th>
+      <td>19.0</td>
+      <td>3848.63</td>
+    </tr>
+  </tbody>
+</table>
+<p>1000 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>1000개의 붓스트랩 재표본으로 부터 구한 이용시간과 이용거리의 중간값들의 분포를 히스토그램으로 그려보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bootstrap_estimates</span><span class="p">[[</span><span class="s2">&quot;time_boot&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f42e5cc8c50&gt;
+</pre></div>
+</div>
+<img alt="../../_images/bootstrap_44_1.png" src="../../_images/bootstrap_44_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">=</span> <span class="n">bootstrap_estimates</span><span class="p">[[</span><span class="s2">&quot;distance_boot&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f42d89f1c10&gt;
+</pre></div>
+</div>
+<img alt="../../_images/bootstrap_45_1.png" src="../../_images/bootstrap_45_1.png" />
+</div>
+</div>
+<p>붓스트랩 재표본의 백분위수를 이용하여 모집단 이용시간 중간값에 대한  95% 신뢰구간을 구하면 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lower_bound</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">bootstrap_estimates</span><span class="p">[[</span><span class="s2">&quot;time_boot&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.025</span><span class="p">))</span>
+<span class="n">upper_bound</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">bootstrap_estimates</span><span class="p">[[</span><span class="s2">&quot;time_boot&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.975</span><span class="p">))</span>
+
+<span class="p">(</span><span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(16.5, 20.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>붓스트랩 재표본의 백분위수를 이용하여 모집단 이용거리 중간값에 대한  95% 신뢰구간을 구하면 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lower_bound</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">bootstrap_estimates</span><span class="p">[[</span><span class="s2">&quot;distance_boot&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.025</span><span class="p">))</span>
+<span class="n">upper_bound</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">bootstrap_estimates</span><span class="p">[[</span><span class="s2">&quot;distance_boot&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.975</span><span class="p">))</span>
+
+<span class="p">(</span><span class="n">lower_bound</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3643.26675, 4227.87525)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2><span class="section-number">6.4.5. </span>특별한 추정량: 표본 평균<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p>통계 이론에 의하면 다음과 같이 추정량의 형태가 특별한 경우 추정량의 표준편차 SD 를 붓스트랩 방법을 이용하지 않고 구할 수 있다.</p>
+<p>만약 표본 <span class="math notranslate nohighlight">\(S\)</span> 에 포함된 <span class="math notranslate nohighlight">\(n\)</span> 개의 값들을 <span class="math notranslate nohighlight">\(x_1, x_2, \dots, x_n\)</span>이라고 하면 표본 평균(sample mean) 은 다음과 같다.</p>
+<div class="math notranslate nohighlight">
+\[ \bar x =\frac{\sum_{i=1}^n}{n} \]</div>
+<p>만약 <strong>관심있는 모수 <span class="math notranslate nohighlight">\(\theta\)</span> 가 모집단의 평균이라면 추정량은 표본 평균</strong> <span class="math notranslate nohighlight">\(\hat \theta = \bar x\)</span> 이며 표본 평균의 SD를 다음과 같이 직접 구할 수 있다.</p>
+<div class="math notranslate nohighlight">
+\[ SD(\bar x) \approx \frac{\text{표본의 표준편차}}{\sqrt{n}} \]</div>
+<p>위에서 <strong>표본의 표준편차</strong> 는 표본에 속한 값들의 표준편차이다.</p>
+<div class="math notranslate nohighlight">
+\[ \text{표본의 표준편차} = \sqrt{ \frac{\sum_{i=1}^n (x_i - \bar x)^2}{n-1}} \]</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/06"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="estimator.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6.3. </span>추정량의 성질</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By 서울시립대학교<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
