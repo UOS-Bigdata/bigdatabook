@@ -52,6 +52,12 @@ sections:
   - file: chapters/06/samplemeans
   - file: chapters/06/estimator
   - file: chapters/06/bootstrap
+- file: chapters/07/test-intro
+  title: 유의성 검정
+  sections:
+  - file: chapters/07/decision
+  - file: chapters/07/pvalue
+  - file: chapters/07/abtest
   
 
 
