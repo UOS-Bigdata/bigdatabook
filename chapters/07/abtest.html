@@ -1,0 +1,2443 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7.3. 두 그룹의 비교 &#8212; 빅데이터 개론 2</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyle.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="7.2. 유의성 검정" href="pvalue.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">빅데이터 개론 2</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   빅데이터 개론 2
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01/intro-course.html">
+   1. 서론
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-program.html">
+     1.1. 프로그래밍 언어
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-stat.html">
+     1.2. 통계학
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02/intro-python.html">
+   2. 파이선의 기초
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/basic-expression.html">
+     2.1. 표현식과 변수
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-intro.html">
+     2.2. 데이터의 처리
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-train-passenger.html">
+     2.3. 고속열차 여객 수송자료
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-text.html">
+     2.4. 어린 왕자
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03/types.html">
+   3. 자료의 형식
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/numbers.html">
+     3.1. 숫자
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/string.html">
+     3.2. 문자열
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/array.html">
+     3.3. 행렬
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04/dataframe.html">
+   4. 데이터프레임
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-intro.html">
+     4.1. 데이터프레임의 정의와 구성요소
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-change.html">
+     4.2. 데이터프레임의 정리
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-summary.html">
+     4.3. 데이터프레임의 요약
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-merge.html">
+     4.4. 데이터프레임의 결합
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05/data-intro.html">
+   5. 분포와 확률
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_distribution.html">
+     5.1. 자료의 분포
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_randomness.html">
+     5.2. 분포와 우연성
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_random_experiment.html">
+     5.3. 확률과 컴퓨터 실험
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_probability.html">
+     5.4. 확률의 기초
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_function.html">
+     5.5. 함수
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../06/sampling-intro.html">
+   6. 표본과 경험적 분포
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06/sample.html">
+     6.1. 표본과 정보
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06/samplemeans.html">
+     6.2. 통계량의 분포
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06/estimator.html">
+     6.3. 추정량의 성질
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06/bootstrap.html">
+     6.4. 붓스트랩
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="test-intro.html">
+   7. 유의성 검정
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="decision.html">
+     7.1. 선택과 증거
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pvalue.html">
+     7.2. 유의성 검정
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.3. 두 그룹의 비교
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/chapters/07/abtest.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/UOS-Bigdata/bigdatabook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/UOS-Bigdata/bigdatabook/master?urlpath=tree/chapters/07/abtest.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/07/abtest.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   7.3.1. 공정한 비교: 임의화
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     7.3.1.1. 임의화 실험
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   7.3.2. 검정 통계량
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-b">
+   7.3.3. A/B 검정
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     7.3.3.1. 임상 실험 자료
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     7.3.3.2. 검정 통계량
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     7.3.3.3. 귀무가설 하에서의 분포
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     7.3.3.4. 신약과 기존약의 비교
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1><span class="section-number">7.3. </span>두 그룹의 비교<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>앞에서 배운 유의성 검정은 실제로 두 개의 그룹을 비교하여 차이가 있는지 판단하는 경우에 주로 사용된다.</p>
+<p>최근에 온라인으로 서비스를 제공하는 많은 회사에서 고객에 대한 추천 일고리즘이나 웹페이지 디자인에 대한 개선을 위하여 <strong>A/B 검정(A/B test)</strong> 라고 불리는 방법이 바로 두 그룹을 비교하는 유의성 검정의 다른 이름이다. 온라인 실험(online experiment)에 대한 방법과 효과는 기사 <a class="reference external" href="https://hbr.org/2017/09/the-surprising-power-of-online-experiments">The Surprising Power of Online Experiments</a>에서 나타나 있으니 참고하자.  A/B 검정 <strong>T-test</strong> , Split tests, Randomized experiments, Control/Treatment tests, Online field experiments 와 같이 여러 가지의 이름으로 불린다.</p>
+<p>두 그룹을 비교하는 통계적 검정(statistical test)을 고려할 때 가장 중요한 개념은 비교의 공정성(fairness in comparision)이며 이는 임의화(randomization)로 구현할 수 있다.</p>
+<p>두 그룹을 비교하는 경우 귀무가설은 두 그룹의 모수가 같다는 것이며 p-값은 귀무가설 하에서 두 그룹의 통계량의 차이가 나타날 확률로 유위상 검정을 실시할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>     
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span> <span class="c1"># 정규분포 </span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1"># 그래프 그리기를 위한 라이브러리</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">7.3.1. </span>공정한 비교: 임의화<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>임상실험(clinical trial)은 의학에서 다양한 치료 방법의 효능과 안정성을 보여주기 위한 실험이다. 앞 절에서 언급했듯이 코로나 백신을 개발한 회사는 임상실험을 통해서 백신의 효능과 안정성을 충분히 보여주어야 국가의 허가를 받아 실제로 사용할 수 있다.</p>
+<p>자 이제 간단한 임상실험의 예를 들어 보자.</p>
+<blockquote>
+<div><p>어떤 제약회사가 새로 개발한 두통약의 효능을 증명하기 위하여 한국에서 1000명의 환자들을 대상으로 임상실험을 수행하여 70%의 치료효과를 보였다. 더 나아가 미국에서 경쟁사의 기존 두통약을 1000명에게 복용하게 하여 60% 치료효과를 얻었다.</p>
+</div></blockquote>
+<p>위에서 제시한 임상실험을 결과를 이용하여 국가기관에 약품의 사용신청을 하면 불행하게도 심사의 대상으로 받아 주지 않는다.  왜 국가기관은 위의 임상실험의 결과를 심사의 대상으로 받아 주지 않는 것일까?</p>
+<p>첫 번째 실험은 공정하지 않기 때문이다. 한국에서 수행한 실험과 미국에서 수행한 실험은 두 약(신약과 기존의 약)의 효과뿐만 아니라 인종, 의료 환경 등 다른 요인의 차이에 의하여 두 그룹의 차이가 나타날 가능성이 있기 떄문이다. 즉 비교를 하는 두 그룹이 약의 효과가 아닌 다른 요인에 대하여 차이가 날 수 있다. 여기서 비교가 공정하지 않다는 것은 <strong>실험에서 고려한 의도적인 차이</strong>, 즉 신약과 기존약의 효과에 대한 차이뿐만 아니라 다른 요인(인종, 의료환경 등)의 차이도 실험의 결과에 영향을 미칠 수 있다는 것을 의미한다.</p>
+<p>극단적인 예로 여자들로 구성된 그룹에게는 A약, 납자들로 구성된 다른 그룹에게는 B약을 복용하게 하고 두 그룹이 효과의 차이를 보인 경우, 차이의 원인이 성별때문인지 약의 효과때문인지 구별할 수 없는 경우를 들 수 있다.</p>
+<p>또한 두 그룹을 비교하는 경우, 실험에서 의도한 차이를 제외하고 두 그룹이 모든 요인에 있어서 동일한 성질을 가지려면 복제인간을 사용하는 극단적 방법 밖에 없다. 하지만 이런 실험은 불가능하다.</p>
+<p>실험에서 두 개 이상의 의도한 처리(inteded treatment)를 비교하는 실험에서 공정성을 확보하는 가장 현실적이고 효과적인 수단은 **임의화(randomization)**이다. 임의화란 두 개의 처리 중 하나를 실험대상에 적용할 때 확률적인 도구를 이용하는 것이다. 간단한 임의화의 예로 A약과 B약의 효과를 비교하는 경우 실험대상자에게 복용할 약을 동전을 던져서 결정하는 것이다.</p>
+<p>이렇게 임의화를 하면 평균적으로 두 개의 처리를 받는 두 그룹이 처리 외의 요인이 평균적으로 유사하게 나타난다.</p>
+<div class="section" id="id3">
+<h3><span class="section-number">7.3.1.1. </span>임의화 실험<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>이제 A약과 B약을 임의화해서 지정하고 두 그룹의 차이가 어떻게 나타나는지 모의실험을 해보자.</p>
+<p>국민체력 자료에 있는 1874명의 사람들을 환자들라고 생각하고 각 환자에게 동전을 던져서 앞면이 나오면  A약, 뒷면이 나오면 B약을 지정하자.   이렇게 임의화로 지정한 두 그룹에 대하여 나이, 몸무게, 시장에 대한 분포를 비교해 보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/physical_test_2018_data.csv&quot;</span>
+<span class="n">physical_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">twogroup</span> <span class="o">=</span> <span class="n">physical_data</span><span class="p">[[</span><span class="s2">&quot;TEST_AGE&quot;</span><span class="p">,</span>	<span class="s2">&quot;TEST_SEX&quot;</span><span class="p">,</span>	<span class="s2">&quot;ITEM_F001&quot;</span><span class="p">,</span> 	<span class="s2">&quot;ITEM_F002&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ITEM_F001&quot;</span><span class="p">:</span><span class="s2">&quot;height&quot;</span><span class="p">,</span><span class="s2">&quot;ITEM_F002&quot;</span><span class="p">:</span><span class="s2">&quot;weight&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">twogroup</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TEST_AGE</th>
+      <th>TEST_SEX</th>
+      <th>height</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>33</td>
+      <td>M</td>
+      <td>159.2</td>
+      <td>57.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>48</td>
+      <td>F</td>
+      <td>155.8</td>
+      <td>52.9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>22</td>
+      <td>M</td>
+      <td>175.2</td>
+      <td>96.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>29</td>
+      <td>M</td>
+      <td>178.7</td>
+      <td>79.4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>31</td>
+      <td>F</td>
+      <td>160.1</td>
+      <td>50.2</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>23</td>
+      <td>F</td>
+      <td>157.8</td>
+      <td>60.1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>11</td>
+      <td>M</td>
+      <td>165.5</td>
+      <td>60.3</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>24</td>
+      <td>M</td>
+      <td>174.9</td>
+      <td>74.5</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>18</td>
+      <td>M</td>
+      <td>181.0</td>
+      <td>71.3</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>41</td>
+      <td>F</td>
+      <td>160.6</td>
+      <td>72.7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">twogroup</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">treatment</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+  <span class="n">treatment</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">])</span>
+<span class="n">twogroup</span><span class="p">[</span><span class="s2">&quot;treatment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">treatment</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">twogroup</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TEST_AGE</th>
+      <th>TEST_SEX</th>
+      <th>height</th>
+      <th>weight</th>
+      <th>treatment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>33</td>
+      <td>M</td>
+      <td>159.2</td>
+      <td>57.2</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>48</td>
+      <td>F</td>
+      <td>155.8</td>
+      <td>52.9</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>22</td>
+      <td>M</td>
+      <td>175.2</td>
+      <td>96.2</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>29</td>
+      <td>M</td>
+      <td>178.7</td>
+      <td>79.4</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>31</td>
+      <td>F</td>
+      <td>160.1</td>
+      <td>50.2</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>23</td>
+      <td>F</td>
+      <td>157.8</td>
+      <td>60.1</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>11</td>
+      <td>M</td>
+      <td>165.5</td>
+      <td>60.3</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>24</td>
+      <td>M</td>
+      <td>174.9</td>
+      <td>74.5</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>18</td>
+      <td>M</td>
+      <td>181.0</td>
+      <td>71.3</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>41</td>
+      <td>F</td>
+      <td>160.6</td>
+      <td>72.7</td>
+      <td>B</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">twogroup</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;treatment&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="8" halign="left">TEST_AGE</th>
+      <th colspan="5" halign="left">height</th>
+      <th colspan="8" halign="left">weight</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>...</th>
+      <th>75%</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>treatment</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>933.0</td>
+      <td>35.644159</td>
+      <td>17.320937</td>
+      <td>11.0</td>
+      <td>21.0</td>
+      <td>29.0</td>
+      <td>51.0</td>
+      <td>83.0</td>
+      <td>933.0</td>
+      <td>166.748767</td>
+      <td>...</td>
+      <td>173.3</td>
+      <td>195.2</td>
+      <td>933.0</td>
+      <td>66.251983</td>
+      <td>12.879499</td>
+      <td>34.1</td>
+      <td>56.8</td>
+      <td>65.0</td>
+      <td>73.9</td>
+      <td>122.6</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>941.0</td>
+      <td>35.302869</td>
+      <td>17.006028</td>
+      <td>11.0</td>
+      <td>22.0</td>
+      <td>29.0</td>
+      <td>48.0</td>
+      <td>84.0</td>
+      <td>941.0</td>
+      <td>167.417428</td>
+      <td>...</td>
+      <td>174.4</td>
+      <td>193.7</td>
+      <td>941.0</td>
+      <td>67.359830</td>
+      <td>13.410524</td>
+      <td>31.1</td>
+      <td>57.8</td>
+      <td>66.6</td>
+      <td>75.9</td>
+      <td>132.3</td>
+    </tr>
+  </tbody>
+</table>
+<p>2 rows × 24 columns</p>
+</div></div></div>
+</div>
+<p>위에서 나타난 것처럼 A약이  지정된 그룹과 B약이 지정된 그룹에 대하여 나이, 키, 몸무게의 분포를 비교해 보면 요약 통계량이 매우 유사하다. 이렇게 임의화를 이용하면 의도된 두 개의 처리(A약, B약)제외한 다른 요인들의 분포가 유사하게 나타난다. 이렇게 실험에서 처리를 임의화를 통하여 배정하면 두 그룹의 비교를 공정하게 할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">twogroup</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;TEST_AGE&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;treatment&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;TEST_AGE&#39;, ylabel=&#39;Count&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/abtest_12_1.png" src="../../_images/abtest_12_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">twogroup</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;treatment&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;weight&#39;, ylabel=&#39;Count&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/abtest_13_1.png" src="../../_images/abtest_13_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">7.3.2. </span>검정 통계량<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>두 집단을 비교하는 실험에서 두 그룹에 대한 관측 데이터를 얻었다고 하면 두 잡단의 차이를 측정할 수 있는 검정 통계량(test statistics)를 정의해야 한다. 온라인 실험에서는 검정 통계량을 전역평가기준(Overall Evaluation Criterion; OEC)이라고 부른다.</p>
+<p>일반적으로 검정통계량 <span class="math notranslate nohighlight">\(T\)</span> 은 두 그룹에서 얻은 평균의 차이(또는 차이의 절대값)로 정의되는 경우가 흔하다. 비율도 평균에 속하기 때문에 같은 논리로 유의성 검정을 할 수 있다.</p>
+<div class="math notranslate nohighlight">
+\[ T = \bar {x}_A - \bar {x}_B \]</div>
+<p>또는</p>
+<div class="math notranslate nohighlight">
+\[ T = |\bar {x}_A - \bar {x}_B |  \]</div>
+<p>검정통계량의 크기(절대값)가 커지면 두 그룹의 차이가 커진다는 의미이다.</p>
+</div>
+<div class="section" id="a-b">
+<h2><span class="section-number">7.3.3. </span>A/B 검정<a class="headerlink" href="#a-b" title="Permalink to this headline">¶</a></h2>
+<p>A/B 검정은 통계학에서 두 그룹의 평균이 차이가 있는지를 비교하는 T-검정(T-test)의 다른 이름이며
+Fisher의 유의성 검정 방법으로 수행할 수 있다.</p>
+<div class="section" id="id5">
+<h3><span class="section-number">7.3.3.1. </span>임상 실험 자료<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>암에 대한 치료약 실험에서 나온 자료를 예제로 이용하여 분석을 하고자 한다. 3개의 처리 집단을 각각 위약(<code class="docutils literal notranslate"><span class="pre">Placebo</span></code>), 기존의 약(<code class="docutils literal notranslate"><span class="pre">Old</span></code>), 새로 개발된 약(<code class="docutils literal notranslate"><span class="pre">New</span></code>)으로 부르고 각 집단에서 20명의 환자에 대하여 치료를 수행한 뒤에 암세포의 크기를 측정하였다고 하자. 암세포의 크기가 작을 수록 치료의 효과가 있다고 할 수 있다. 다음은 3개의 집단에 대하여 각각 20명의 환자를 배정하여 얻은 60개의 자료를 보여주는 표이다. 60개의 자료는 csv의 형식으로 외부화일 drug.csv에 저장되어 있다</p>
+<p>위약은 효과가 없는 가짜 약으로서 실제 약의 유효한 치료 효과를 비교할 수 있는 <strong>기준이 되는 집단(baseline)</strong> 을 구성할 때 사용된다. 약 효과의 유효성을 인정받으려면 위약 집단의 효과보다 유의하게 다르다는 결과를 보여주어야 한다. 만약 임상실험에서 기준이 되는 위약 그룹이 없다면 실제 약의 효과를 입증할 증거 능력이 떨어지게 된다. 그 이유는 위약은 약의 성분이 없는 가짜 약이지만 실제로 나타나는 효과가 있기 때문에 실제 약이 위약의 효과보다
+유의하게 차이가 나지 않으면  약의 실질적인 유효한 효과가 없는 것으로 판단하기 떄문이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;../../data/drug.csv&quot;</span>
+<span class="n">three_drug_wide</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">three_drug_wide</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Placebo</th>
+      <th>Old</th>
+      <th>New</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>31</td>
+      <td>23</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>28</td>
+      <td>17</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>34</td>
+      <td>29</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>36</td>
+      <td>23</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>33</td>
+      <td>17</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>27</td>
+      <td>17</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>39</td>
+      <td>22</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>25</td>
+      <td>17</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>23</td>
+      <td>23</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>29</td>
+      <td>25</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>36</td>
+      <td>17</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>36</td>
+      <td>24</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>32</td>
+      <td>19</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>30</td>
+      <td>18</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>33</td>
+      <td>5</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>39</td>
+      <td>26</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>30</td>
+      <td>33</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>32</td>
+      <td>16</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>30</td>
+      <td>20</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>28</td>
+      <td>27</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>세 처리 그룹에 대한 요약 통계량을 구해보자. 신약을 이용한 그룹의 암세포의 크기에 대한 평균이 가장 작고, 다음으로 기존의 약과 위약그룹의 순으로 나타난다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">three_drug_wide</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Placebo</th>
+      <th>Old</th>
+      <th>New</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>20.000000</td>
+      <td>20.000000</td>
+      <td>20.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>31.550000</td>
+      <td>20.900000</td>
+      <td>14.850000</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>4.334379</td>
+      <td>5.990343</td>
+      <td>4.319783</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>23.000000</td>
+      <td>5.000000</td>
+      <td>7.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>28.750000</td>
+      <td>17.000000</td>
+      <td>11.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>31.500000</td>
+      <td>21.000000</td>
+      <td>15.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>34.500000</td>
+      <td>24.250000</td>
+      <td>17.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>39.000000</td>
+      <td>33.000000</td>
+      <td>24.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>데이터프레임 <code class="docutils literal notranslate"><span class="pre">three_drug</span></code> 의 데이터 형식을 넓은 데이터 형식(wide data format)이라고 부른다. 넓은 데이터 형식의 자료는 한나의 행에 두 개 이상의 개체(record, unit)를 포함한 자료를 말한다. 데이터프레임 <code class="docutils literal notranslate"><span class="pre">three_drug</span></code> 의 한 행에는 3명의 환자에 대한 자료가 포함되어 있다.</p>
+<p>이러한 넓은 데이터 형식의 자료는 보기에는 좋을 수 있지만 데이터를 분석하는데 불편한 점이 많다. 따라서 한 행에 하나의 개체만 포함된 긴 데이터 형식(long data format)으로 바꾸어 주는 것이 필요하다.
+넓은 형식의 자료를 긴 형식의 자료로 바꾸는 메소드는 <code class="docutils literal notranslate"><span class="pre">melt(value_vars,</span> <span class="pre">value_name,</span> <span class="pre">var_name</span> <span class="pre">)</span></code> 로서 3개의 인자에 대한 설명은 다음과 같다. 자새한 설명은 라이브러리 <code class="docutils literal notranslate"><span class="pre">pandas</span></code> <a class="reference external" href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/07_reshape_table_layout.html#wide-to-long-format">매뉴얼</a>에서 찾을 수 있다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">value_vars</span></code> : 넓은 자료의 형식을 가진 데이터프레임에서 데이터를 포함하고 있는 열이름들</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value_name</span></code> : 긴 형식을 가진  새로운 데이터프레임에서 데이터를 포함하는 열이름</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">var_name</span></code> : 긴 형식을 가진  새로운 데이터프레임에서 <code class="docutils literal notranslate"><span class="pre">value_vars</span></code>의 열이름으로 이루어지는 새로운 열에 대한 이름</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">three_drug_long</span> <span class="o">=</span> <span class="n">three_drug_wide</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Placebo&quot;</span><span class="p">,</span> <span class="s2">&quot;Old&quot;</span><span class="p">,</span> <span class="s2">&quot;New&quot;</span><span class="p">],</span>
+                             <span class="n">value_name</span><span class="o">=</span><span class="s2">&quot;Value&quot;</span><span class="p">,</span>
+                             <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;treatment&quot;</span><span class="p">)</span>
+<span class="n">three_drug_long</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>treatment</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Placebo</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Placebo</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Placebo</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Placebo</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Placebo</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Placebo</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Placebo</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Placebo</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Placebo</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Placebo</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Placebo</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Placebo</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Placebo</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Placebo</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Placebo</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Placebo</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Placebo</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Placebo</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Placebo</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Placebo</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Old</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Old</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Old</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Old</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Old</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Old</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Old</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Old</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Old</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Old</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Old</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Old</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Old</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Old</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Old</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Old</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Old</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Old</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Old</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Old</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>New</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>New</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>New</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>New</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>New</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>New</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>New</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>New</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>New</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>New</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>New</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>New</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>New</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>New</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>New</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>New</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>New</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>New</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>New</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>New</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>이제 위약 그룹과 신약 그룹의 평균이 같은 지 비교하기 위하여 두 그룹만 포함된 데이터프레임 <code class="docutils literal notranslate"><span class="pre">two_group</span></code> 을 만들자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">two_drug</span>   <span class="o">=</span> <span class="n">three_drug_long</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">three_drug_long</span><span class="o">.</span><span class="n">treatment</span> <span class="o">!=</span> <span class="s2">&quot;Old&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">two_drug</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>treatment</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Placebo</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Placebo</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Placebo</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Placebo</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Placebo</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Placebo</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Placebo</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Placebo</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Placebo</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Placebo</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Placebo</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Placebo</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Placebo</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Placebo</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Placebo</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Placebo</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Placebo</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Placebo</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Placebo</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Placebo</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>New</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>New</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>New</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>New</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>New</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>New</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>New</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>New</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>New</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>New</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>New</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>New</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>New</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>New</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>New</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>New</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>New</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>New</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>New</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>New</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">two_drug</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;treatment&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>treatment</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>New</td>
+      <td>14.85</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Placebo</td>
+      <td>31.55</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><span class="section-number">7.3.3.2. </span>검정 통계량<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>이제 두 그룹의 비교를 하기 위한 건정 통계량을 정의하자. 데이터의 형식이 연속형 변수이므로 두 그룹의 평균을 비교하는 검정 통계량 <span class="math notranslate nohighlight">\(T\)</span>를 다음과 같이 정의한다.</p>
+<div class="math notranslate nohighlight">
+\[ T = \bar {x}_{Placebo} - \bar {x}_{New} \]</div>
+<p>데이터는 암 세포의 크기이므로 그룹의 평균은 작을 수록 효과가 큰 것이다. 신약의 효과가 더 크면 <span class="math notranslate nohighlight">\(\bar {x}_{New}\)</span>이 작아진다. 따라서 두 그룹의 평균을 비교하는 검정 통계량 <span class="math notranslate nohighlight">\(T\)</span> 가 커지는 것은 신약의 효과가 더 효과적이라는 의미이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="n">two_drug</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;treatment&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">test_stat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">temp</span><span class="o">.</span><span class="n">treatment</span> <span class="o">==</span> <span class="s2">&quot;Placebo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Value</span><span class="p">)</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">temp</span><span class="o">.</span><span class="n">treatment</span> <span class="o">==</span> <span class="s2">&quot;New&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Value</span><span class="p">)</span>
+<span class="n">test_stat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16.700000000000003
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 두 그룹의 평균의 차이를 구하는 함수   <code class="docutils literal notranslate"><span class="pre">diff_mean</span></code> 를 만들어 보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">diff_mean</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">group_label</span><span class="p">,</span> <span class="n">treatments</span><span class="p">):</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="n">group_label</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">temp</span><span class="p">[</span><span class="n">group_label</span><span class="p">]</span> <span class="o">==</span> <span class="n">treatments</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">Value</span><span class="p">)</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">temp</span><span class="p">[</span><span class="n">group_label</span><span class="p">]</span> <span class="o">==</span> <span class="n">treatments</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">Value</span><span class="p">)</span>
+
+<span class="n">diff_mean</span><span class="p">(</span><span class="n">two_drug</span><span class="p">,</span> <span class="s2">&quot;treatment&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Placebo&quot;</span><span class="p">,</span> <span class="s2">&quot;New&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16.700000000000003
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3><span class="section-number">7.3.3.3. </span>귀무가설 하에서의 분포<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>이제 두 그룹을 비교하는 경우 귀무가설을 생각해 보자.</p>
+<ul class="simple">
+<li><p>귀무가설: 두 그룹의 분포가 같다</p></li>
+</ul>
+<p>참고로 데이터가 범주형인 경우 두 그룹의 성공의 분포가 같다는 가정은  “두 그룹의 성공의 확률이 같다” 는 가정과 동일하다.</p>
+<p>이제  위약 그룹의 분포와 신약 그룹의 분포가 같다는 귀무가설을 고려하자.  두 그룹의 분포가 같다는 것은 신약의 효과가 위약의 효과와 같다는 것이다. 즉, 두 그룹의 분포가 같다는
+가정 하에서는 두 그룹의 차이는 단순한 우연에 의한 차이에 불과하다는 것이다.</p>
+<div class="math notranslate nohighlight">
+\[ \text{귀무가설:} \text{ 두 그룹의 분포가 같다.} \]</div>
+<p>이제 Fisher 의 유의성 겁정 방법을 적용해 보자. <strong>두 그룹의 분포가 같다는 가정 하에서 관측된 두 그룹의 평균의 차이 또는 더 극단적인 결과가 나오는 확률, 즉 p_값</strong> 을 계산해야 한다.
+두 그룹의 분포가 같다는 가정에서는 위약과 신약에서 나온 관측치들는 같은 분포에서 따르는 것이며 따라서 관측값의 차이는 단지 확률 오차에 의한 차이일 뿐 처리 효과의 차이는 아니라는 의미이다.</p>
+<p>이제 귀무가설 하에서 검정 통계량 <span class="math notranslate nohighlight">\(T\)</span>의 분포를 구해야 한다. 귀무가설 하에서 검정 통계량 <span class="math notranslate nohighlight">\(T\)</span>의 분포를 구하는 방법은 여러 가지 방법들이 있지만 우리가 지금까지 익혀온 모의실험 방법의 일종인
+임의순열 방법(random permutation method)을 사용하고자 한다. 임의순열 방법은 두 그룹을 나누는 처리를 나타내는 열 <code class="docutils literal notranslate"><span class="pre">treatment</span></code>에 있는 <code class="docutils literal notranslate"><span class="pre">Placebo</span></code> 와 <code class="docutils literal notranslate"><span class="pre">New</span></code> 를 관측한 자료에 비복원추출로 다시 임의로 배치(random assignment) 재배치한 그룹에 대하여 검정 통계량 <span class="math notranslate nohighlight">\(T\)</span>을 다시 계산한다. 이러한 임의 배치를 여러 번  반복하여 모의실험한  검정 통계량 <span class="math notranslate nohighlight">\(T\)</span> 의 값들로 분포를 근사적으로 구한다.</p>
+<p>예를 들어 다음과 같이 처리를 나타내는 열 <code class="docutils literal notranslate"><span class="pre">treatment</span></code>에 있는 <code class="docutils literal notranslate"><span class="pre">Placebo</span></code> 와 <code class="docutils literal notranslate"><span class="pre">New</span></code>를 임의로 순서를 바꾸는 임의 재배치하는 행렬은 다음과 같이 구할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">treatment</span> <span class="o">=</span> <span class="n">two_drug</span><span class="o">.</span><span class="n">treatment</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_permuted_treatment</span> <span class="o">=</span> <span class="n">treatment</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">random_permuted_treatment</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         New
+1         New
+2     Placebo
+3         New
+4     Placebo
+5         New
+6     Placebo
+7         New
+8         New
+9     Placebo
+10        New
+11    Placebo
+12    Placebo
+13        New
+14        New
+15    Placebo
+16    Placebo
+17        New
+18    Placebo
+19        New
+20    Placebo
+21    Placebo
+22    Placebo
+23    Placebo
+24        New
+25    Placebo
+26    Placebo
+27        New
+28    Placebo
+29        New
+30    Placebo
+31        New
+32    Placebo
+33    Placebo
+34        New
+35        New
+36        New
+37    Placebo
+38        New
+39        New
+Name: treatment, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 위에서 만든 임의로 재배치한 그룹 정보를 데이터프레임 <code class="docutils literal notranslate"><span class="pre">two_drug</span></code> 에 열로 추가하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">two_drug_permuted</span> <span class="o">=</span> <span class="n">two_drug</span>
+<span class="n">two_drug_permuted</span><span class="p">[</span><span class="s2">&quot;permuted_treatment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">random_permuted_treatment</span>
+<span class="n">two_drug_permuted</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>treatment</th>
+      <th>Value</th>
+      <th>permuted_treatment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Placebo</td>
+      <td>31</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Placebo</td>
+      <td>28</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Placebo</td>
+      <td>34</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Placebo</td>
+      <td>36</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Placebo</td>
+      <td>33</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Placebo</td>
+      <td>27</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Placebo</td>
+      <td>39</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Placebo</td>
+      <td>25</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Placebo</td>
+      <td>23</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Placebo</td>
+      <td>29</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Placebo</td>
+      <td>36</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Placebo</td>
+      <td>36</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Placebo</td>
+      <td>32</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Placebo</td>
+      <td>30</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Placebo</td>
+      <td>33</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Placebo</td>
+      <td>39</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Placebo</td>
+      <td>30</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Placebo</td>
+      <td>32</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Placebo</td>
+      <td>30</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Placebo</td>
+      <td>28</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>New</td>
+      <td>23</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>New</td>
+      <td>17</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>New</td>
+      <td>11</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>New</td>
+      <td>11</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>New</td>
+      <td>9</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>New</td>
+      <td>16</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>New</td>
+      <td>16</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>New</td>
+      <td>14</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>New</td>
+      <td>17</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>New</td>
+      <td>18</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>New</td>
+      <td>10</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>New</td>
+      <td>7</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>New</td>
+      <td>14</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>New</td>
+      <td>24</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>New</td>
+      <td>18</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>New</td>
+      <td>17</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>New</td>
+      <td>14</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>New</td>
+      <td>14</td>
+      <td>Placebo</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>New</td>
+      <td>16</td>
+      <td>New</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>New</td>
+      <td>11</td>
+      <td>New</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>이제 새로 임의로 재배치된 두 그룹을 나타내는 열 <code class="docutils literal notranslate"><span class="pre">permuted_treatment</span></code> 를 기준으로 검정통계량을 구해보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_mean</span><span class="p">(</span><span class="n">two_drug_permuted</span><span class="p">,</span> <span class="s2">&quot;permuted_treatment&quot;</span><span class="p">,[</span><span class="s2">&quot;Placebo&quot;</span><span class="p">,</span> <span class="s2">&quot;New&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1000000000000014
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 임의순열방법을 반복적으로 <span class="math notranslate nohighlight">\(B=5000\)</span> 번 모의실험하여 귀무가설하에서 검정통계량의 경험적 분포를 구해보자</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="mi">5000</span>
+
+<span class="n">test_stat_permuted</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;test_stat&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">B</span><span class="p">)})</span>
+
+<span class="n">treatment</span> <span class="o">=</span> <span class="n">two_drug</span><span class="o">.</span><span class="n">treatment</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">B</span><span class="p">):</span> 
+    <span class="n">random_permuted_treatment</span> <span class="o">=</span> <span class="n">treatment</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">two_drug_permuted</span> <span class="o">=</span> <span class="n">two_drug</span>
+    <span class="n">two_drug_permuted</span><span class="p">[</span><span class="s2">&quot;permuted_treatment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">random_permuted_treatment</span>
+    <span class="n">test_stat_permuted</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;test_stat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">diff_mean</span><span class="p">(</span><span class="n">two_drug_permuted</span><span class="p">,</span> <span class="s2">&quot;permuted_treatment&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Placebo&quot;</span><span class="p">,</span> <span class="s2">&quot;New&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_stat_permuted</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:ylabel=&#39;Frequency&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/abtest_39_1.png" src="../../_images/abtest_39_1.png" />
+</div>
+</div>
+<p>이제 위에서 임의순열방법으로 구한 귀무가설 하의 검정 통계량의 분포에서 실제 관측한 검정통계량의 값과 같거나 큰 비율, 즉 p-값을 구해보자</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">test_stat_permuted</span><span class="o">.</span><span class="n">test_stat</span> <span class="o">&gt;=</span> <span class="n">test_stat</span><span class="p">)</span><span class="o">/</span><span class="n">B</span>
+<span class="n">p_value</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>위에서 모의실험을 통해서 구한 p-값에 대한 근사값이 0.0 이다. p-값이 유의수준 0.05 보다 작으므로 귀무가설을 기각한다. 따라서 신약(<code class="docutils literal notranslate"><span class="pre">New</span></code>)은 임세포의 크기를 줄이는데 위약(<code class="docutils literal notranslate"><span class="pre">Placebo</span></code>)보다 효과적이다.</p>
+</div>
+<div class="section" id="id8">
+<h3><span class="section-number">7.3.3.4. </span>신약과 기존약의 비교<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>이제 신약(<code class="docutils literal notranslate"><span class="pre">New</span></code>)과 기존약(<code class="docutils literal notranslate"><span class="pre">Old</span></code>)의 효과를  반복순열 방법으로 위와 동일한 방법을 사용하여 비교해 보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">two_drug_2</span>   <span class="o">=</span> <span class="n">three_drug_long</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">three_drug_long</span><span class="o">.</span><span class="n">treatment</span> <span class="o">!=</span> <span class="s2">&quot;Placebo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">two_drug_2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;treatment&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>treatment</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>New</td>
+      <td>14.85</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Old</td>
+      <td>20.90</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="n">two_drug_2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;treatment&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">test_stat_2</span> <span class="o">=</span> <span class="n">diff_mean</span><span class="p">(</span><span class="n">two_drug_2</span><span class="p">,</span> <span class="s2">&quot;treatment&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Old&quot;</span><span class="p">,</span> <span class="s2">&quot;New&quot;</span><span class="p">])</span>
+<span class="n">test_stat_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.049999999999999
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="mi">5000</span>
+
+<span class="n">test_stat_permuted_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;test_stat&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">B</span><span class="p">)})</span>
+
+<span class="n">treatment_2</span> <span class="o">=</span> <span class="n">two_drug_2</span><span class="o">.</span><span class="n">treatment</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">B</span><span class="p">):</span> 
+    <span class="n">random_permuted_treatment</span> <span class="o">=</span> <span class="n">treatment_2</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">two_drug_permuted</span> <span class="o">=</span> <span class="n">two_drug_2</span>
+    <span class="n">two_drug_permuted</span><span class="p">[</span><span class="s2">&quot;permuted_treatment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">random_permuted_treatment</span>
+    <span class="n">test_stat_permuted_2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;test_stat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">diff_mean</span><span class="p">(</span><span class="n">two_drug_permuted</span><span class="p">,</span> <span class="s2">&quot;permuted_treatment&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Old&quot;</span><span class="p">,</span> <span class="s2">&quot;New&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_stat_permuted_2</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:ylabel=&#39;Frequency&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/abtest_47_1.png" src="../../_images/abtest_47_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">test_stat_permuted_2</span><span class="o">.</span><span class="n">test_stat</span> <span class="o">&gt;=</span> <span class="n">test_stat_2</span><span class="p">)</span><span class="o">/</span><span class="n">B</span>
+<span class="n">p_value</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0002
+</pre></div>
+</div>
+</div>
+</div>
+<p>위에서 모의실험을 통해서 구한 p-값에 대한 근사값은 매우 작으며 유의수준 0.05 보다 작으므로 귀무가설을 기각한다. 따라서 신약(<code class="docutils literal notranslate"><span class="pre">New</span></code>)은 임세포의 크기를 줄이는데 기존약(<code class="docutils literal notranslate"><span class="pre">Old</span></code>)보다 효과적이다.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/07"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="pvalue.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7.2. </span>유의성 검정</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By 서울시립대학교<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
