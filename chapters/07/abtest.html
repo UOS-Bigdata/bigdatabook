@@ -453,7 +453,12 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     7.3.3.4. 신약과 기존약의 비교
+     7.3.3.4. 임의순열 방법
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     7.3.3.5. 유의성 검정
     </a>
    </li>
   </ul>
@@ -472,9 +477,9 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1><span class="section-number">7.3. </span>두 그룹의 비교<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>앞에서 배운 유의성 검정은 실제로 두 개의 그룹을 비교하여 차이가 있는지 판단하는 경우에 주로 사용된다.</p>
-<p>최근에 온라인으로 서비스를 제공하는 많은 회사에서 고객에 대한 추천 일고리즘이나 웹페이지 디자인에 대한 개선을 위하여 <strong>A/B 검정(A/B test)</strong> 라고 불리는 방법이 바로 두 그룹을 비교하는 유의성 검정의 다른 이름이다. 온라인 실험(online experiment)에 대한 방법과 효과는 기사 <a class="reference external" href="https://hbr.org/2017/09/the-surprising-power-of-online-experiments">The Surprising Power of Online Experiments</a>에서 나타나 있으니 참고하자.  A/B 검정 <strong>T-test</strong> , Split tests, Randomized experiments, Control/Treatment tests, Online field experiments 와 같이 여러 가지의 이름으로 불린다.</p>
+<p>최근에 온라인으로 서비스를 제공하는 많은 회사에서 고객에 대한 추천 일고리즘이나 웹페이지 디자인에 대한 개선을 위하여 <strong>A/B 검정(A/B test)</strong> 라고 불리는 방법이 바로 두 그룹을 비교하는 유의성 검정의 다른 이름이다. 온라인 실험(online experiment)에 대한 방법과 효과는 기사 <a class="reference external" href="https://hbr.org/2017/09/the-surprising-power-of-online-experiments">The Surprising Power of Online Experiments</a>에서 나타나 있으니 참고하자.  A/B 검정은 T-test, Split tests, Randomized experiments, Control/Treatment tests, Online field experiments 와 같이 여러 가지의 이름으로 불린다.</p>
 <p>두 그룹을 비교하는 통계적 검정(statistical test)을 고려할 때 가장 중요한 개념은 비교의 공정성(fairness in comparision)이며 이는 임의화(randomization)로 구현할 수 있다.</p>
-<p>두 그룹을 비교하는 경우 귀무가설은 두 그룹의 모수가 같다는 것이며 p-값은 귀무가설 하에서 두 그룹의 통계량의 차이가 나타날 확률로 유위상 검정을 실시할 수 있다.</p>
+<p>두 그룹을 비교하는 경우 귀무가설은 <strong>두 그룹이 따르는 확률분포가 같다</strong> 는 것이며 p-값은 귀무가설 하에서 두 그룹의 통계량의 차이가 나타날 확률로 유의성 검정을 실시할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -489,21 +494,23 @@
 </div>
 <div class="section" id="id2">
 <h2><span class="section-number">7.3.1. </span>공정한 비교: 임의화<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>임상실험(clinical trial)은 의학에서 다양한 치료 방법의 효능과 안정성을 보여주기 위한 실험이다. 앞 절에서 언급했듯이 코로나 백신을 개발한 회사는 임상실험을 통해서 백신의 효능과 안정성을 충분히 보여주어야 국가의 허가를 받아 실제로 사용할 수 있다.</p>
+<p>임상실험(clinical trial)은 의학에서 제안된 치료 방법의 효능과 안정성을 보여주기 위한 실험이다. 앞 절에서 언급했듯이 코로나 백신을 개발한 회사는 임상실험을 통해서 백신의 효능과 안정성을 충분히 보여주어야 국가의 허가를 받아 실제로 사용할 수 있다.</p>
 <p>자 이제 간단한 임상실험의 예를 들어 보자.</p>
 <blockquote>
 <div><p>어떤 제약회사가 새로 개발한 두통약의 효능을 증명하기 위하여 한국에서 1000명의 환자들을 대상으로 임상실험을 수행하여 70%의 치료효과를 보였다. 더 나아가 미국에서 경쟁사의 기존 두통약을 1000명에게 복용하게 하여 60% 치료효과를 얻었다.</p>
 </div></blockquote>
-<p>위에서 제시한 임상실험을 결과를 이용하여 국가기관에 약품의 사용신청을 하면 불행하게도 심사의 대상으로 받아 주지 않는다.  왜 국가기관은 위의 임상실험의 결과를 심사의 대상으로 받아 주지 않는 것일까?</p>
-<p>첫 번째 실험은 공정하지 않기 때문이다. 한국에서 수행한 실험과 미국에서 수행한 실험은 두 약(신약과 기존의 약)의 효과뿐만 아니라 인종, 의료 환경 등 다른 요인의 차이에 의하여 두 그룹의 차이가 나타날 가능성이 있기 떄문이다. 즉 비교를 하는 두 그룹이 약의 효과가 아닌 다른 요인에 대하여 차이가 날 수 있다. 여기서 비교가 공정하지 않다는 것은 <strong>실험에서 고려한 의도적인 차이</strong>, 즉 신약과 기존약의 효과에 대한 차이뿐만 아니라 다른 요인(인종, 의료환경 등)의 차이도 실험의 결과에 영향을 미칠 수 있다는 것을 의미한다.</p>
-<p>극단적인 예로 여자들로 구성된 그룹에게는 A약, 납자들로 구성된 다른 그룹에게는 B약을 복용하게 하고 두 그룹이 효과의 차이를 보인 경우, 차이의 원인이 성별때문인지 약의 효과때문인지 구별할 수 없는 경우를 들 수 있다.</p>
-<p>또한 두 그룹을 비교하는 경우, 실험에서 의도한 차이를 제외하고 두 그룹이 모든 요인에 있어서 동일한 성질을 가지려면 복제인간을 사용하는 극단적 방법 밖에 없다. 하지만 이런 실험은 불가능하다.</p>
-<p>실험에서 두 개 이상의 의도한 처리(inteded treatment)를 비교하는 실험에서 공정성을 확보하는 가장 현실적이고 효과적인 수단은 **임의화(randomization)**이다. 임의화란 두 개의 처리 중 하나를 실험대상에 적용할 때 확률적인 도구를 이용하는 것이다. 간단한 임의화의 예로 A약과 B약의 효과를 비교하는 경우 실험대상자에게 복용할 약을 동전을 던져서 결정하는 것이다.</p>
+<p>위에서 제시한 임상실험을 결과를 이용하여 국가기관에 새로운 두통약의 사용신청을 하면 불행하게도 심사의 대상으로 받아 주지 않는다.  왜 국가기관은 위의 임상실험의 결과를 심사의 대상으로 받아 주지 않는 것일까?</p>
+<p>실험이 공정하지 않기 때문이다. 한국에서 수행한 실험과 미국에서 수행한 실험은 두 약(신약과 기존의 약)의 효과뿐만 아니라 인종, 의료 환경 등 다른 요인의 차이에 의하여 두 그룹의 차이가 나타날 가능성이 있기 떄문이다. 즉 비교를 하는 두 그룹이 약의 효과가 아닌 다른 요인에 대하여 차이가 날 수 있다. 여기서 비교가 공정하지 않다는 것은 <strong>실험에서 고려한 의도적인 차이</strong>, 즉 신약과 기존약의 효과에 대한 차이뿐만 아니라 다른 요인(인종, 의료환경 등)의 차이도 실험의 결과에 영향을 미칠 수 있다는 것을 의미한다.</p>
+<p>극단적인 예로 여자들로 구성된 그룹에게는 A약, 남자들로 구성된 다른 그룹에게는 B약을 복용하게 하고 두 그룹이 효과의 차이를 보인 경우는 차이의 원인이 성별때문 인지 약의 효과때문 인지 구별할 수 없는 경우를 들 수 있다.</p>
+<p>두 그룹을 비교하는 실험에서  두 그룹을 구별할 수 있는 의도한 효과를 우리는 <strong>처리(treatment)</strong> 라고 부른다. 앞에서 예를 든 실험에서  새로운 두통약과 기존의 약, A약과 B약 등을 우리는 처리라고 한다.</p>
+<p>하지만 두 그룹을 비교하는 경우, 실험에서 의도한 차이, 즉 처리를 제외하고 두 그룹이 모든 요인에 있어서 동일한 성질을 가지려면 복제인간을 사용하는 극단적 방법 밖에 없다. 하지만 이런 실험은 불가능하다.</p>
+<p>두 개의 처리를 비교하는 실험에서 공정성을 확보하는 가장 현실적이고 효과적인 수단은 <strong>임의화(randomization)</strong> 이다. 임의화란 두 개의 처리 중 하나를 선택하여 실험대상에 지정할 때 <strong>처리의 배정을 임의로 결정(randomly assigned treatment)</strong> 하는 것이다. 간단한 임의화의 예로 A약과 B약의 효과를 비교하는 경우 실험대상자에게 복용할 약의 종류를 동전을 던져서 결정하는 것이다.</p>
 <p>이렇게 임의화를 하면 평균적으로 두 개의 처리를 받는 두 그룹이 처리 외의 요인이 평균적으로 유사하게 나타난다.</p>
 <div class="section" id="id3">
 <h3><span class="section-number">7.3.1.1. </span>임의화 실험<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>이제 A약과 B약을 임의화해서 지정하고 두 그룹의 차이가 어떻게 나타나는지 모의실험을 해보자.</p>
-<p>국민체력 자료에 있는 1874명의 사람들을 환자들라고 생각하고 각 환자에게 동전을 던져서 앞면이 나오면  A약, 뒷면이 나오면 B약을 지정하자.   이렇게 임의화로 지정한 두 그룹에 대하여 나이, 몸무게, 시장에 대한 분포를 비교해 보자.</p>
+<p>국민체력 자료에 있는 1874명의 사람들을 임상실험에 참가하는 환자들라고 생각하고 각 환자에게 동전을 던져서 앞면이 나오면  A약, 뒷면이 나오면 B약을 지정하자.   이렇게 임의화로 지정한 두 그룹에 대하여 나이, 몸무게, 시장에 대한 분포를 비교해 보자.</p>
+<p>아래 코드에서 <code class="docutils literal notranslate"><span class="pre">np.random.choice(x)</span></code>는 주어진 벡터 또는 리스트 <code class="docutils literal notranslate"><span class="pre">x</span></code> 의 원소들 중에서 한 개를 임의로 선택해 주는 함수이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/physical_test_2018_data.csv&quot;</span>
@@ -844,58 +851,58 @@
   <tbody>
     <tr>
       <th>A</th>
-      <td>933.0</td>
-      <td>35.644159</td>
-      <td>17.320937</td>
+      <td>931.0</td>
+      <td>35.337272</td>
+      <td>17.300323</td>
       <td>11.0</td>
       <td>21.0</td>
-      <td>29.0</td>
-      <td>51.0</td>
-      <td>83.0</td>
-      <td>933.0</td>
-      <td>166.748767</td>
+      <td>28.0</td>
+      <td>50.0</td>
+      <td>84.0</td>
+      <td>931.0</td>
+      <td>167.001182</td>
       <td>...</td>
-      <td>173.3</td>
-      <td>195.2</td>
-      <td>933.0</td>
-      <td>66.251983</td>
-      <td>12.879499</td>
-      <td>34.1</td>
-      <td>56.8</td>
-      <td>65.0</td>
-      <td>73.9</td>
-      <td>122.6</td>
+      <td>173.85</td>
+      <td>193.7</td>
+      <td>931.0</td>
+      <td>67.045113</td>
+      <td>13.366546</td>
+      <td>38.1</td>
+      <td>57.55</td>
+      <td>66.0</td>
+      <td>75.20</td>
+      <td>132.3</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>941.0</td>
-      <td>35.302869</td>
-      <td>17.006028</td>
+      <td>943.0</td>
+      <td>35.606575</td>
+      <td>17.028047</td>
       <td>11.0</td>
       <td>22.0</td>
       <td>29.0</td>
-      <td>48.0</td>
-      <td>84.0</td>
-      <td>941.0</td>
-      <td>167.417428</td>
+      <td>49.0</td>
+      <td>83.0</td>
+      <td>943.0</td>
+      <td>167.166808</td>
       <td>...</td>
-      <td>174.4</td>
-      <td>193.7</td>
-      <td>941.0</td>
-      <td>67.359830</td>
-      <td>13.410524</td>
+      <td>173.90</td>
+      <td>195.2</td>
+      <td>943.0</td>
+      <td>66.574443</td>
+      <td>12.949614</td>
       <td>31.1</td>
-      <td>57.8</td>
-      <td>66.6</td>
-      <td>75.9</td>
-      <td>132.3</td>
+      <td>56.90</td>
+      <td>65.6</td>
+      <td>75.15</td>
+      <td>118.8</td>
     </tr>
   </tbody>
 </table>
 <p>2 rows × 24 columns</p>
 </div></div></div>
 </div>
-<p>위에서 나타난 것처럼 A약이  지정된 그룹과 B약이 지정된 그룹에 대하여 나이, 키, 몸무게의 분포를 비교해 보면 요약 통계량이 매우 유사하다. 이렇게 임의화를 이용하면 의도된 두 개의 처리(A약, B약)제외한 다른 요인들의 분포가 유사하게 나타난다. 이렇게 실험에서 처리를 임의화를 통하여 배정하면 두 그룹의 비교를 공정하게 할 수 있다.</p>
+<p>위에서 나타난 것처럼 A약이  지정된 그룹과 B약이 지정된 그룹에 대하여 나이, 키, 몸무게의 분포를 비교해 보면 대부분의 요약 통계량이 매우 유사하다. 이렇게 임의화를 이용하면 의도된 두 개의 처리(A약, B약)제외한 다른 요인들의 분포가 유사하게 나타난다. 이렇게 실험에서 처리를 임의화를 통하여 배정하면 두 그룹의 비교를 공정하게 할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">twogroup</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;TEST_AGE&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;treatment&quot;</span><span class="p">)</span>
@@ -906,7 +913,7 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;TEST_AGE&#39;, ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/abtest_12_1.png" src="../../_images/abtest_12_1.png" />
+<img alt="../../_images/abtest_11_1.png" src="../../_images/abtest_11_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -919,20 +926,20 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;weight&#39;, ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/abtest_13_1.png" src="../../_images/abtest_13_1.png" />
+<img alt="../../_images/abtest_12_1.png" src="../../_images/abtest_12_1.png" />
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="id4">
 <h2><span class="section-number">7.3.2. </span>검정 통계량<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>두 집단을 비교하는 실험에서 두 그룹에 대한 관측 데이터를 얻었다고 하면 두 잡단의 차이를 측정할 수 있는 검정 통계량(test statistics)를 정의해야 한다. 온라인 실험에서는 검정 통계량을 전역평가기준(Overall Evaluation Criterion; OEC)이라고 부른다.</p>
-<p>일반적으로 검정통계량 <span class="math notranslate nohighlight">\(T\)</span> 은 두 그룹에서 얻은 평균의 차이(또는 차이의 절대값)로 정의되는 경우가 흔하다. 비율도 평균에 속하기 때문에 같은 논리로 유의성 검정을 할 수 있다.</p>
+<p>두 집단을 비교하는 실험에서 두 그룹에 대한 관측 데이터를 얻었다고 하면 두 잡단의 차이를 측정할 수 있는 측도를 정의해야 한다. 두 잡단의 차이를 측정할 수 있는 측도를 통계학에서는 <strong>검정 통계량(test statistics)</strong> 이라고 부르며 온라인 실험에서는 검정 통계량을 전역평가기준(Overall Evaluation Criterion; OEC)이라고 부른다.</p>
+<p>일반적으로 검정통계량 <span class="math notranslate nohighlight">\(T\)</span> 은 두 그룹에서 얻은 평균의 차이(또는 차이의 절대값)로 정의되는 경우가 흔하다. 비율도 평균에 속하기 때문에 비율의 차이도 동일한 형식의 검정 통계량이다.</p>
 <div class="math notranslate nohighlight">
 \[ T = \bar {x}_A - \bar {x}_B \]</div>
 <p>또는</p>
 <div class="math notranslate nohighlight">
-\[ T = |\bar {x}_A - \bar {x}_B |  \]</div>
+\[ T =  {p}_A - {p}_B   \]</div>
 <p>검정통계량의 크기(절대값)가 커지면 두 그룹의 차이가 커진다는 의미이다.</p>
 </div>
 <div class="section" id="a-b">
@@ -941,9 +948,10 @@
 Fisher의 유의성 검정 방법으로 수행할 수 있다.</p>
 <div class="section" id="id5">
 <h3><span class="section-number">7.3.3.1. </span>임상 실험 자료<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>암에 대한 치료약 실험에서 나온 자료를 예제로 이용하여 분석을 하고자 한다. 3개의 처리 집단을 각각 위약(<code class="docutils literal notranslate"><span class="pre">Placebo</span></code>), 기존의 약(<code class="docutils literal notranslate"><span class="pre">Old</span></code>), 새로 개발된 약(<code class="docutils literal notranslate"><span class="pre">New</span></code>)으로 부르고 각 집단에서 20명의 환자에 대하여 치료를 수행한 뒤에 암세포의 크기를 측정하였다고 하자. 암세포의 크기가 작을 수록 치료의 효과가 있다고 할 수 있다. 다음은 3개의 집단에 대하여 각각 20명의 환자를 배정하여 얻은 60개의 자료를 보여주는 표이다. 60개의 자료는 csv의 형식으로 외부화일 drug.csv에 저장되어 있다</p>
-<p>위약은 효과가 없는 가짜 약으로서 실제 약의 유효한 치료 효과를 비교할 수 있는 <strong>기준이 되는 집단(baseline)</strong> 을 구성할 때 사용된다. 약 효과의 유효성을 인정받으려면 위약 집단의 효과보다 유의하게 다르다는 결과를 보여주어야 한다. 만약 임상실험에서 기준이 되는 위약 그룹이 없다면 실제 약의 효과를 입증할 증거 능력이 떨어지게 된다. 그 이유는 위약은 약의 성분이 없는 가짜 약이지만 실제로 나타나는 효과가 있기 때문에 실제 약이 위약의 효과보다
+<p>암에 대한 치료약 실험에서 나온 자료를 예제로 이용하여 분석을 하고자 한다. 3개의 처리 집단을 각각 위약(<code class="docutils literal notranslate"><span class="pre">Placebo</span></code>), 기존의 약(<code class="docutils literal notranslate"><span class="pre">Old</span></code>), 새로 개발된 약(<code class="docutils literal notranslate"><span class="pre">New</span></code>)으로 부르고 각 집단에서 20명의 환자에 대하여 치료를 수행한 뒤에 암세포의 크기를 측정하였다고 하자. 암세포의 크기가 작을 수록 치료의 효과가 있다고 할 수 있다.</p>
+<p>위약(placebo)은 효과가 없는 가짜 약으로서 실제 약의 유효한 치료 효과를 비교할 수 있는 <strong>기준이 되는 집단(baseline)</strong> 을 구성할 때 사용된다. 약 효과의 유효성을 인정받으려면 위약 집단의 효과보다 유의하게 다르다는 결과를 보여주어야 한다. 만약 임상실험에서 기준이 되는 위약 그룹이 없다면 실제 약의 효과를 입증할 증거 능력이 떨어지게 된다. 그 이유는 위약은 약의 성분이 없는 가짜 약이지만 실제로 나타나는 효과가 있기 때문에 실제 약이 위약의 효과보다
 유의하게 차이가 나지 않으면  약의 실질적인 유효한 효과가 없는 것으로 판단하기 떄문이다.</p>
+<p>다음은 3개의 집단에 대하여 각각 20명의 환자를 배정하여 얻은 60개의 자료를 보여주는 표이다. 60개의 자료는 csv의 형식으로 외부화일 drug.csv에 저장되어 있다</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;../../data/drug.csv&quot;</span>
@@ -1191,7 +1199,7 @@ Fisher의 유의성 검정 방법으로 수행할 수 있다.</p>
 </table>
 </div></div></div>
 </div>
-<p>데이터프레임 <code class="docutils literal notranslate"><span class="pre">three_drug</span></code> 의 데이터 형식을 넓은 데이터 형식(wide data format)이라고 부른다. 넓은 데이터 형식의 자료는 한나의 행에 두 개 이상의 개체(record, unit)를 포함한 자료를 말한다. 데이터프레임 <code class="docutils literal notranslate"><span class="pre">three_drug</span></code> 의 한 행에는 3명의 환자에 대한 자료가 포함되어 있다.</p>
+<p>데이터프레임 <code class="docutils literal notranslate"><span class="pre">three_drug</span></code> 의 데이터 형식을 넓은 데이터 형식(wide data format)이라고 부른다. 넓은 데이터 형식의 자료는 한 개의 행에 두 개 이상의 개체(record, unit)가 나타나는 자료를 말한다. 데이터프레임 <code class="docutils literal notranslate"><span class="pre">three_drug</span></code> 의 한 행에는 3명의 환자에 대한 자료가 포함되어 있다.</p>
 <p>이러한 넓은 데이터 형식의 자료는 보기에는 좋을 수 있지만 데이터를 분석하는데 불편한 점이 많다. 따라서 한 행에 하나의 개체만 포함된 긴 데이터 형식(long data format)으로 바꾸어 주는 것이 필요하다.
 넓은 형식의 자료를 긴 형식의 자료로 바꾸는 메소드는 <code class="docutils literal notranslate"><span class="pre">melt(value_vars,</span> <span class="pre">value_name,</span> <span class="pre">var_name</span> <span class="pre">)</span></code> 로서 3개의 인자에 대한 설명은 다음과 같다. 자새한 설명은 라이브러리 <code class="docutils literal notranslate"><span class="pre">pandas</span></code> <a class="reference external" href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/07_reshape_table_layout.html#wide-to-long-format">매뉴얼</a>에서 찾을 수 있다.</p>
 <ul class="simple">
@@ -1778,9 +1786,99 @@ Fisher의 유의성 검정 방법으로 수행할 수 있다.</p>
 </table>
 </div></div></div>
 </div>
+<p>두 그룹에 대하여 암세포 크기들의 요약통계량을 구하면 다음과 같이 나타난다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">two_drug</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;treatment&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">two_drug</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;treatment&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="8" halign="left">Value</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>treatment</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>New</th>
+      <td>20.0</td>
+      <td>14.85</td>
+      <td>4.319783</td>
+      <td>7.0</td>
+      <td>11.00</td>
+      <td>15.0</td>
+      <td>17.0</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>Placebo</th>
+      <td>20.0</td>
+      <td>31.55</td>
+      <td>4.334379</td>
+      <td>23.0</td>
+      <td>28.75</td>
+      <td>31.5</td>
+      <td>34.5</td>
+      <td>39.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><span class="section-number">7.3.3.2. </span>검정 통계량<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>이제 두 그룹의 비교를 하기 위한 검정 통계량을 정의하자. 데이터의 형식이 연속형 변수이므로 두 그룹의 평균을 비교하는 검정 통계량 <span class="math notranslate nohighlight">\(T\)</span>를 다음과 같이 정의한다.</p>
+<div class="math notranslate nohighlight">
+\[ T = \bar {x}_{Placebo} - \bar {x}_{New} \]</div>
+<p>데이터는 암 세포의 크기이므로 그룹의 평균은 작을 수록 효과가 큰 것이다. 신약의 효과가 더 크면 <span class="math notranslate nohighlight">\(\bar {x}_{New}\)</span>이 작아진다. 따라서 두 그룹의 평균을 비교하는 검정 통계량 <span class="math notranslate nohighlight">\(T\)</span> 가 커지는 것은 신약의 효과가 더 효과적이라는 의미이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="n">two_drug</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;treatment&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">temp</span>
 </pre></div>
 </div>
 </div>
@@ -1822,17 +1920,9 @@ Fisher의 유의성 검정 방법으로 수행할 수 있다.</p>
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="id6">
-<h3><span class="section-number">7.3.3.2. </span>검정 통계량<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>이제 두 그룹의 비교를 하기 위한 건정 통계량을 정의하자. 데이터의 형식이 연속형 변수이므로 두 그룹의 평균을 비교하는 검정 통계량 <span class="math notranslate nohighlight">\(T\)</span>를 다음과 같이 정의한다.</p>
-<div class="math notranslate nohighlight">
-\[ T = \bar {x}_{Placebo} - \bar {x}_{New} \]</div>
-<p>데이터는 암 세포의 크기이므로 그룹의 평균은 작을 수록 효과가 큰 것이다. 신약의 효과가 더 크면 <span class="math notranslate nohighlight">\(\bar {x}_{New}\)</span>이 작아진다. 따라서 두 그룹의 평균을 비교하는 검정 통계량 <span class="math notranslate nohighlight">\(T\)</span> 가 커지는 것은 신약의 효과가 더 효과적이라는 의미이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="n">two_drug</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;treatment&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">test_stat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">temp</span><span class="o">.</span><span class="n">treatment</span> <span class="o">==</span> <span class="s2">&quot;Placebo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Value</span><span class="p">)</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">temp</span><span class="o">.</span><span class="n">treatment</span> <span class="o">==</span> <span class="s2">&quot;New&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Value</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_stat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">temp</span><span class="o">.</span><span class="n">treatment</span> <span class="o">==</span> <span class="s2">&quot;Placebo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Value</span><span class="p">)</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">temp</span><span class="o">.</span><span class="n">treatment</span> <span class="o">==</span> <span class="s2">&quot;New&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">Value</span><span class="p">)</span>
 <span class="n">test_stat</span>
 </pre></div>
 </div>
@@ -1844,9 +1934,18 @@ Fisher의 유의성 검정 방법으로 수행할 수 있다.</p>
 </div>
 </div>
 <p>이제 두 그룹의 평균의 차이를 구하는 함수   <code class="docutils literal notranslate"><span class="pre">diff_mean</span></code> 를 만들어 보자.</p>
+<p>함수 <code class="docutils literal notranslate"><span class="pre">diff_mean</span></code> 는 데이터프레임 <code class="docutils literal notranslate"><span class="pre">df</span></code>를 첫 번째 인자로 받는다. 또한 두 번째 인자 <code class="docutils literal notranslate"><span class="pre">group_label</span></code> 는 데이터프레임에서 그룹을 구별할 수 있는 처리명이 저장된 열의 이름이다. 마지막 인자 <code class="docutils literal notranslate"><span class="pre">treatments</span></code> 는 비교를 하기 위한 두 개의 처리명을 리스트 형식으로 받는다.</p>
+<p>함수를 정의할 때 함수 이름 뒤에 큰 따옴표 3개로 묶어진 부분(<code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;.....&quot;&quot;&quot;</span></code>)에 함수에 대한 설명(Docstring)을 기입할 수 있다. 이러한 방법으로 함수에 대한 설명문을 함수를 정의할 때 추가하면 물음표(?) 뒤에 함수의 이름을 넣어 실행하면 설명문이 나타난다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">diff_mean</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">group_label</span><span class="p">,</span> <span class="n">treatments</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    데이터프레임을 받아서 두 그룹 평균의 차이를 계산해 주는 함수이다.</span>
+<span class="sd">        df: 데이터프레임</span>
+<span class="sd">        group_label : 처리명이 저장된 열이름</span>
+<span class="sd">        treatments : 비교하고 싶은 두 개의 처리명 [A, B] (벡터 또는 리스트 형식)</span>
+<span class="sd">    결과 : A 그룹의 평균 - B 그룹의 평균</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">temp</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="n">group_label</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
     <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">temp</span><span class="p">[</span><span class="n">group_label</span><span class="p">]</span> <span class="o">==</span> <span class="n">treatments</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">Value</span><span class="p">)</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">temp</span><span class="p">[</span><span class="n">group_label</span><span class="p">]</span> <span class="o">==</span> <span class="n">treatments</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">Value</span><span class="p">)</span>
 
@@ -1860,6 +1959,26 @@ Fisher의 유의성 검정 방법으로 수행할 수 있다.</p>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">?</span>diff_mean
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> diff_mean<span class=" -Color -Color-Blue">(</span>df<span class=" -Color -Color-Blue">,</span> group_label<span class=" -Color -Color-Blue">,</span> treatments<span class=" -Color -Color-Blue">)</span>
+<span class=" -Color -Color-Red">Docstring:</span>
+데이터프레임을 받아서 두 그룹 평균의 차이를 계산해 주는 함수이다.
+    df: 데이터프레임
+    group_label : 처리명이 저장된 열이름
+    treatments : 비교하고 싶은 두 개의 처리명 [A, B] (벡터 또는 리스트 형식)
+결과 : A 그룹의 평균 - B 그룹의 평균
+<span class=" -Color -Color-Red">File:</span>      /var/folders/3k/d8g2lfdn57b665jktbg_sglm0000gn/T/ipykernel_97970/3801139376.py
+<span class=" -Color -Color-Red">Type:</span>      function
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="id7">
 <h3><span class="section-number">7.3.3.3. </span>귀무가설 하에서의 분포<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
@@ -1867,19 +1986,75 @@ Fisher의 유의성 검정 방법으로 수행할 수 있다.</p>
 <ul class="simple">
 <li><p>귀무가설: 두 그룹의 분포가 같다</p></li>
 </ul>
-<p>참고로 데이터가 범주형인 경우 두 그룹의 성공의 분포가 같다는 가정은  “두 그룹의 성공의 확률이 같다” 는 가정과 동일하다.</p>
-<p>이제  위약 그룹의 분포와 신약 그룹의 분포가 같다는 귀무가설을 고려하자.  두 그룹의 분포가 같다는 것은 신약의 효과가 위약의 효과와 같다는 것이다. 즉, 두 그룹의 분포가 같다는
-가정 하에서는 두 그룹의 차이는 단순한 우연에 의한 차이에 불과하다는 것이다.</p>
+<p>참고로 데이터가 이항분포를 따르는 경우 두 그룹의 성공의 분포가 같다는 가정은  “두 그룹의 성공의 확률이 같다” 는 가정과 동일하다.</p>
+<p>이제  위약 그룹의 분포와 신약 그룹의 분포가 같다는 귀무가설을 고려하자.  두 그룹의 분포가 같다는 것은 신약의 효과가 위약의 효과와 차이가 없다는 것이다. 두 그룹의 분포가 같다는 가정 하에서는 두 그룹의 차이는 단순한 우연에 의한 차이에 불과하다는 것이다.</p>
 <div class="math notranslate nohighlight">
-\[ \text{귀무가설:} \text{ 두 그룹의 분포가 같다.} \]</div>
+\[ \text{귀무가설:} \text{ 두 약의 효과가 같다.} \]</div>
 <p>이제 Fisher 의 유의성 겁정 방법을 적용해 보자. <strong>두 그룹의 분포가 같다는 가정 하에서 관측된 두 그룹의 평균의 차이 또는 더 극단적인 결과가 나오는 확률, 즉 p_값</strong> 을 계산해야 한다.
-두 그룹의 분포가 같다는 가정에서는 위약과 신약에서 나온 관측치들는 같은 분포에서 따르는 것이며 따라서 관측값의 차이는 단지 확률 오차에 의한 차이일 뿐 처리 효과의 차이는 아니라는 의미이다.</p>
+두 그룹의 분포가 같다는 가정에서는 위약과 신약에서 나온 관측치들는 같은 분포에서 따르는 것이며 따라서 관측값의 차이는 단지 개인의 차이 또는 오차에 의한 차이일 뿐 처리 효과의 차이는 아니라는 의미이다.</p>
+</div>
+<div class="section" id="id8">
+<h3><span class="section-number">7.3.3.4. </span>임의순열 방법<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>이제 귀무가설 하에서 검정 통계량 <span class="math notranslate nohighlight">\(T\)</span>의 분포를 구해야 한다. 귀무가설 하에서 검정 통계량 <span class="math notranslate nohighlight">\(T\)</span>의 분포를 구하는 방법은 여러 가지 방법들이 있지만 우리가 지금까지 익혀온 모의실험 방법의 일종인
-임의순열 방법(random permutation method)을 사용하고자 한다. 임의순열 방법은 두 그룹을 나누는 처리를 나타내는 열 <code class="docutils literal notranslate"><span class="pre">treatment</span></code>에 있는 <code class="docutils literal notranslate"><span class="pre">Placebo</span></code> 와 <code class="docutils literal notranslate"><span class="pre">New</span></code> 를 관측한 자료에 비복원추출로 다시 임의로 배치(random assignment) 재배치한 그룹에 대하여 검정 통계량 <span class="math notranslate nohighlight">\(T\)</span>을 다시 계산한다. 이러한 임의 배치를 여러 번  반복하여 모의실험한  검정 통계량 <span class="math notranslate nohighlight">\(T\)</span> 의 값들로 분포를 근사적으로 구한다.</p>
-<p>예를 들어 다음과 같이 처리를 나타내는 열 <code class="docutils literal notranslate"><span class="pre">treatment</span></code>에 있는 <code class="docutils literal notranslate"><span class="pre">Placebo</span></code> 와 <code class="docutils literal notranslate"><span class="pre">New</span></code>를 임의로 순서를 바꾸는 임의 재배치하는 행렬은 다음과 같이 구할 수 있다.</p>
+임의순열 방법(random permutation method)을 사용하고자 한다. 임의순열 방법은 두 그룹을 나누는 처리를 나타내는 열 <code class="docutils literal notranslate"><span class="pre">treatment</span></code>에 있는 <code class="docutils literal notranslate"><span class="pre">Placebo</span></code> 와 <code class="docutils literal notranslate"><span class="pre">New</span></code> 를 관측한 자료에 비복원추출로 다시 임의로 배치(random assignment)한다. 재배치한 처리 그룹에 대하여 검정 통계량 <span class="math notranslate nohighlight">\(T\)</span>을 다시 계산한다. 이러한 임의 배치를 모의실험으로  여러 번  반복하여 구한 검정 통계량 <span class="math notranslate nohighlight">\(T\)</span> 의 값들로 귀무가설하에서 검정 통계량의 분포를 근사적으로 구한다.</p>
+<p>예를 들어 다음과 같이 처리를 나타내는 열 <code class="docutils literal notranslate"><span class="pre">treatment</span></code>에 있는 <code class="docutils literal notranslate"><span class="pre">Placebo</span></code> 와 <code class="docutils literal notranslate"><span class="pre">New</span></code>를 임의로 순서를 바꾸는 임의 재배치하는 행렬은 다음과 같이 <code class="docutils literal notranslate"><span class="pre">sample</span></code> 메소드로 구할 수 있다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">frac=1.0</span></code> :  전체 집단에서 표본으로 추출할 비율(fraction)을 지정하는 선택명령어이며 이 경우 모든 처리를 다시 배배치해야 하므로 <code class="docutils literal notranslate"><span class="pre">1.0</span></code>으로 지정한다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">replace=False</span></code>: 비복원추출오 지정한다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ignore_index=True</span></code>: 재추출하는 경우 행의 원래 인덱스를 무시하고 다시 0부터 인덱스를 시작한다.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">treatment</span> <span class="o">=</span> <span class="n">two_drug</span><span class="o">.</span><span class="n">treatment</span>
+<span class="n">treatment</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     Placebo
+1     Placebo
+2     Placebo
+3     Placebo
+4     Placebo
+5     Placebo
+6     Placebo
+7     Placebo
+8     Placebo
+9     Placebo
+10    Placebo
+11    Placebo
+12    Placebo
+13    Placebo
+14    Placebo
+15    Placebo
+16    Placebo
+17    Placebo
+18    Placebo
+19    Placebo
+20        New
+21        New
+22        New
+23        New
+24        New
+25        New
+26        New
+27        New
+28        New
+29        New
+30        New
+31        New
+32        New
+33        New
+34        New
+35        New
+36        New
+37        New
+38        New
+39        New
+Name: treatment, dtype: object
 </pre></div>
 </div>
 </div>
@@ -1892,52 +2067,52 @@ Fisher의 유의성 검정 방법으로 수행할 수 있다.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         New
-1         New
-2     Placebo
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     Placebo
+1     Placebo
+2         New
 3         New
-4     Placebo
-5         New
-6     Placebo
+4         New
+5     Placebo
+6         New
 7         New
 8         New
-9     Placebo
-10        New
-11    Placebo
-12    Placebo
+9         New
+10    Placebo
+11        New
+12        New
 13        New
-14        New
-15    Placebo
+14    Placebo
+15        New
 16    Placebo
 17        New
-18    Placebo
-19        New
+18        New
+19    Placebo
 20    Placebo
-21    Placebo
-22    Placebo
+21        New
+22        New
 23    Placebo
 24        New
 25    Placebo
 26    Placebo
-27        New
+27    Placebo
 28    Placebo
-29        New
-30    Placebo
+29    Placebo
+30        New
 31        New
 32    Placebo
 33    Placebo
-34        New
+34    Placebo
 35        New
-36        New
+36    Placebo
 37    Placebo
 38        New
-39        New
+39    Placebo
 Name: treatment, dtype: object
 </pre></div>
 </div>
 </div>
 </div>
-<p>이제 위에서 만든 임의로 재배치한 그룹 정보를 데이터프레임 <code class="docutils literal notranslate"><span class="pre">two_drug</span></code> 에 열로 추가하자.</p>
+<p>이제 위에서 만든 임의로 재배치한 처리 그룹의 정보를 데이터프레임 <code class="docutils literal notranslate"><span class="pre">two_drug</span></code> 에 열로 추가하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">two_drug_permuted</span> <span class="o">=</span> <span class="n">two_drug</span>
@@ -1975,19 +2150,19 @@ Name: treatment, dtype: object
       <th>0</th>
       <td>Placebo</td>
       <td>31</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Placebo</td>
       <td>28</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Placebo</td>
       <td>34</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1999,19 +2174,19 @@ Name: treatment, dtype: object
       <th>4</th>
       <td>Placebo</td>
       <td>33</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>5</th>
       <td>Placebo</td>
       <td>27</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>6</th>
       <td>Placebo</td>
       <td>39</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>7</th>
@@ -2029,25 +2204,25 @@ Name: treatment, dtype: object
       <th>9</th>
       <td>Placebo</td>
       <td>29</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>10</th>
       <td>Placebo</td>
       <td>36</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>11</th>
       <td>Placebo</td>
       <td>36</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>12</th>
       <td>Placebo</td>
       <td>32</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>13</th>
@@ -2059,13 +2234,13 @@ Name: treatment, dtype: object
       <th>14</th>
       <td>Placebo</td>
       <td>33</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>15</th>
       <td>Placebo</td>
       <td>39</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>16</th>
@@ -2083,13 +2258,13 @@ Name: treatment, dtype: object
       <th>18</th>
       <td>Placebo</td>
       <td>30</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>19</th>
       <td>Placebo</td>
       <td>28</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>20</th>
@@ -2101,13 +2276,13 @@ Name: treatment, dtype: object
       <th>21</th>
       <td>New</td>
       <td>17</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>22</th>
       <td>New</td>
       <td>11</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>23</th>
@@ -2137,7 +2312,7 @@ Name: treatment, dtype: object
       <th>27</th>
       <td>New</td>
       <td>14</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>28</th>
@@ -2149,13 +2324,13 @@ Name: treatment, dtype: object
       <th>29</th>
       <td>New</td>
       <td>18</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>30</th>
       <td>New</td>
       <td>10</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>31</th>
@@ -2179,7 +2354,7 @@ Name: treatment, dtype: object
       <th>34</th>
       <td>New</td>
       <td>18</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>35</th>
@@ -2191,7 +2366,7 @@ Name: treatment, dtype: object
       <th>36</th>
       <td>New</td>
       <td>14</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>37</th>
@@ -2209,7 +2384,7 @@ Name: treatment, dtype: object
       <th>39</th>
       <td>New</td>
       <td>11</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
   </tbody>
 </table>
@@ -2223,7 +2398,7 @@ Name: treatment, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1000000000000014
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-4.100000000000001
 </pre></div>
 </div>
 </div>
@@ -2256,10 +2431,25 @@ Name: treatment, dtype: object
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:ylabel=&#39;Frequency&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/abtest_39_1.png" src="../../_images/abtest_39_1.png" />
+<img alt="../../_images/abtest_42_1.png" src="../../_images/abtest_42_1.png" />
 </div>
 </div>
+</div>
+<div class="section" id="id9">
+<h3><span class="section-number">7.3.3.5. </span>유의성 검정<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>이제 위에서 임의순열방법으로 구한 귀무가설 하의 검정 통계량의 분포에서 실제 관측한 검정통계량의 값과 같거나 큰 비율, 즉 p-값을 구해보자</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_stat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16.700000000000003
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">test_stat_permuted</span><span class="o">.</span><span class="n">test_stat</span> <span class="o">&gt;=</span> <span class="n">test_stat</span><span class="p">)</span><span class="o">/</span><span class="n">B</span>
@@ -2274,59 +2464,11 @@ Name: treatment, dtype: object
 </div>
 </div>
 <p>위에서 모의실험을 통해서 구한 p-값에 대한 근사값이 0.0 이다. p-값이 유의수준 0.05 보다 작으므로 귀무가설을 기각한다. 따라서 신약(<code class="docutils literal notranslate"><span class="pre">New</span></code>)은 임세포의 크기를 줄이는데 위약(<code class="docutils literal notranslate"><span class="pre">Placebo</span></code>)보다 효과적이다.</p>
-</div>
-<div class="section" id="id8">
-<h3><span class="section-number">7.3.3.4. </span>신약과 기존약의 비교<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>이제 신약(<code class="docutils literal notranslate"><span class="pre">New</span></code>)과 기존약(<code class="docutils literal notranslate"><span class="pre">Old</span></code>)의 효과를  반복순열 방법으로 위와 동일한 방법을 사용하여 비교해 보자.</p>
+<p>위애서 정의한 함수 <code class="docutils literal notranslate"><span class="pre">diff_mean</span></code>을 이용하면 신약(<code class="docutils literal notranslate"><span class="pre">New</span></code>)과 기존약(<code class="docutils literal notranslate"><span class="pre">Old</span></code>)의 평균의 차이를 쉽게 구할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">two_drug_2</span>   <span class="o">=</span> <span class="n">three_drug_long</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">three_drug_long</span><span class="o">.</span><span class="n">treatment</span> <span class="o">!=</span> <span class="s2">&quot;Placebo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">two_drug_2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;treatment&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>treatment</th>
-      <th>Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>New</td>
-      <td>14.85</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Old</td>
-      <td>20.90</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="n">two_drug_2</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;treatment&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">test_stat_2</span> <span class="o">=</span> <span class="n">diff_mean</span><span class="p">(</span><span class="n">two_drug_2</span><span class="p">,</span> <span class="s2">&quot;treatment&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Old&quot;</span><span class="p">,</span> <span class="s2">&quot;New&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_stat_2</span> <span class="o">=</span> <span class="n">diff_mean</span><span class="p">(</span><span class="n">three_drug_long</span><span class="p">,</span> <span class="s2">&quot;treatment&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Old&quot;</span><span class="p">,</span> <span class="s2">&quot;New&quot;</span><span class="p">])</span>
 <span class="n">test_stat_2</span>
 </pre></div>
 </div>
@@ -2339,7 +2481,10 @@ Name: treatment, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="mi">5000</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 약(`New`)과 기존약(`Old`) 만 선택한 데이터프레임</span>
+<span class="n">two_drug_2</span> <span class="o">=</span>  <span class="n">three_drug_long</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">three_drug_long</span><span class="o">.</span><span class="n">treatment</span> <span class="o">!=</span> <span class="s2">&quot;Placebo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="mi">5000</span>
 
 <span class="n">test_stat_permuted_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;test_stat&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">B</span><span class="p">)})</span>
 
@@ -2364,7 +2509,7 @@ Name: treatment, dtype: object
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:ylabel=&#39;Frequency&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/abtest_47_1.png" src="../../_images/abtest_47_1.png" />
+<img alt="../../_images/abtest_50_1.png" src="../../_images/abtest_50_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
