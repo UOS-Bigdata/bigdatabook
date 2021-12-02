@@ -1,0 +1,2355 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>8.1. 두 변수의 관계 &#8212; 빅데이터 개론 2</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystyle.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="8. 관계와 예측" href="relation-intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">빅데이터 개론 2</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   빅데이터 개론 2
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01/intro-course.html">
+   1. 서론
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-program.html">
+     1.1. 프로그래밍 언어
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/intro-stat.html">
+     1.2. 통계학
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02/intro-python.html">
+   2. 파이선의 기초
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/basic-expression.html">
+     2.1. 표현식과 변수
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-intro.html">
+     2.2. 데이터의 처리
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-train-passenger.html">
+     2.3. 고속열차 여객 수송자료
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/data-processing-text.html">
+     2.4. 어린 왕자
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03/types.html">
+   3. 자료의 형식
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/numbers.html">
+     3.1. 숫자
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/string.html">
+     3.2. 문자열
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03/array.html">
+     3.3. 행렬
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04/dataframe.html">
+   4. 데이터프레임
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-intro.html">
+     4.1. 데이터프레임의 정의와 구성요소
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-change.html">
+     4.2. 데이터프레임의 정리
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-summary.html">
+     4.3. 데이터프레임의 요약
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/dataframe-merge.html">
+     4.4. 데이터프레임의 결합
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05/data-intro.html">
+   5. 분포와 확률
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_distribution.html">
+     5.1. 자료의 분포
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_randomness.html">
+     5.2. 분포와 우연성
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_random_experiment.html">
+     5.3. 확률과 컴퓨터 실험
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_probability.html">
+     5.4. 확률의 기초
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/data_function.html">
+     5.5. 함수
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../06/sampling-intro.html">
+   6. 표본과 경험적 분포
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06/sample.html">
+     6.1. 표본과 정보
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06/samplemeans.html">
+     6.2. 통계량의 분포
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06/estimator.html">
+     6.3. 추정량의 성질
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06/bootstrap.html">
+     6.4. 붓스트랩
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../07/test-intro.html">
+   7. 유의성 검정
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07/decision.html">
+     7.1. 선택과 증거
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07/pvalue.html">
+     7.2. 유의성 검정
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07/abtest.html">
+     7.3. 두 그룹의 비교
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="relation-intro.html">
+   8. 관계와 예측
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     8.1. 두 변수의 관계
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/chapters/08/correlation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/UOS-Bigdata/bigdatabook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/UOS-Bigdata/bigdatabook/master?urlpath=tree/chapters/08/correlation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/08/correlation.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   8.1.1. 아버지와 아들의 키
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   8.1.2. 상관계수
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   8.1.3. 변수의 표준화
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   8.1.4. 예제1: 키와 몸무게의 관계
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   8.1.5. 예제2: 아파트의 면적과 가격
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   8.1.6. 예제3: 학생의 성적
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1><span class="section-number">8.1. </span>두 변수의 관계<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>데이터 과학의 가장 중요한 주제는 예측(prediction)이다. 데이터 과학에서는 관심 있는 반응 변수(response variable)의 값들이 설명 변수(explanatory variables, features)의 변화에 따라서 어떻게 변하는지 나타내는 관계를 추정하여 예측을 수행한다.
+따라서 예측을 수행하기 위해서 여러 개 변수들의 관계를 먼저 알아보는 분석이 이루어진다.</p>
+<p>두 변수가 경험적 관계(empirical relation)를 보인다는 것은 주어진 데이터에서 하나의 변수의 변화를 나머지 변수의 변화를 이용하여 어느 정도 설명할 수 있다는 의미이다. 데이터를 기반으로 두 변수의 값들 사이에 함수적인 관계를  추론할 수 있는 경우 서로 경험적 관계가 있다고 말할 수 있으며 이를 이용하여 예측도 수행할 수 있다.</p>
+<p>이때 주의해야 할 점은 경험적 관계가 나타난다고 해도 두 변수가 서로 직접 영향을 미치는 인과 관계(causal relation)가 아닌 경우도 많다.</p>
+<p>예를 들어 아이스크림의 판매량과 에어콘의 판매량은 유의한 통계적 관계를 보인다. 하지만 이러한 관계는 두 변수의 인과관계 때문에 나타나는 것이 아니라 제3의 변수인 기온이 두 변수에 직접적인 영향을 미쳐서 나타나는 관계이다. 이 경우 제3의 변수인 기온을 잠재변수(confounding variable)이라고 부른다.</p>
+<p>여러 변수들의 경험적 관계에 대한 분석은 인과 관계를 구명하기 위한 연구에 중요한 기초 정보를 제공한다. 이 절에서는 다양한 사례를 통하여 두 변수의 관계를 시각적으로 분석하는 방법을 알아보고 경험적 관계를 수치적으로 측정할 수 있는 상관계수(correlation coefficent)에 대하여 알아본다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># 한글 폰트가 깨질 때 사용 - 런타임 메뉴에서 다시 시작 및 모두 실행 선택. (출처: https://teddylee777.github.io/colab/colab-korean)
+!sudo apt-get install -y fonts-nanum
+!sudo fc-cache -fv
+!rm ~/.cache/matplotlib -rf
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+fonts-nanum is already the newest version (20170925-1).
+0 upgraded, 0 newly installed, 0 to remove and 37 not upgraded.
+/usr/share/fonts: caching, new cache contents: 0 fonts, 1 dirs
+/usr/share/fonts/truetype: caching, new cache contents: 0 fonts, 3 dirs
+/usr/share/fonts/truetype/humor-sans: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/liberation: caching, new cache contents: 16 fonts, 0 dirs
+/usr/share/fonts/truetype/nanum: caching, new cache contents: 10 fonts, 0 dirs
+/usr/local/share/fonts: caching, new cache contents: 0 fonts, 0 dirs
+/root/.local/share/fonts: skipping, no such directory
+/root/.fonts: skipping, no such directory
+/var/cache/fontconfig: cleaning cache directory
+/root/.cache/fontconfig: not cleaning non-existent cache directory
+/root/.fontconfig: not cleaning non-existent cache directory
+fc-cache: succeeded
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rc</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;NanumBarunGothic&#39;</span><span class="p">)</span> <span class="c1"># clolab 에서 한글 사용 </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.unicode_minus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>   <span class="c1"># 그림 크기 조정</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">8.1.1. </span>아버지와 아들의 키<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Francis_Galton">Francis Galton</a> 은 영국의 학자로서 1885년에 아버지와 아들의 키에 대한 관계에 대한 연구를 데이터에 기반하여 수행하였다. Galton의 이러한 데이터에 기반한 경험적 연구는 데이터를 이용한 통계적 관계 분석의 시초로 여겨지고 있다.</p>
+<p>이제 1087 개로 이루어진 아버지와 아들의 키 자료를 데이터프레임 <code class="docutils literal notranslate"><span class="pre">father_son_df</span></code> 으로 저장하자.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fheight</span></code>: 아버지의 키 (단위: inch)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sheight</span></code>: 아들의 키 (단위: inch)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url1</span> <span class="o">=</span> <span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/father-and-son.csv&quot;</span>
+<span class="n">father_son_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url1</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fheight</th>
+      <th>sheight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>165.223215</td>
+      <td>151.836806</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>160.657388</td>
+      <td>160.563662</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>164.986513</td>
+      <td>160.889747</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>167.011350</td>
+      <td>159.492645</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>155.288564</td>
+      <td>163.274070</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>160.077252</td>
+      <td>163.175213</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>166.041146</td>
+      <td>162.769067</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>164.398909</td>
+      <td>162.549180</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>167.805329</td>
+      <td>164.117985</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>170.097145</td>
+      <td>162.507778</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1078, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<p>위의 아버지와 아들의 자료는 단위가 inch 이므로 우리 한국 사람들한테는 익숙하지 한다. 자료의 단위를 센티미터로 바꾸어 보자.</p>
+<div class="math notranslate nohighlight">
+\[ \text{ 2.54 cm } = \text{ 1.0 inch} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">fheight</span> <span class="o">=</span>  <span class="n">father_son_df</span><span class="o">.</span><span class="n">fheight</span><span class="o">*</span><span class="mf">2.54</span>
+<span class="n">father_son_df</span><span class="o">.</span><span class="n">sheight</span> <span class="o">=</span>  <span class="n">father_son_df</span><span class="o">.</span><span class="n">sheight</span><span class="o">*</span><span class="mf">2.54</span>
+<span class="n">father_son_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fheight</th>
+      <th>sheight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>165.223215</td>
+      <td>151.836806</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>160.657388</td>
+      <td>160.563662</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>164.986513</td>
+      <td>160.889747</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>167.011350</td>
+      <td>159.492645</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>155.288564</td>
+      <td>163.274070</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>160.077252</td>
+      <td>163.175213</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>166.041146</td>
+      <td>162.769067</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>164.398909</td>
+      <td>162.549180</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>167.805329</td>
+      <td>164.117985</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>170.097145</td>
+      <td>162.507778</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>이제 아버지의 키와 아들의 키를 산점도를 그려서 관계를 살펴보자. 아래 산점도에서 여러분은 아버지의 키가 증가하면 아들의 키도 증가하는 **경향(trend)**이 나타나는 현상을 볼 수 있다. 하지만 아버지의 키가 크다고 해서 아들의 키가 반드시 큰 것은 아니다. 또한  반대로 아버지의 키가 작아지면 아들의 키도 반드시 작아지는 것은 아니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f19784abe90&gt;
+</pre></div>
+</div>
+<img alt="../../_images/correlation_11_1.png" src="../../_images/correlation_11_1.png" />
+</div>
+</div>
+<p>이제 아버지와 아들의 키에 대한 관계를 좀 더 시각적으로 명확하게 보기 위하여 아버지와 아들의 키에 대한 평균값을 산점도에 추가해보자.</p>
+<p>아버지의 키가 평균보다 커도 아들의 키는 전체 아들의 평균값보다 작은 경우도 나타난다. 또한 반대로 어버지의 키가 평균보다 작아도 아들의 키가 그 평균값보다 큰 경우도 있다. 하지만
+아버지의 키와 아들의 키는 완벽하지는 않지만  전체적으로 비례적인 경향을 보이고 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fheight</th>
+      <th>sheight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1078.000000</td>
+      <td>1078.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>171.925226</td>
+      <td>174.457537</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>6.971966</td>
+      <td>7.149342</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>149.880320</td>
+      <td>148.607983</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>167.100847</td>
+      <td>170.005331</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>172.127164</td>
+      <td>174.284183</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>176.791569</td>
+      <td>178.983564</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>191.602182</td>
+      <td>199.046567</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">father_son_df</span><span class="o">.</span><span class="n">fheight</span><span class="p">))</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">father_son_df</span><span class="o">.</span><span class="n">sheight</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f198aeaf6d0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/correlation_14_1.png" src="../../_images/correlation_14_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">8.1.2. </span>상관계수<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>이러한 두 변수의 <strong>선형적 비례 관계(linear relation)</strong> 을 수치적으로 나타나는 측도가 <strong>상관계수(correlation coefficient; r)</strong> 이다. 자료가 주어졌을 때 상관계수를 계산하는 방법에 대하여 알아보자.</p>
+<p>두 개의 변수 <span class="math notranslate nohighlight">\(x\)</span> 와 <span class="math notranslate nohighlight">\(y\)</span> 에 대하여 다음과 같이 <span class="math notranslate nohighlight">\(n\)</span> 개의 자료가 있다고 하자.</p>
+<div class="math notranslate nohighlight">
+\[ (x_1, y_2), (x_2, y_2), \dots , (x_n, y_n) \]</div>
+<p>두 변수 <span class="math notranslate nohighlight">\(x\)</span> 와  <span class="math notranslate nohighlight">\(y\)</span> 의 자료에 대한 평균과 표준편차를 다음과 같이 표시하자.</p>
+<div class="math notranslate nohighlight">
+\[ \bar x = \frac{\sum_{i=1}^n x_i}{n}, \quad \bar y = \frac{\sum_{i=1}^n y_i}{n} \]</div>
+<div class="math notranslate nohighlight">
+\[ SD_x = \sqrt{ \frac{ \sum_{i=1}^n (x_i-\bar x)^2}{ n-1}}, \quad
+SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
+<p>상관계수 <span class="math notranslate nohighlight">\(r\)</span>는 평균과 표분편차를 이용하여 다음과 같이 계산할 수 있다.</p>
+<div class="math notranslate nohighlight">
+\[ r = \frac{\sum_{i=1}^n (x_i -\bar x)(y_i -\bar y)}
+{SD_x SD_y} \]</div>
+<p>상관계수 <span class="math notranslate nohighlight">\(r\)</span> 는 다음과 같은 성질을 가진다.</p>
+<ul class="simple">
+<li><p>상관계수 <span class="math notranslate nohighlight">\(r\)</span> 은 -1 과 1 사이의 값을 가질 수 있다.</p></li>
+<li><p><span class="math notranslate nohighlight">\(r=1\)</span> 인 경우 두 변수는 완벽한 양의 선형 비례관계가 있다고 말한다.</p></li>
+<li><p><span class="math notranslate nohighlight">\(r=-1\)</span> 인 경우 두 변수는 완벽한 음의 선형 비례관계가 있다고 말한다.</p></li>
+<li><p>만약 <span class="math notranslate nohighlight">\(r=0\)</span> 인 경우 두 변수는 선형 관계가 전혀 없다고 말할 수 있다.</p></li>
+<li><p>상관계수 <span class="math notranslate nohighlight">\(r\)</span> 의 절대값이 커지면 선형관계의 강도가 카진다.</p></li>
+</ul>
+<p>여기서 주의할 점은 상관계수 <span class="math notranslate nohighlight">\(r\)</span>은 선형관계(linear relation)의 강도를 측정하는 통계량이다. 비선형성(nonlinearity)와 같은 선형이 아닌 특별한 관계는 측정하기 어럽다.</p>
+<p>이제 Galton의 아버지와 아들의 키 자료에 대한 상관계수를 구해보자. 상관계수는 메소드 <code class="docutils literal notranslate"><span class="pre">corr()</span></code>으로 쉽게 구할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fheight</th>
+      <th>sheight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>fheight</th>
+      <td>1.000000</td>
+      <td>0.501338</td>
+    </tr>
+    <tr>
+      <th>sheight</th>
+      <td>0.501338</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Galton의 아버지와 아들의 키 자료에서 상관계수가 약 0.5 로 나타난다. 이 관계는
+어느 정도 강한 양의 선형 관계를 가진다고 볼 수 있다.</p>
+<p>상관계수의 값과 두 변수의 관계를 좀 더 일아보기 위하여 모의실험으로 자료를 만들어 보자.</p>
+<p>일단 두 확률 변수 <span class="math notranslate nohighlight">\(x\)</span> 와 <span class="math notranslate nohighlight">\(y\)</span>가 각각 표준 정규분포 <span class="math notranslate nohighlight">\(N(0,1)\)</span>을 따른다고 가정하자.
+두 변수의 상관계수가 <span class="math notranslate nohighlight">\(r\)</span> 인 이변량 정규분포에서 500개의 난수(random number)로 발생시켜 산점도를 그려보자. 이변량 정규분포(bivariate normal distibution)은 두 개의 확률변수가 각각 정규분포를 따르는 경우 두 변수의 관계를 상관계수로 나타내는 분포이다.</p>
+<div class="math notranslate nohighlight">
+\[ \text{correlation}(X, Y) =r \quad \text{when} \quad X \sim N(0,1), Y \sim N(0,1) \]</div>
+<p>이제 여러분은 아래 코드에서 상관계수 <span class="math notranslate nohighlight">\(r\)</span>의 값을 변화시키면서 난수로 발생된 데이터의 산점도를 이용하여 두 변수의 선형관계가 어떻게 변하는지 알 수 있다.</p>
+<p>상관계수가 0.5 이며 두 변수가 각각 정규분포를 따르는 경우의 산점도가 아버지와 아들의 키에 대한 산점도와 매우 유사한 자료의 구조를 보이는 것으로 나타난다. 여러분이 앞 절에도 보았듯이 키의 분포는 정규분포와 매우 유사하다는 것을 유의하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 상관계수 r 값에 -1 과 1 사이의 값을 지정한다.</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">cov</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="n">r</span> <span class="p">],</span> <span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 상관계수가 r 이며 각각 표본정규분포를 따르는 x, y 의 난수 1078개를 임의로 추출</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="mi">1078</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">sim_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="n">y</span><span class="p">})</span>
+<span class="n">sim_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.496174</td>
+      <td>0.202670</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.506448</td>
+      <td>0.783484</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.156797</td>
+      <td>0.926832</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.340387</td>
+      <td>2.802885</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.832774</td>
+      <td>2.262200</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-0.066865</td>
+      <td>-1.102377</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.615125</td>
+      <td>-0.188365</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1.145742</td>
+      <td>1.439317</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.382382</td>
+      <td>0.015020</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>-0.348644</td>
+      <td>-1.162608</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;correlation =&#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/correlation_21_0.png" src="../../_images/correlation_21_0.png" />
+</div>
+</div>
+<p>위의 코드를 이용하여 상관계수의 값과 데이터의 개수를 인자로 받아 데이터프레임을 만들어 주는 간단한 함수를 만들어 보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">random_df_corr</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+  <span class="n">mean</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+  <span class="n">cov</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="n">r</span> <span class="p">],</span> <span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> 
+  <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+  <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="n">y</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">random_df_corr</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span><span class="mi">1078</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f196c2fbd50&gt;
+</pre></div>
+</div>
+<img alt="../../_images/correlation_24_1.png" src="../../_images/correlation_24_1.png" />
+</div>
+</div>
+<p>앞에서 언급하였지만 두 변수가 선형관계가 아닌 특별한 관계를 가진 경우 상관계수는 이러한 특별한 관계를 반영하지 못하는 경우가 많다.</p>
+<p>예를 들어 아래 그림과 같이 <span class="math notranslate nohighlight">\(x\)</span>와 <span class="math notranslate nohighlight">\(y\)</span> 가 이차식의 형태로 비선형적 관계를 가지고 있는 경우 상관계수는  0에 가까운 값을 가진다.</p>
+<p>즉, 상관계수가 0 이면 선형관계가 없다는 의미이지 어떤 관계도 없다는 의미는 아니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="mi">500</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span><span class="mf">10.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">df_quad</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span><span class="n">y</span><span class="p">})</span>
+<span class="n">df_quad</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f196de62b90&gt;
+</pre></div>
+</div>
+<img alt="../../_images/correlation_26_1.png" src="../../_images/correlation_26_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_quad</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>x</th>
+      <td>1.000000</td>
+      <td>0.037834</td>
+    </tr>
+    <tr>
+      <th>y</th>
+      <td>0.037834</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">8.1.3. </span>변수의 표준화<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>위에서 주어진 상관계수 <span class="math notranslate nohighlight">\(r\)</span> 의 계산식을 다음과 같이 나타낼 수 도 있다.</p>
+<div class="math notranslate nohighlight">
+\[ r = \sum_{i=1}^n  \left ( \frac{x_i -\bar x}{SD_x} \right ) \left ( \frac{y_i -\bar y}{SD_y} \right ) = \sum_{i=1}^n z_i w_i\]</div>
+<p>위의 식에서 나타난 것과 같이 각 관측값에서 평균을 빼고, 그 값을 표준편차로 나누는 작업을 변수의 표준화(standarization)이라고 한다.</p>
+<div class="math notranslate nohighlight">
+\[ z_i = \frac{x_i -\bar x}{SD_x},  w_i =\frac{y_i -\bar y}{SD_y}\]</div>
+<p>이렇게 변수를 표준화하면 변화돤 자료는 평균이 0 이 되고 표준편차는 1이 된다.</p>
+<div class="math notranslate nohighlight">
+\[  \bar z = \bar w  =0\]</div>
+<div class="math notranslate nohighlight">
+\[ SD_z = SD_w  = 1 \]</div>
+<p>데이터를 표준화하는 작업은 데이터과학에서 자주 사용된다. 여러 개의 변수들의 관계를 고려하는 경우 각 변수에 대한 단위(scale)이 다르면 비교가 어려운 경우가 있고 더 나아가 예측 모형의 성능에도 영향을 주는 경우가 있다. 따라서 많은 변수를 동시에 비교하면서 분석하는 경우 모두 표준화를 해주면 비교나 분석이 편리한 경우가 많다.</p>
+<p><strong>참고로 상관계수는 두 변수의 단위에 영향을 받지 않고 언제나 동일하다.</strong></p>
+<p>이제 리스트와 시리즈 등 데이터를 표준화 하는 함수를 만들어 보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">standarize</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">standarize</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1.46385011, -0.87831007, -0.29277002,  0.29277002,  0.87831007,
+        1.46385011])
+</pre></div>
+</div>
+</div>
+</div>
+<p>아버지와 아들의 키에 대한 데이터프레임에 두 열에 대하여 다음과 같은 코드로 표준화를 적용할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df_st</span> <span class="o">=</span> <span class="n">father_son_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">standarize</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df_st</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fheight</th>
+      <th>sheight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.961726</td>
+      <td>-3.165498</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.616914</td>
+      <td>-1.944280</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.995692</td>
+      <td>-1.898648</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.705132</td>
+      <td>-2.094156</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-2.387330</td>
+      <td>-1.564991</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df_st</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fheight</th>
+      <th>sheight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1.078000e+03</td>
+      <td>1.078000e+03</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>-4.050749e-14</td>
+      <td>2.438217e-14</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.000464e+00</td>
+      <td>1.000464e+00</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-3.163403e+00</td>
+      <td>-3.617333e+00</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>-6.922894e-01</td>
+      <td>-6.230326e-01</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>2.897772e-02</td>
+      <td>-2.425882e-02</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>6.983112e-01</td>
+      <td>6.333628e-01</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2.823607e+00</td>
+      <td>3.440938e+00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df_st</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fheight</th>
+      <th>sheight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>fheight</th>
+      <td>1.000000</td>
+      <td>0.501338</td>
+    </tr>
+    <tr>
+      <th>sheight</th>
+      <td>0.501338</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df_st</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f196dd6d390&gt;
+</pre></div>
+</div>
+<img alt="../../_images/correlation_37_1.png" src="../../_images/correlation_37_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">8.1.4. </span>예제1: 키와 몸무게의 관계<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>먼저 국민체력100에서 얻은 체력측정 데이터에서 키와 몸무게의 관계를 살펴보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url2</span> <span class="o">=</span> <span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/physical_test_2018_data.csv&quot;</span>
+<span class="n">physical_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url2</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">physical_01</span> <span class="o">=</span> <span class="n">physical_data</span><span class="p">[[</span><span class="s1">&#39;TEST_SEX&#39;</span><span class="p">,</span> <span class="s1">&#39;TEST_AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;ITEM_F001&#39;</span><span class="p">,</span> <span class="s1">&#39;ITEM_F002&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;TEST_SEX&#39;</span><span class="p">:</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;TEST_AGE&#39;</span><span class="p">:</span><span class="s1">&#39;age&#39;</span> <span class="p">,</span><span class="s1">&#39;ITEM_F001&#39;</span><span class="p">:</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;ITEM_F002&#39;</span><span class="p">:</span><span class="s1">&#39;weight&#39;</span><span class="p">})</span>
+<span class="n">physical_01</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sex</th>
+      <th>age</th>
+      <th>height</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>M</td>
+      <td>33</td>
+      <td>159.2</td>
+      <td>57.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>F</td>
+      <td>48</td>
+      <td>155.8</td>
+      <td>52.9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>M</td>
+      <td>22</td>
+      <td>175.2</td>
+      <td>96.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>M</td>
+      <td>29</td>
+      <td>178.7</td>
+      <td>79.4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>F</td>
+      <td>31</td>
+      <td>160.1</td>
+      <td>50.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>먼저 19세 이상의 성인 남자의 키와 몸무게 관계를 산점도로 그리고 상관계수를 구해보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">physical_M</span> <span class="o">=</span> <span class="n">physical_01</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">physical_01</span><span class="o">.</span><span class="n">sex</span> <span class="o">==</span><span class="s2">&quot;M&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">physical_01</span><span class="o">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">19</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">physical_M</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f196dd2a250&gt;
+</pre></div>
+</div>
+<img alt="../../_images/correlation_43_1.png" src="../../_images/correlation_43_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">physical_M</span><span class="p">[[</span><span class="s1">&#39;height&#39;</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>height</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>height</th>
+      <td>1.000000</td>
+      <td>0.523845</td>
+    </tr>
+    <tr>
+      <th>weight</th>
+      <td>0.523845</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>이제 19세 이상의 성인 여자의 키와 몸무게 관계를 산점도로 그리고 상관계수를 구해보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">physical_F</span> <span class="o">=</span> <span class="n">physical_01</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">physical_01</span><span class="o">.</span><span class="n">sex</span> <span class="o">==</span><span class="s2">&quot;F&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">physical_01</span><span class="o">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">19</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">physical_F</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f196dca4890&gt;
+</pre></div>
+</div>
+<img alt="../../_images/correlation_47_1.png" src="../../_images/correlation_47_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">physical_F</span><span class="p">[[</span><span class="s1">&#39;height&#39;</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>height</th>
+      <th>weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>height</th>
+      <td>1.000000</td>
+      <td>0.353592</td>
+    </tr>
+    <tr>
+      <th>weight</th>
+      <td>0.353592</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>위에서 볼 수 있듯이 남자에 대한 키와 몸무게의 상관계수는 0.52로 여자의 상관계수 0.35보다 약간 높게 나타난다. 주의할 점은 위의 분석 결과가 우리 나라의 전체 남여에 대한 키와 몸무게의 일반적인 관계를 나타내는 것을 아닐 수 있다. 왜냐하면 국민체력100의 데이터는 확률표본이 아니기 때문이다.</p>
+<p>위에서 본 남자와 여자의 산점도는 정규분포를 따르는 경우의 산점도와 유사하다. 이는 키와 몸무게의 분포가 정규분포와 매우 유사하기 때문이다.</p>
+<p>참고로 <code class="docutils literal notranslate"><span class="pre">groupby</span></code> 메소드를 사용하면 남자와 여자가 모두 포함된 데이터프레임에서도 남여 각각에 대한 상관계수를 구할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">physical_01</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">physical_01</span><span class="o">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">19</span><span class="p">,[</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span><span class="s1">&#39;height&#39;</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s2">&quot;sex&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>height</th>
+      <th>weight</th>
+    </tr>
+    <tr>
+      <th>sex</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">F</th>
+      <th>height</th>
+      <td>1.000000</td>
+      <td>0.353592</td>
+    </tr>
+    <tr>
+      <th>weight</th>
+      <td>0.353592</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">M</th>
+      <th>height</th>
+      <td>1.000000</td>
+      <td>0.523845</td>
+    </tr>
+    <tr>
+      <th>weight</th>
+      <td>0.523845</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><span class="section-number">8.1.5. </span>예제2: 아파트의 면적과 가격<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>아파트의 면적과 가격은 어떤 관계를 보일까?</p>
+<p><a class="reference external" href="http://data.seoul.go.kr/dataList/OA-12532/S/1/datasetView.do">서울 열린 데이터 광장</a>에서 2019년 서울특별시 부동산 실거래가 정보를 가진 데이터 화일을 다운로드 받아보자.</p>
+<p>2019년 거래하여 신고한 주택들의 위치와 정보 그리고 실거래 가격이 포함된 자료이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url3</span> <span class="o">=</span> <span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/seoul_apartment_2019.csv&quot;</span>
+<span class="n">apart_2019_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url3</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;CP949&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/dist-packages/IPython/core/interactiveshell.py:2718: DtypeWarning: Columns (1) have mixed types.Specify dtype option on import or set low_memory=False.
+  interactivity=interactivity, compiler=compiler, result=result)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_1</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>실거래가아이디</th>
+      <th>지번코드</th>
+      <th>시군구코드</th>
+      <th>자치구명</th>
+      <th>법정동코드</th>
+      <th>법정동명</th>
+      <th>신고년도</th>
+      <th>업무구분코드</th>
+      <th>업무구분</th>
+      <th>물건번호</th>
+      <th>대지권면적</th>
+      <th>건물면적</th>
+      <th>관리구분코드</th>
+      <th>층정보</th>
+      <th>건물주용도코드</th>
+      <th>건물주용도</th>
+      <th>물건금액</th>
+      <th>건축년도</th>
+      <th>건물명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>11140-2019-4-0003930-1</td>
+      <td>1.11402E+18</td>
+      <td>11140</td>
+      <td>중구</td>
+      <td>1114017400</td>
+      <td>만리동2가</td>
+      <td>2019</td>
+      <td>4</td>
+      <td>신고</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>84.97</td>
+      <td>0</td>
+      <td>15.0</td>
+      <td>2001</td>
+      <td>아파트</td>
+      <td>1390000000</td>
+      <td>2017.0</td>
+      <td>서울역센트럴자이</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>11140-2019-4-0003994-1</td>
+      <td>1.11402E+18</td>
+      <td>11140</td>
+      <td>중구</td>
+      <td>1114017400</td>
+      <td>만리동2가</td>
+      <td>2019</td>
+      <td>4</td>
+      <td>신고</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>59.94</td>
+      <td>0</td>
+      <td>8.0</td>
+      <td>2001</td>
+      <td>아파트</td>
+      <td>950000000</td>
+      <td>2017.0</td>
+      <td>서울역센트럴자이</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11140-2019-4-0004611-1</td>
+      <td>1.11402E+18</td>
+      <td>11140</td>
+      <td>중구</td>
+      <td>1114017400</td>
+      <td>만리동2가</td>
+      <td>2019</td>
+      <td>4</td>
+      <td>신고</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>84.97</td>
+      <td>B</td>
+      <td>15.0</td>
+      <td>2001</td>
+      <td>아파트</td>
+      <td>1345000000</td>
+      <td>0.0</td>
+      <td>서울역센트럴자이</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_1</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;실거래가아이디&#39;, &#39;지번코드&#39;, &#39;시군구코드&#39;, &#39;자치구명&#39;, &#39;법정동코드&#39;, &#39;법정동명&#39;, &#39;신고년도&#39;, &#39;업무구분코드&#39;,
+       &#39;업무구분&#39;, &#39;물건번호&#39;, &#39;대지권면적&#39;, &#39;건물면적&#39;, &#39;관리구분코드&#39;, &#39;층정보&#39;, &#39;건물주용도코드&#39;, &#39;건물주용도&#39;,
+       &#39;물건금액&#39;, &#39;건축년도&#39;, &#39;건물명&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 각 구별로 도수 분포표를 구해보면 2019년 1년간 거래된 주택들의 수가 알마나 되는지 알 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_1</span><span class="p">[[</span><span class="s1">&#39;자치구명&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>자치구명
+송파구     8719
+강서구     8229
+노원구     7953
+은평구     7150
+성북구     6668
+강동구     6651
+양천구     6622
+강남구     6404
+구로구     5880
+마포구     5597
+영등포구    5147
+관악구     4955
+서초구     4834
+동대문구    4773
+서대문구    4660
+동작구     4563
+도봉구     4543
+중랑구     4354
+광진구     4337
+성동구     3969
+금천구     3841
+강북구     3657
+용산구     3399
+종로구     1770
+중구      1597
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래 파이썬 코드는 필요한 변수를 선택하고 정리하는 코드이다.</p>
+<ul class="simple">
+<li><p>자료에서 이미 지어진 아파트의 거래만 선택(분양 아파트 제외)한다.</p></li>
+<li><p>거래가격의 단위는 백만원으로 변경한다.</p></li>
+</ul>
+<p>다운로드 받은 자료 중 우리가 분석에 이용할 변수의 이름과 의미는 다음과 같다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">year_sale</span></code>: 신고연도, 거래가 이루어진 년도</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gu</span></code>: 자치구 이름</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">area</span></code> : 건물 면적(제곱미터)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">floor</span></code>: 층수</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">year_built</span></code>: 건축연도, 주택이 지어진 년도</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">price</span></code>: 거래 가격(백만원)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#필요한 변수만 선택</span>
+<span class="n">apart_2019_2</span> <span class="o">=</span> <span class="n">apart_2019_1</span><span class="p">[[</span><span class="s1">&#39;신고년도&#39;</span><span class="p">,</span> <span class="s1">&#39;자치구명&#39;</span><span class="p">,</span> <span class="s1">&#39;건물면적&#39;</span><span class="p">,</span>  <span class="s1">&#39;층정보&#39;</span><span class="p">,</span> <span class="s1">&#39;건축년도&#39;</span><span class="p">,</span><span class="s1">&#39;건물주용도&#39;</span><span class="p">,</span> <span class="s1">&#39;물건금액&#39;</span><span class="p">]]</span>
+<span class="c1"># 건축연도가 0 보다 큰 아파트만 선택 (선분양 아파트는 아직 건축되지 않았기 때문에 건축연도가 0이며 분석에서 제외)</span>
+<span class="n">apart_2019_3</span> <span class="o">=</span> <span class="n">apart_2019_2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="p">(</span><span class="n">apart_2019_2</span><span class="p">[</span><span class="s1">&#39;건물주용도&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;아파트&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">apart_2019_2</span><span class="p">[</span><span class="s1">&#39;건축년도&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">)]</span>
+<span class="c1"># 층과 연도를 정수 형식으로 변환</span>
+<span class="n">apart_2019_4</span> <span class="o">=</span> <span class="n">apart_2019_3</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="s1">&#39;층정보&#39;</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;건축년도&#39;</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;신고년도&#39;</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span><span class="p">})</span>
+<span class="c1"># 거래 가격의 단위를 백만원으로 </span>
+<span class="n">price</span> <span class="o">=</span> <span class="n">apart_2019_4</span><span class="p">[</span><span class="s1">&#39;물건금액&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">1000000</span>
+<span class="c1"># 거래 가격을 정수 형식으로 변환 </span>
+<span class="n">price</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+<span class="n">apart_2019_4</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">price</span>
+<span class="c1"># 열이름을 영문으로 변환</span>
+<span class="n">apart_2019_5</span> <span class="o">=</span> <span class="n">apart_2019_4</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;신고년도&#39;</span><span class="p">:</span> <span class="s1">&#39;year_sale&#39;</span><span class="p">,</span> <span class="s1">&#39;자치구명&#39;</span><span class="p">:</span><span class="s1">&#39;gu&#39;</span><span class="p">,</span><span class="s1">&#39;건물면적&#39;</span><span class="p">:</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="s1">&#39;층정보&#39;</span><span class="p">:</span><span class="s1">&#39;floor&#39;</span><span class="p">,</span> <span class="s1">&#39;건축년도&#39;</span><span class="p">:</span><span class="s1">&#39;year_built&#39;</span><span class="p">,</span> <span class="s1">&#39;건물주용도&#39;</span><span class="p">:</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;물건금액&#39;</span><span class="p">:</span><span class="s1">&#39;orig_price&#39;</span><span class="p">})</span>
+<span class="c1"># 행 인덱스의  초기화</span>
+<span class="n">apart_2019</span> <span class="o">=</span> <span class="n">apart_2019_5</span><span class="p">[[</span><span class="s1">&#39;year_sale&#39;</span><span class="p">,</span> <span class="s1">&#39;gu&#39;</span><span class="p">,</span> <span class="s1">&#39;area&#39;</span><span class="p">,</span><span class="s1">&#39;floor&#39;</span><span class="p">,</span><span class="s1">&#39;year_built&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(67238, 6)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year_sale</th>
+      <th>gu</th>
+      <th>area</th>
+      <th>floor</th>
+      <th>year_built</th>
+      <th>price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019</td>
+      <td>중구</td>
+      <td>84.97</td>
+      <td>15</td>
+      <td>2017</td>
+      <td>1390</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2019</td>
+      <td>중구</td>
+      <td>59.94</td>
+      <td>8</td>
+      <td>2017</td>
+      <td>950</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019</td>
+      <td>중구</td>
+      <td>59.94</td>
+      <td>18</td>
+      <td>2002</td>
+      <td>785</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019</td>
+      <td>중구</td>
+      <td>59.89</td>
+      <td>9</td>
+      <td>2011</td>
+      <td>990</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019</td>
+      <td>성동구</td>
+      <td>84.87</td>
+      <td>12</td>
+      <td>2007</td>
+      <td>1450</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>이제 아파트의 면적과 거래 가격의 관계를 산점더를 이용하여 살펴보자.</p>
+<p>아래 산점도를 보면 아파트의 면적과 거래 가격의 관계는 앞에서 살펴본 키와 몸무게의 관계와는 매우 다른 형태를 보인다. 먼저 전체적으로 아파트의 면적이 증가하면  거래 가격도 증가하는 경향을 보인다. 즉, 양의 상관관계를 가질 것으로 예상할 수 있다.</p>
+<p>특이한 점은 아파트의 면적이 증가하면 가격의 평균적인 추세도 증가하지만 가격의 변동(variation)도 증가한다. 이는 산점도의 모양이 가격이 증가할수록 가격의 퍼진 범위가 증가하는 것으로 일 수 있다.</p>
+<p>이렇게 평균적인 추세와 변동성이 모두 증가하는 현상은 경제와 관련된 변수들에서 흔히 나타나는 현상이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f196c850310&gt;
+</pre></div>
+</div>
+<img alt="../../_images/correlation_63_1.png" src="../../_images/correlation_63_1.png" />
+</div>
+</div>
+<p>아파트의 면적과 거래 가격의 상관계수는 아래의 값으로 나타나며 숫자로만 보면 강한 양의 선형관계로 보인다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="p">[[</span><span class="s1">&#39;area&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>area</th>
+      <td>1.000000</td>
+      <td>0.624639</td>
+    </tr>
+    <tr>
+      <th>price</th>
+      <td>0.624639</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>아파트의 면적과 거래 가격에 대한 히스토그램을 그려 보면 정규분포의 형태와 매우 다른 오른쪽으로 꼬리가 긴 분포를 보이고 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="p">[[</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f196c7c2790&gt;
+</pre></div>
+</div>
+<img alt="../../_images/correlation_67_1.png" src="../../_images/correlation_67_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="p">[[</span><span class="s1">&#39;area&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f196c7467d0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/correlation_68_1.png" src="../../_images/correlation_68_1.png" />
+</div>
+</div>
+<p>민약 면적과 거래가격을 표준화 한 후에 산점도를 그리면 어떤 형태가 나오는지 확인해 보자.단위는 달라졌지만 관계의 형태는 그대로 나타난다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="p">[[</span><span class="s1">&#39;area&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">standarize</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f196c6d7390&gt;
+</pre></div>
+</div>
+<img alt="../../_images/correlation_70_1.png" src="../../_images/correlation_70_1.png" />
+</div>
+</div>
+<p>이제 2019년 아파트 실거래가 자격 자료를 하나의 자치구만 선택해서 면적과 거래 가격의 관계를 살펴보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_gu</span> <span class="o">=</span> <span class="n">apart_2019</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">apart_2019</span><span class="o">.</span><span class="n">gu</span> <span class="o">==</span> <span class="s1">&#39;노원구&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_gu</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6507, 6)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_gu</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f196c642a90&gt;
+</pre></div>
+</div>
+<img alt="../../_images/correlation_74_1.png" src="../../_images/correlation_74_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_gu</span><span class="p">[[</span><span class="s1">&#39;area&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>area</th>
+      <td>1.000000</td>
+      <td>0.809307</td>
+    </tr>
+    <tr>
+      <th>price</th>
+      <td>0.809307</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><span class="section-number">8.1.6. </span>예제3: 학생의 성적<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>어느 대학교의 기초 통계학을 수강한 학생들의 중간고사와 기말고사의 성적이 어떤 관계를 가지는지 실제 데이터를 이용하여 살펴보자.</p>
+<p>다음은 124명의 학생들에 대한 중간고사와 기말고사 성적이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url4</span> <span class="o">=</span><span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/mid-final-scores.csv&quot;</span>
+<span class="n">scores01</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url4</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;CP949&quot;</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scores01</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(124, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scores01</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mid</th>
+      <th>final</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>57</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>54</td>
+      <td>79</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>69</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>72</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>63</td>
+      <td>84</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>디음 그림을 보면 위에서 살펴본 키와 몸무게 또는  아파트 면적과 가격에서 나타나는 관계와 다른 형태이다.</p>
+<p>중간고사와 기말고사의 성적이 작으면 두 변수의 관계가 약해지고, 성적이 크면 관계가 강해지는 경향을 보인다.  상관계수는 강한 상관 관계를 보이고 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scores01</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mid</th>
+      <th>final</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>mid</th>
+      <td>1.000000</td>
+      <td>0.473827</td>
+    </tr>
+    <tr>
+      <th>final</th>
+      <td>0.473827</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scores01</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;final&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1977f84310&gt;
+</pre></div>
+</div>
+<img alt="../../_images/correlation_84_1.png" src="../../_images/correlation_84_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scores01</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;final&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores01</span><span class="o">.</span><span class="n">mid</span><span class="p">))</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores01</span><span class="o">.</span><span class="n">final</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f196c642b50&gt;
+</pre></div>
+</div>
+<img alt="../../_images/correlation_85_1.png" src="../../_images/correlation_85_1.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapters/08"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="relation-intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">8. </span>관계와 예측</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By 서울시립대학교<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

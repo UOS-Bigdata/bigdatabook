@@ -54,6 +54,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8. 관계와 예측" href="../08/relation-intro.html" />
     <link rel="prev" title="7.2. 유의성 검정" href="pvalue.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -304,6 +305,23 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      7.3. 두 그룹의 비교
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../08/relation-intro.html">
+   8. 관계와 예측
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08/correlation.html">
+     8.1. 두 변수의 관계
     </a>
    </li>
   </ul>
@@ -704,7 +722,7 @@
       <td>M</td>
       <td>175.2</td>
       <td>96.2</td>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>3</th>
@@ -712,7 +730,7 @@
       <td>M</td>
       <td>178.7</td>
       <td>79.4</td>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>4</th>
@@ -728,7 +746,7 @@
       <td>F</td>
       <td>157.8</td>
       <td>60.1</td>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>6</th>
@@ -736,7 +754,7 @@
       <td>M</td>
       <td>165.5</td>
       <td>60.3</td>
-      <td>B</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>7</th>
@@ -744,7 +762,7 @@
       <td>M</td>
       <td>174.9</td>
       <td>74.5</td>
-      <td>B</td>
+      <td>A</td>
     </tr>
     <tr>
       <th>8</th>
@@ -752,7 +770,7 @@
       <td>M</td>
       <td>181.0</td>
       <td>71.3</td>
-      <td>A</td>
+      <td>B</td>
     </tr>
     <tr>
       <th>9</th>
@@ -796,7 +814,7 @@
     <tr>
       <th></th>
       <th colspan="8" halign="left">TEST_AGE</th>
-      <th colspan="5" halign="left">height</th>
+      <th colspan="8" halign="left">height</th>
       <th colspan="8" halign="left">weight</th>
     </tr>
     <tr>
@@ -811,7 +829,10 @@
       <th>max</th>
       <th>count</th>
       <th>mean</th>
-      <th>...</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
       <th>75%</th>
       <th>max</th>
       <th>count</th>
@@ -846,60 +867,68 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>A</th>
-      <td>931.0</td>
-      <td>35.337272</td>
-      <td>17.300323</td>
-      <td>11.0</td>
-      <td>21.0</td>
-      <td>28.0</td>
-      <td>50.0</td>
-      <td>84.0</td>
-      <td>931.0</td>
-      <td>167.001182</td>
-      <td>...</td>
-      <td>173.85</td>
-      <td>193.7</td>
-      <td>931.0</td>
-      <td>67.045113</td>
-      <td>13.366546</td>
-      <td>38.1</td>
-      <td>57.55</td>
-      <td>66.0</td>
-      <td>75.20</td>
-      <td>132.3</td>
-    </tr>
-    <tr>
-      <th>B</th>
-      <td>943.0</td>
-      <td>35.606575</td>
-      <td>17.028047</td>
+      <td>973.0</td>
+      <td>35.659815</td>
+      <td>17.317847</td>
       <td>11.0</td>
       <td>22.0</td>
       <td>29.0</td>
+      <td>50.0</td>
+      <td>84.0</td>
+      <td>973.0</td>
+      <td>166.938232</td>
+      <td>9.085498</td>
+      <td>140.6</td>
+      <td>159.7</td>
+      <td>167.6</td>
+      <td>173.6</td>
+      <td>195.2</td>
+      <td>973.0</td>
+      <td>66.964440</td>
+      <td>13.187022</td>
+      <td>38.1</td>
+      <td>57.4</td>
+      <td>66.0</td>
+      <td>75.5</td>
+      <td>120.5</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>901.0</td>
+      <td>35.270810</td>
+      <td>16.994768</td>
+      <td>11.0</td>
+      <td>21.0</td>
+      <td>29.0</td>
       <td>49.0</td>
       <td>83.0</td>
-      <td>943.0</td>
-      <td>167.166808</td>
-      <td>...</td>
-      <td>173.90</td>
-      <td>195.2</td>
-      <td>943.0</td>
-      <td>66.574443</td>
-      <td>12.949614</td>
+      <td>901.0</td>
+      <td>167.242508</td>
+      <td>8.990362</td>
+      <td>142.8</td>
+      <td>160.3</td>
+      <td>167.7</td>
+      <td>174.1</td>
+      <td>191.9</td>
+      <td>901.0</td>
+      <td>66.639623</td>
+      <td>13.129711</td>
       <td>31.1</td>
-      <td>56.90</td>
-      <td>65.6</td>
-      <td>75.15</td>
-      <td>118.8</td>
+      <td>57.1</td>
+      <td>65.3</td>
+      <td>74.5</td>
+      <td>132.3</td>
     </tr>
   </tbody>
 </table>
-<p>2 rows × 24 columns</p>
 </div></div></div>
 </div>
 <p>위에서 나타난 것처럼 A약이  지정된 그룹과 B약이 지정된 그룹에 대하여 나이, 키, 몸무게의 분포를 비교해 보면 대부분의 요약 통계량이 매우 유사하다. 이렇게 임의화를 이용하면 의도된 두 개의 처리(A약, B약)제외한 다른 요인들의 분포가 유사하게 나타난다. 이렇게 실험에서 처리를 임의화를 통하여 배정하면 두 그룹의 비교를 공정하게 할 수 있다.</p>
@@ -910,7 +939,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;TEST_AGE&#39;, ylabel=&#39;Count&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7ffaaa930e90&gt;
 </pre></div>
 </div>
 <img alt="../../_images/abtest_11_1.png" src="../../_images/abtest_11_1.png" />
@@ -923,7 +952,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;weight&#39;, ylabel=&#39;Count&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7ffaa95364d0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/abtest_12_1.png" src="../../_images/abtest_12_1.png" />
@@ -954,7 +983,7 @@ Fisher의 유의성 검정 방법으로 수행할 수 있다.</p>
 <p>다음은 3개의 집단에 대하여 각각 20명의 환자를 배정하여 얻은 60개의 자료를 보여주는 표이다. 60개의 자료는 csv의 형식으로 외부화일 drug.csv에 저장되어 있다</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;../../data/drug.csv&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/drug.csv&quot;</span>
 <span class="n">three_drug_wide</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1965,19 +1994,6 @@ Fisher의 유의성 검정 방법으로 수행할 수 있다.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span> diff_mean<span class=" -Color -Color-Blue">(</span>df<span class=" -Color -Color-Blue">,</span> group_label<span class=" -Color -Color-Blue">,</span> treatments<span class=" -Color -Color-Blue">)</span>
-<span class=" -Color -Color-Red">Docstring:</span>
-데이터프레임을 받아서 두 그룹 평균의 차이를 계산해 주는 함수이다.
-    df: 데이터프레임
-    group_label : 처리명이 저장된 열이름
-    treatments : 비교하고 싶은 두 개의 처리명 [A, B] (벡터 또는 리스트 형식)
-결과 : A 그룹의 평균 - B 그룹의 평균
-<span class=" -Color -Color-Red">File:</span>      /var/folders/3k/d8g2lfdn57b665jktbg_sglm0000gn/T/ipykernel_97970/3801139376.py
-<span class=" -Color -Color-Red">Type:</span>      function
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="id7">
@@ -2061,52 +2077,52 @@ Name: treatment, dtype: object
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_permuted_treatment</span> <span class="o">=</span> <span class="n">treatment</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_permuted_treatment</span> <span class="o">=</span> <span class="n">treatment</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># ignore_index=True)</span>
 <span class="n">random_permuted_treatment</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     Placebo
-1     Placebo
+1         New
 2         New
-3         New
-4         New
-5     Placebo
+3     Placebo
+4     Placebo
+5         New
 6         New
-7         New
+7     Placebo
 8         New
-9         New
+9     Placebo
 10    Placebo
-11        New
-12        New
-13        New
+11    Placebo
+12    Placebo
+13    Placebo
 14    Placebo
 15        New
 16    Placebo
-17        New
+17    Placebo
 18        New
-19    Placebo
-20    Placebo
-21        New
+19        New
+20        New
+21    Placebo
 22        New
 23    Placebo
 24        New
 25    Placebo
 26    Placebo
-27    Placebo
-28    Placebo
+27        New
+28        New
 29    Placebo
 30        New
-31        New
+31    Placebo
 32    Placebo
-33    Placebo
-34    Placebo
+33        New
+34        New
 35        New
 36    Placebo
-37    Placebo
+37        New
 38        New
-39    Placebo
+39        New
 Name: treatment, dtype: object
 </pre></div>
 </div>
@@ -2156,7 +2172,7 @@ Name: treatment, dtype: object
       <th>1</th>
       <td>Placebo</td>
       <td>28</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>2</th>
@@ -2168,19 +2184,19 @@ Name: treatment, dtype: object
       <th>3</th>
       <td>Placebo</td>
       <td>36</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>4</th>
       <td>Placebo</td>
       <td>33</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>5</th>
       <td>Placebo</td>
       <td>27</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>6</th>
@@ -2192,7 +2208,7 @@ Name: treatment, dtype: object
       <th>7</th>
       <td>Placebo</td>
       <td>25</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>8</th>
@@ -2204,7 +2220,7 @@ Name: treatment, dtype: object
       <th>9</th>
       <td>Placebo</td>
       <td>29</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>10</th>
@@ -2216,19 +2232,19 @@ Name: treatment, dtype: object
       <th>11</th>
       <td>Placebo</td>
       <td>36</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>12</th>
       <td>Placebo</td>
       <td>32</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>13</th>
       <td>Placebo</td>
       <td>30</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>14</th>
@@ -2252,7 +2268,7 @@ Name: treatment, dtype: object
       <th>17</th>
       <td>Placebo</td>
       <td>32</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>18</th>
@@ -2264,19 +2280,19 @@ Name: treatment, dtype: object
       <th>19</th>
       <td>Placebo</td>
       <td>28</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>20</th>
       <td>New</td>
       <td>23</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>21</th>
       <td>New</td>
       <td>17</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>22</th>
@@ -2312,13 +2328,13 @@ Name: treatment, dtype: object
       <th>27</th>
       <td>New</td>
       <td>14</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>28</th>
       <td>New</td>
       <td>17</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>29</th>
@@ -2336,7 +2352,7 @@ Name: treatment, dtype: object
       <th>31</th>
       <td>New</td>
       <td>7</td>
-      <td>New</td>
+      <td>Placebo</td>
     </tr>
     <tr>
       <th>32</th>
@@ -2348,13 +2364,13 @@ Name: treatment, dtype: object
       <th>33</th>
       <td>New</td>
       <td>24</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>34</th>
       <td>New</td>
       <td>18</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>35</th>
@@ -2372,7 +2388,7 @@ Name: treatment, dtype: object
       <th>37</th>
       <td>New</td>
       <td>14</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
     <tr>
       <th>38</th>
@@ -2384,7 +2400,7 @@ Name: treatment, dtype: object
       <th>39</th>
       <td>New</td>
       <td>11</td>
-      <td>Placebo</td>
+      <td>New</td>
     </tr>
   </tbody>
 </table>
@@ -2398,7 +2414,7 @@ Name: treatment, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-4.100000000000001
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.1999999999999993
 </pre></div>
 </div>
 </div>
@@ -2413,7 +2429,7 @@ Name: treatment, dtype: object
 <span class="n">treatment</span> <span class="o">=</span> <span class="n">two_drug</span><span class="o">.</span><span class="n">treatment</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">B</span><span class="p">):</span> 
-    <span class="n">random_permuted_treatment</span> <span class="o">=</span> <span class="n">treatment</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">random_permuted_treatment</span> <span class="o">=</span> <span class="n">treatment</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
     <span class="n">two_drug_permuted</span> <span class="o">=</span> <span class="n">two_drug</span>
     <span class="n">two_drug_permuted</span><span class="p">[</span><span class="s2">&quot;permuted_treatment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">random_permuted_treatment</span>
     <span class="n">test_stat_permuted</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;test_stat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">diff_mean</span><span class="p">(</span><span class="n">two_drug_permuted</span><span class="p">,</span> <span class="s2">&quot;permuted_treatment&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Placebo&quot;</span><span class="p">,</span> <span class="s2">&quot;New&quot;</span><span class="p">])</span>
@@ -2428,7 +2444,7 @@ Name: treatment, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:ylabel=&#39;Frequency&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7ffaa8cf4e90&gt;
 </pre></div>
 </div>
 <img alt="../../_images/abtest_42_1.png" src="../../_images/abtest_42_1.png" />
@@ -2491,7 +2507,7 @@ Name: treatment, dtype: object
 <span class="n">treatment_2</span> <span class="o">=</span> <span class="n">two_drug_2</span><span class="o">.</span><span class="n">treatment</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">B</span><span class="p">):</span> 
-    <span class="n">random_permuted_treatment</span> <span class="o">=</span> <span class="n">treatment_2</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">random_permuted_treatment</span> <span class="o">=</span> <span class="n">treatment_2</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
     <span class="n">two_drug_permuted</span> <span class="o">=</span> <span class="n">two_drug_2</span>
     <span class="n">two_drug_permuted</span><span class="p">[</span><span class="s2">&quot;permuted_treatment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">random_permuted_treatment</span>
     <span class="n">test_stat_permuted_2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;test_stat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">diff_mean</span><span class="p">(</span><span class="n">two_drug_permuted</span><span class="p">,</span> <span class="s2">&quot;permuted_treatment&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Old&quot;</span><span class="p">,</span> <span class="s2">&quot;New&quot;</span><span class="p">])</span>
@@ -2506,7 +2522,7 @@ Name: treatment, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:ylabel=&#39;Frequency&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7ffaa8bb5550&gt;
 </pre></div>
 </div>
 <img alt="../../_images/abtest_50_1.png" src="../../_images/abtest_50_1.png" />
@@ -2520,7 +2536,7 @@ Name: treatment, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0006
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0008
 </pre></div>
 </div>
 </div>
@@ -2561,6 +2577,13 @@ Name: treatment, dtype: object
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title"><span class="section-number">7.2. </span>유의성 검정</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="../08/relation-intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>관계와 예측</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
         
