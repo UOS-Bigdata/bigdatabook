@@ -58,6 +58,10 @@ sections:
   - file: chapters/07/decision
   - file: chapters/07/pvalue
   - file: chapters/07/abtest
+- file: chapters/08/relation-intro
+  title: 관계와 예측
+  sections:
+  - file: chapters/08/correlation
   
   
 
