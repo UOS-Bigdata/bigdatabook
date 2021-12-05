@@ -54,6 +54,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8.2. 선형 회귀모형" href="regression.html" />
     <link rel="prev" title="8. 관계와 예측" href="relation-intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -323,6 +324,11 @@
      8.1. 두 변수의 관계
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regression.html">
+     8.2. 선형 회귀모형
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -482,10 +488,10 @@
 <p>여러 변수들의 경험적 관계에 대한 분석은 인과 관계를 구명하기 위한 연구에 중요한 기초 정보를 제공한다. 이 절에서는 다양한 사례를 통하여 두 변수의 관계를 시각적으로 분석하는 방법을 알아보고 경험적 관계를 수치적으로 측정할 수 있는 상관계수(correlation coefficent)에 대하여 알아본다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># 한글 폰트가 깨질 때 사용 - 런타임 메뉴에서 다시 시작 및 모두 실행 선택. (출처: https://teddylee777.github.io/colab/colab-korean)
-!sudo apt-get install -y fonts-nanum
-!sudo fc-cache -fv
-!rm ~/.cache/matplotlib -rf
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 한글 폰트가 깨질 때 사용 - 런타임 메뉴에서 다시 시작 및 모두 실행 선택. (출처: https://teddylee777.github.io/colab/colab-korean)</span>
+<span class="o">!</span>sudo apt-get install -y fonts-nanum
+<span class="o">!</span>sudo fc-cache -fv
+<span class="o">!</span>rm ~/.cache/matplotlib -rf
 </pre></div>
 </div>
 </div>
@@ -513,7 +519,7 @@ fc-cache: succeeded
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -524,8 +530,8 @@ fc-cache: succeeded
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rc</span>
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rc</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;NanumBarunGothic&#39;</span><span class="p">)</span> <span class="c1"># clolab 에서 한글 사용 </span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.unicode_minus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span> 
@@ -544,7 +550,7 @@ fc-cache: succeeded
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url1</span> <span class="o">=</span> <span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/father-and-son.csv&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url1</span> <span class="o">=</span> <span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/father-and-son.csv&quot;</span>
 <span class="n">father_son_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url1</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -552,7 +558,7 @@ fc-cache: succeeded
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -582,53 +588,53 @@ fc-cache: succeeded
   <tbody>
     <tr>
       <th>0</th>
-      <td>165.223215</td>
-      <td>151.836806</td>
+      <td>65.04851</td>
+      <td>59.77827</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>160.657388</td>
-      <td>160.563662</td>
+      <td>63.25094</td>
+      <td>63.21404</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>164.986513</td>
-      <td>160.889747</td>
+      <td>64.95532</td>
+      <td>63.34242</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>167.011350</td>
-      <td>159.492645</td>
+      <td>65.75250</td>
+      <td>62.79238</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>155.288564</td>
-      <td>163.274070</td>
+      <td>61.13723</td>
+      <td>64.28113</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>160.077252</td>
-      <td>163.175213</td>
+      <td>63.02254</td>
+      <td>64.24221</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>166.041146</td>
-      <td>162.769067</td>
+      <td>65.37053</td>
+      <td>64.08231</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>164.398909</td>
-      <td>162.549180</td>
+      <td>64.72398</td>
+      <td>63.99574</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>167.805329</td>
-      <td>164.117985</td>
+      <td>66.06509</td>
+      <td>64.61338</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>170.097145</td>
-      <td>162.507778</td>
+      <td>66.96738</td>
+      <td>63.97944</td>
     </tr>
   </tbody>
 </table>
@@ -636,7 +642,7 @@ fc-cache: succeeded
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -651,7 +657,7 @@ fc-cache: succeeded
 \[ \text{ 2.54 cm } = \text{ 1.0 inch} \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">fheight</span> <span class="o">=</span>  <span class="n">father_son_df</span><span class="o">.</span><span class="n">fheight</span><span class="o">*</span><span class="mf">2.54</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">fheight</span> <span class="o">=</span>  <span class="n">father_son_df</span><span class="o">.</span><span class="n">fheight</span><span class="o">*</span><span class="mf">2.54</span>
 <span class="n">father_son_df</span><span class="o">.</span><span class="n">sheight</span> <span class="o">=</span>  <span class="n">father_son_df</span><span class="o">.</span><span class="n">sheight</span><span class="o">*</span><span class="mf">2.54</span>
 <span class="n">father_son_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
@@ -738,7 +744,7 @@ fc-cache: succeeded
 <p>이제 아버지의 키와 아들의 키를 산점도를 그려서 관계를 살펴보자. 아래 산점도에서 여러분은 아버지의 키가 증가하면 아들의 키도 증가하는 **경향(trend)**이 나타나는 현상을 볼 수 있다. 하지만 아버지의 키가 크다고 해서 아들의 키가 반드시 큰 것은 아니다. 또한  반대로 아버지의 키가 작아지면 아들의 키도 반드시 작아지는 것은 아니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -754,7 +760,7 @@ fc-cache: succeeded
 아버지의 키와 아들의 키는 완벽하지는 않지만  전체적으로 비례적인 경향을 보이고 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -828,7 +834,7 @@ fc-cache: succeeded
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">father_son_df</span><span class="o">.</span><span class="n">fheight</span><span class="p">))</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">father_son_df</span><span class="o">.</span><span class="n">sheight</span><span class="p">))</span>
 </pre></div>
@@ -870,7 +876,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 <p>이제 Galton의 아버지와 아들의 키 자료에 대한 상관계수를 구해보자. 상관계수는 메소드 <code class="docutils literal notranslate"><span class="pre">corr()</span></code>으로 쉽게 구할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -923,7 +929,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 <p>상관계수가 0.5 이며 두 변수가 각각 정규분포를 따르는 경우의 산점도가 아버지와 아들의 키에 대한 산점도와 매우 유사한 자료의 구조를 보이는 것으로 나타난다. 여러분이 앞 절에도 보았듯이 키의 분포는 정규분포와 매우 유사하다는 것을 유의하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 상관계수 r 값에 -1 과 1 사이의 값을 지정한다.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 상관계수 r 값에 -1 과 1 사이의 값을 지정한다.</span>
 <span class="n">r</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">mean</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">cov</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="n">r</span> <span class="p">],</span> <span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> 
@@ -933,7 +939,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 상관계수가 r 이며 각각 표본정규분포를 따르는 x, y 의 난수 1078개를 임의로 추출</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 상관계수가 r 이며 각각 표본정규분포를 따르는 x, y 의 난수 1078개를 임의로 추출</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="mi">1078</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
 <span class="n">sim_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="n">y</span><span class="p">})</span>
 <span class="n">sim_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -1020,7 +1026,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sim_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;correlation =&#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1033,7 +1039,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 <p>위의 코드를 이용하여 상관계수의 값과 데이터의 개수를 인자로 받아 데이터프레임을 만들어 주는 간단한 함수를 만들어 보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">random_df_corr</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">random_df_corr</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
   <span class="n">mean</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
   <span class="n">cov</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="n">r</span> <span class="p">],</span> <span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> 
   <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
@@ -1044,7 +1050,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">random_df_corr</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span><span class="mi">1078</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">random_df_corr</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span><span class="mi">1078</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1060,7 +1066,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 <p>즉, 상관계수가 0 이면 선형관계가 없다는 의미이지 어떤 관계도 없다는 의미는 아니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="mi">500</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="mi">500</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span><span class="mf">10.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 <span class="n">df_quad</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span><span class="n">y</span><span class="p">})</span>
@@ -1077,7 +1083,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_quad</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_quad</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1138,7 +1144,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 <p>이제 리스트와 시리즈 등 데이터를 표준화 하는 함수를 만들어 보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">standarize</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">standarize</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
   <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1146,7 +1152,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">standarize</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standarize</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1160,14 +1166,14 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 <p>아버지와 아들의 키에 대한 데이터프레임에 두 열에 대하여 다음과 같은 코드로 표준화를 적용할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df_st</span> <span class="o">=</span> <span class="n">father_son_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">standarize</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df_st</span> <span class="o">=</span> <span class="n">father_son_df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">standarize</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df_st</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df_st</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1226,7 +1232,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df_st</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df_st</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1300,7 +1306,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df_st</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df_st</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1344,7 +1350,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df_st</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df_st</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1361,7 +1367,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 <p>먼저 국민체력100에서 얻은 체력측정 데이터에서 키와 몸무게의 관계를 살펴보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url2</span> <span class="o">=</span> <span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/physical_test_2018_data.csv&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url2</span> <span class="o">=</span> <span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/physical_test_2018_data.csv&quot;</span>
 <span class="n">physical_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url2</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1369,7 +1375,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">physical_01</span> <span class="o">=</span> <span class="n">physical_data</span><span class="p">[[</span><span class="s1">&#39;TEST_SEX&#39;</span><span class="p">,</span> <span class="s1">&#39;TEST_AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;ITEM_F001&#39;</span><span class="p">,</span> <span class="s1">&#39;ITEM_F002&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;TEST_SEX&#39;</span><span class="p">:</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;TEST_AGE&#39;</span><span class="p">:</span><span class="s1">&#39;age&#39;</span> <span class="p">,</span><span class="s1">&#39;ITEM_F001&#39;</span><span class="p">:</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;ITEM_F002&#39;</span><span class="p">:</span><span class="s1">&#39;weight&#39;</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">physical_01</span> <span class="o">=</span> <span class="n">physical_data</span><span class="p">[[</span><span class="s1">&#39;TEST_SEX&#39;</span><span class="p">,</span> <span class="s1">&#39;TEST_AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;ITEM_F001&#39;</span><span class="p">,</span> <span class="s1">&#39;ITEM_F002&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;TEST_SEX&#39;</span><span class="p">:</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;TEST_AGE&#39;</span><span class="p">:</span><span class="s1">&#39;age&#39;</span> <span class="p">,</span><span class="s1">&#39;ITEM_F001&#39;</span><span class="p">:</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;ITEM_F002&#39;</span><span class="p">:</span><span class="s1">&#39;weight&#39;</span><span class="p">})</span>
 <span class="n">physical_01</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1442,14 +1448,14 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 <p>먼저 19세 이상의 성인 남자의 키와 몸무게 관계를 산점도로 그리고 상관계수를 구해보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">physical_M</span> <span class="o">=</span> <span class="n">physical_01</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">physical_01</span><span class="o">.</span><span class="n">sex</span> <span class="o">==</span><span class="s2">&quot;M&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">physical_01</span><span class="o">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">19</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">physical_M</span> <span class="o">=</span> <span class="n">physical_01</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">physical_01</span><span class="o">.</span><span class="n">sex</span> <span class="o">==</span><span class="s2">&quot;M&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">physical_01</span><span class="o">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">19</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">physical_M</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">physical_M</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1462,7 +1468,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">physical_M</span><span class="p">[[</span><span class="s1">&#39;height&#39;</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">physical_M</span><span class="p">[[</span><span class="s1">&#39;height&#39;</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1507,14 +1513,14 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 <p>이제 19세 이상의 성인 여자의 키와 몸무게 관계를 산점도로 그리고 상관계수를 구해보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">physical_F</span> <span class="o">=</span> <span class="n">physical_01</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">physical_01</span><span class="o">.</span><span class="n">sex</span> <span class="o">==</span><span class="s2">&quot;F&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">physical_01</span><span class="o">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">19</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">physical_F</span> <span class="o">=</span> <span class="n">physical_01</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">physical_01</span><span class="o">.</span><span class="n">sex</span> <span class="o">==</span><span class="s2">&quot;F&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">physical_01</span><span class="o">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">19</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">physical_F</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">physical_F</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1527,7 +1533,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">physical_F</span><span class="p">[[</span><span class="s1">&#39;height&#39;</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">physical_F</span><span class="p">[[</span><span class="s1">&#39;height&#39;</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1574,7 +1580,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 <p>참고로 <code class="docutils literal notranslate"><span class="pre">groupby</span></code> 메소드를 사용하면 남자와 여자가 모두 포함된 데이터프레임에서도 남여 각각에 대한 상관계수를 구할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">physical_01</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">physical_01</span><span class="o">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">19</span><span class="p">,[</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span><span class="s1">&#39;height&#39;</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s2">&quot;sex&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">physical_01</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">physical_01</span><span class="o">.</span><span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">19</span><span class="p">,[</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span><span class="s1">&#39;height&#39;</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s2">&quot;sex&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1643,7 +1649,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 <p>2019년 거래하여 신고한 주택들의 위치와 정보 그리고 실거래 가격이 포함된 자료이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url3</span> <span class="o">=</span> <span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/seoul_apartment_2019.csv&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url3</span> <span class="o">=</span> <span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/seoul_apartment_2019.csv&quot;</span>
 <span class="n">apart_2019_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url3</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;CP949&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1657,7 +1663,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_1</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_1</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1774,7 +1780,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_1</span><span class="o">.</span><span class="n">columns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_1</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 </div>
 </div>
@@ -1790,7 +1796,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 <p>이제 각 구별로 도수 분포표를 구해보면 2019년 1년간 거래된 주택들의 수가 알마나 되는지 알 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_1</span><span class="p">[[</span><span class="s1">&#39;자치구명&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_1</span><span class="p">[[</span><span class="s1">&#39;자치구명&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1842,7 +1848,7 @@ dtype: int64
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#필요한 변수만 선택</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#필요한 변수만 선택</span>
 <span class="n">apart_2019_2</span> <span class="o">=</span> <span class="n">apart_2019_1</span><span class="p">[[</span><span class="s1">&#39;신고년도&#39;</span><span class="p">,</span> <span class="s1">&#39;자치구명&#39;</span><span class="p">,</span> <span class="s1">&#39;건물면적&#39;</span><span class="p">,</span>  <span class="s1">&#39;층정보&#39;</span><span class="p">,</span> <span class="s1">&#39;건축년도&#39;</span><span class="p">,</span><span class="s1">&#39;건물주용도&#39;</span><span class="p">,</span> <span class="s1">&#39;물건금액&#39;</span><span class="p">]]</span>
 <span class="c1"># 건축연도가 0 보다 큰 아파트만 선택 (선분양 아파트는 아직 건축되지 않았기 때문에 건축연도가 0이며 분석에서 제외)</span>
 <span class="n">apart_2019_3</span> <span class="o">=</span> <span class="n">apart_2019_2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="p">(</span><span class="n">apart_2019_2</span><span class="p">[</span><span class="s1">&#39;건물주용도&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;아파트&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">apart_2019_2</span><span class="p">[</span><span class="s1">&#39;건축년도&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">)]</span>
@@ -1863,7 +1869,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -1875,7 +1881,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1962,7 +1968,7 @@ dtype: int64
 <p>이렇게 평균적인 추세와 변동성이 모두 증가하는 현상은 경제와 관련된 변수들에서 흔히 나타나는 현상이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1976,7 +1982,7 @@ dtype: int64
 <p>아파트의 면적과 거래 가격의 상관계수는 아래의 값으로 나타나며 숫자로만 보면 강한 양의 선형관계로 보인다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="p">[[</span><span class="s1">&#39;area&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="p">[[</span><span class="s1">&#39;area&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2021,7 +2027,7 @@ dtype: int64
 <p>아파트의 면적과 거래 가격에 대한 히스토그램을 그려 보면 정규분포의 형태와 매우 다른 오른쪽으로 꼬리가 긴 분포를 보이고 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="p">[[</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="p">[[</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2034,7 +2040,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="p">[[</span><span class="s1">&#39;area&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="p">[[</span><span class="s1">&#39;area&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2048,7 +2054,7 @@ dtype: int64
 <p>민약 면적과 거래가격을 표준화 한 후에 산점도를 그리면 어떤 형태가 나오는지 확인해 보자.단위는 달라졌지만 관계의 형태는 그대로 나타난다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="p">[[</span><span class="s1">&#39;area&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">standarize</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019</span><span class="p">[[</span><span class="s1">&#39;area&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">standarize</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2062,14 +2068,14 @@ dtype: int64
 <p>이제 2019년 아파트 실거래가 자격 자료를 하나의 자치구만 선택해서 면적과 거래 가격의 관계를 살펴보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_gu</span> <span class="o">=</span> <span class="n">apart_2019</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">apart_2019</span><span class="o">.</span><span class="n">gu</span> <span class="o">==</span> <span class="s1">&#39;노원구&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_gu</span> <span class="o">=</span> <span class="n">apart_2019</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">apart_2019</span><span class="o">.</span><span class="n">gu</span> <span class="o">==</span> <span class="s1">&#39;노원구&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_gu</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_gu</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -2081,7 +2087,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_gu</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_gu</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2094,7 +2100,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_gu</span><span class="p">[[</span><span class="s1">&#39;area&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apart_2019_gu</span><span class="p">[[</span><span class="s1">&#39;area&#39;</span><span class="p">,</span><span class="s1">&#39;price&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2143,7 +2149,7 @@ dtype: int64
 <p>다음은 124명의 학생들에 대한 중간고사와 기말고사 성적이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url4</span> <span class="o">=</span><span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/mid-final-scores.csv&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url4</span> <span class="o">=</span><span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/mid-final-scores.csv&quot;</span>
 <span class="n">scores01</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url4</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;CP949&quot;</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2151,7 +2157,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scores01</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores01</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -2163,7 +2169,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scores01</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores01</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2224,7 +2230,7 @@ dtype: int64
 <p>중간고사와 기말고사의 성적이 작으면 두 변수의 관계가 약해지고, 성적이 크면 관계가 강해지는 경향을 보인다.  상관계수는 강한 상관 관계를 보이고 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scores01</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores01</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2268,7 +2274,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scores01</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;final&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores01</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;final&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2281,7 +2287,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scores01</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;final&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores01</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;final&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores01</span><span class="o">.</span><span class="n">mid</span><span class="p">))</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores01</span><span class="o">.</span><span class="n">final</span><span class="p">))</span>
 </pre></div>
@@ -2328,6 +2334,13 @@ dtype: int64
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title"><span class="section-number">8. </span>관계와 예측</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="regression.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8.2. </span>선형 회귀모형</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
         
