@@ -62,6 +62,7 @@ sections:
   title: 관계와 예측
   sections:
   - file: chapters/08/correlation
+  - file: chapters/08/regression
   
   
 
