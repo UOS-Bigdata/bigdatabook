@@ -54,6 +54,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8.3. 분류와 예측모형" href="classification.html" />
     <link rel="prev" title="8.1. 두 변수의 관계" href="correlation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -328,6 +329,16 @@
      8.2. 선형 회귀모형
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="classification.html">
+     8.3. 분류와 예측모형
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="validation.html">
+     8.4. 분류의 평가
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -495,10 +506,10 @@
 <p>관심있는 반응 변수와 설명변수의 함수적인 관계를 추론하는 경우 사용할 수 있는 가장 단순하고 기본적인 모형은 선형 회귀모형(linear regression model)이다. 선형 회귀모형은  설명변수의 변화에 따른 반응변수의 변화를 선형식으로 나타낸 매우 단순한 모형이다. 이 절에서는 선형 회귀모형을 추정하는 방법을 살펴보기로 한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># 한글 폰트가 깨질 때 사용 - 런타임 메뉴에서 다시 시작 및 모두 실행 선택. (출처: https://teddylee777.github.io/colab/colab-korean)
-!sudo apt-get install -y fonts-nanum
-!sudo fc-cache -fv
-!rm ~/.cache/matplotlib -rf
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 한글 폰트가 깨질 때 사용 - 런타임 메뉴에서 다시 시작 및 모두 실행 선택. (출처: https://teddylee777.github.io/colab/colab-korean)</span>
+<span class="o">!</span>sudo apt-get install -y fonts-nanum
+<span class="o">!</span>sudo fc-cache -fv
+<span class="o">!</span>rm ~/.cache/matplotlib -rf
 </pre></div>
 </div>
 </div>
@@ -526,7 +537,7 @@ fc-cache: succeeded
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -537,8 +548,8 @@ fc-cache: succeeded
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rc</span>
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rc</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;NanumBarunGothic&#39;</span><span class="p">)</span> <span class="c1"># clolab 에서 한글 사용 </span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.unicode_minus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span> 
@@ -552,7 +563,7 @@ fc-cache: succeeded
 <p>먼저 앞 절에서 살펴본 Francis Galton의  아버지와 아들의 키에 대한 데이터를 먼저 데이터프레임으로 만들자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url1</span> <span class="o">=</span> <span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/father-and-son.csv&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url1</span> <span class="o">=</span> <span class="s2">&quot;https://ilovedata.github.io/teaching/bigdata2/data/father-and-son.csv&quot;</span>
 <span class="n">father_son_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url1</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span>
 <span class="n">father_son_df</span><span class="o">.</span><span class="n">fheight</span> <span class="o">=</span>  <span class="n">father_son_df</span><span class="o">.</span><span class="n">fheight</span><span class="o">*</span><span class="mf">2.54</span>
 <span class="n">father_son_df</span><span class="o">.</span><span class="n">sheight</span> <span class="o">=</span>  <span class="n">father_son_df</span><span class="o">.</span><span class="n">sheight</span><span class="o">*</span><span class="mf">2.54</span>
@@ -563,7 +574,7 @@ fc-cache: succeeded
 <p>아버지와 아들의 키는 아래 주어진 산점도에서 나타나는 것처럼 아버지의 키기 증가하면 아들의 키가 증가하는 경향을 보인다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -590,7 +601,7 @@ fc-cache: succeeded
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="p">[</span><span class="s1">&#39;group1&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">father_son_df</span><span class="o">.</span><span class="n">fheight</span><span class="p">,</span> <span class="p">[</span><span class="mi">140</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="mi">170</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">200</span><span class="p">],</span> <span class="n">include_lowest</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="p">[</span><span class="s1">&#39;group1&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">father_son_df</span><span class="o">.</span><span class="n">fheight</span><span class="p">,</span> <span class="p">[</span><span class="mi">140</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="mi">170</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">200</span><span class="p">],</span> <span class="n">include_lowest</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">father_son_df</span>
 </pre></div>
 </div>
@@ -693,7 +704,7 @@ fc-cache: succeeded
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">group1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">group1</span>
 </pre></div>
 </div>
 </div>
@@ -721,7 +732,7 @@ Categories (4, interval[int64]): [(140, 160] &lt; (160, 170] &lt; (170, 180] &lt
 <p>전체 데이터의 산점도에서 나타나는 불확실한 경향은 자료를 여러 개의 그룹으로 나누어 두 변수의 그룹별 평균으로 요약하여 보면 평균의 관계는 좀 더 명확하게 나타난다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group_summary_1</span> <span class="o">=</span> <span class="n">father_son_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;group1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_summary_1</span> <span class="o">=</span> <span class="n">father_son_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;group1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">group_summary_1</span> 
 </pre></div>
 </div>
@@ -776,7 +787,7 @@ Categories (4, interval[int64]): [(140, 160] &lt; (160, 170] &lt; (170, 180] &lt
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group_summary_1</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_summary_1</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -791,7 +802,7 @@ Categories (4, interval[int64]): [(140, 160] &lt; (160, 170] &lt; (170, 180] &lt
 <p>아래 코드에서 함수 <code class="docutils literal notranslate"><span class="pre">pd.cut</span></code> 의 두 번째 인자로 하나의 정수 <code class="docutils literal notranslate"><span class="pre">bins=10</span></code> 로 주면 주어진 숫자열을  등간격인 <code class="docutils literal notranslate"><span class="pre">k=10</span></code>의 구간으로 나누어 준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="p">[</span><span class="s1">&#39;group2&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">father_son_df</span><span class="o">.</span><span class="n">fheight</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">include_lowest</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="p">[</span><span class="s1">&#39;group2&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">father_son_df</span><span class="o">.</span><span class="n">fheight</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">include_lowest</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">father_son_df</span>
 </pre></div>
 </div>
@@ -906,7 +917,7 @@ Categories (4, interval[int64]): [(140, 160] &lt; (160, 170] &lt; (170, 180] &lt
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">group2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">group2</span>
 </pre></div>
 </div>
 </div>
@@ -932,7 +943,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group_summary_2</span> <span class="o">=</span> <span class="n">father_son_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;group2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_summary_2</span> <span class="o">=</span> <span class="n">father_son_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;group2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">group_summary_2</span> 
 </pre></div>
 </div>
@@ -1017,7 +1028,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group_summary_2</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_summary_2</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1035,7 +1046,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <p>이제 위에서 구한 구간의 평균들을 전체 자료의 산점도와 함깨 표시해 보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">father_son_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">group_summary_2</span><span class="o">.</span><span class="n">fheight</span><span class="p">,</span> <span class="n">group_summary_2</span><span class="o">.</span><span class="n">sheight</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1080,7 +1091,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <p>이제 절편과 기울기가 주어진 경우 주어진 직선의 오차를 그림으로 나타내고 평균제곱오차를 계산해 주는 함수 <code class="docutils literal notranslate"><span class="pre">least_square_error</span></code>를 다음과 같이 정의하여 만들어 보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">least_squares_error</span><span class="p">(</span> <span class="n">df</span><span class="p">,</span> <span class="n">x_name</span><span class="p">,</span> <span class="n">y_name</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">percent_poiint_errors</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">least_squares_error</span><span class="p">(</span> <span class="n">df</span><span class="p">,</span> <span class="n">x_name</span><span class="p">,</span> <span class="n">y_name</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">percent_poiint_errors</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  목적</span>
 <span class="sd">    주어진 절편과 기울기를 이용하여 회귀직선을 그리고 최소제곱오차를 계산하는 함수</span>
@@ -1124,7 +1135,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 \[ mse(20.0, 0.8) = \frac{1}{n} \sum_{i=1}^n \text{error}_i^2 = 328.397 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mse_1</span> <span class="o">=</span> <span class="n">least_squares_error</span><span class="p">(</span><span class="n">father_son_df</span><span class="p">,</span> <span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mse_1</span> <span class="o">=</span> <span class="n">least_squares_error</span><span class="p">(</span><span class="n">father_son_df</span><span class="p">,</span> <span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span>
 <span class="n">mse_1</span>
 </pre></div>
 </div>
@@ -1144,7 +1155,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 \[ mse(25.0, 0.9) =  \frac{1}{n} \sum_{i=1}^n \text{error}_i^2 = 73.29 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mse_2</span> <span class="o">=</span> <span class="n">least_squares_error</span><span class="p">(</span><span class="n">father_son_df</span><span class="p">,</span> <span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="mf">25.0</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mse_2</span> <span class="o">=</span> <span class="n">least_squares_error</span><span class="p">(</span><span class="n">father_son_df</span><span class="p">,</span> <span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="mf">25.0</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span>
 <span class="n">mse_2</span>
 </pre></div>
 </div>
@@ -1175,7 +1186,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <p>이제  최소제곱법의 해(solution) <span class="math notranslate nohighlight">\(\hat \beta_0\)</span>와 <span class="math notranslate nohighlight">\(\hat \beta_1\)</span> 을 구하는 함수 <code class="docutils literal notranslate"><span class="pre">least_square_fit</span></code>을 정의해 보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">least_squares_fit</span><span class="p">(</span> <span class="n">df</span><span class="p">,</span> <span class="n">x_name</span><span class="p">,</span> <span class="n">y_name</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">least_squares_fit</span><span class="p">(</span> <span class="n">df</span><span class="p">,</span> <span class="n">x_name</span><span class="p">,</span> <span class="n">y_name</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  목적</span>
 <span class="sd">    주어진 자료를 이용하여 최소제곱 절편과 기울기 계산하는 함수</span>
@@ -1213,7 +1224,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 \[ \min_{\beta_0, \beta_1} \frac{1}{n} \sum_{i=1}^n (y_i - [\beta_0 + \beta_1 x_i])^2 =  \frac{1}{n} \sum_{i=1}^n (y_i - [\hat \beta_0 + \hat \beta_1 x_i])^2  \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">beta0</span><span class="p">,</span> <span class="n">beta1</span><span class="p">)</span> <span class="o">=</span> <span class="n">least_squares_fit</span><span class="p">(</span><span class="n">father_son_df</span><span class="p">,</span> <span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="s1">&#39;sheight&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">beta0</span><span class="p">,</span> <span class="n">beta1</span><span class="p">)</span> <span class="o">=</span> <span class="n">least_squares_fit</span><span class="p">(</span><span class="n">father_son_df</span><span class="p">,</span> <span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="s1">&#39;sheight&#39;</span><span class="p">)</span>
 <span class="p">(</span><span class="n">beta0</span><span class="p">,</span> <span class="n">beta1</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1229,7 +1240,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <p>절편과 기울기의 최소제곱 추정량 <span class="math notranslate nohighlight">\(\hat \beta_0\)</span>과 <span class="math notranslate nohighlight">\(\hat \beta_1\)</span> 으로 부터 얻은 평균제곱오차의 값 38.23은 모든 경우에 대한 최소값이다. 즉, 절편과 기울기가  <span class="math notranslate nohighlight">\(\hat \beta_0\)</span>과 <span class="math notranslate nohighlight">\(\hat \beta_1\)</span> 와 다른 값을 가지는 경우 평균제곱오차는 38.23보다 크다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mse_best</span> <span class="o">=</span> <span class="n">least_squares_error</span><span class="p">(</span><span class="n">father_son_df</span><span class="p">,</span> <span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">beta0</span><span class="p">,</span> <span class="n">beta1</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mse_best</span> <span class="o">=</span> <span class="n">least_squares_error</span><span class="p">(</span><span class="n">father_son_df</span><span class="p">,</span> <span class="s1">&#39;fheight&#39;</span><span class="p">,</span> <span class="s1">&#39;sheight&#39;</span><span class="p">,</span> <span class="n">beta0</span><span class="p">,</span> <span class="n">beta1</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">)</span>
 <span class="n">mse_best</span>
 </pre></div>
 </div>
@@ -1250,7 +1261,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 \[ E(y | x = 185.0) = 86.07 + (0.51) (185.0) =  181.2 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">beta0</span> <span class="o">+</span> <span class="n">beta1</span><span class="o">*</span><span class="mf">185.0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beta0</span> <span class="o">+</span> <span class="n">beta1</span><span class="o">*</span><span class="mf">185.0</span>
 </pre></div>
 </div>
 </div>
@@ -1269,7 +1280,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <p>다음 두 개의 데이터와 각각 추정된 회귀직선을 비교해 보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">111121</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">111121</span><span class="p">)</span>
 
 <span class="n">n</span><span class="o">=</span><span class="mi">20</span>
 
@@ -1292,7 +1303,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">df_reg</span><span class="p">,</span>  <span class="n">col</span><span class="o">=</span><span class="s2">&quot;case&quot;</span><span class="p">,</span> <span class="n">margin_titles</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">5.5</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">1.25</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">df_reg</span><span class="p">,</span>  <span class="n">col</span><span class="o">=</span><span class="s2">&quot;case&quot;</span><span class="p">,</span> <span class="n">margin_titles</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">5.5</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">1.25</span><span class="p">)</span>
 <span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1318,7 +1329,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <p>아래에서 두 자료에서의 결정계수를 비교하면 첫 번째 자료에 대한 선형 회귀모형의 결정계수는 5.5% 이고 두 번째 자료에 대해서는 74.6 %이다. 따라서 두 번째 자료에 대한 회귀모형의 설명력이 더 크다고 평가할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">reg_1_beta0</span><span class="p">,</span> <span class="n">reg_1_beta1</span><span class="p">)</span> <span class="o">=</span> <span class="n">least_squares_fit</span><span class="p">(</span><span class="n">df_reg_1</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">reg_1_beta0</span><span class="p">,</span> <span class="n">reg_1_beta1</span><span class="p">)</span> <span class="o">=</span> <span class="n">least_squares_fit</span><span class="p">(</span><span class="n">df_reg_1</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span>
 <span class="n">mse_reg_1</span> <span class="o">=</span> <span class="n">least_squares_error</span><span class="p">(</span><span class="n">df_reg_1</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">reg_1_beta0</span><span class="p">,</span> <span class="n">reg_1_beta1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">mse_reg_1</span>
 </pre></div>
@@ -1333,7 +1344,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">reg_2_beta0</span><span class="p">,</span> <span class="n">reg_2_beta1</span><span class="p">)</span> <span class="o">=</span> <span class="n">least_squares_fit</span><span class="p">(</span><span class="n">df_reg_2</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">reg_2_beta0</span><span class="p">,</span> <span class="n">reg_2_beta1</span><span class="p">)</span> <span class="o">=</span> <span class="n">least_squares_fit</span><span class="p">(</span><span class="n">df_reg_2</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span>
 <span class="n">mse_reg_2</span> <span class="o">=</span> <span class="n">least_squares_error</span><span class="p">(</span><span class="n">df_reg_2</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">reg_2_beta0</span><span class="p">,</span> <span class="n">reg_2_beta1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">mse_reg_2</span>
 </pre></div>
@@ -1348,7 +1359,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#결정 계수의 계산</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#결정 계수의 계산</span>
 <span class="n">R2_reg_1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">mse_reg_1</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">df_reg_1</span><span class="o">.</span><span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">R2_reg_2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">mse_reg_2</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">df_reg_2</span><span class="o">.</span><span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">R2_reg_1</span><span class="p">,</span> <span class="n">R2_reg_2</span>
@@ -1364,7 +1375,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <p>아버지와 아들에 키에 대한 자료에서 선형 회귀모형의 설명력은 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">-</span> <span class="n">mse_best</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">father_son_df</span><span class="o">.</span><span class="n">sheight</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">-</span> <span class="n">mse_best</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">father_son_df</span><span class="o">.</span><span class="n">sheight</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1382,7 +1393,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <p><code class="docutils literal notranslate"><span class="pre">SKlearn</span></code> 패키지의 <code class="docutils literal notranslate"><span class="pre">linear_model</span></code> 라이브러리를 이용하기 위해서는 데이터프레임으로 저장된 자료를 <code class="docutils literal notranslate"><span class="pre">numpy</span></code> 의 행렬 형식으로 바꾸어야 한다. 또한 설명변수가 1개인 경우 <span class="math notranslate nohighlight">\((-1,1)\)</span> 사이의 값으으로 변화시켜주어야 한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
 </pre></div>
 </div>
@@ -1390,7 +1401,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 설명변수 지정 - 설변변수가 1개이므로 (-1,1) 사이의 값으로 변환</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 설명변수 지정 - 설변변수가 1개이므로 (-1,1) 사이의 값으로 변환</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">father_son_df</span><span class="p">[</span><span class="s1">&#39;fheight&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="c1"># 반응변수 지정</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">father_son_df</span><span class="p">[</span><span class="s1">&#39;sheight&#39;</span><span class="p">])</span>
@@ -1406,8 +1417,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-<span class="c1"># 절편과 기울기의 추정량</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 절편과 기울기의 추정량</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;절편(intercept): &quot;</span><span class="p">,</span> <span class="n">reg_model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;기울기(slope): &quot;</span><span class="p">,</span> <span class="n">reg_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
 <span class="c1"># 평균제곱오차</span>
@@ -1460,6 +1470,13 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title"><span class="section-number">8.1. </span>두 변수의 관계</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="classification.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8.3. </span>분류와 예측모형</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
         
