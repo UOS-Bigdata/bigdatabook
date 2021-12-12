@@ -63,6 +63,8 @@ sections:
   sections:
   - file: chapters/08/correlation
   - file: chapters/08/regression
+  - file: chapters/08/classification
+  - file: chapters/08/validation
   
   
 
