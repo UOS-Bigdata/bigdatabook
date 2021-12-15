@@ -1140,7 +1140,7 @@ SD_y = \sqrt{ \frac{ \sum_{i=1}^n (y_i-\bar y)^2}{ n-1}} \]</div>
 <h2><span class="section-number">8.1.3. </span>변수의 표준화<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>위에서 주어진 상관계수 <span class="math notranslate nohighlight">\(r\)</span> 의 계산식을 다음과 같이 나타낼 수 도 있다.</p>
 <div class="math notranslate nohighlight">
-\[ r = \sum_{i=1}^n  \left ( \frac{x_i -\bar x}{SD_x} \right ) \left ( \frac{y_i -\bar y}{SD_y} \right ) = \sum_{i=1}^n z_i w_i\]</div>
+\[ r = \frac{1}{n-1} \sum_{i=1}^n  \left ( \frac{x_i -\bar x}{SD_x} \right ) \left ( \frac{y_i -\bar y}{SD_y} \right ) = \frac{1}{n-1}  \sum_{i=1}^n z_i w_i\]</div>
 <p>위의 식에서 나타난 것과 같이 각 관측값에서 평균을 빼고, 그 값을 표준편차로 나누는 작업을 변수의 표준화(standarization)이라고 한다.</p>
 <div class="math notranslate nohighlight">
 \[ z_i = \frac{x_i -\bar x}{SD_x},  w_i =\frac{y_i -\bar y}{SD_y}\]</div>
