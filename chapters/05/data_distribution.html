@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>5.1. 자료의 분포 &#8212; 빅데이터 개론 2</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,37 +20,36 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystyle.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -61,7 +62,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -70,9 +85,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -90,14 +106,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   빅데이터 개론 2
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    빅데이터 개론 2
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../01/intro-course.html">
    1. 서론
@@ -342,109 +359,195 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/chapters/05/data_distribution.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/UOS-Bigdata/bigdatabook"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/UOS-Bigdata/bigdatabook/master?urlpath=tree/chapters/05/data_distribution.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/05/data_distribution.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/UOS-Bigdata/bigdatabook/master?urlpath=tree/chapters/05/data_distribution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/05/data_distribution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/UOS-Bigdata/bigdatabook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/chapters/05/data_distribution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
    5.1.1. 체력측정 자료
@@ -489,17 +592,77 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>자료의 분포</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   5.1.1. 체력측정 자료
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   5.1.2. 자료의 종류
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   5.1.3. 범주형자료의 분포
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   5.1.4. 연속형 자료의 분포
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     5.1.4.1. 히스토그램
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     5.1.4.2. 상자그림
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     5.1.4.3. 산점도
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   5.1.5. 참고: 그룹별 분포
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">5.1. </span>자료의 분포<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">5.1. </span>자료의 분포<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span># 한글 폰트가 깨질 때 사용 - 런타임 메뉴에서 다시 시작 및 모두 실행 선택. (출처: https://teddylee777.github.io/colab/colab-korean)
@@ -533,8 +696,8 @@
 </div>
 <p>이번 시간은 데이터를 분석할 때 자료의 기본적인 특성을 파악하는 일에 대하여 배워보자. 데이터가 가지는 값의 형태와 종류를 파악하고 자료가 전체적으로 어떻게 구성되어 있는지 파악하는 것이 데이터 분석의 첫단계이다.</p>
 <p>자료가 어떤 곳에 얼마나 집중되어 있는지, 데이터가 퍼진 정도는 얼마나 되는지를 나타내는 것이 <strong>분포(distribution)</strong> 이다. 좋은 분석을 하기 위해서는 데이터의 분포를 잘 이해하는 것이 중요하다. 자료가 집중되고 퍼져있는 특성에 따라서 분석의 방향이 달라질 수 있고 유용한 결과를 얻을 수 있다.</p>
-<div class="section" id="id2">
-<h2><span class="section-number">5.1.1. </span>체력측정 자료<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<section id="id2">
+<h2><span class="section-number">5.1.1. </span>체력측정 자료<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>이제 우리는 여러 운동센터에서 측정된 사람들의 체력측정 데이터를 가지고 자료의 분포를 파악하는 방법을 배워보자.</p>
 <p>아래 자료는 전국의 체력인증센터에서 관리하고 있는 국민체력측정데이터의 항목별 측정 자료를 정리한 것이다. 국민체력측정데이터는 국민체육진흥공단에서 실시하는 <a class="reference external" href="https://nfa.kspo.or.kr/front/certify/cer0103_list.do">국민체력100</a>사업으로 얻어진 자료로서 전국의 체력인증센터에 방문한 사람들의 연령, 신장, 체중, 윗몸일으키기, BMI, 등의 체력 측정 항목별 결과를 지닌 자료이다. 체력측정 자료는 <a class="reference external" href="https://www.culture.go.kr/bigdata/user/main.do">문화빅데이터플랫폼</a>에서 받아볼 수 있다.</p>
 <p>체력측정데이터를 데이터프레임 <code class="docutils literal notranslate"><span class="pre">physical_data</span></code> 로 불러오자.</p>
@@ -937,9 +1100,9 @@
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="id3">
-<h2><span class="section-number">5.1.2. </span>자료의 종류<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id3">
+<h2><span class="section-number">5.1.2. </span>자료의 종류<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <p>우리가 다루는 자료는 데이터가 지닌 값의 특성에 따라서 보통 <strong>범주형 변수(categorical data)</strong> 와 <strong>연속형 변수(continuous variable)</strong> 로 구분한다.</p>
 <p>범주형변수의 특성은 다음과 같다.</p>
 <ul class="simple">
@@ -1012,9 +1175,9 @@ dtype: object
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id4">
-<h2><span class="section-number">5.1.3. </span>범주형자료의 분포<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id4">
+<h2><span class="section-number">5.1.3. </span>범주형자료의 분포<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
 <p>이제 체력측정 데이터에서 남자와 여자의 비율은 얼마나 될까?</p>
 <p>다음과 같은 성별을 나타내는 변수 <code class="docutils literal notranslate"><span class="pre">TEST_SEX</span></code>에 남,여의 숫자를 알아보자. 컬럼을 선택하고 메소드  <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> 를 적용한다. 범주형 변수의 항목별 숫자를 돗수(frequncy)라고 하며 다음의 결과를 돗수 분포표(frequency table)라고 말한다.</p>
 <div class="cell docutils container">
@@ -1124,11 +1287,11 @@ dtype: int64
 <img alt="../../_images/data_distribution_33_1.png" src="../../_images/data_distribution_33_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="id5">
-<h2><span class="section-number">5.1.4. </span>연속형 자료의 분포<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id6">
-<h3><span class="section-number">5.1.4.1. </span>히스토그램<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id5">
+<h2><span class="section-number">5.1.4. </span>연속형 자료의 분포<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<section id="id6">
+<h3><span class="section-number">5.1.4.1. </span>히스토그램<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
 <p>이제 체력측정 자료에서 나타나는 여러 변수를 이용하여 연속형 자료의 분포에 대하여 알아보는 방법에 대해 살펴보자.</p>
 <p>먼저 사람들이 가장 관심이 많은 몸무게(‘ITEM_F002`)의 분포에 대하여 알아보자.</p>
 <p>먼저 히스토그램은 전체 자료를 구간으로 나누어 구간에 속한 자료의 돗수를 그림으로 나타낸다. 메소드 <code class="docutils literal notranslate"><span class="pre">plot.hist()</span></code> 를 적용하며 사용할 열이름을 <code class="docutils literal notranslate"><span class="pre">y='ITEM_F002'</span></code> 로 지정해 준다.</p>
@@ -1180,9 +1343,9 @@ dtype: int64
 <li><p>체력인증센터를 방문하는 사람들이 전체 사람들과 다른 특성이 있다면 무었일까?</p></li>
 </ul>
 <p>데이터를 수집하고 분석할 때 자료가 가지고 있는 특성을 파악하는 것은 매우 중요하다. <strong>자료가 전체 집단을 대표할 수 있도록 수집된 자료인지</strong>, 또는 어떤 특정한 경향이나 성질을 가진 개체들의 자료인지 파악하는 것이 중요하며 이는 데이터 분석에서 얻은 결론을 일반화하여 적용하는데 큰 영향을 미친다.</p>
-</div>
-<div class="section" id="id7">
-<h3><span class="section-number">5.1.4.2. </span>상자그림<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id7">
+<h3><span class="section-number">5.1.4.2. </span>상자그림<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
 <p>자료의 분포를 파악하는데 가장 유용하고 단순함 그림은 <strong>상자그림(box plot)</strong> 이다.</p>
 <p>일단 자료를 순서대로 정렬해 놓았을 때 자료의 중심과 퍼진 정도를 나타내는 중요한 통계량은 다음과 같다.</p>
 <ul class="simple">
@@ -1241,9 +1404,9 @@ dtype: object
 <img alt="../../_images/data_distribution_48_1.png" src="../../_images/data_distribution_48_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="id8">
-<h3><span class="section-number">5.1.4.3. </span>산점도<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id8">
+<h3><span class="section-number">5.1.4.3. </span>산점도<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
 <p>마지막으로 키와 몸무게의 관계는 어떨까?</p>
 <p>두 연속형 변수의 값들을 2차원 평면에 나타내는 그림을 산점도(scatter plot)이라고 한다. 산점도는 메소드 <code class="docutils literal notranslate"><span class="pre">plot.scatter(x=,</span> <span class="pre">y=)</span></code>으로 그릴 수 있다.</p>
 <p>산점도에서 점들의 투명도는 <code class="docutils literal notranslate"><span class="pre">alpha=0.5</span></code> 로 저정할 수 있다.</p>
@@ -1295,10 +1458,10 @@ dtype: object
 <img alt="../../_images/data_distribution_55_1.png" src="../../_images/data_distribution_55_1.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="id9">
-<h2><span class="section-number">5.1.5. </span>참고: 그룹별 분포<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id9">
+<h2><span class="section-number">5.1.5. </span>참고: 그룹별 분포<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
 <p>아래 그림들은 <code class="docutils literal notranslate"><span class="pre">pandas</span></code> 라이브러리의 <code class="docutils literal notranslate"><span class="pre">plot</span></code> 메소드로 그리기 힘든 그룹별로 분포에 대한 그림을 그리는 방법이다.</p>
 <p>seaborn 라이브러리의 특별한 함수를 이용하며 정확한 코드는 강의의 범위에 벗어나지만 분포의 비교에 대한 설명을 하기 위하여 파이썬 코드와 결과를 수록했다.</p>
 <p>연령집단의 분포를 성별로 그린 바차트</p>
@@ -1343,8 +1506,8 @@ dtype: object
 <img alt="../../_images/data_distribution_62_1.png" src="../../_images/data_distribution_62_1.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1368,9 +1531,11 @@ dtype: object
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="data-intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1386,26 +1551,28 @@ dtype: object
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By 서울시립대학교<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By 서울시립대학교<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

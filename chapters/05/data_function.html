@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>5.5. 함수 &#8212; 빅데이터 개론 2</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,40 +20,39 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystyle.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="6. 표본과 경험적 분포" href="../06/sampling-intro.html" />
@@ -63,7 +64,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -72,9 +87,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -92,14 +108,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   빅데이터 개론 2
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    빅데이터 개론 2
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../01/intro-course.html">
    1. 서론
@@ -344,109 +361,195 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/chapters/05/data_function.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/UOS-Bigdata/bigdatabook"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/UOS-Bigdata/bigdatabook/master?urlpath=tree/chapters/05/data_function.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/05/data_function.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/UOS-Bigdata/bigdatabook/master?urlpath=tree/chapters/05/data_function.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/05/data_function.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/UOS-Bigdata/bigdatabook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/chapters/05/data_function.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
    5.5.1. 함수의 기초 사용법
@@ -535,17 +638,121 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>함수</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   5.5.1. 함수의 기초 사용법
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     5.5.1.1. 수학 함수
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     5.5.1.2. 인자의 개수
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     5.5.1.3. 함수와 라이브러리
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     5.5.1.4. 인자의 종류
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   5.5.2. 사용자 함수
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     5.5.2.1. 사용자 함수의 정의
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     5.5.2.2. 사용자 함수: 예제
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id10">
+   5.5.3. 함수와 메소드
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id11">
+   5.5.4. 데이터프레임과 함수
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     5.5.4.1. 모든 셀에 적용
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     5.5.4.2. 열과 행의 요약
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     5.5.4.3. 2개 이상의 인자
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id15">
+   5.5.5. 함수의 데이터 취급
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id16">
+   5.5.6. 요약
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id17">
+   5.5.7. 예제: 윷놀이의 확률
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">5.5. </span>함수<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">5.5. </span>함수<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <p>우리는 지금까지 파이썬 프로그램을 배우면서 메소드(method) 또는 함수(function) 이라는 용어를 사용하였다. 사실 프로그램 언어에서 메소드와 함수는 동일한 의미를 가진다.</p>
 <p>이제 메소드와 함수에 대하여 좀 더 자세하게 알아보자. 일단 함수라는 단어는 자주 들어보았고 더 쉬운 것 같으니 먼저 함수를 생각해보자.</p>
 <div class="cell docutils container">
@@ -562,14 +769,14 @@
 </div>
 </div>
 </div>
-<div class="section" id="id2">
-<h2><span class="section-number">5.5.1. </span>함수의 기초 사용법<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<section id="id2">
+<h2><span class="section-number">5.5.1. </span>함수의 기초 사용법<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>여러분들은 함수(function)라는 단어를 어디선가 본 적이 있을 것이다. 대부분 수학 교과서에서 함수를 다음과 같이 나타내는 것을 기억할 것이다.</p>
 <div class="math notranslate nohighlight">
 \[ z = f(x, y) \]</div>
 <p>위의 식에서 <span class="math notranslate nohighlight">\(x\)</span> 와 <span class="math notranslate nohighlight">\(y\)</span> 의 값이 주어지면 함수 <span class="math notranslate nohighlight">\(f\)</span>는 <span class="math notranslate nohighlight">\(x,y\)</span>를 이용하여 주어진 작업을 수행하고 마지막으로 결과 <span class="math notranslate nohighlight">\(z\)</span>를 구해준다는 의미이다. 함수에 주어지는 입력값 <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> 를 <strong>인자(arguement)</strong> 라고 한다.</p>
-<div class="section" id="id3">
-<h3><span class="section-number">5.5.1.1. </span>수학 함수<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<section id="id3">
+<h3><span class="section-number">5.5.1.1. </span>수학 함수<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <p>수학에 관련된 디양한 수학 함수는 <code class="docutils literal notranslate"><span class="pre">numpy</span></code> 라이브러리에 정의되어 있다. 여러분이 사용하고자 하는 수학 함수의 대부분은 <code class="docutils literal notranslate"><span class="pre">numpy</span></code> 라이브러리의 <a class="reference external" href="https://numpy.org/doc/stable/">매뉴얼</a>에서 찾을 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -607,9 +814,9 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id4">
-<h3><span class="section-number">5.5.1.2. </span>인자의 개수<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id4">
+<h3><span class="section-number">5.5.1.2. </span>인자의 개수<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <p>자료를 생성하거나, 요역하거나 또는 변형하는 기본적인 유용한 함수들도 미리 정의되어 있다.</p>
 <p>먼저 <code class="docutils literal notranslate"><span class="pre">numpy</span></code> 라이브러리에 벡터를 생성하는 함수 <code class="docutils literal notranslate"><span class="pre">arange()</span></code>를 보자. 함수 <code class="docutils literal notranslate"><span class="pre">arange()</span></code>는 다음과 같이 3개의 인자를 가질 수 있으며 괄호 <code class="docutils literal notranslate"><span class="pre">(...)</span></code> 안에 주어진 값은 차례대로 대응하는 인자에 연결된다. 함수의 자세한 사용법은 라이브러리의 <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.arange.html">매뉴얼</a>을 참조해야 한다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">([</span><span class="n">start</span><span class="p">,</span> <span class="p">]</span> <span class="n">stop</span><span class="p">,</span> <span class="p">[</span><span class="n">step</span><span class="p">,</span> <span class="p">])</span>
@@ -653,9 +860,9 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id5">
-<h3><span class="section-number">5.5.1.3. </span>함수와 라이브러리<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id5">
+<h3><span class="section-number">5.5.1.3. </span>함수와 라이브러리<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <p>이제 다음과 같은 자료를 요약할 수 있는 중요한 함수 몇 가지의 예를 들어 보자.</p>
 <p><code class="docutils literal notranslate"><span class="pre">max</span></code> 와 <code class="docutils literal notranslate"><span class="pre">sum</span></code>과 같은 함수는 파이썬 자체와 <code class="docutils literal notranslate"><span class="pre">numpy</span></code>에 모두 정의되어 있지만, 함수<code class="docutils literal notranslate"><span class="pre">mean</span></code> 은  파이썬 자체에 정의되어 있지 않다.</p>
 <ul class="simple">
@@ -720,19 +927,19 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id6">
-<h3><span class="section-number">5.5.1.4. </span>인자의 종류<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id6">
+<h3><span class="section-number">5.5.1.4. </span>인자의 종류<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
 <p>여러분이 지금까지 배운 함수 중에 가장 복잡한 형태의 함수는 외부화일에서 자료를 읽어서 데이터프레임을 만드는 함수이다. 외부화일에서 자료를 읽어서 데이터프레임을 만드는 함수는 라이브러리 <code class="docutils literal notranslate"><span class="pre">pandas</span></code> 에 정의된 함수<code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> 이다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>함수<code class="docutils literal notranslate"><span class="pre">read_csv()</span></code>는 여러 개의 인자(arguement)를 있는데 첫 번째 인자인 화일 이름 <code class="docutils literal notranslate"><span class="pre">&quot;data.txt</span></code>은 <strong>디폴트(default) 인자</strong> 로서 인자의 값만 써주면 된다.</p>
 <p>이후에 나오는 인자들은 <strong>키워드(keyword) 인자</strong> 로서 주어진 키워드를 쓰고 그 값을 <code class="docutils literal notranslate"><span class="pre">=</span></code>으로 지정해 주어야 한다.</p>
-</div>
-</div>
-<div class="section" id="id7">
-<h2><span class="section-number">5.5.2. </span>사용자 함수<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id7">
+<h2><span class="section-number">5.5.2. </span>사용자 함수<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
 <p>이제 사용자가 필요한 함수를 만드는 방법에 대하여 배워 보자.</p>
 <p>먼저 앞에서 배운 반복문과 조건문을 이용하여 주어진 <strong>숫자 벡터 또는 리스트에 있는 양수들의 합</strong> 을 구하는 코드를 생각해 보자.</p>
 <div class="cell docutils container">
@@ -774,8 +981,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="id8">
-<h3><span class="section-number">5.5.2.1. </span>사용자 함수의 정의<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<section id="id8">
+<h3><span class="section-number">5.5.2.1. </span>사용자 함수의 정의<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
 <p>위와 같이 적용되는 대상만 바뀌면서 수행하는 작업이 동일한 경우 사용자는 일련의 동일한 작업을 수행하는 자신 만의 함수(user defined function)를 정의할 수 있다. 사용자는 동일한 작업을 반복하는 경우 자신 만의 함수를 정의하여 유용하고 효율적으로 사용할 수 있다. 만약 주어진 모든 수를 더하는 함수 <code class="docutils literal notranslate"><span class="pre">sum()</span></code> 이 미리 정의되어 있지 않은 경우를 상상해 보라!</p>
 <p>사용자 함수는 다음과 같이 정의한다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
@@ -795,9 +1002,9 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">...</span></code> : 함수의 마지막 결과로서 <code class="docutils literal notranslate"><span class="pre">...</span></code>를 출력한다. 출력하는 값의 개수는 2개 이상도 가능하며 컴마로 구분한다. <code class="docutils literal notranslate"><span class="pre">retrun</span></code> 은 예약어이다.</p></li>
 </ul>
 <p>함수를 정의할 때 함수의 이름과 인자를 정의하는 부분 <code class="docutils literal notranslate"><span class="pre">function_name(x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">...)</span></code> 을 함수의 서명(signature) 라고 부른다. 또한 함수의 서명 뒤에 나오는 일련의 코드들을 함수의 몸통(body)이라고 부른다.</p>
-</div>
-<div class="section" id="id9">
-<h3><span class="section-number">5.5.2.2. </span>사용자 함수: 예제<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id9">
+<h3><span class="section-number">5.5.2.2. </span>사용자 함수: 예제<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
 <p>먼저 아주 간단한 함수의 예를 들어보자.</p>
 <p>음수의 값을 양수로 바꾸어 주는 함수 <code class="docutils literal notranslate"><span class="pre">minus2plus(x)</span></code> 를 다음과 같이 정의해 보자.</p>
 <p>인자 <code class="docutils literal notranslate"><span class="pre">x</span></code> 를 입력해서 0보다 작으면 <code class="docutils literal notranslate"><span class="pre">res</span></code> 값을 <code class="docutils literal notranslate"><span class="pre">-x</span></code> 로 지정하고 아니면 <code class="docutils literal notranslate"><span class="pre">x</span></code> 로 지정한다. 마지막으로 <code class="docutils literal notranslate"><span class="pre">res</span></code> 의 값을 출력한다.</p>
@@ -964,10 +1171,10 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="id10">
-<h2><span class="section-number">5.5.3. </span>함수와 메소드<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id10">
+<h2><span class="section-number">5.5.3. </span>함수와 메소드<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
 <p>또한 우리는 데이터프레임에서 자료를 요약하는 몇 가지 함수를 이용해 보았다. 데이터프레임에서 함수를 메소드라고 불렀다. 데이터프레임에서 함수를 메소드(method, 방법)라고 부른 이유는 <strong>함수가 데이터프레임에 적용되는 방법</strong> 이 미리 정의되어 있어서 컴마로 연결하여 연쇄적으로 사용할 수 있기 때문이다.</p>
 <p>메소드는 주어진 객체(<code class="docutils literal notranslate"><span class="pre">object</span></code>)뒤에 컴마로 연결된 함수(<code class="docutils literal notranslate"><span class="pre">function</span></code>)를 뜻한다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">object</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="o">....</span><span class="p">)</span>
@@ -1089,12 +1296,12 @@ dtype: int64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id11">
-<h2><span class="section-number">5.5.4. </span>데이터프레임과 함수<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id11">
+<h2><span class="section-number">5.5.4. </span>데이터프레임과 함수<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h2>
 <p>우리는 데이터프레임에서 자료를 요약하는 몇 가지 함수(메소드)를 이용해 보았다. 이제 사용자가 정의한 함수를 데이터프레임에서 메소드처럼 적용하는 방법을 배워보자.</p>
-<div class="section" id="id12">
-<h3><span class="section-number">5.5.4.1. </span>모든 셀에 적용<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<section id="id12">
+<h3><span class="section-number">5.5.4.1. </span>모든 셀에 적용<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
 <p>데이터 프레임의 모든 값들 중 음수를 양수로 바꾸고 싶다면 위에서 정의된 함수 <code class="docutils literal notranslate"><span class="pre">minus2plus</span></code> 를 모든 셀에 적용해야 한다.</p>
 <p>사용자 정의 함수는 데이터 프레임에 메소드로 적용하려면 <code class="docutils literal notranslate"><span class="pre">applymap(function)</span></code> 메소드를 다음과 같이 적용한다. 말 그대로 주어진 함수 <code class="docutils literal notranslate"><span class="pre">function</span></code> 을 모든 셀에 적용(<code class="docutils literal notranslate"><span class="pre">applymap</span></code>) 하라는 의미이다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataframe</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
@@ -1154,9 +1361,9 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="id13">
-<h3><span class="section-number">5.5.4.2. </span>열과 행의 요약<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id13">
+<h3><span class="section-number">5.5.4.2. </span>열과 행의 요약<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
 <p>데이터프레임의 각 열 또는 행에 우리가 만든 양수들만의 합을 구하는 함수 <code class="docutils literal notranslate"><span class="pre">sum_positive()</span></code>를 다른 메소드처럼 적용할 수 있을까?</p>
 <p>먼저 함수 <code class="docutils literal notranslate"><span class="pre">sum_positive()</span></code> 는 사용자 정의 함수이기 때문에 데이터 프레임에 미리 정의된 다른 메소드(예를 들어 <code class="docutils literal notranslate"><span class="pre">sum</span></code>)과는 적용하는 방법이 다르다. 사용자 정의 함수를 열과 행의 메소드로 적용하려면 <code class="docutils literal notranslate"><span class="pre">apply(function,</span> <span class="pre">axis=0)</span></code> 메소드를 다음과 같이 적용한다. 말 그대로 주어진 함수 <code class="docutils literal notranslate"><span class="pre">function</span></code> 를 각 열에 적용(<code class="docutils literal notranslate"><span class="pre">apply</span></code>) 하라는 의미이다.</p>
 <p>앞에서 모든 셀에 적용할 때 사용한 <code class="docutils literal notranslate"><span class="pre">applymap</span></code>과 다른 <code class="docutils literal notranslate"><span class="pre">apply</span></code> 를 사용하는 것에 주의하자.</p>
@@ -1191,9 +1398,9 @@ dtype: int64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id14">
-<h3><span class="section-number">5.5.4.3. </span>2개 이상의 인자<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id14">
+<h3><span class="section-number">5.5.4.3. </span>2개 이상의 인자<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
 <p>만약 함수의 인자가 2개 이상일 경우, 데이터프레임의 열 또는 행으로 지정되는 인자를 제외하고 함수의 서명에서 정의된 다른 인자들의 이름에 <code class="docutils literal notranslate"><span class="pre">=</span></code> 로 값을 다음과 같이 지정해 준다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">):</span>
   <span class="o">....</span>
@@ -1293,10 +1500,10 @@ dtype: int64
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="id15">
-<h2><span class="section-number">5.5.5. </span>함수의 데이터 취급<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id15">
+<h2><span class="section-number">5.5.5. </span>함수의 데이터 취급<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h2>
 <p>우리는 다양한 데이터(리스트, 데이처프레임….)를 변수에 지정하여 사용하는 법을 배웠다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">variable_name</span> <span class="o">=</span> <span class="n">data</span>
 </pre></div>
@@ -1424,9 +1631,9 @@ dtype: int64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id16">
-<h2><span class="section-number">5.5.6. </span>요약<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id16">
+<h2><span class="section-number">5.5.6. </span>요약<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h2>
 <p>사용자 함수는 다음과 같이 정의한다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
   <span class="o">...</span>
@@ -1463,9 +1670,9 @@ dtype: int64
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="id17">
-<h2><span class="section-number">5.5.7. </span>예제: 윷놀이의 확률<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id17">
+<h2><span class="section-number">5.5.7. </span>예제: 윷놀이의 확률<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h2>
 <p>앞 절에서 확률의 기초에 대하여 알아볼 때 윷놀이의 확률에 대하여 언급하였다.</p>
 <p>윷 하나를 던질 때 ‘등’ 과 ‘배’ 가 나올 확률이 다를 것이라고 모두 예상을 하지만 확률이 정확하게 얼마인지 논리적으로 추론하기는 쉽지 않다.</p>
 <p><img alt="윷을 던질 때 두 가지 경우" src="../../_images/yoot.jpg" /></p>
@@ -2073,8 +2280,8 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2098,9 +2305,11 @@ dtype: int64
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="data_probability.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -2116,26 +2325,28 @@ dtype: int64
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By 서울시립대학교<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By 서울시립대학교<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

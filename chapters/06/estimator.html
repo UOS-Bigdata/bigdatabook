@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>6.3. 추정량의 성질 &#8212; 빅데이터 개론 2</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,40 +20,39 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystyle.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="6.4. 붓스트랩" href="bootstrap.html" />
@@ -63,7 +64,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -72,9 +87,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -92,14 +108,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   빅데이터 개론 2
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    빅데이터 개론 2
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../01/intro-course.html">
    1. 서론
@@ -344,109 +361,195 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/chapters/06/estimator.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/UOS-Bigdata/bigdatabook"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/UOS-Bigdata/bigdatabook/master?urlpath=tree/chapters/06/estimator.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/06/estimator.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/UOS-Bigdata/bigdatabook/master?urlpath=tree/chapters/06/estimator.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/06/estimator.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/UOS-Bigdata/bigdatabook"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/chapters/06/estimator.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
    6.3.1. 추정량의 임의성
@@ -491,17 +594,77 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>추정량의 성질</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   6.3.1. 추정량의 임의성
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   6.3.2. 추정량의 평균
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   6.3.3. 추정량의 표준편차
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   6.3.4. 추정량의 분포
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   6.3.5. 정규분포 근사
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     6.3.5.1. 실제 조사의 경우
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   6.3.6. 모의실험
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   6.3.7. 요약
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">6.3. </span>추정량의 성질<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">6.3. </span>추정량의 성질<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span># 한글 폰트가 깨질 때 사용 - 런타임 메뉴에서 다시 시작 및 모두 실행 선택. (출처: https://teddylee777.github.io/colab/colab-korean)
@@ -545,8 +708,8 @@
 <p>쉽게 요약하면 통계량은 표본평균, 표본비율 등 표본 자료를 요약하는 일반적인  방법을 기술한 것이고 추정량은 추정해야할 대상이 있는 통계량이다. 우리는 지지율, 실업률, 소득의 평균 등  관심이 있는 대상이 있을 때 이를 추정할 수 있는 통계량을 추정량이라고 부른다.</p>
 <p>추정량은 반드시 통계량일 필요는 없다. 예를  들어 해마다 경제전문가들이 다음 년도의 경제성장률을 예측하면서 추정값을 발표한다. 이러한 추정값은 확률표본을 사용하여 구한 통계량이 아니다.</p>
 <p>우리는 이 절에서 <strong>추정량이 확률표본으로 부터 얻은 통계량</strong> 인 경우에 그 성질을 알아보도록 한다.</p>
-<div class="section" id="id2">
-<h2><span class="section-number">6.3.1. </span>추정량의 임의성<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<section id="id2">
+<h2><span class="section-number">6.3.1. </span>추정량의 임의성<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>모수의 추정량은 표본으로부터 얻어진 통계량이기 때문에 임의성(randomness)을 같는다. 여러분들이 선거 지지율을 조사하기 위항 18세 이상 성인을 1000명 임의로 추출한다고 하자. 동일한 여론 조사를 서로 다른 두 개의 회사가 동시에 실시하면 그 결과는 어떨까? 두 결과가 비슷할 수도 있고 매우 다를 수도 있다.
 그 이유는 <strong>눈감고 표본을 추출하는</strong> 임의성때문이다.</p>
 <p>이제 모집단을 가상적으로 만들어서 확률표본을 추출해 보자.</p>
@@ -710,9 +873,9 @@
 </div>
 <p>여러분이 위의 파이썬 코드를 여러 번 반복해서 실행해 보면 표본의 지지율이 다르게 나타나는 것을 알 수 있을 것이다. 당연히 추출할 때마다 다른 표본이 뽑히므로 추정량의 값도 변한다.</p>
 <p>하지만 여러분은 추출할 때마다 표본의 지지율이 모집단의 지지율에 크게 벗어나지 않는 것을 알 수 있다.</p>
-</div>
-<div class="section" id="id3">
-<h2><span class="section-number">6.3.2. </span>추정량의 평균<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id3">
+<h2><span class="section-number">6.3.2. </span>추정량의 평균<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <p>자 이제 여러분들이 모집단에서 표본을 추출할 때 마다 추정량의 값이 다르게 주어진다는 것을 알았다.</p>
 <p>여러분이 위의 파이썬 코드를 1000번 반복해서 실행하면 1000개의 서로 다른 추정량의 값을 얻을 수 있다. 그럼 1000개의 서로 다른 추정량의 값, 즉 1000개의 추정값(estimate)들의 평균은 무었일까?</p>
 <p>추정량의 값을 추정값(estimate)라고 한다. 추정량은 임의성을 가지기 때문에 표본을 추출하기 전에는 그 값을 알 수 없다.  표본을 추출하면 관측한 데이터가 있으므로 추정량의 값을 구할 수 있다. 즉, 관측한 표본자료를 이용하여 계산한 추정량의 값이 추정값이다.</p>
@@ -840,9 +1003,9 @@ dtype: float64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id4">
-<h2><span class="section-number">6.3.3. </span>추정량의 표준편차<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id4">
+<h2><span class="section-number">6.3.3. </span>추정량의 표준편차<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
 <p>1000 개의 추정값들이 있으니 표준편차(standard deviation; SD)도 구할 수 있다.</p>
 <p>만약 1000 개의 추정값 <span class="math notranslate nohighlight">\(\hat \theta_1, \hat \theta_2, \dots, \hat \theta_{1000}\)</span> 이 있다면 추정값들의 표준편차 SD 는 다음과 같다.</p>
 <div class="math notranslate nohighlight">
@@ -887,9 +1050,9 @@ dtype: float64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id5">
-<h2><span class="section-number">6.3.4. </span>추정량의 분포<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id5">
+<h2><span class="section-number">6.3.4. </span>추정량의 분포<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
 <p>더 나아가 1000개의 추정값들의 분포를 히스토그램으로 그려보자.</p>
 <p>아래 코드를 반복하면서 실행해보면 1000개의 추정값들의 분포는 어떻게 변하는가? 분포의 모양은 어떻게 나타나는가?</p>
 <p>여러번 반복해보면 1000개의 추정값들의 분포는 모집단의 지지율 0.6을 중심으로 종모양의 분포를 보이는 것을 알 수 있다.</p>
@@ -915,9 +1078,9 @@ dtype: float64
 <img alt="../../_images/estimator_25_1.png" src="../../_images/estimator_25_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="id6">
-<h2><span class="section-number">6.3.5. </span>정규분포 근사<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id6">
+<h2><span class="section-number">6.3.5. </span>정규분포 근사<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
 <p>앞 절에서 잠시 언급한것과 같이 위에서 본 1000개의 추정값들의 분포는 정규분포와 매우 유사하다. 통계학에서 가장 중요한 정리인 중심극한정리(Central Limit Theorem)은 표본의 수가 크면 추정량의 분포가 정규분포에 매우 가깝게 나타난다는 것을 알려준다.</p>
 <p>그럼 표본의 수가 얼마나 커야하나? <strong>일반적으로 표본의 수가 50보다 크면 추정량의 분포가 정규분포에 꽤 가깝다고 말할 수 있다.</strong></p>
 <p>위의 예제에서 고려한 표본의 개수가 1000개인 경우 추정량의 분포는 정규분포와 매우 유사하다.</p>
@@ -976,8 +1139,8 @@ dtype: float64
 <li><p>이 구간이 바로 모집단의 지지율을 중심에서 좌우 2*SD 값만큼 벌이진 구간이다.</p></li>
 <li><p>이때 사용하는 확률 95%를 신뢰수준이라고 부르며 2*SD 값을 표본오차라고 부른다.</p></li>
 </ul>
-<div class="section" id="id7">
-<h3><span class="section-number">6.3.5.1. </span>실제 조사의 경우<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<section id="id7">
+<h3><span class="section-number">6.3.5.1. </span>실제 조사의 경우<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
 <p>실제로 우리는 모집단의 지지율을 모른다. 따라서 위와 같은 모의실험으로 추정량의 표준편차 SD를 구하는 것도 불가능하다.  신문기사에 나오는 실제 조사에서는 모집단의 지지율이 50% 일 경우를 가정하고 SD를 구한다. 이 경우 2*SD 는 다음과 같이 이론적으로 계산할 수 있다.</p>
 <div class="math notranslate nohighlight">
 \[ 2SD = 2 \sqrt{ \frac{(0.5)(1-0.5)}{n}} = \frac{1}{\sqrt{n}} \]</div>
@@ -994,10 +1157,10 @@ dtype: float64
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="id8">
-<h2><span class="section-number">6.3.6. </span>모의실험<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">6.3.6. </span>모의실험<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
 <p>이제 모집단의 크기, 모수(지지율) 등은 바꾸어 가면서 표본 지지율의 평균, 표준편차(SD), 표본오차(2SD) 를 구해보자. 또한 표본의 지지율이 나타나는 확률이 95%인 구간을 히스토그램으로 나타내 보자.</p>
 <p>특히 다음과 같은 경우에 대하여 모의실험을 해보자.</p>
 <ul class="simple">
@@ -1126,9 +1289,9 @@ dtype: float64
 <img alt="../../_images/estimator_35_0.png" src="../../_images/estimator_35_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="id9">
-<h2><span class="section-number">6.3.7. </span>요약<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id9">
+<h2><span class="section-number">6.3.7. </span>요약<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
 <p>데이터과학에서 확률표본을 이용한 추정에 대한 요약입니다.</p>
 <ul class="simple">
 <li><p>모집단과 표본</p>
@@ -1150,8 +1313,8 @@ dtype: float64
 </li>
 </ul>
 <p>마지막으로 강조하고 싶은 점은 편의표본이나 비확률표본을 사용한 경우, 추정한 값의 정확성에 대하여 말할 때 위와 같은 논리를 사용할 수 없다.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1175,9 +1338,11 @@ dtype: float64
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="samplemeans.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1193,26 +1358,28 @@ dtype: float64
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By 서울시립대학교<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By 서울시립대학교<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
