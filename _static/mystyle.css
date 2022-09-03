@@ -1,7 +1,13 @@
-/* @media print {
+@media print {
+  body {
+    font-size: 1.1em;
+  }
+
   .bd-toc {
     visibility: hidden;
   }
+  p {
+    font-size: 1.1em;
+    text-align: justify;
+  }
 }
-
- */
