@@ -3065,16 +3065,175 @@ title="Print to PDF"
 <p>102 rows × 9 columns</p>
 </div></div></div>
 </div>
+<p>위에서 열이름을 모두 바꾸는 코드와 동일한 작업을 새로운 이름을 가진 리스트로 다음과 같이 할 수 있다.</p>
+<p>예를 들어 위에서 영문으로 변경한 마지막 열의 이름을 <code class="docutils literal notranslate"><span class="pre">p7plus</span></code> 에서 <code class="docutils literal notranslate"><span class="pre">p7_and_more</span></code> 로 다음과 같이 바꾸어보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">house_grp</span> <span class="o">=</span> <span class="n">house</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span> <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">house</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;region&quot;</span><span class="p">,</span> <span class="s2">&quot;p1&quot;</span><span class="p">,</span> <span class="s2">&quot;p2&quot;</span><span class="p">,</span> <span class="s2">&quot;p2&quot;</span><span class="p">,</span> <span class="s2">&quot;p4&quot;</span><span class="p">,</span> <span class="s2">&quot;p5&quot;</span><span class="p">,</span> <span class="s2">&quot;p6&quot;</span><span class="p">,</span> <span class="s2">&quot;p7_and_more&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>위에서 열이름을 모두 바꾸는 코드와 동일한 작업을 새로운 이름을 가진 리스트로 다음과 같이 할 수 있다.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">house</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;region&quot;</span><span class="p">,</span> <span class="s2">&quot;p1&quot;</span><span class="p">,</span> <span class="s2">&quot;p2&quot;</span><span class="p">,</span> <span class="s2">&quot;p2&quot;</span><span class="p">,</span> <span class="s2">&quot;p4&quot;</span><span class="p">,</span> <span class="s2">&quot;p5&quot;</span><span class="p">,</span> <span class="s2">&quot;p6&quot;</span><span class="p">,</span> <span class="s2">&quot;p7plus&quot;</span><span class="p">]</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">house</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>region</th>
+      <th>p1</th>
+      <th>p2</th>
+      <th>p2</th>
+      <th>p4</th>
+      <th>p5</th>
+      <th>p6</th>
+      <th>p7_and_more</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015</td>
+      <td>서울특별시</td>
+      <td>1115744</td>
+      <td>930467</td>
+      <td>817440</td>
+      <td>701945</td>
+      <td>169436</td>
+      <td>38547</td>
+      <td>10911</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2015</td>
+      <td>부산광역시</td>
+      <td>361749</td>
+      <td>366048</td>
+      <td>296742</td>
+      <td>238031</td>
+      <td>56971</td>
+      <td>12928</td>
+      <td>3431</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2015</td>
+      <td>대구광역시</td>
+      <td>239517</td>
+      <td>239824</td>
+      <td>208795</td>
+      <td>184258</td>
+      <td>44071</td>
+      <td>9582</td>
+      <td>2481</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2015</td>
+      <td>인천광역시</td>
+      <td>243678</td>
+      <td>265079</td>
+      <td>245135</td>
+      <td>220538</td>
+      <td>55230</td>
+      <td>12253</td>
+      <td>3504</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2015</td>
+      <td>광주광역시</td>
+      <td>163577</td>
+      <td>137662</td>
+      <td>115701</td>
+      <td>109612</td>
+      <td>32199</td>
+      <td>6647</td>
+      <td>1759</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2015</td>
+      <td>대전광역시</td>
+      <td>169391</td>
+      <td>140603</td>
+      <td>122088</td>
+      <td>112055</td>
+      <td>30022</td>
+      <td>6489</td>
+      <td>1856</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2015</td>
+      <td>울산광역시</td>
+      <td>103551</td>
+      <td>104101</td>
+      <td>100230</td>
+      <td>90735</td>
+      <td>19914</td>
+      <td>3851</td>
+      <td>1030</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2015</td>
+      <td>세종특별자치시</td>
+      <td>21889</td>
+      <td>18010</td>
+      <td>15219</td>
+      <td>14560</td>
+      <td>4238</td>
+      <td>994</td>
+      <td>309</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2015</td>
+      <td>경기도</td>
+      <td>1026471</td>
+      <td>1062222</td>
+      <td>1005330</td>
+      <td>971146</td>
+      <td>246638</td>
+      <td>56117</td>
+      <td>16818</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2015</td>
+      <td>강원도</td>
+      <td>189379</td>
+      <td>178470</td>
+      <td>116384</td>
+      <td>87182</td>
+      <td>25922</td>
+      <td>6567</td>
+      <td>2213</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>데이터프레임 뒤에 <code class="docutils literal notranslate"><span class="pre">.columns</span></code> 를 붙이면 열이름을 볼 수 있다. 형식은 행의 위치를 나타내내는 인덱스(Index) 형식이다.</p>
 <div class="cell docutils container">
@@ -3084,7 +3243,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;year&#39;, &#39;region&#39;, &#39;p1&#39;, &#39;p2&#39;, &#39;p3&#39;, &#39;p4&#39;, &#39;p5&#39;, &#39;p6&#39;, &#39;p7plus&#39;], dtype=&#39;object&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;year&#39;, &#39;region&#39;, &#39;p1&#39;, &#39;p2&#39;, &#39;p2&#39;, &#39;p4&#39;, &#39;p5&#39;, &#39;p6&#39;, &#39;p7_and_more&#39;], dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
