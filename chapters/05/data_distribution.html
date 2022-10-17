@@ -665,10 +665,7 @@ title="Print to PDF"
 <h1><span class="section-number">5.1. </span>자료의 분포<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># 한글 폰트가 깨질 때 사용 - 런타임 메뉴에서 다시 시작 및 모두 실행 선택. (출처: https://teddylee777.github.io/colab/colab-korean)
-!sudo apt-get install -y fonts-nanum
-!sudo fc-cache -fv
-!rm ~/.cache/matplotlib -rf
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
@@ -683,13 +680,6 @@ title="Print to PDF"
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;NanumBarunGothic&#39;</span><span class="p">)</span> <span class="c1"># clolab 에서 한글 사용 </span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.unicode_minus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>   <span class="c1"># 그림 크기 조정</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
@@ -1206,7 +1196,7 @@ Name: TEST_SEX, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f6a1a135490&gt;
 </pre></div>
 </div>
-<img alt="../../_images/data_distribution_24_1.png" src="../../_images/data_distribution_24_1.png" />
+<img alt="../../_images/data_distribution_23_1.png" src="../../_images/data_distribution_23_1.png" />
 </div>
 </div>
 <p>돗수 분포표를 구할 때 돗수가 아닌 항목의 비율로 계산하고 싶은 경우가 있다. 이런 경우  <code class="docutils literal notranslate"><span class="pre">value_counts(normalize=True)</span></code> 를 사용하면 된다.</p>
@@ -1235,7 +1225,7 @@ Name: TEST_SEX, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f6a1a0b28d0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/data_distribution_28_1.png" src="../../_images/data_distribution_28_1.png" />
+<img alt="../../_images/data_distribution_27_1.png" src="../../_images/data_distribution_27_1.png" />
 </div>
 </div>
 <p>돗수의 크기를 막대로 표시하는 바차트(bar chart)는 다음과 같이 그린다. 막대기의 크기를 비율로 지정해보자</p>
@@ -1249,7 +1239,7 @@ Name: TEST_SEX, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f6a19beb2d0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/data_distribution_30_1.png" src="../../_images/data_distribution_30_1.png" />
+<img alt="../../_images/data_distribution_29_1.png" src="../../_images/data_distribution_29_1.png" />
 </div>
 </div>
 <p>두 개의 범주형 변수를 고려하고 각 항목들의 조합에 대한 분포표가 분할표(contingency table) 이다. 성별과 연령대별 분할표는 다음과 같이 구할 수 있다.</p>
@@ -1284,7 +1274,7 @@ dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f6a19b98890&gt;
 </pre></div>
 </div>
-<img alt="../../_images/data_distribution_33_1.png" src="../../_images/data_distribution_33_1.png" />
+<img alt="../../_images/data_distribution_32_1.png" src="../../_images/data_distribution_32_1.png" />
 </div>
 </div>
 </section>
@@ -1305,7 +1295,7 @@ dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f6a19a9fe10&gt;
 </pre></div>
 </div>
-<img alt="../../_images/data_distribution_37_1.png" src="../../_images/data_distribution_37_1.png" />
+<img alt="../../_images/data_distribution_36_1.png" src="../../_images/data_distribution_36_1.png" />
 </div>
 </div>
 <p>히스토그램의 구간의 개수는  <code class="docutils literal notranslate"><span class="pre">bins=</span></code> 선택문으로 바꿀 수 있다.</p>
@@ -1319,7 +1309,7 @@ dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f6a19a4a2d0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/data_distribution_39_1.png" src="../../_images/data_distribution_39_1.png" />
+<img alt="../../_images/data_distribution_38_1.png" src="../../_images/data_distribution_38_1.png" />
 </div>
 </div>
 <p>신장(키)의 분포도 알아보자.</p>
@@ -1333,7 +1323,7 @@ dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f6a1995e6d0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/data_distribution_41_1.png" src="../../_images/data_distribution_41_1.png" />
+<img alt="../../_images/data_distribution_40_1.png" src="../../_images/data_distribution_40_1.png" />
 </div>
 </div>
 <p>위의 그림에서 보있듯이 몸무게의 분포는 오른쪽으로 치우친 경향이 나타난다. 자료가 가장 집중된 중심의 위치에서 좌우 대칭으로 나타나지 않고 몸무게가 큰 방향으로 약간 치우쳐있다.</p>
@@ -1384,7 +1374,7 @@ dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f6a198a9bd0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/data_distribution_46_1.png" src="../../_images/data_distribution_46_1.png" />
+<img alt="../../_images/data_distribution_45_1.png" src="../../_images/data_distribution_45_1.png" />
 </div>
 </div>
 <p>그럼 몸무게와 키에 대한 상자그림을 나란히 그려보자. 두 개의 그림을 각각 좌우로 그릴 경우 <code class="docutils literal notranslate"><span class="pre">subplots=True</span></code> 선택문을 사용한다.</p>
@@ -1401,7 +1391,7 @@ ITEM_F002    AxesSubplot(0.547727,0.125;0.352273x0.755)
 dtype: object
 </pre></div>
 </div>
-<img alt="../../_images/data_distribution_48_1.png" src="../../_images/data_distribution_48_1.png" />
+<img alt="../../_images/data_distribution_47_1.png" src="../../_images/data_distribution_47_1.png" />
 </div>
 </div>
 </section>
@@ -1420,7 +1410,7 @@ dtype: object
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f6a19770750&gt;
 </pre></div>
 </div>
-<img alt="../../_images/data_distribution_51_1.png" src="../../_images/data_distribution_51_1.png" />
+<img alt="../../_images/data_distribution_50_1.png" src="../../_images/data_distribution_50_1.png" />
 </div>
 </div>
 <p>키와 몸무게의 관계를 성별로 구분하여 그려보자.</p>
@@ -1437,8 +1427,8 @@ M    AxesSubplot(0.125,0.125;0.775x0.755)
 dtype: object
 </pre></div>
 </div>
-<img alt="../../_images/data_distribution_53_1.png" src="../../_images/data_distribution_53_1.png" />
-<img alt="../../_images/data_distribution_53_2.png" src="../../_images/data_distribution_53_2.png" />
+<img alt="../../_images/data_distribution_52_1.png" src="../../_images/data_distribution_52_1.png" />
+<img alt="../../_images/data_distribution_52_2.png" src="../../_images/data_distribution_52_2.png" />
 </div>
 </div>
 <p>참고로 정교한 그림을 그리는데 사용할 수 있는 라이브러리 중 <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> 라이브러리는 <code class="docutils literal notranslate"><span class="pre">R</span></code>의 <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> 와 같은 예쁜 그림을 그려준다.</p>
@@ -1455,7 +1445,7 @@ dtype: object
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f6a0947d390&gt;
 </pre></div>
 </div>
-<img alt="../../_images/data_distribution_55_1.png" src="../../_images/data_distribution_55_1.png" />
+<img alt="../../_images/data_distribution_54_1.png" src="../../_images/data_distribution_54_1.png" />
 </div>
 </div>
 </section>
@@ -1475,7 +1465,7 @@ dtype: object
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f6a093f2910&gt;
 </pre></div>
 </div>
-<img alt="../../_images/data_distribution_58_1.png" src="../../_images/data_distribution_58_1.png" />
+<img alt="../../_images/data_distribution_57_1.png" src="../../_images/data_distribution_57_1.png" />
 </div>
 </div>
 <p>성별로 몸무게의 분포를 비교하는 히스토그램</p>
@@ -1489,7 +1479,7 @@ dtype: object
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f6a093f2990&gt;
 </pre></div>
 </div>
-<img alt="../../_images/data_distribution_60_1.png" src="../../_images/data_distribution_60_1.png" />
+<img alt="../../_images/data_distribution_59_1.png" src="../../_images/data_distribution_59_1.png" />
 </div>
 </div>
 <p>성별로 몸무게의 분포를 비교하는 상자그림</p>
@@ -1503,7 +1493,7 @@ dtype: object
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f6a09c36350&gt;
 </pre></div>
 </div>
-<img alt="../../_images/data_distribution_62_1.png" src="../../_images/data_distribution_62_1.png" />
+<img alt="../../_images/data_distribution_61_1.png" src="../../_images/data_distribution_61_1.png" />
 </div>
 </div>
 </section>
