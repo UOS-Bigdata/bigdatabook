@@ -837,14 +837,15 @@ title="Print to PDF"
 </tbody>
 </table>
 <p>우리는 위와 같은 확률 분포로부터 주어진 사건의 확률을 계산할 수 있다. 예를 들어 하나의 주사위를 던질 경우 눈의 값이 5 이상 나올 확률은 어떻게 구할까?</p>
-<p>일단 눈의 값이 5 이상인 사건은 5 또는 6이 나올 사건이다. 주사위의 모든 눈이 나올 가능성이 같다면, 위에서 본 논리적 확률의 정의에 따라서 2/6 으로 다음과 같이 구할 수 있다.
-$<span class="math notranslate nohighlight">\(
+<p>일단 눈의 값이 5 이상인 사건은 5 또는 6이 나올 사건이다. 주사위의 모든 눈이 나올 가능성이 같다면, 위에서 본 논리적 확률의 정의에 따라서 2/6 으로 다음과 같이 구할 수 있다.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align*}
 P(\text{ 5 이상}) &amp; = P(\text{ 5 또는 6}) \\
 &amp; = \frac {\text{사건} (event) \text{ 안의 원소의 수}} {\text{표본 공간 }S \text{ 안의 원소의 수}} \\
 &amp; = \frac{2}{6} 
 \end{align*}
-\)</span>$</p>
+\end{split}\]</div>
 <p>위에서 눈의 값이 5 이상인 사건의 확률은 5가 나올 사건의 확률과 6이 나올 사건의 확률을 더해서 구할 수도 있다. 주사위 하나를 던질 때 5와 6이 동시에 나올 수 없다는 사실에 유의하자.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -876,16 +877,16 @@ P(\text{ 5 또는 6}) &amp; = P(\text{ 5}) + P(\text{ 6}) \\
 <section id="id6">
 <h3><span class="section-number">5.4.3.2. </span>확률의 기초 규칙<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
 <p>먼저 확률을 계산하는 가장 기초적인 두 가지  규칙을 알아보자.</p>
-<ul>
-<li><p>표본공간의 확률은 1이다. 즉, 가능한 모든 사건이 일어날 확률은 1이다</p>
+<ul class="simple">
+<li><p>표본공간의 확률은 1이다. 즉, 가능한 모든 사건이 일어날 확률은 1이다</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[ P(S) = 1 \]</div>
-</li>
-<li><p>여사건(complement of event)의 확률은 1에서 주어진 사건의 확률을 빼면 된다.</p>
+<ul class="simple">
+<li><p>여사건(complement of event)의 확률은 1에서 주어진 사건의 확률을 빼면 된다.</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[ P(\text{not event}) = 1 -P(\text{event}) \]</div>
-</li>
-</ul>
 <p>예를 들어 주사위의 눈이 1과 같거나 큰 사건은 표본공간 <span class="math notranslate nohighlight">\(S\)</span>와 같은 사건이다. 따라서 확률은 1이다. 또한 주사위의 눈이 4 이하일 사건은 5 이상일 사건의 여사건이므로 다음과 같이 계산한다.</p>
 <div class="math notranslate nohighlight">
 \[ P(\text{ 4 이하})= 1- P(\text{ 5 이상}) = 1-2/6 = 4/6 \]</div>
