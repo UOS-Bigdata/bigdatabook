@@ -1,49 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>2.3. 고속열차 여객 수송자료 &#8212; 빅데이터 개론 2</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystyle.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -51,61 +62,93 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/02/data-processing-train-passenger';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2.4. 어린 왕자" href="data-processing-text.html" />
     <link rel="prev" title="2.2. 데이터 처리" href="data-processing-intro.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">빅데이터 개론 2</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -115,510 +158,269 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../01/intro-course.html">
-   1. 서론
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01/intro-program.html">
-     1.1. 프로그래밍 언어
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01/intro-stat.html">
-     1.2. 통계학
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="intro-python.html">
-   2. 파이선의 기초
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="basic-expression.html">
-     2.1. 표현식과 변수
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="data-processing-intro.html">
-     2.2. 데이터의 처리
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     2.3. 고속열차 여객 수송자료
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="data-processing-text.html">
-     2.4. 어린 왕자
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../03/types.html">
-   3. 자료의 형식
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../03/numbers.html">
-     3.1. 숫자
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../03/string.html">
-     3.2. 문자열
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../03/array.html">
-     3.3. 행렬
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../04/dataframe.html">
-   4. 데이터프레임
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-intro.html">
-     4.1. 데이터프레임의 정의와 구성요소
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-change.html">
-     4.2. 데이터프레임의 정리
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-summary.html">
-     4.3. 데이터프레임의 요약
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-merge.html">
-     4.4. 데이터프레임의 결합
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../05/data-intro.html">
-   5. 분포와 확률
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_distribution.html">
-     5.1. 자료의 분포
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_randomness.html">
-     5.2. 분포와 우연성
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_random_experiment.html">
-     5.3. 확률과 컴퓨터 실험
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_probability.html">
-     5.4. 확률의 기초
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_function.html">
-     5.5. 함수
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../06/sampling-intro.html">
-   6. 표본과 경험적 분포
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06/sample.html">
-     6.1. 표본과 정보
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06/samplemeans.html">
-     6.2. 통계량의 분포
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06/estimator.html">
-     6.3. 추정량의 성질
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06/bootstrap.html">
-     6.4. 붓스트랩
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../07/test-intro.html">
-   7. 유의성 검정
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07/decision.html">
-     7.1. 선택과 증거
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07/pvalue.html">
-     7.2. 유의성 검정
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07/abtest.html">
-     7.3. 두 그룹의 비교
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../08/relation-intro.html">
-   8. 관계와 예측
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08/correlation.html">
-     8.1. 두 변수의 관계
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08/regression.html">
-     8.2. 선형 회귀모형
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08/classification.html">
-     8.3. 분류와 예측모형
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08/validation.html">
-     8.4. 분류의 평가
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01/intro-course.html">1. 서론</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01/intro-program.html">1.1. 프로그래밍 언어</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/intro-stat.html">1.2. 통계학</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro-python.html">2. 파이선의 기초</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basic-expression.html">2.1. 표현식과 변수</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-processing-intro.html">2.2. 데이터의 처리</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.3. 고속열차 여객 수송자료</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-processing-text.html">2.4. 어린 왕자</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03/types.html">3. 자료의 형식</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03/numbers.html">3.1. 숫자</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/string.html">3.2. 문자열</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/array.html">3.3. 행렬</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04/dataframe.html">4. 데이터프레임</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04/dataframe-intro.html">4.1. 데이터프레임의 정의와 구성요소</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04/dataframe-change.html">4.2. 데이터프레임의 정리</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04/dataframe-summary.html">4.3. 데이터프레임의 요약</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04/dataframe-merge.html">4.4. 데이터프레임의 결합</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05/data-intro.html">5. 분포와 확률</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_distribution.html">5.1. 자료의 분포</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_randomness.html">5.2. 분포와 우연성</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_random_experiment.html">5.3. 확률과 컴퓨터 실험</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_probability.html">5.4. 확률의 기초</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_function.html">5.5. 함수</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06/sampling-intro.html">6. 표본과 경험적 분포</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06/sample.html">6.1. 표본과 정보</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06/samplemeans.html">6.2. 통계량의 분포</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06/estimator.html">6.3. 추정량의 성질</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06/bootstrap.html">6.4. 붓스트랩</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07/test-intro.html">7. 유의성 검정</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07/decision.html">7.1. 선택과 증거</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07/pvalue.html">7.2. 유의성 검정</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07/abtest.html">7.3. 두 그룹의 비교</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../08/relation-intro.html">8. 관계와 예측</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08/correlation.html">8.1. 두 변수의 관계</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08/regression.html">8.2. 선형 회귀모형</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08/classification.html">8.3. 분류와 예측모형</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08/validation.html">8.4. 분류의 평가</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/UOS-Bigdata/bigdatabook/master?urlpath=tree/chapters/02/data-processing-train-passenger.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
   
-    <img src="../../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+  <div id="rtd-footer-container"></div>
 
-      </li>
+
+      </div>
       
-      <li>
-        <a href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/02/data-processing-train-passenger.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/02/data-processing-train-passenger.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../../_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+<a href="https://github.com/UOS-Bigdata/bigdatabook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/UOS-Bigdata/bigdatabook"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../_sources/chapters/02/data-processing-train-passenger.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/02/data-processing-train-passenger.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   2.3.1. 필요한 라이브러리
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   2.3.2. 고속열차 수송 자료
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   2.3.3. 시계열 그림
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#section-train-group">
-   2.3.4. 그룹별 분석
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>고속열차 여객 수송자료</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   2.3.1. 필요한 라이브러리
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   2.3.2. 고속열차 수송 자료
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   2.3.3. 시계열 그림
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#section-train-group">
-   2.3.4. 그룹별 분석
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>고속열차 여객 수송자료</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3.1. 필요한 라이브러리</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.3.2. 고속열차 수송 자료</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.3. 시계열 그림</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-train-group">2.3.4. 그룹별 분석</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">2.3. </span>고속열차 여객 수송자료<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">2.3. </span>고속열차 여객 수송자료<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <p>교통 분야는 빅데이터의 수집과 분석이 가장 활발하게 진행되는 분야이다. 자동차, 항공기, 기차 등 교통 수단들이 운행할 때 다양한 형태의 빅데이터들이 생성되고 저장되고 있다. 최근에는 자율 주행차의 개발을 위하여 자동차 운행에 관련된 빅데이터 분석이 중요한 이슈이다. 또한 열차와 항공기 같은 여객 산업에서는 예약과 결제 등 서비스와 매출에 대한 빅데이터가 효율적인 자원 배분과 수익관리에 유용하게 사용된다.</p>
 <p>열차는 자동차,항공기와 다르게 출발역과 도착역 사이에 다수의 중간 정차역이 존재한다. 따라서 열차를 운행하는 경우 여행 경로에 따른 승객의 수요 예측과 죄석의 합리적인  배분이 매우 중요하다.</p>
 <p>예를 들어 KTX 고속 열차 노선 중에 서울에서 출발하여 부산에 도착하는 경부 하행선 열차가 하루에 60회 정도 운행한다. 중간 정차역이 적게는 5개, 많게는 8개인 것을 고려하면 여행 경로의 수는 상당히 많다. 그리고 운행하는 요일, 계절, 명절에 따라 수요가 다르므로 여객의 수요를 예측하고 좌석을 배정하는 작업은 매우 까다로운 작업이다. 더 나아가 경부선만 아닌 전라선, 영동선과 같은 다른 노선이 매일 운행하고 있고 상행/하행 두 노선을 모두 고려하면 상당한 빅데이터가 처리되고 분석되어야 한다.</p>
@@ -626,7 +428,7 @@ title="Print to PDF"
 <p>이 예제에서는 한 달 동안 운행한 고속 열차에 탑승한 승객의 수송자료를 처리하고 기초적인 분석을 하는 예를 살펴 보기로 한다.</p>
 <p>분석의 목표는 여행 구간마다 요일별 탑긍객 수가 어떤 패턴을 가지는 지 알아보는 것이다.</p>
 <section id="id2">
-<h2><span class="section-number">2.3.1. </span>필요한 라이브러리<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.3.1. </span>필요한 라이브러리<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>분석 결과를 이용하여 그림을 그리려면 다음과 같은 여러 개의 라이브러리를 불러와야 한다. 아래 라이브러리의 의미와 그림을 잘 그리기 위한 다양한 기능들은 뒤에서 자세하게 다룰 것이므로 이 예제에서는 일단 실행해보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -650,7 +452,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id3">
-<h2><span class="section-number">2.3.2. </span>고속열차 수송 자료<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.3.2. </span>고속열차 수송 자료<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>고속 열차에 탑승한 승객에 대한 자료는 csv(comma-separated values) 형식으로 <code class="docutils literal notranslate"><span class="pre">train-data-01.csv</span></code> 화일에 저장되어 있다. csv 자료 화일의 각 열에 대한 이름과 설명은 다음과 같다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">TRAIN_NO</span></code>: 열차 번호</p></li>
@@ -835,10 +637,10 @@ Name: TRAIN_NO, Length: 1769, dtype: int64
 </div>
 </section>
 <section id="id4">
-<h2><span class="section-number">2.3.3. </span>시계열 그림<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.3.3. </span>시계열 그림<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <p>이제 2번 열차의 자료만 선택하여 서울-부산 구간에 탑승한 승객의 수가 날짜별로 어떻게 다른지 살펴보자.</p>
 <p>먼저 원자료에서 다음 3개의 조건을 모두 만족하는 행들을 추출해야 한다.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>열차번호가 2번이다.</p></li>
 <li><p>출발역은 서울역이다.</p></li>
 <li><p>도착역은 부산역이다.</p></li>
@@ -1204,7 +1006,7 @@ dtype: object
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;DATE&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/data-processing-train-passenger_22_1.png" src="../../_images/data-processing-train-passenger_22_1.png" />
+<img alt="../../_images/d41e2c5e69335f40ce576a65eb5faaa2ab2ad23d02e71f7025fd2dae735a8ea1.png" src="../../_images/d41e2c5e69335f40ce576a65eb5faaa2ab2ad23d02e71f7025fd2dae735a8ea1.png" />
 </div>
 </div>
 <p>위의 시계열 그림에서 주기적인 반복 패턴이 나타나고 있는 것을 알 수 있다. 즉, 요일에 따라서 탑승객 수의 차이가 난다는 의미이다.</p>
@@ -1538,12 +1340,12 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;DATE2&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/data-processing-train-passenger_25_1.png" src="../../_images/data-processing-train-passenger_25_1.png" />
+<img alt="../../_images/a3440b9b8a54f154ee1b7bceec606b1de4f8ce20d6fa53a455b540138083f031.png" src="../../_images/a3440b9b8a54f154ee1b7bceec606b1de4f8ce20d6fa53a455b540138083f031.png" />
 </div>
 </div>
 </section>
 <section id="section-train-group">
-<span id="id5"></span><h2><span class="section-number">2.3.4. </span>그룹별 분석<a class="headerlink" href="#section-train-group" title="Permalink to this headline">#</a></h2>
+<span id="id5"></span><h2><span class="section-number">2.3.4. </span>그룹별 분석<a class="headerlink" href="#section-train-group" title="Permalink to this heading">#</a></h2>
 <p>위의 분석에서 나타난 것처럼 요일마다 탑승객의 수가 다르므로 <strong>요일별, 구간별</strong> 로 평균 탑승객 수를 구하여 비교해보려고 한다.</p>
 <p>먼저 앞에서 한 것과 같이 날짜의 형식을 가진 새로운 변수 <code class="docutils literal notranslate"><span class="pre">DATE2</span></code>를 데이터프레임에 추가하자.</p>
 <div class="cell docutils container">
@@ -1998,7 +1800,7 @@ dtype: object
 </div>
 <p>이제 3개의 변수, 즉  <code class="docutils literal notranslate"><span class="pre">DAYOFWEEK</span></code>, <code class="docutils literal notranslate"><span class="pre">STATION_DEPART</span></code>, <code class="docutils literal notranslate"><span class="pre">STATION_ARRV</span></code> 의 값들로 전체 자료를 그룹화 하고 각 그룹에 속하는 탑승객수들의 평균을 구해보자.</p>
 <p>이러힌 작업은 다음과 같은 2개의 함수를 제이터프레임에 <strong>단계적으로</strong> 적용하여 이루어진다.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 함수는 주어진 열들의 값의 조합에 따라서 전체 자료를 그룹화한다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">mean()</span></code> 함수는 각 그룹에 대한 열들의 평균값을 구한다.</p></li>
 </ol>
@@ -2376,7 +2178,7 @@ dtype: object
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;DAYOFWEEK&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/data-processing-train-passenger_43_1.png" src="../../_images/data-processing-train-passenger_43_1.png" />
+<img alt="../../_images/4eaaf2df83b589310efdf48922bcac9c5a46dc8162aae6c48ee8d39ea91e4cf4.png" src="../../_images/4eaaf2df83b589310efdf48922bcac9c5a46dc8162aae6c48ee8d39ea91e4cf4.png" />
 </div>
 </div>
 </section>
@@ -2394,7 +2196,7 @@ dtype: object
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./chapters/02"
         },
         predefinedOutput: true
@@ -2402,50 +2204,102 @@ dtype: object
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="data-processing-intro.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2.2. </span>데이터 처리</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="data-processing-intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2.2. </span>데이터 처리</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="data-processing-text.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="data-processing-text.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">2.4. </span>어린 왕자</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3.1. 필요한 라이브러리</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.3.2. 고속열차 수송 자료</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.3. 시계열 그림</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-train-group">2.3.4. 그룹별 분석</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By 서울시립대학교<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By 서울시립대학교
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

@@ -1,49 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>6.1. 표본과 정보 &#8212; 빅데이터 개론 2</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystyle.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -53,61 +64,93 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/06/sample';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="6.2. 통계량의 분포" href="samplemeans.html" />
     <link rel="prev" title="6. 표본과 경험적 분포" href="sampling-intro.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">빅데이터 개론 2</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -117,560 +160,274 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../01/intro-course.html">
-   1. 서론
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01/intro-program.html">
-     1.1. 프로그래밍 언어
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01/intro-stat.html">
-     1.2. 통계학
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../02/intro-python.html">
-   2. 파이선의 기초
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02/basic-expression.html">
-     2.1. 표현식과 변수
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02/data-processing-intro.html">
-     2.2. 데이터의 처리
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02/data-processing-train-passenger.html">
-     2.3. 고속열차 여객 수송자료
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02/data-processing-text.html">
-     2.4. 어린 왕자
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../03/types.html">
-   3. 자료의 형식
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../03/numbers.html">
-     3.1. 숫자
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../03/string.html">
-     3.2. 문자열
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../03/array.html">
-     3.3. 행렬
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../04/dataframe.html">
-   4. 데이터프레임
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-intro.html">
-     4.1. 데이터프레임의 정의와 구성요소
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-change.html">
-     4.2. 데이터프레임의 정리
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-summary.html">
-     4.3. 데이터프레임의 요약
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-merge.html">
-     4.4. 데이터프레임의 결합
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../05/data-intro.html">
-   5. 분포와 확률
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_distribution.html">
-     5.1. 자료의 분포
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_randomness.html">
-     5.2. 분포와 우연성
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_random_experiment.html">
-     5.3. 확률과 컴퓨터 실험
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_probability.html">
-     5.4. 확률의 기초
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_function.html">
-     5.5. 함수
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="sampling-intro.html">
-   6. 표본과 경험적 분포
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     6.1. 표본과 정보
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="samplemeans.html">
-     6.2. 통계량의 분포
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="estimator.html">
-     6.3. 추정량의 성질
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bootstrap.html">
-     6.4. 붓스트랩
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../07/test-intro.html">
-   7. 유의성 검정
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07/decision.html">
-     7.1. 선택과 증거
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07/pvalue.html">
-     7.2. 유의성 검정
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07/abtest.html">
-     7.3. 두 그룹의 비교
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../08/relation-intro.html">
-   8. 관계와 예측
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08/correlation.html">
-     8.1. 두 변수의 관계
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08/regression.html">
-     8.2. 선형 회귀모형
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08/classification.html">
-     8.3. 분류와 예측모형
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08/validation.html">
-     8.4. 분류의 평가
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01/intro-course.html">1. 서론</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01/intro-program.html">1.1. 프로그래밍 언어</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/intro-stat.html">1.2. 통계학</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02/intro-python.html">2. 파이선의 기초</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02/basic-expression.html">2.1. 표현식과 변수</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/data-processing-intro.html">2.2. 데이터의 처리</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/data-processing-train-passenger.html">2.3. 고속열차 여객 수송자료</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/data-processing-text.html">2.4. 어린 왕자</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03/types.html">3. 자료의 형식</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03/numbers.html">3.1. 숫자</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/string.html">3.2. 문자열</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/array.html">3.3. 행렬</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04/dataframe.html">4. 데이터프레임</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04/dataframe-intro.html">4.1. 데이터프레임의 정의와 구성요소</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04/dataframe-change.html">4.2. 데이터프레임의 정리</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04/dataframe-summary.html">4.3. 데이터프레임의 요약</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04/dataframe-merge.html">4.4. 데이터프레임의 결합</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05/data-intro.html">5. 분포와 확률</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_distribution.html">5.1. 자료의 분포</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_randomness.html">5.2. 분포와 우연성</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_random_experiment.html">5.3. 확률과 컴퓨터 실험</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_probability.html">5.4. 확률의 기초</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_function.html">5.5. 함수</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="sampling-intro.html">6. 표본과 경험적 분포</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.1. 표본과 정보</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samplemeans.html">6.2. 통계량의 분포</a></li>
+<li class="toctree-l2"><a class="reference internal" href="estimator.html">6.3. 추정량의 성질</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bootstrap.html">6.4. 붓스트랩</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07/test-intro.html">7. 유의성 검정</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07/decision.html">7.1. 선택과 증거</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07/pvalue.html">7.2. 유의성 검정</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07/abtest.html">7.3. 두 그룹의 비교</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../08/relation-intro.html">8. 관계와 예측</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08/correlation.html">8.1. 두 변수의 관계</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08/regression.html">8.2. 선형 회귀모형</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08/classification.html">8.3. 분류와 예측모형</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08/validation.html">8.4. 분류의 평가</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/UOS-Bigdata/bigdatabook/master?urlpath=tree/chapters/06/sample.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
   
-    <img src="../../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+  <div id="rtd-footer-container"></div>
 
-      </li>
+
+      </div>
       
-      <li>
-        <a href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/06/sample.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/06/sample.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../../_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+<a href="https://github.com/UOS-Bigdata/bigdatabook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/UOS-Bigdata/bigdatabook"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../_sources/chapters/06/sample.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/06/sample.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   6.1.1. 빅데이터 시대의 정보
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   6.1.2. 데이터의 품질
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   6.1.3. 모집단과 표본
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   6.1.4. 확률표본
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
-   6.1.5. 공공자전거 자료
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id7">
-   6.1.6. 확률표본의 추출
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
-   6.1.7. 확률표본의 분포
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id9">
-   6.1.8. 편의표본
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id10">
-   6.1.9. 참고
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>표본과 정보</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   6.1.1. 빅데이터 시대의 정보
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   6.1.2. 데이터의 품질
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   6.1.3. 모집단과 표본
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   6.1.4. 확률표본
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
-   6.1.5. 공공자전거 자료
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id7">
-   6.1.6. 확률표본의 추출
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
-   6.1.7. 확률표본의 분포
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id9">
-   6.1.8. 편의표본
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id10">
-   6.1.9. 참고
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>표본과 정보</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1.1. 빅데이터 시대의 정보</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.1.2. 데이터의 품질</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.1.3. 모집단과 표본</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.1.4. 확률표본</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.1.5. 공공자전거 자료</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.1.6. 확률표본의 추출</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.1.7. 확률표본의 분포</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">6.1.8. 편의표본</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.1.9. 참고</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">6.1. </span>표본과 정보<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6.1. </span>표본과 정보<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span># 한글 폰트가 깨질 때 사용 - 런타임 메뉴에서 다시 시작 및 모두 실행 선택. (출처: https://teddylee777.github.io/colab/colab-korean)
@@ -726,12 +483,12 @@ fc-cache: succeeded
 </div>
 </div>
 <section id="id2">
-<h2><span class="section-number">6.1.1. </span>빅데이터 시대의 정보<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.1.1. </span>빅데이터 시대의 정보<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>IT의 발달과 빅데이터의 등장으로 우리는 과거보다 데이터에 더 쉽게 접근할 수 있으며 더 많은 데이터를 얻어서 분석할 수 있게 되었다. 예를 들면 우리나라에 위치한 기상 관측소뿐만 아니라 전 세계에 퍼져 있는 관측소들에서 얻어진 <a class="reference external" href="https://data.kma.go.kr/cmmn/main.do">기상 관측자료</a>는 아주 쉽게 얻을 수 있다. 과거에는 특별한 자격을 가진 사람들이 자료의 일부분만 이용할 수 있었지만 점점 대중이 사용할 수 있는 데이터의 개방성과 크기가 증가하면서 더 많은 정보를 신속하게 얻을 수 있다.</p>
 <p>하지만 아직도 모든 정보를 그렇게 쉽게 얻을 수 있는 것은 아니다. 먼저 자료가 존재해도 개인정보 누출의 위험 때문에 사용에 제약이 있다. 만약 사람들의 의료 기록을 자유롭게 이용할 수 있다면 민감한 개인정보가  노출되는 불행한 일이 벌어질 것이다. 또 사람들이 이용하는 포털이나 통신사의 자료를 제한없이 자유롭게 이용하는 경우도 보안에 큰 문제를 일으킬 수 있다.</p>
 </section>
 <section id="id3">
-<h2><span class="section-number">6.1.2. </span>데이터의 품질<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.1.2. </span>데이터의 품질<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>빅데이터가 유용한 형태로 존재하여 쉽게 접근할 수 있는 경우는 증가하고 있지만 매우 흔한 일은 아니다.
 여러분이 간과해서는 안되는 점은 아직도 사람들이 원하는 정확한 정보를 가진 품질이 좋은 자료를 얻기 위해서는 많은 시간과 비용이 든다는 것이다.</p>
 <p>여러분이 원하는 분석에 사용할 수 있는 빅데이터가 있다고 해도 분석을 위한 유용한 자료를 얻기 위해서는 별도의 비용과 노력이 필요한 경우가 많다.</p>
@@ -749,7 +506,7 @@ fc-cache: succeeded
 </ul>
 </section>
 <section id="id4">
-<h2><span class="section-number">6.1.3. </span>모집단과 표본<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.1.3. </span>모집단과 표본<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <p>위에서 제시한 예에서 분석에 필요한 전체자료는 다음과 같다. 우리는 이러한 전체 자료를 <strong>모집단(population)</strong> 이라고 한다.</p>
 <ul class="simple">
 <li><p>선거구에 등록된 모든 유권자의 생각과 의견</p></li>
@@ -764,7 +521,7 @@ fc-cache: succeeded
 <p>가장 번화한 거리를 지나가는 사람들은 매우 다양하기 때문에 전체 유권자를 잘 대표할 수 있고 또한 1000명은 상당한 큰 수이므로 자신의 표본은 쓸만하다고 철수가 주장한다면 여러분은 여기에 동의하는가?</p>
 </section>
 <section id="id5">
-<h2><span class="section-number">6.1.4. </span>확률표본<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.1.4. </span>확률표본<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <p>이제 영이가 철수의 방법보다 더 나은 방법이 있다고 주장한다. 영이가 제안한 1000명의 표본을 추출하는 방법은 다음과 같다.</p>
 <ul class="simple">
 <li><p>지역구의 유권자가 전체 3만명이 있는데 전화국에 유권자들의 전화번호가 수록된 명부가 있다. 이 명부에서 1000명을 <strong>임의로 추출하여</strong> 전화를 걸고 지지 여부와 의견을 물어보자.</p></li>
@@ -779,12 +536,12 @@ fc-cache: succeeded
 </ul>
 </section>
 <section id="id6">
-<h2><span class="section-number">6.1.5. </span>공공자전거 자료<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.1.5. </span>공공자전거 자료<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <p>이제 확률표본의 성질을 알아보가 위하여 실제 자료를 이용해 보자.</p>
-<p>사용될 자료는 2019년 9월 동안 서울특별시 공공자전거 대여 이력 자료이다. 대여이력 자료를 <a class="reference external" href="https://data.seoul.go.kr/dataList/OA-15182/F/1/datasetView.do">자료 사이트</a> 에서 다운로드 받아 데이터프레임 <code class="docutils literal notranslate"><span class="pre">bike</span></code> 로 지정한다.</p>
+<p>사용될 자료는 2019년 9월 동안 서울특별시 공공자전거 대여 이력 자료이다. 대여이력 자료를 <a class="reference external" href="https://data.seoul.go.kr/dataList/OA-15182/F/1/datasetView.do#">자료 사이트</a> 에서 다운로드 받아 데이터프레임 <code class="docutils literal notranslate"><span class="pre">bike</span></code> 로 지정한다.</p>
 <p>데이터프레임 <code class="docutils literal notranslate"><span class="pre">bike</span></code> 는 총 407,589 건의 대여 정보가 수록되어 있다. 대여한 자전거 번호, 언제 어디서 대여를 하고 어디에 반납했는지, 사용한 시간과 거리에 모든 정보가 있다. 이제 우리는 2019년 9월 동안 대여된 공공 자전거를 사용할 때 <strong>이용거리</strong> 에 대한 정보에 관심이 있다고 하자. 운행거리에 대한 정보는 자전거를 관리하는데 있어서 매우 유용하게 사용될 것이다.</p>
 <p>일단 <strong>데이터프레임 <code class="docutils literal notranslate"><span class="pre">bike</span></code> 는 모집단이다. 즉,  2019년 9월에 발생한 모든 대여 정보를 수록한 자료이므로 모집단이라고 할 수 있다.</strong></p>
-<p>이렇게 분석을 위한 필요한 전체 자료를 쉽게 구할 수 있는 사실로서 빅데이터 시대임을 실감하게 된다. 여러분들이 10년 전으로 돌아가서, 자전거 대여소를 일일이 방문하여 손으로 쓰인 운행 기록을 조사한다고 상상해 보자. IT의 발달과 빅데이터의 등장이 우리를 얼마나 편하게 해주는지 실감이 난다. 단, 여러분이 <a class="reference external" href="https://data.seoul.go.kr/dataList/OA-15182/F/1/datasetView.do">자료 사이트</a>에 가서 이용자들의 의견을 보면 정확하고 완전한 데이터를 만드는 것이 얼마나 어려운지 알 수 있다.</p>
+<p>이렇게 분석을 위한 필요한 전체 자료를 쉽게 구할 수 있는 사실로서 빅데이터 시대임을 실감하게 된다. 여러분들이 10년 전으로 돌아가서, 자전거 대여소를 일일이 방문하여 손으로 쓰인 운행 기록을 조사한다고 상상해 보자. IT의 발달과 빅데이터의 등장이 우리를 얼마나 편하게 해주는지 실감이 난다. 단, 여러분이 <a class="reference external" href="https://data.seoul.go.kr/dataList/OA-15182/F/1/datasetView.do#">자료 사이트</a>에 가서 이용자들의 의견을 보면 정확하고 완전한 데이터를 만드는 것이 얼마나 어려운지 알 수 있다.</p>
 <p>공공자전거 자료에 대한 분석에서는 모집단이 존재하지만 이번 절에서는 모집단의 일부인 표본의 특성을 배우는 것이 목적이므로  데이터프레임 <code class="docutils literal notranslate"><span class="pre">bike</span></code> 를 모집단이라고 가정하고 표본을 추출해 볼 것이다.</p>
 <p>먼저 데이터프레임 <code class="docutils literal notranslate"><span class="pre">bike</span></code>에서  이용거리의 분포의 특성을 살펴보자</p>
 <div class="cell docutils container">
@@ -1001,7 +758,7 @@ fc-cache: succeeded
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1ae68453d0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/sample_13_1.png" src="../../_images/sample_13_1.png" />
+<img alt="../../_images/eaa82b63dd05108b6a1fa28dbc550db1a6a057a23279c28843a58c770e74f3b4.png" src="../../_images/eaa82b63dd05108b6a1fa28dbc550db1a6a057a23279c28843a58c770e74f3b4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1014,7 +771,7 @@ fc-cache: succeeded
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1ae670b610&gt;
 </pre></div>
 </div>
-<img alt="../../_images/sample_14_1.png" src="../../_images/sample_14_1.png" />
+<img alt="../../_images/e6782f90b0c5639b0b131ddd00ec510a2893dc9f65cedcfc32f71be755794dfc.png" src="../../_images/e6782f90b0c5639b0b131ddd00ec510a2893dc9f65cedcfc32f71be755794dfc.png" />
 </div>
 </div>
 <p>이제 이용거리에 대한 요약통계량을 구해보자. 아래 요약통계량은 모집단에 대한 정보이다.</p>
@@ -1086,7 +843,7 @@ fc-cache: succeeded
 </div>
 </section>
 <section id="id7">
-<h2><span class="section-number">6.1.6. </span>확률표본의 추출<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.1.6. </span>확률표본의 추출<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p>데이터프레임에서 행, 즉 레코드를 단순임의추출 방법으로 추출하는 메소드는 <code class="docutils literal notranslate"><span class="pre">sample()</span></code>이다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DataFrame</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">frac</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
@@ -1314,7 +1071,7 @@ fc-cache: succeeded
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1ae623e3d0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/sample_23_1.png" src="../../_images/sample_23_1.png" />
+<img alt="../../_images/252a0521ea7d49e03916b80a2fe592d71303cf3a2bd53f05ee42e0086f82e1f6.png" src="../../_images/252a0521ea7d49e03916b80a2fe592d71303cf3a2bd53f05ee42e0086f82e1f6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1327,7 +1084,7 @@ fc-cache: succeeded
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1ae6136cd0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/sample_24_1.png" src="../../_images/sample_24_1.png" />
+<img alt="../../_images/2a8e6ca27669568a6918332d2a27e89ff3a6c0ff8f3be3946e547faefe576fcc.png" src="../../_images/2a8e6ca27669568a6918332d2a27e89ff3a6c0ff8f3be3946e547faefe576fcc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1397,7 +1154,7 @@ fc-cache: succeeded
 </div>
 </section>
 <section id="id8">
-<h2><span class="section-number">6.1.7. </span>확률표본의 분포<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.1.7. </span>확률표본의 분포<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <p>앞 절에서 배운 분포(distribution)의 정의와 그 특성을 파악하는 방법들을 다시 생각해보자. 분포는 자료가 어떻게 집중되어있고 퍼져있는지 나타내는 것이다. 우리는 자료의 분포를 바차트, 히스토그램, 상자그림으로 표현할 수 있다는 것을 배웠고 또한 평균, 중앙값, 표준편차 등 다양한 통계량을 이용하여 분포의 특성, 즉 분포에 대한 정보를 얻는 방법을 배웠다.</p>
 <p>여러분이 조심해야할 점은 우리가 통상적으로 말하는 “분포”는 주어진 자료가 어떻게 집중되고 퍼져있는지를 나타내는것이고 “확률분포”는 임의로 추출하는 경우 어떤 값이 나타날 수 있는 가능성, 즉 확률을 나타내는 것이다.</p>
 <p><strong>추출된 표본에 속한 데이터의 분포는 경험적 분포(empirical distribution)라고 부른다.</strong> 경험적이라는 의미는  추출된 <strong>관측값들의 분포</strong> 라는 것이다. 대부분 경우 모집단 전체를 관측할 수 없기 때문에 모집단에 대해서는 경험적 분포라고 부르지 않고 모집단 분포(population distribution)라고 따로 부른다.</p>
@@ -1424,7 +1181,7 @@ fc-cache: succeeded
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1ae60a7690&gt;
 </pre></div>
 </div>
-<img alt="../../_images/sample_28_1.png" src="../../_images/sample_28_1.png" />
+<img alt="../../_images/150e8c2853f12e2c00ba82d50461939aec9fc452ea599c378dd6df6c356cd37d.png" src="../../_images/150e8c2853f12e2c00ba82d50461939aec9fc452ea599c378dd6df6c356cd37d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1437,7 +1194,7 @@ fc-cache: succeeded
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f1ae61634d0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/sample_29_1.png" src="../../_images/sample_29_1.png" />
+<img alt="../../_images/042b322d1d68cc3a932a1e438cf0dbfffbc7310cafe7eb09495f49d0410ea987.png" src="../../_images/042b322d1d68cc3a932a1e438cf0dbfffbc7310cafe7eb09495f49d0410ea987.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1539,7 +1296,7 @@ fc-cache: succeeded
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sample_33_0.png" src="../../_images/sample_33_0.png" />
+<img alt="../../_images/14a18f2f52c171c1e91f289c04cc3bc59f687aebd467398c20ebc554308eeadc.png" src="../../_images/14a18f2f52c171c1e91f289c04cc3bc59f687aebd467398c20ebc554308eeadc.png" />
 </div>
 </div>
 <p>이제 우리는 표본의 수를 크게 하면서 이용거리의 표본 평균이 모집단의 평균에 가까워지는 현상을 그림으로 나타내보자.</p>
@@ -1693,12 +1450,12 @@ fc-cache: succeeded
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sample_40_0.png" src="../../_images/sample_40_0.png" />
+<img alt="../../_images/2f79cf8dae7f189b8826b180542328da32045bcc0c2f85416d0ae29f8ff926d2.png" src="../../_images/2f79cf8dae7f189b8826b180542328da32045bcc0c2f85416d0ae29f8ff926d2.png" />
 </div>
 </div>
 </section>
 <section id="id9">
-<h2><span class="section-number">6.1.8. </span>편의표본<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.1.8. </span>편의표본<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
 <p>이제 공공자전거 자료에서 편의표본을 추출하는 경우를 생각해 보자. 주어진 상황에 따라서 편의표본을 추출하는 방법은 다양할 것이다.</p>
 <p>철수가 제안한 가장 번화한 거리에 나타난 사람들을 인터뷰하는 편리한 방법처럼, 공공자전거 자료에서도
 데이터프레임의 첫 행부터 순서대로 주어진 개수만큼 표본을 추출하는 방법을 적용해 보자. 공공자전거의 대여정보가 종이로 된 서류화일로에 작성되어 있다면 앞부분만 표본으로 사용하는 방식이라고 생각하자. 만약 100개의 표본이 필요한 경우 엄청난 길이를 가진 서류철에서 처음 100장만 선택하면 정말 편할 것이다.</p>
@@ -1731,12 +1488,12 @@ fc-cache: succeeded
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/sample_44_0.png" src="../../_images/sample_44_0.png" />
+<img alt="../../_images/2db02b207894a9a1c8499cf1a7369f765c80792dbd95d21a02bbec1beccbc22d.png" src="../../_images/2db02b207894a9a1c8499cf1a7369f765c80792dbd95d21a02bbec1beccbc22d.png" />
 </div>
 </div>
 </section>
 <section id="id10">
-<h2><span class="section-number">6.1.9. </span>참고<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.1.9. </span>참고<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <p>참고로 이 과목에서는 확률표본을 정의할 때, 모집단의 속한 모든 개체가 표본에 속할 가능성이 같은 경우라고 정의하였다. 하지만 실제로 확률표본을 추출하는 경우 개체마다 표본에 포함될 수 있는 가능성이 다른 경우도 있다.</p>
 <p>우리나라 모든 기업들의 전체 수출액을 얼마인지 추정해야 하는 경우를 생각해 보자. 만약 삼성전자나
 현대 자동차가 표본에 포함되지 않았다면 어떤 일이 벌어질까?</p>
@@ -1757,7 +1514,7 @@ fc-cache: succeeded
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./chapters/06"
         },
         predefinedOutput: true
@@ -1765,50 +1522,107 @@ fc-cache: succeeded
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="sampling-intro.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">6. </span>표본과 경험적 분포</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sampling-intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>표본과 경험적 분포</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="samplemeans.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="samplemeans.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">6.2. </span>통계량의 분포</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1.1. 빅데이터 시대의 정보</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.1.2. 데이터의 품질</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.1.3. 모집단과 표본</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.1.4. 확률표본</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.1.5. 공공자전거 자료</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.1.6. 확률표본의 추출</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.1.7. 확률표본의 분포</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">6.1.8. 편의표본</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.1.9. 참고</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By 서울시립대학교<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By 서울시립대학교
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

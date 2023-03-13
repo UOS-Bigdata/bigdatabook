@@ -1,49 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>8.2. 선형 회귀모형 &#8212; 빅데이터 개론 2</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystyle.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -53,61 +64,93 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/08/regression';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="8.3. 분류와 예측모형" href="classification.html" />
     <link rel="prev" title="8.1. 두 변수의 관계" href="correlation.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">빅데이터 개론 2</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -117,556 +160,274 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../01/intro-course.html">
-   1. 서론
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01/intro-program.html">
-     1.1. 프로그래밍 언어
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01/intro-stat.html">
-     1.2. 통계학
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../02/intro-python.html">
-   2. 파이선의 기초
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02/basic-expression.html">
-     2.1. 표현식과 변수
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02/data-processing-intro.html">
-     2.2. 데이터의 처리
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02/data-processing-train-passenger.html">
-     2.3. 고속열차 여객 수송자료
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02/data-processing-text.html">
-     2.4. 어린 왕자
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../03/types.html">
-   3. 자료의 형식
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../03/numbers.html">
-     3.1. 숫자
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../03/string.html">
-     3.2. 문자열
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../03/array.html">
-     3.3. 행렬
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../04/dataframe.html">
-   4. 데이터프레임
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-intro.html">
-     4.1. 데이터프레임의 정의와 구성요소
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-change.html">
-     4.2. 데이터프레임의 정리
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-summary.html">
-     4.3. 데이터프레임의 요약
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-merge.html">
-     4.4. 데이터프레임의 결합
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../05/data-intro.html">
-   5. 분포와 확률
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_distribution.html">
-     5.1. 자료의 분포
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_randomness.html">
-     5.2. 분포와 우연성
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_random_experiment.html">
-     5.3. 확률과 컴퓨터 실험
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_probability.html">
-     5.4. 확률의 기초
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_function.html">
-     5.5. 함수
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../06/sampling-intro.html">
-   6. 표본과 경험적 분포
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06/sample.html">
-     6.1. 표본과 정보
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06/samplemeans.html">
-     6.2. 통계량의 분포
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06/estimator.html">
-     6.3. 추정량의 성질
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../06/bootstrap.html">
-     6.4. 붓스트랩
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../07/test-intro.html">
-   7. 유의성 검정
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07/decision.html">
-     7.1. 선택과 증거
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07/pvalue.html">
-     7.2. 유의성 검정
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07/abtest.html">
-     7.3. 두 그룹의 비교
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="relation-intro.html">
-   8. 관계와 예측
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="correlation.html">
-     8.1. 두 변수의 관계
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     8.2. 선형 회귀모형
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="classification.html">
-     8.3. 분류와 예측모형
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="validation.html">
-     8.4. 분류의 평가
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01/intro-course.html">1. 서론</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01/intro-program.html">1.1. 프로그래밍 언어</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/intro-stat.html">1.2. 통계학</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02/intro-python.html">2. 파이선의 기초</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02/basic-expression.html">2.1. 표현식과 변수</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/data-processing-intro.html">2.2. 데이터의 처리</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/data-processing-train-passenger.html">2.3. 고속열차 여객 수송자료</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/data-processing-text.html">2.4. 어린 왕자</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03/types.html">3. 자료의 형식</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03/numbers.html">3.1. 숫자</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/string.html">3.2. 문자열</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/array.html">3.3. 행렬</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04/dataframe.html">4. 데이터프레임</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04/dataframe-intro.html">4.1. 데이터프레임의 정의와 구성요소</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04/dataframe-change.html">4.2. 데이터프레임의 정리</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04/dataframe-summary.html">4.3. 데이터프레임의 요약</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04/dataframe-merge.html">4.4. 데이터프레임의 결합</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05/data-intro.html">5. 분포와 확률</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_distribution.html">5.1. 자료의 분포</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_randomness.html">5.2. 분포와 우연성</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_random_experiment.html">5.3. 확률과 컴퓨터 실험</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_probability.html">5.4. 확률의 기초</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_function.html">5.5. 함수</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06/sampling-intro.html">6. 표본과 경험적 분포</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06/sample.html">6.1. 표본과 정보</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06/samplemeans.html">6.2. 통계량의 분포</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06/estimator.html">6.3. 추정량의 성질</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06/bootstrap.html">6.4. 붓스트랩</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07/test-intro.html">7. 유의성 검정</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07/decision.html">7.1. 선택과 증거</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07/pvalue.html">7.2. 유의성 검정</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07/abtest.html">7.3. 두 그룹의 비교</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="relation-intro.html">8. 관계와 예측</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="correlation.html">8.1. 두 변수의 관계</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">8.2. 선형 회귀모형</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification.html">8.3. 분류와 예측모형</a></li>
+<li class="toctree-l2"><a class="reference internal" href="validation.html">8.4. 분류의 평가</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/UOS-Bigdata/bigdatabook/master?urlpath=tree/chapters/08/regression.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
   
-    <img src="../../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+  <div id="rtd-footer-container"></div>
 
-      </li>
+
+      </div>
       
-      <li>
-        <a href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/08/regression.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/08/regression.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../../_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+<a href="https://github.com/UOS-Bigdata/bigdatabook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/UOS-Bigdata/bigdatabook"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../_sources/chapters/08/regression.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/08/regression.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   8.2.1. 아버지와 아들의 키: 평균들의 관계
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   8.2.2. 최소제곱법
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     8.2.2.1. 최소제곱법의 기준
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     8.2.2.2. 평균제곱오차
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     8.2.2.3. 최소제곱법의 해
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id7">
-   8.2.3. 선형 회귀모형의 평가
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sklearn">
-   8.2.4.
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     SKlearn
-    </span>
-   </code>
-   패키지
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>선형 회귀모형</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   8.2.1. 아버지와 아들의 키: 평균들의 관계
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   8.2.2. 최소제곱법
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     8.2.2.1. 최소제곱법의 기준
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     8.2.2.2. 평균제곱오차
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     8.2.2.3. 최소제곱법의 해
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id7">
-   8.2.3. 선형 회귀모형의 평가
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sklearn">
-   8.2.4.
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     SKlearn
-    </span>
-   </code>
-   패키지
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>선형 회귀모형</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">8.2.1. 아버지와 아들의 키: 평균들의 관계</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.2.2. 최소제곱법</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.2.2.1. 최소제곱법의 기준</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.2.2.2. 평균제곱오차</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">8.2.2.3. 최소제곱법의 해</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.2.3. 선형 회귀모형의 평가</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sklearn">8.2.4. <code class="docutils literal notranslate"><span class="pre">SKlearn</span></code> 패키지</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">8.2. </span>선형 회귀모형<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">8.2. </span>선형 회귀모형<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <p>관심있는 반응 변수와 설명변수의 함수적인 관계를 추론하는 경우 사용할 수 있는 가장 단순하고 기본적인 모형은 선형 회귀모형(linear regression model)이다. 선형 회귀모형은  설명변수의 변화에 따른 반응변수의 변화를 선형식으로 나타낸 매우 단순한 모형이다. 이 절에서는 선형 회귀모형을 추정하는 방법을 살펴보기로 한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -723,7 +484,7 @@ fc-cache: succeeded
 </div>
 </div>
 <section id="id2">
-<h2><span class="section-number">8.2.1. </span>아버지와 아들의 키: 평균들의 관계<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.2.1. </span>아버지와 아들의 키: 평균들의 관계<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>먼저 앞 절에서 살펴본 Francis Galton의  아버지와 아들의 키에 대한 데이터를 먼저 데이터프레임으로 만들자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -746,7 +507,7 @@ fc-cache: succeeded
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f10cc58f2d0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/regression_7_1.png" src="../../_images/regression_7_1.png" />
+<img alt="../../_images/f9c64c3b006dccc1bfe672fcd373e5fd07f9ccad073b573d0050fb3aed981547.png" src="../../_images/f9c64c3b006dccc1bfe672fcd373e5fd07f9ccad073b573d0050fb3aed981547.png" />
 </div>
 </div>
 <p>여기서 경향(trend)라는 말에 주의하자. 경향을 보인다는 것은 아버지의 키를 알고 있다면 아들의 키를 정확하게 예측할 수는 없지만 아버지의 키가 증가하면 평균적으로 아들의 키도 증가한다는 것이다.</p>
@@ -959,7 +720,7 @@ Categories (4, interval[int64]): [(140, 160] &lt; (160, 170] &lt; (170, 180] &lt
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f10cc02df50&gt;
 </pre></div>
 </div>
-<img alt="../../_images/regression_13_1.png" src="../../_images/regression_13_1.png" />
+<img alt="../../_images/9c6212d042751da9e85cfd80bac4d68310744672f618860b31ba16a6f1deaf99.png" src="../../_images/9c6212d042751da9e85cfd80bac4d68310744672f618860b31ba16a6f1deaf99.png" />
 </div>
 </div>
 <p>다음으로 그룹의 간격을 조금 더 잘게 나누어서 각 그룹의 평균이 어떻게 변하는지 살펴보자.</p>
@@ -1200,7 +961,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f10ca7b9690&gt;
 </pre></div>
 </div>
-<img alt="../../_images/regression_18_1.png" src="../../_images/regression_18_1.png" />
+<img alt="../../_images/4da3deb581471ac0eb4cc57370578b3b120f04571e6ea3800e868a366fd899ea.png" src="../../_images/4da3deb581471ac0eb4cc57370578b3b120f04571e6ea3800e868a366fd899ea.png" />
 </div>
 </div>
 <p>위에서 주어진 10개의 구간에 대한 아버지와 아들의 평균 키에 대한 관계는  하나의 직선과 같은 관계를 보인다.</p>
@@ -1219,7 +980,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f10ca66c810&gt;
 </pre></div>
 </div>
-<img alt="../../_images/regression_20_1.png" src="../../_images/regression_20_1.png" />
+<img alt="../../_images/dd326664c4bbe8af3126bb3725b2d643cb197109a1080141df23896e7976b24c.png" src="../../_images/dd326664c4bbe8af3126bb3725b2d643cb197109a1080141df23896e7976b24c.png" />
 </div>
 </div>
 <p>위의 그림에서 나타난 빨간 점들은 주어진 아버지의 키 구간에서 아들의 키들의 평균값을 표시한 것이다. 아버지의 키의 평균과 아들 키의 평균이 직선과 같은 관계를 가지는 것을 알 수 있다.</p>
@@ -1229,9 +990,9 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <p>위의 식에서 <span class="math notranslate nohighlight">\(E(y|x)\)</span>는 설명변수 <span class="math notranslate nohighlight">\(x\)</span>의 값이 주어진 경우 반응변수 <span class="math notranslate nohighlight">\(y\)</span>의 평균(Expectation, Mean)을 의미한다.</p>
 </section>
 <section id="id3">
-<h2><span class="section-number">8.2.2. </span>최소제곱법<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.2.2. </span>최소제곱법<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <section id="id4">
-<h3><span class="section-number">8.2.2.1. </span>최소제곱법의 기준<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.2.2.1. </span>최소제곱법의 기준<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>이제 위에서 주어진 선형 회귀모형에서 직선의 기울기 <span class="math notranslate nohighlight">\(\beta_1\)</span> 과 절편 <span class="math notranslate nohighlight">\(\beta_0\)</span>를 데이터를 이용하여 결정하는 기준과 방법에 대하여 알아보자.</p>
 <p>최소제곱법(least square method)은 설명변수의 값 <span class="math notranslate nohighlight">\(x_i\)</span> 에 대하여 실제 관측한 반응변수의 값 <span class="math notranslate nohighlight">\(y_i\)</span>와 선형 회귀직선 위에 있는 값 <span class="math notranslate nohighlight">\(\beta_0 + \beta_1 x_i\)</span> 값이 <strong>가장 가깝게 나타나도록</strong> 기울기 <span class="math notranslate nohighlight">\(\beta_1\)</span> 과 절편 <span class="math notranslate nohighlight">\(\beta_0\)</span>을 결정하는 방법이다.</p>
 <p>두 개의 주어진 수가 가장 가깝다는 것을 정하려면  두 수의 거리(distance)를 정의해야 한다.
@@ -1248,7 +1009,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <p>따라서 최소제곱법은 실제 자료와 직선식으로 표현된 평균값의 차이들의 제곱합를 최소화하는 기울기와 절편을 찾는 방법이다.</p>
 </section>
 <section id="id5">
-<h3><span class="section-number">8.2.2.2. </span>평균제곱오차<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.2.2.2. </span>평균제곱오차<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>이제 절편 <span class="math notranslate nohighlight">\(\beta_0 = \beta_{0}^*\)</span> 와 기울기 <span class="math notranslate nohighlight">\(\beta_1 = \beta_1^*\)</span> 로 그 값이 주어진 경우 실제 자료와 직선식으로 표현된 평균값의 차이들의 제곱합을 다음과 같이 나타내면 이 값을 평균제곱오차(Mean Squared Error; mse) 라고 부른다.</p>
 <div class="math notranslate nohighlight">
 \[ mse(\beta_0^*, \beta_1^*) = \frac{1}{n} \sum_{i=1}^n (y_i - [\beta_0^* + \beta_1^* x_i])^2  = \frac{1}{n} \sum_{i=1}^n  \text{error}_i^2 \]</div>
@@ -1308,7 +1069,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>328.3974546323276
 </pre></div>
 </div>
-<img alt="../../_images/regression_26_1.png" src="../../_images/regression_26_1.png" />
+<img alt="../../_images/41215e0b1ef78921affe175715c3243f8649e0af1c6f87155ed1ff39f97ed4a9.png" src="../../_images/41215e0b1ef78921affe175715c3243f8649e0af1c6f87155ed1ff39f97ed4a9.png" />
 </div>
 </div>
 <p>이제 아래 그림은   절편이 <span class="math notranslate nohighlight">\(\beta_0=25.0\)</span>, 기울기가 <span class="math notranslate nohighlight">\(\beta_1 = 0.9\)</span> 으로 주어진 경우 아버지의 키(<span class="math notranslate nohighlight">\(x\)</span>)와 아들의 키(<span class="math notranslate nohighlight">\(y\)</span>)의 관계를  선형 회귀직선을 나타낸 것이다.</p>
@@ -1328,12 +1089,12 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>73.29044331530774
 </pre></div>
 </div>
-<img alt="../../_images/regression_28_1.png" src="../../_images/regression_28_1.png" />
+<img alt="../../_images/14395127348c8637ee53e58c3f51746a1d7504baae03501b1eff4afc063ad2f4.png" src="../../_images/14395127348c8637ee53e58c3f51746a1d7504baae03501b1eff4afc063ad2f4.png" />
 </div>
 </div>
 </section>
 <section id="id6">
-<h3><span class="section-number">8.2.2.3. </span>최소제곱법의 해<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.2.2.3. </span>최소제곱법의 해<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>이렇게 절편과 기울기의 값이 변하면 평균제곱오차의 크기도 변한다. 그러면 평균제곱오차를 최소화하는 최적의 절편과 기울기는 어떻게 구할까?</p>
 <p>앞에서 언급한 것과 같이 설명변수(<span class="math notranslate nohighlight">\(x_i\)</span>)와 반응변수(<span class="math notranslate nohighlight">\(y_i\)</span>)의 데이터가 <span class="math notranslate nohighlight">\(n\)</span>개 주어진 경우, 평균제곱오차를 최소화하는 최소제곱법의 해(solution) <span class="math notranslate nohighlight">\(\hat \beta_0\)</span>와 <span class="math notranslate nohighlight">\(\hat \beta_1\)</span> 은 다음과 같이 주어진다.</p>
 <div class="math notranslate nohighlight">
@@ -1413,7 +1174,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38.23082448512249
 </pre></div>
 </div>
-<img alt="../../_images/regression_34_1.png" src="../../_images/regression_34_1.png" />
+<img alt="../../_images/9625d16770c3f7c87bea06541cfb847f9c8d34a35c53a273664b127da0b99182.png" src="../../_images/9625d16770c3f7c87bea06541cfb847f9c8d34a35c53a273664b127da0b99182.png" />
 </div>
 </div>
 <p>아버지의 키(<span class="math notranslate nohighlight">\(x\)</span>)와 아들의 키(<span class="math notranslate nohighlight">\(y\)</span>)의 관계를 선형 회귀모형으로 나타낼 때 추정된 회귀직선은 다음과 같다.</p>
@@ -1439,7 +1200,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 </section>
 </section>
 <section id="id7">
-<h2><span class="section-number">8.2.3. </span>선형 회귀모형의 평가<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.2.3. </span>선형 회귀모형의 평가<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p>위에서 아버지와 아들의 키의 관계를 선형 회귀모형으로 나타내는 경우, 실제 관측값들은 추정된 회귀직선 주위에 퍼져서 나타난다. 추정된 회귀직선으로 부터 반응변수의 관측값들이 퍼진 정도가 작아지면 회귀모형이 반응변수와 설명변수의 관계를 더욱 잘 설명하는것으로 판단할 수 있다.</p>
 <p>다음 두 개의 데이터와 각각 추정된 회귀직선을 비교해 보자.</p>
 <div class="cell docutils container">
@@ -1476,7 +1237,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f10c19f1e90&gt;
 </pre></div>
 </div>
-<img alt="../../_images/regression_40_1.png" src="../../_images/regression_40_1.png" />
+<img alt="../../_images/124e818c837aafab19f852c3ec6e9aebfd1f0b851ddb48f1c9d894d32a988704.png" src="../../_images/124e818c837aafab19f852c3ec6e9aebfd1f0b851ddb48f1c9d894d32a988704.png" />
 </div>
 </div>
 <p>첫번째 그림과 두 번째 그림을 비교하면 두 번째 데이터에서 적합한 선형 회귀모형이 첫 번째 데이터의 모형보다 오차(error)가 더 작은 것을 알 수 있다.</p>
@@ -1503,7 +1264,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>26.971200022915433
 </pre></div>
 </div>
-<img alt="../../_images/regression_43_1.png" src="../../_images/regression_43_1.png" />
+<img alt="../../_images/ca0e4dc981dabdd0b2104cdb0c4f6b836c1dfc1aa97c7019c9c76839446b655c.png" src="../../_images/ca0e4dc981dabdd0b2104cdb0c4f6b836c1dfc1aa97c7019c9c76839446b655c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1518,7 +1279,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6519429797067264
 </pre></div>
 </div>
-<img alt="../../_images/regression_44_1.png" src="../../_images/regression_44_1.png" />
+<img alt="../../_images/3206e8e2f6032a8c5c04875386385a360f3d21432f4500eae60a0e3db42dcf09.png" src="../../_images/3206e8e2f6032a8c5c04875386385a360f3d21432f4500eae60a0e3db42dcf09.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1551,7 +1312,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
 </div>
 </section>
 <section id="sklearn">
-<h2><span class="section-number">8.2.4. </span><code class="docutils literal notranslate"><span class="pre">SKlearn</span></code> 패키지<a class="headerlink" href="#sklearn" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.2.4. </span><code class="docutils literal notranslate"><span class="pre">SKlearn</span></code> 패키지<a class="headerlink" href="#sklearn" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">SKlearn</span></code> 패키지는 기계학습에서 이용되는 다양한 모형들을 모아놓은 패키지이다.</p>
 <p>다음은 아버지와 아들의 키 자료에 대하여 <code class="docutils literal notranslate"><span class="pre">SKlearn</span></code> 패키지의 <code class="docutils literal notranslate"><span class="pre">linear_model</span></code> 라이브러리를 이용하여 위에서 배운 선형 회귀모형을 적합하고 여러 가지 통계량을 얻을 수 있는 코드이다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">SKlearn</span></code> 패키지의 <code class="docutils literal notranslate"><span class="pre">linear_model</span></code> 라이브러리를 이용하기 위해서는 데이터프레임으로 저장된 자료를 <code class="docutils literal notranslate"><span class="pre">numpy</span></code> 의 행렬 형식으로 바꾸어야 한다. 또한 설명변수가 1개인 경우 <span class="math notranslate nohighlight">\((-1,1)\)</span> 사이의 값으으로 변화시켜주어야 한다.</p>
@@ -1615,7 +1376,7 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./chapters/08"
         },
         predefinedOutput: true
@@ -1623,50 +1384,107 @@ Categories (10, interval[float64]): [(149.839, 154.053] &lt; (154.053, 158.225] 
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="correlation.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">8.1. </span>두 변수의 관계</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="correlation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">8.1. </span>두 변수의 관계</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="classification.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="classification.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">8.3. </span>분류와 예측모형</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">8.2.1. 아버지와 아들의 키: 평균들의 관계</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.2.2. 최소제곱법</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.2.2.1. 최소제곱법의 기준</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.2.2.2. 평균제곱오차</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">8.2.2.3. 최소제곱법의 해</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.2.3. 선형 회귀모형의 평가</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sklearn">8.2.4. <code class="docutils literal notranslate"><span class="pre">SKlearn</span></code> 패키지</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By 서울시립대학교<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By 서울시립대학교
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

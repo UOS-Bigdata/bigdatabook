@@ -1,49 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>6.2. 통계량의 분포 &#8212; 빅데이터 개론 2</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystyle.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -53,61 +64,93 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/06/samplemeans';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="6.3. 추정량의 성질" href="estimator.html" />
     <link rel="prev" title="6.1. 표본과 정보" href="sample.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">빅데이터 개론 2</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -117,588 +160,280 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../01/intro-course.html">
-   1. 서론
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01/intro-program.html">
-     1.1. 프로그래밍 언어
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../01/intro-stat.html">
-     1.2. 통계학
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../02/intro-python.html">
-   2. 파이선의 기초
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02/basic-expression.html">
-     2.1. 표현식과 변수
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02/data-processing-intro.html">
-     2.2. 데이터의 처리
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02/data-processing-train-passenger.html">
-     2.3. 고속열차 여객 수송자료
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../02/data-processing-text.html">
-     2.4. 어린 왕자
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../03/types.html">
-   3. 자료의 형식
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../03/numbers.html">
-     3.1. 숫자
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../03/string.html">
-     3.2. 문자열
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../03/array.html">
-     3.3. 행렬
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../04/dataframe.html">
-   4. 데이터프레임
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-intro.html">
-     4.1. 데이터프레임의 정의와 구성요소
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-change.html">
-     4.2. 데이터프레임의 정리
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-summary.html">
-     4.3. 데이터프레임의 요약
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../04/dataframe-merge.html">
-     4.4. 데이터프레임의 결합
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../05/data-intro.html">
-   5. 분포와 확률
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_distribution.html">
-     5.1. 자료의 분포
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_randomness.html">
-     5.2. 분포와 우연성
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_random_experiment.html">
-     5.3. 확률과 컴퓨터 실험
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_probability.html">
-     5.4. 확률의 기초
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../05/data_function.html">
-     5.5. 함수
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="sampling-intro.html">
-   6. 표본과 경험적 분포
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="sample.html">
-     6.1. 표본과 정보
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     6.2. 통계량의 분포
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="estimator.html">
-     6.3. 추정량의 성질
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bootstrap.html">
-     6.4. 붓스트랩
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../07/test-intro.html">
-   7. 유의성 검정
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07/decision.html">
-     7.1. 선택과 증거
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07/pvalue.html">
-     7.2. 유의성 검정
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../07/abtest.html">
-     7.3. 두 그룹의 비교
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../08/relation-intro.html">
-   8. 관계와 예측
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08/correlation.html">
-     8.1. 두 변수의 관계
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08/regression.html">
-     8.2. 선형 회귀모형
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08/classification.html">
-     8.3. 분류와 예측모형
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../08/validation.html">
-     8.4. 분류의 평가
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01/intro-course.html">1. 서론</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01/intro-program.html">1.1. 프로그래밍 언어</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/intro-stat.html">1.2. 통계학</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02/intro-python.html">2. 파이선의 기초</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02/basic-expression.html">2.1. 표현식과 변수</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/data-processing-intro.html">2.2. 데이터의 처리</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/data-processing-train-passenger.html">2.3. 고속열차 여객 수송자료</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/data-processing-text.html">2.4. 어린 왕자</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03/types.html">3. 자료의 형식</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03/numbers.html">3.1. 숫자</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/string.html">3.2. 문자열</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03/array.html">3.3. 행렬</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04/dataframe.html">4. 데이터프레임</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04/dataframe-intro.html">4.1. 데이터프레임의 정의와 구성요소</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04/dataframe-change.html">4.2. 데이터프레임의 정리</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04/dataframe-summary.html">4.3. 데이터프레임의 요약</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04/dataframe-merge.html">4.4. 데이터프레임의 결합</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05/data-intro.html">5. 분포와 확률</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_distribution.html">5.1. 자료의 분포</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_randomness.html">5.2. 분포와 우연성</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_random_experiment.html">5.3. 확률과 컴퓨터 실험</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_probability.html">5.4. 확률의 기초</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05/data_function.html">5.5. 함수</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="sampling-intro.html">6. 표본과 경험적 분포</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sample.html">6.1. 표본과 정보</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.2. 통계량의 분포</a></li>
+<li class="toctree-l2"><a class="reference internal" href="estimator.html">6.3. 추정량의 성질</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bootstrap.html">6.4. 붓스트랩</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07/test-intro.html">7. 유의성 검정</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07/decision.html">7.1. 선택과 증거</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07/pvalue.html">7.2. 유의성 검정</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07/abtest.html">7.3. 두 그룹의 비교</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../08/relation-intro.html">8. 관계와 예측</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08/correlation.html">8.1. 두 변수의 관계</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08/regression.html">8.2. 선형 회귀모형</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08/classification.html">8.3. 분류와 예측모형</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08/validation.html">8.4. 분류의 평가</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/UOS-Bigdata/bigdatabook/master?urlpath=tree/chapters/06/samplemeans.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
   
-    <img src="../../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+  <div id="rtd-footer-container"></div>
 
-      </li>
+
+      </div>
       
-      <li>
-        <a href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/06/samplemeans.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UOS-Bigdata/bigdatabook/blob/master/chapters/06/samplemeans.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../../_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+<a href="https://github.com/UOS-Bigdata/bigdatabook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/UOS-Bigdata/bigdatabook"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../_sources/chapters/06/samplemeans.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/06/samplemeans.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   6.2.1. 모집단과 표본
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   6.2.2. 표본 통계량의 정확한 분포
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     6.2.2.1. 모집단
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     6.2.2.2. 표본
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     6.2.2.3. 모든 가능한 표본의 분포
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     6.2.2.4. 통계량의 정확한 분포
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
-   6.2.3. 표본 통계량의 경험적 분포
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     6.2.3.1. 모의실험
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
-     6.2.3.2. 통계량의 분포
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id11">
-   6.2.4. 표본평균의 분포: 예제
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id12">
-   6.2.5. 정리
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>통계량의 분포</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   6.2.1. 모집단과 표본
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   6.2.2. 표본 통계량의 정확한 분포
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     6.2.2.1. 모집단
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     6.2.2.2. 표본
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     6.2.2.3. 모든 가능한 표본의 분포
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     6.2.2.4. 통계량의 정확한 분포
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
-   6.2.3. 표본 통계량의 경험적 분포
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     6.2.3.1. 모의실험
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
-     6.2.3.2. 통계량의 분포
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id11">
-   6.2.4. 표본평균의 분포: 예제
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id12">
-   6.2.5. 정리
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>통계량의 분포</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.2.1. 모집단과 표본</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.2.2. 표본 통계량의 정확한 분포</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.2.2.1. 모집단</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.2.2.2. 표본</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.2.2.3. 모든 가능한 표본의 분포</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.2.2.4. 통계량의 정확한 분포</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.2.3. 표본 통계량의 경험적 분포</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">6.2.3.1. 모의실험</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.2.3.2. 통계량의 분포</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">6.2.4. 표본평균의 분포: 예제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">6.2.5. 정리</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">6.2. </span>통계량의 분포<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6.2. </span>통계량의 분포<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span># 한글 폰트가 깨질 때 사용 - 런타임 메뉴에서 다시 시작 및 모두 실행 선택. (출처: https://teddylee777.github.io/colab/colab-korean)
@@ -733,7 +468,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="id2">
-<h2><span class="section-number">6.2.1. </span>모집단과 표본<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.2.1. </span>모집단과 표본<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>이제 앞에서 배운 표본에 대하여 좀 더 자세하게 배워보자. 자료를 수집하고 분석하는 일반적인 절차을 정리해 보자.</p>
 <ul class="simple">
 <li><p>분석의 목적은 모집단에 대한 특성을 파악하는 것이다.</p></li>
@@ -750,54 +485,54 @@ title="Print to PDF"
 <div class="math notranslate nohighlight">
 \[ \text{표본 지지율} = \frac{\text{표본에서 후보 A를 지지하는 사람의 수}}{\text{표본에 속한 사람의 수}} \]</div>
 <p>이제 위에서 나온 중요한 용어의 정의와 기호를  정리해 보자.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p>용어</p></th>
-<th class="text-align:center head"><p>기호</p></th>
-<th class="text-align:center head"><p>정의</p></th>
-<th class="text-align:center head"><p>예</p></th>
+<tr class="row-odd"><th class="head text-center"><p>용어</p></th>
+<th class="head text-center"><p>기호</p></th>
+<th class="head text-center"><p>정의</p></th>
+<th class="head text-center"><p>예</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p>모집단(population)</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(P\)</span></p></td>
-<td class="text-align:center"><p>관심이 있는 전체집단</p></td>
-<td class="text-align:center"><p>모든 선거구 주민</p></td>
+<tr class="row-even"><td class="text-center"><p>모집단(population)</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(P\)</span></p></td>
+<td class="text-center"><p>관심이 있는 전체집단</p></td>
+<td class="text-center"><p>모든 선거구 주민</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>모집단의 수</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(N\)</span></p></td>
-<td class="text-align:center"><p>전체집단에 속한 개체 수</p></td>
-<td class="text-align:center"><p>모든 선거구 주민의 수</p></td>
+<tr class="row-odd"><td class="text-center"><p>모집단의 수</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(N\)</span></p></td>
+<td class="text-center"><p>전체집단에 속한 개체 수</p></td>
+<td class="text-center"><p>모든 선거구 주민의 수</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>모수(parameter)</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\theta\)</span></p></td>
-<td class="text-align:center"><p>모집단의 특성값</p></td>
-<td class="text-align:center"><p>모집단의 지지율</p></td>
+<tr class="row-even"><td class="text-center"><p>모수(parameter)</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\theta\)</span></p></td>
+<td class="text-center"><p>모집단의 특성값</p></td>
+<td class="text-center"><p>모집단의 지지율</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>표본(sample)</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(S\)</span></p></td>
-<td class="text-align:center"><p>모집단의 부분 집합</p></td>
-<td class="text-align:center"><p>표본으로 추출된 주민</p></td>
+<tr class="row-odd"><td class="text-center"><p>표본(sample)</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(S\)</span></p></td>
+<td class="text-center"><p>모집단의 부분 집합</p></td>
+<td class="text-center"><p>표본으로 추출된 주민</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>표본의 수</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(n\)</span></p></td>
-<td class="text-align:center"><p>표본에 속한 개체 수</p></td>
-<td class="text-align:center"><p>표본으로 추출된 선거구 주민의 수</p></td>
+<tr class="row-even"><td class="text-center"><p>표본의 수</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(n\)</span></p></td>
+<td class="text-center"><p>표본에 속한 개체 수</p></td>
+<td class="text-center"><p>표본으로 추출된 선거구 주민의 수</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>표본 통계량(sample statistics)</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\hat \theta\)</span></p></td>
-<td class="text-align:center"><p>표본의 특성값</p></td>
-<td class="text-align:center"><p>표본 지지율</p></td>
+<tr class="row-odd"><td class="text-center"><p>표본 통계량(sample statistics)</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(\hat \theta\)</span></p></td>
+<td class="text-center"><p>표본의 특성값</p></td>
+<td class="text-center"><p>표본 지지율</p></td>
 </tr>
 </tbody>
 </table>
 <p>일반적으로 통계학에서 표본으로 부터 얻어진 특성 값은 기호의 위에 모자(hat,<span class="math notranslate nohighlight">\(\hat{}\)</span>)을 붙여주며 이를 표본 통계량 또는 추정량(estimator)라고 부른다. 모집단의 특성을 나타내는 모수(parameter)는 보통 평균, 비율, 중간값, 특정 사건이 일어날 확률 등 분석의 목적에 따라서 다양한 형태로 나타난다.</p>
 </section>
 <section id="id3">
-<h2><span class="section-number">6.2.2. </span>표본 통계량의 정확한 분포<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.2.2. </span>표본 통계량의 정확한 분포<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>통계량의 정확한 분포에 대하여 알아보기 위하여 선거 여론조사에 대한 아주 간단한 예를 들어보자</p>
 <section id="id4">
-<h3><span class="section-number">6.2.2.1. </span>모집단<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.2.1. </span>모집단<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>모집단과 표본에 대한 간단한 예제를 들어보자. 모집단은 다음과 같이 5명의 사람들로 이루어진 집합이라고 하자.</p>
 <div class="math notranslate nohighlight">
 \[ P = \{ \text{철수, 영이, 둘리, 흥민, 연경} \}, \quad N = 5 \]</div>
@@ -817,7 +552,7 @@ title="Print to PDF"
 \[ \theta = \frac{1+1+0+0+1}{5} = \frac{3}{5}= 0.6 \]</div>
 </section>
 <section id="id5">
-<h3><span class="section-number">6.2.2.2. </span>표본<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.2.2. </span>표본<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>이제 5명의 모집단에서 단순임의추출로 3명의 표본을 추출하는 경우를 생각해 보자. 물론 비복원 추출이다.</p>
 <p>3명의 표본을 추출한 후, 표본에 속한 <span class="math notranslate nohighlight">\(i\)</span> 번째 사람이 후보를 지지하면 <span class="math notranslate nohighlight">\(x_i=1\)</span>, 지지하지 않으면 <span class="math notranslate nohighlight">\(x_i=0\)</span> 이라고 하자. 이러한 경우 표본 지지율 <span class="math notranslate nohighlight">\(\hat \theta\)</span> 는  추출된 사람들의 관측값 <span class="math notranslate nohighlight">\(x_1, x_2,  x_3\)</span>의 평균 <span class="math notranslate nohighlight">\(\bar x\)</span>와 같다.</p>
 <div class="math notranslate nohighlight">
@@ -879,7 +614,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id6">
-<h3><span class="section-number">6.2.2.3. </span>모든 가능한 표본의 분포<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.2.3. </span>모든 가능한 표본의 분포<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>모집단에서 실제로 표본을 추출하면  10개의 가능한 표본들 중 하나가 추출될 것이다. 특정한 하나의 표본이 추출될 확률은 얼마인가? 단순임의추출을 사용하였으므로 10개의 가능한 표본들은 추출될 가능성이 모두 같다. 따라서 특정한 표본이 추출될 확률은 <span class="math notranslate nohighlight">\(1/10 = 0.1\)</span> 로 모두 동일하다.</p>
 <div class="math notranslate nohighlight">
 \[ P (\text{철수, 영이, 둘리}) = P (\text{철수, 영이, 흥민}) = \dots = P (\text{둘리, 흥민, 연경}) = \frac{1}{10} = \frac{1}{{{N}\choose{n}}} \]</div>
@@ -1046,22 +781,22 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id7">
-<h3><span class="section-number">6.2.2.4. </span>통계량의 정확한 분포<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.2.4. </span>통계량의 정확한 분포<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <p>함수 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code>를  이용하여 지지율 <code class="docutils literal notranslate"><span class="pre">sample_rate</span></code> 을 이용하여 그룹화 한 후, 각 그룹에 대한  확률 <code class="docutils literal notranslate"><span class="pre">probability</span></code>의 합을 구하자.</p>
 <p>이제 우리는 표본 지지율에 대한 정확한 분포를 다음과 같이 구할 수 있다.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p>표본 지지율 (<span class="math notranslate nohighlight">\(\hat \theta\)</span>)</p></th>
-<th class="text-align:center head"><p>1/3</p></th>
-<th class="text-align:center head"><p>2/3</p></th>
-<th class="text-align:center head"><p>1</p></th>
+<tr class="row-odd"><th class="head text-center"><p>표본 지지율 (<span class="math notranslate nohighlight">\(\hat \theta\)</span>)</p></th>
+<th class="head text-center"><p>1/3</p></th>
+<th class="head text-center"><p>2/3</p></th>
+<th class="head text-center"><p>1</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p>확률 (probability)</p></td>
-<td class="text-align:center"><p>0.3</p></td>
-<td class="text-align:center"><p>0.6</p></td>
-<td class="text-align:center"><p>0.1</p></td>
+<tr class="row-even"><td class="text-center"><p>확률 (probability)</p></td>
+<td class="text-center"><p>0.3</p></td>
+<td class="text-center"><p>0.6</p></td>
+<td class="text-center"><p>0.1</p></td>
 </tr>
 </tbody>
 </table>
@@ -1124,13 +859,13 @@ title="Print to PDF"
 </section>
 </section>
 <section id="id8">
-<h2><span class="section-number">6.2.3. </span>표본 통계량의 경험적 분포<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.2.3. </span>표본 통계량의 경험적 분포<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <p>위의 예제에서 처럼 모든 가능한 표본의 개수가 너무 많으면 가능한 모든 표본들을 고려하여 관심있는 통계량 <span class="math notranslate nohighlight">\(\hat \theta\)</span> 의 정확한 분포를 구하는 것은 거의 불가능하다.</p>
 <p>이런 경우 우리는 가능한 표본을 모두 고려하지 않고 모집단에서 많은 수의 표본을 독립적으로 임의추출하는 모의실험(simulation)을 통하여 추정량의 경험적 분포를 구할 수 있다.</p>
 <section id="id9">
-<h3><span class="section-number">6.2.3.1. </span>모의실험<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.3.1. </span>모의실험<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <p>주민 10,000 명으로 구성된  모집단에서 60%가  A 후보를 지지한다고 가정하고 100명을 표본으로 추출할 때  표본 지지율의 경험적 분포를 다음과 같이 모의실험을 통해서 구할 수 있다.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>지지율이 60%인  모집단을 만든다 (1 이 6000개, 0 이 4000개로 이루어진 집합)</p></li>
 <li><p>모집단에서 100개의 표본을 임의 추출한다.</p></li>
 <li><p>추출된 표본으로부터 표본 지지율 <span class="math notranslate nohighlight">\(\hat \theta\)</span> 을 계산한다.</p></li>
@@ -1260,7 +995,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe54f176dd0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/samplemeans_27_1.png" src="../../_images/samplemeans_27_1.png" />
+<img alt="../../_images/d6da334556e686aaf1ddbe1663d02c0662c817ba2f6d575d80d293ef74282ea8.png" src="../../_images/d6da334556e686aaf1ddbe1663d02c0662c817ba2f6d575d80d293ef74282ea8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1273,7 +1008,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe54f0ff7d0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/samplemeans_28_1.png" src="../../_images/samplemeans_28_1.png" />
+<img alt="../../_images/6d92a10a7bdac71e65db6f38f331895ca0483f5c3e2639a48a27a9d6eace8659.png" src="../../_images/6d92a10a7bdac71e65db6f38f331895ca0483f5c3e2639a48a27a9d6eace8659.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1343,7 +1078,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id10">
-<h3><span class="section-number">6.2.3.2. </span>통계량의 분포<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.3.2. </span>통계량의 분포<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
 <p>앞 절에서 보았듯이 표본의 개수가 증가하면 표본 평균이 점점 모집단 평균에 더 가까이 접근하는 사실을 알 수 있다. 표본은 임의로 추출하는 것이기 때문에 추출 전에는 어떤 표본이 나올지 알 수 없으며  서로 다른 두 사람이  같은 모집단에서 표본을 추출해도 두 사람의 표본이 같을 가능성은 거의 없다. 즉, 눈 감고 뽑는 임의성(randomness) 때문에 표본은 추출할 때 마다 다른 관측값들이 나온다. 따라서 표본으로 부터 계산한 통계량도 임의성을 가진다. 따라서 <strong>임의성을 가진 표본 통계량은 분포를 가진다.</strong></p>
 <p>표본 통계량의 분포가 왜 중요할까? 앞에서 말한대로 표본 통계량은 임의성을 가지고 있기 때문에 어떤 값이 나올지 예측할 수 없다. 하지만 분포는 관측할 수 있는 값의 가능성을 나타내는 측도이다. 따라서 표본 통계량의 분포를 알고 있다면 우리가 표본 통계량을 이용하여 <strong>모수를 추정하는 방법이 얼마나 합리적인지 판단할 수 있는 근거</strong> 를 제시할 수 있다.</p>
 <p>하지만 앞에서 잠깐 언급하였듯이 <strong>표본 통계량의 정확한 분포를 구하는 것은 대부분의 경우 매우 어렵다.</strong> 이러한 이유로 우리는 표본 통계량의 경험적 분포를 구하고 이를 통계량 분포의 특성을 근사적으로 파악하는데 사용한다.</p>
@@ -1353,7 +1088,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="id11">
-<h2><span class="section-number">6.2.4. </span>표본평균의 분포: 예제<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.2.4. </span>표본평균의 분포: 예제<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
 <p>이제 통계량의 분포에 대한 성질을 더 알아보기 위하여 실제 자료를 이용해 보자. 사용될 자료는 앞 정에서 사용한 것과 동일한 2019년 9월 동안 서울특별시 공공자전거 대여 이력 자료이다.</p>
 <p>이제 우리는 2019년 9월 동안 대여된 공공 자전거를 사용할 때 <strong>이용거리의 평균</strong>을 관심있는 모수로 정한다.
 일단 <strong>데이터프레임 <code class="docutils literal notranslate"><span class="pre">bike</span></code> 는 모집단이다. 즉,  2019년 9월에 발생한 모든 대여 정보를 수록한 자료이므로 모집단이라고 할 수 있다.</strong></p>
@@ -1591,7 +1326,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe54f0b7690&gt;
 </pre></div>
 </div>
-<img alt="../../_images/samplemeans_38_1.png" src="../../_images/samplemeans_38_1.png" />
+<img alt="../../_images/1a11d62c860e236b6bffeb08c4abf98cd45e7e09a55bcfac0432466dd06e2d4b.png" src="../../_images/1a11d62c860e236b6bffeb08c4abf98cd45e7e09a55bcfac0432466dd06e2d4b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1604,7 +1339,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe549ee1b50&gt;
 </pre></div>
 </div>
-<img alt="../../_images/samplemeans_39_1.png" src="../../_images/samplemeans_39_1.png" />
+<img alt="../../_images/5cbda3bc56e15e0ba4875265332ae50ba5928c5c6779b9e864dab40ad1d1489a.png" src="../../_images/5cbda3bc56e15e0ba4875265332ae50ba5928c5c6779b9e864dab40ad1d1489a.png" />
 </div>
 </div>
 <p>이제 표본의 개수를 <span class="math notranslate nohighlight">\(n=1000\)</span> 개로 늘려서 모의실험으로 <span class="math notranslate nohighlight">\(B=1000\)</span> 개의 표본을 추출한 후, 표본 평균들을 구하여 그 분포를 살펴보자.</p>
@@ -1628,7 +1363,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe54f0cd650&gt;
 </pre></div>
 </div>
-<img alt="../../_images/samplemeans_42_1.png" src="../../_images/samplemeans_42_1.png" />
+<img alt="../../_images/e619a6c3030fdc2c03ee64567af8badff1fbd29d586e7f9316eb46c4930f479b.png" src="../../_images/e619a6c3030fdc2c03ee64567af8badff1fbd29d586e7f9316eb46c4930f479b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1641,7 +1376,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe549db2dd0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/samplemeans_43_1.png" src="../../_images/samplemeans_43_1.png" />
+<img alt="../../_images/496910736b7d41d7d9c76a1caf201529afad6691f6828001ca4d1ad7e96aeac4.png" src="../../_images/496910736b7d41d7d9c76a1caf201529afad6691f6828001ca4d1ad7e96aeac4.png" />
 </div>
 </div>
 <p>이제 표본의 크기가 50개인 격우 표본 평균들의 경험적 분포와 표본의 크기가 1000개인 경우 표본 평균들의 경험적 분포를 상자그림으로 비교해 보자. 가로로 그은 빨간선은 모집단의 평균을 나타낸다.</p>
@@ -1665,11 +1400,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/samplemeans_45_0.png" src="../../_images/samplemeans_45_0.png" />
+<img alt="../../_images/ed99355beaa0047980067e4c2ec5240728d704b2fe572c9631a519cd47294939.png" src="../../_images/ed99355beaa0047980067e4c2ec5240728d704b2fe572c9631a519cd47294939.png" />
 </div>
 </div>
 <p>이제 표본의 개수를 점점 크게하면서, 표본 평균들의 경험적 분포가 어떻게 변화하는지 알아보자.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>표본의 개수를 <span class="math notranslate nohighlight">\(n=100\)</span> 부터 시작하여 <span class="math notranslate nohighlight">\(n=2000\)</span> 까지 점점 증가시킨다.</p></li>
 <li><p>주어진 표본의 크기에 대하여 모의실험으로 <span class="math notranslate nohighlight">\(B=100\)</span> 개의 표본들을 추출하고 표본 평균들을 구한다.</p></li>
 <li><p>표본의 개수에 따른 표본평균들의 분포를 상자그림으로 그려서 비교한다.</p></li>
@@ -1819,12 +1554,12 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/samplemeans_51_0.png" src="../../_images/samplemeans_51_0.png" />
+<img alt="../../_images/ef5d355f62f9e636968df4e4d424e8d1cfd4021842229f250729d4d6d52384a3.png" src="../../_images/ef5d355f62f9e636968df4e4d424e8d1cfd4021842229f250729d4d6d52384a3.png" />
 </div>
 </div>
 </section>
 <section id="id12">
-<h2><span class="section-number">6.2.5. </span>정리<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.2.5. </span>정리<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
 <p>우리는 지금까지 모집단 전체에 대한 정보를 알고 있다고 가정하고 모의실험을 통하여 단순임의추출로 얻은 표본 평균의 경험적 분포가 표본의 개수에 따라서 어떻게 변하는지 살펴보있다.</p>
 <p>표본의 크기가 증가하면 표본 평균의 경험적 분포가 실제 평균 주위에 어떻게 집중되고 얼마나 퍼져서 나타나는지에 대하여 알 수 있었다. 예를 들어 공공자전거 자료에서 이용거리의 평균을 알고 싶을 때를 생각해 보자.  <span class="math notranslate nohighlight">\(n=2000\)</span> 개의 표본을 추출하는 경우 모의실험으로 구한 100개의 표본 평균들이 실제 평균 <span class="math notranslate nohighlight">\(4253.336228\)</span> 주위에 얼마나 집중되어 있는지 <span class="math notranslate nohighlight">\(n=50\)</span> 개의 표본을 추출하는 경우와 비교할 수 있었다.</p>
 <p>이제  <strong>모집단의 정보가 없는 실제 상황</strong> 을 생각해 보자. 만약 우리가 2019년 9월 공공 자전거 대여이력에 대한 전체 자료가 없어서 표본을 추출한다고 가정해 보자. 모집단을 알 수 없으므로 지금까지 우리가 사용한 모의실험을 수행할 수가 없고 표본 평균의 경험적 분포도 알 수 없다.</p>
@@ -1848,7 +1583,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./chapters/06"
         },
         predefinedOutput: true
@@ -1856,50 +1591,113 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="sample.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">6.1. </span>표본과 정보</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sample.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6.1. </span>표본과 정보</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="estimator.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="estimator.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">6.3. </span>추정량의 성질</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.2.1. 모집단과 표본</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.2.2. 표본 통계량의 정확한 분포</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.2.2.1. 모집단</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.2.2.2. 표본</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.2.2.3. 모든 가능한 표본의 분포</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.2.2.4. 통계량의 정확한 분포</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.2.3. 표본 통계량의 경험적 분포</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">6.2.3.1. 모의실험</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.2.3.2. 통계량의 분포</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">6.2.4. 표본평균의 분포: 예제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">6.2.5. 정리</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By 서울시립대학교<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By 서울시립대학교
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
